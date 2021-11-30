@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RootComponent } from './root/root.component';
 import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
 import { ConsultationFicheComponent } from './pages/consultation-fiche/consultation-fiche.component';
+import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConsultationFicheComponent } from './pages/consultation-fiche/consultat
     NavbarComponent,
     RootComponent,
     CreationFicheComponent,
-    ConsultationFicheComponent
+    ConsultationFicheComponent,
+    IngredientFormComponent
   ],
   imports: [
     BrowserModule,
