@@ -12,6 +12,7 @@ import { RootComponent } from './root/root.component';
 import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
 import { ConsultationFicheComponent } from './pages/consultation-fiche/consultation-fiche.component';
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
+import { RecetteFormComponent } from './recette-form/recette-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { IngredientFormComponent } from './ingredient-form/ingredient-form.compo
     RootComponent,
     CreationFicheComponent,
     ConsultationFicheComponent,
-    IngredientFormComponent
+    IngredientFormComponent,
+    RecetteFormComponent
   ],
   imports: [
     BrowserModule,
