@@ -11,8 +11,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RootComponent } from './root/root.component';
 import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
 import { ConsultationFicheComponent } from './pages/consultation-fiche/consultation-fiche.component';
-import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
-import { RecetteFormComponent } from './recette-form/recette-form.component';
+import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
+import { RecetteFormComponent } from './components/recette-form/recette-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { RecetteFormComponent } from './recette-form/recette-form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [RootComponent]
