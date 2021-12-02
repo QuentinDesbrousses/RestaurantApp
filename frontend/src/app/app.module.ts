@@ -16,6 +16,7 @@ import { RecetteFormComponent } from './components/recette-form/recette-form.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { LandingComponentComponent } from './landing-component/landing-component.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     CreationFicheComponent,
     ConsultationFicheComponent,
     IngredientFormComponent,
-    RecetteFormComponent
+    RecetteFormComponent,
+    LandingComponentComponent
   ],
   imports: [
     BrowserModule,
