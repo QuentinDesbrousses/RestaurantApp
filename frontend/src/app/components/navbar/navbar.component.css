@@ -1,0 +1,16 @@
+.example-container {
+    width: 1920px;
+    height: 1080px;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.example-sidenav {
+    padding: 50px;
+}

@@ -1,4 +1,34 @@
-<button routerLink="/accueil">Accueil</button>
-<button routerLink="/gestionIngredient">Ingredients</button>
-<button routerLink="/consultationFiche">Fiches Techniques</button>
-test
+
+<mat-toolbar>
+    <button type="button" mat-button (click)="drawer.toggle()">
+        MENU
+    </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+
+    <!--navbar-->
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <mat-nav-list>
+            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+            <a (click)="showFiller = !showFiller" mat-raised-button>
+                Toggle extra text
+            </a><br>
+            <a class="btn btn-primary" routerLink="/accueil">Accueil</a><br>
+            <a class="btn btn-primary" routerLink="/gestionIngredient">Ingredients</a><br>
+            <a class="btn btn-primary" routerLink="/consultationFiche">Fiches Techniques</a><br>
+        </mat-nav-list>
+
+    </mat-drawer>
+
+    <!--content-->
+    <mat-drawer-content>
+            <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+
+</mat-drawer-container>
+
+
+

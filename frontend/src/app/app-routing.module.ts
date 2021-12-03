@@ -7,39 +7,18 @@ import { ConsultationFicheComponent } from './pages/consultation-fiche/consultat
 import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
 import { GestionIngredientComponent } from './pages/gestion-ingredient/gestion-ingredient.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import {NavbarComponent} from "./components/navbar/navbar.component";
 
 const routes: Routes = [
-  {
-    path: '', redirectTo: '/', pathMatch: 'full'
-  },
-  {
-    path:"",
-    component:AppComponent
-  },
-  {
-    path:"accueil",
-    component:AccueilComponent
-  },
-  {
-    path:"connexion",
-    component:ConnexionComponent
-  },
-  {
-    path:"inscription",
-    component:InscriptionComponent
-  },
-  {
-    path:"consultationFiche",
-    component:ConsultationFicheComponent
-  },
-  {
-    path:"creationFiche",
-    component:CreationFicheComponent
-  },
-  {
-    path:"gestionIngredient",
-    component:GestionIngredientComponent
-  },
+
+  { path : '', redirectTo: '/', pathMatch: 'full' },
+  { path : '', component:AppComponent },
+  { path : "accueil", component:AccueilComponent },
+  { path : "connexion", component:ConnexionComponent },
+  { path : "inscription", component:InscriptionComponent },
+  { path : "consultationFiche", component:ConsultationFicheComponent },
+  { path : "creationFiche", component:CreationFicheComponent },
+  { path : "gestionIngredient", component:GestionIngredientComponent },
   
 ];
 
