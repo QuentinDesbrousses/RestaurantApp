@@ -11,13 +11,9 @@
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <p>Auto-resizing sidenav</p>
         <mat-nav-list>
-            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-            <a (click)="showFiller = !showFiller" mat-raised-button>
-                Toggle extra text
-            </a><br>
-            <a class="btn btn-primary" routerLink="/accueil">Accueil</a><br>
-            <a class="btn btn-primary" routerLink="/gestionIngredient">Ingredients</a><br>
-            <a class="btn btn-primary" routerLink="/consultationFiche">Fiches Techniques</a><br>
+            <button class="btn btn-primary" routerLink="/accueil">Accueil</button><br>
+            <button class="btn btn-primary" routerLink="/gestionIngredient">Ingredients</button><br>
+            <button class="btn btn-primary" routerLink="/consultationFiche">Fiches Techniques</button><br>
         </mat-nav-list>
 
     </mat-drawer>
