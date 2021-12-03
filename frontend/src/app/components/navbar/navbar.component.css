@@ -1,16 +1,16 @@
 .example-container {
-    width: 500px;
-    height: 300px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 1920px;
+    height: 1080px;
 }
 
 .example-sidenav-content {
     display: flex;
-    height: 100%;
-    align-items: center;
+    height: auto;
     justify-content: center;
+    text-align: center;
+
 }
 
 .example-sidenav {
-    padding: 20px;
+    padding: 50px;
 }
