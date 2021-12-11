@@ -20,7 +20,9 @@
     margin-right: 10%;
 }
 
-
+.navbar-content {
+    margin: auto;
+}
 
 
 .sidenav-container {
@@ -38,5 +40,5 @@
 
 .sidenav {
     background-color: lightblue;
-    padding: 30px;
+    padding: 50px;
 }

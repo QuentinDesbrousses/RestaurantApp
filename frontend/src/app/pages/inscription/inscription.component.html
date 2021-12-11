@@ -1,16 +1,31 @@
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+<body>
+    <div id="register">
+        <div class="container">
+            <div id="register-row" class="">
+                <div id="register-column" class="col-md-6">
+                    <div id="register-box" class="col-md-12">
+                        <form id="register-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Inscription</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Adresse mail</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-register" class="text-info">Mot de passe</label><br>
+                                <input type="text" name="password" id="password-register" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password-register2" class="text-info">Confirmation du mot de passe</label><br>
+                                <input type="text" name="password" id="password-register2" class="form-control">
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" >Submit</button>
-  </form>
+</body>
