@@ -22,6 +22,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -39,18 +41,20 @@ import {MatButtonModule} from "@angular/material/button";
     LandingComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatListModule,
-    MatToolbarModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        MatSidenavModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatListModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatOptionModule
+    ],
   providers: [],
   bootstrap: [RootComponent]
 })

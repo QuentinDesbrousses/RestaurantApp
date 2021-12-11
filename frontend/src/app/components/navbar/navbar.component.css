@@ -1,9 +1,34 @@
-.example-container {
-    width: 1920px;
+.toolbar {
+    background-color: cadetblue;
+}
+
+.menu-btn {
+    margin-left: 15px;
+    color: white;
+}
+
+.toolbarTitle {
+    text-align: center;
+}
+
+.register-btn {
+    margin-right: 15px;
+    margin-left: 70%;
+ }
+
+.login-btn {
+    margin-right: 10%;
+}
+
+
+
+
+.sidenav-container {
+    width: 100%;
     height: 1080px;
 }
 
-.example-sidenav-content {
+.sidenav-content {
     display: flex;
     height: auto;
     justify-content: center;
@@ -11,6 +36,7 @@
 
 }
 
-.example-sidenav {
-    padding: 50px;
+.sidenav {
+    background-color: lightblue;
+    padding: 30px;
 }
