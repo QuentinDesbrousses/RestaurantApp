@@ -8,6 +8,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./ingredient-form.component.css']
 })
 export class IngredientFormComponent {
+  @Input() title = '';
   @Input() categories = [''];
   @Input() allergenes = [''];
 
