@@ -8,8 +8,8 @@ import { InscriptionComponent } from './pages/inscription/inscription.component'
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RootComponent } from './root/root.component';
-import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
-import { RecetteFormComponent } from './components/recette-form/recette-form.component';
+import { IngredientFormComponent } from './components/forms/ingredient-form/ingredient-form.component';
+import { RecetteFormComponent } from './components/forms/recette-form/recette-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';

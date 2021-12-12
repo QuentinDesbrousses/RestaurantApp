@@ -1,0 +1,62 @@
+.ingredient-form-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 3px solid #511c1c;
+    border-radius: 10px;
+    color: darkgray;
+    font-family: "Open Sans";
+    font-weight: 400;
+}
+
+.ingredient-form {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    align-items: center;
+    border: 3px solid darkgray;
+    border-radius: 10px;
+    background-color: darkgray;
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.formgroup {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+input {
+    margin-left: 10px;
+    color: #9C9C9C;
+}
+
+select {
+    margin-left: 10px;
+    color: #9C9C9C;
+}
+
+button {
+    text-align: center;
+    border-radius: 10px;
+    width: 20%;
+    height: 5%;
+}
+
+.valider {
+    background-color: deepskyblue;
+}
+
+.annuler {
+    background-color: darkred;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.warning {
+    color: black;
+    font-style: italic;
+    font-size: 14px;
+}

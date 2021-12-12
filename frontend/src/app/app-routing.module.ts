@@ -4,7 +4,7 @@ import {AppComponent} from "./app.component";
 import {AccueilComponent } from './pages/accueil/accueil.component';
 import {ConnexionComponent } from './pages/connexion/connexion.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
-import {IngredientFormComponent} from "./components/ingredient-form/ingredient-form.component";
+import {IngredientFormComponent} from "./components/forms/ingredient-form/ingredient-form.component";
 import {IngredientsComponent} from "./pages/ingredients/ingredients.component";
 import {RecettesComponent} from "./pages/recettes/recettes.component";
 

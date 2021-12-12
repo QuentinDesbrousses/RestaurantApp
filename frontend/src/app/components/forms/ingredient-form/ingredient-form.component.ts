@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { Validators } from '@angular/forms';
 
@@ -8,6 +8,8 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./ingredient-form.component.css']
 })
 export class IngredientFormComponent {
+  @Input() categories = [''];
+  @Input() allergenes = [''];
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,24 +21,6 @@ export class IngredientFormComponent {
     quantite : ['',Validators.required],
     coutU : ['',Validators.required],
   })
-
-  categories2 = ['Légume','Fruit','Fromage']
-  allergenes2 = ['Aucun',
-    'Arachide',
-    'Céleri',
-    'Crabe','Crevette','Écrevisse','Homard','Langoustine',
-    'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
-    'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
-    'Lait',
-    'Lupin',
-    'Oeuf',
-    'Poisson',
-    'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
-    'Moutarde',
-    'Sésame',
-    'Soja',
-    'Sulfites'
-    ]
 
   onSubmit(){
     console.log(this.creationIngredient.value)
