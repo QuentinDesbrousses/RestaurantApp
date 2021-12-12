@@ -8,7 +8,9 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./ingredient-form.component.css']
 })
 export class IngredientFormComponent {
+
   constructor(private fb: FormBuilder) { }
+
   creationIngredient = this.fb.group({
     nom : ['',Validators.required],
     categorie : ['Légume',Validators.required],
@@ -16,13 +18,10 @@ export class IngredientFormComponent {
     unite : ['',Validators.required],
     quantite : ['',Validators.required],
     coutU : ['',Validators.required],
-
   })
 
-
-
-  categories = ['Légume','Fruit','Fromage']
-  allergenes = ['Aucun',
+  categories2 = ['Légume','Fruit','Fromage']
+  allergenes2 = ['Aucun',
     'Arachide',
     'Céleri',
     'Crabe','Crevette','Écrevisse','Homard','Langoustine',
