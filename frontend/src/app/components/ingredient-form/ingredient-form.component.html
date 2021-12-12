@@ -1,1 +1,39 @@
-<p>ingredient-form works!</p>
+<!-- Creation FormGroup-->
+<form [formGroup]="creationIngredient" (ngSubmit)="onSubmit()">
+
+    <label for="nom">Nom de l'ingrédient : </label>
+    <input id="nom" type="text" formControlName="nom">
+    <br>
+
+    <label for="categorie">Catégorie : </label>
+    <select id="categorie" type="text" formControlName="categorie">
+        <option *ngFor="let cat of categories">{{cat}}</option>
+    </select>
+
+    <label for="allergene">Allergène : </label>
+    <select id="allergene" type="text" formControlName="allergene">
+        <option *ngFor="let al of allergenes">{{al}}</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="unite">Unité : </label>
+    <input id="unite" type="text" formControlName="unite">
+
+    <label for="quantite">Quantité : </label>
+    <input id="quantite" type="text" formControlName="quantite">
+    <br>
+
+    <label for="coutU">Coût unitaire : </label>
+    <input id="coutU" type="text" formControlName="coutU">
+    <br>
+
+    <button type="submit" [disabled]="!creationIngredient.valid">Submit</button>
+    <br>
+
+    <p>{{creationIngredient.status}}</p>
+    <p>{{creationIngredient.value.toString()}}</p>
+
+</form>
+
+

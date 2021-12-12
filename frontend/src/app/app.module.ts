@@ -16,7 +16,6 @@ import { RecetteFormComponent } from './components/recette-form/recette-form.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {LandingComponent } from './components/landing-component/landing.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
@@ -24,6 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,8 +39,6 @@ import {MatOptionModule} from "@angular/material/core";
     ConsultationFicheComponent,
     IngredientFormComponent,
     RecetteFormComponent,
-    LandingComponent,
-
   ],
     imports: [
         BrowserModule,
@@ -54,7 +52,8 @@ import {MatOptionModule} from "@angular/material/core";
         MatToolbarModule,
         MatButtonModule,
         MatSelectModule,
-        MatOptionModule
+        MatOptionModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [RootComponent]
