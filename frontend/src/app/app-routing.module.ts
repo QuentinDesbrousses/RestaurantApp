@@ -3,11 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {AppComponent} from "./app.component";
 import {AccueilComponent } from './pages/accueil/accueil.component';
 import {ConnexionComponent } from './pages/connexion/connexion.component';
-import { ConsultationFicheComponent } from './pages/consultation-fiche/consultation-fiche.component';
-import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
-import { GestionIngredientComponent } from './pages/gestion-ingredient/gestion-ingredient.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
-import {NavbarComponent} from "./components/navbar/navbar.component";
+import {IngredientFormComponent} from "./components/forms/ingredient-form/ingredient-form.component";
+import {IngredientsComponent} from "./pages/ingredients/ingredients.component";
+import {RecettesComponent} from "./pages/recettes/recettes.component";
 
 const routes: Routes = [
 
@@ -16,9 +15,9 @@ const routes: Routes = [
   { path : "accueil", component:AccueilComponent },
   { path : "connexion", component:ConnexionComponent },
   { path : "inscription", component:InscriptionComponent },
-  { path : "consultationFiche", component:ConsultationFicheComponent },
-  { path : "creationFiche", component:CreationFicheComponent },
-  { path : "gestionIngredient", component:GestionIngredientComponent },
+  { path : "creationIngredient", component:IngredientFormComponent },
+  { path : "ingredients", component:IngredientsComponent },
+  { path : "recettes", component:RecettesComponent },
   
 ];
 

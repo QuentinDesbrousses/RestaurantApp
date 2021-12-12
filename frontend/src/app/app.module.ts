@@ -6,17 +6,13 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './pages/accueil/accueil.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
-import { GestionIngredientComponent } from './pages/gestion-ingredient/gestion-ingredient.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RootComponent } from './root/root.component';
-import { CreationFicheComponent } from './pages/creation-fiche/creation-fiche.component';
-import { ConsultationFicheComponent } from './pages/consultation-fiche/consultation-fiche.component';
-import { IngredientFormComponent } from './components/ingredient-form/ingredient-form.component';
-import { RecetteFormComponent } from './components/recette-form/recette-form.component';
+import { IngredientFormComponent } from './components/forms/ingredient-form/ingredient-form.component';
+import { RecetteFormComponent } from './components/forms/recette-form/recette-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {LandingComponent } from './components/landing-component/landing.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
@@ -24,6 +20,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
+import { ReactiveFormsModule } from '@angular/forms';
+import { IngredientsComponent } from './pages/ingredients/ingredients.component';
+import { RecettesComponent } from './pages/recettes/recettes.component';
 
 
 @NgModule({
@@ -32,15 +31,12 @@ import {MatOptionModule} from "@angular/material/core";
     AccueilComponent,
     InscriptionComponent,
     ConnexionComponent,
-    GestionIngredientComponent,
     NavbarComponent,
     RootComponent,
-    CreationFicheComponent,
-    ConsultationFicheComponent,
     IngredientFormComponent,
     RecetteFormComponent,
-    LandingComponent,
-
+    IngredientsComponent,
+    RecettesComponent,
   ],
     imports: [
         BrowserModule,
@@ -54,7 +50,8 @@ import {MatOptionModule} from "@angular/material/core";
         MatToolbarModule,
         MatButtonModule,
         MatSelectModule,
-        MatOptionModule
+        MatOptionModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [RootComponent]
