@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-creation-fiche',
   templateUrl: './creation-fiche.component.html',
   styleUrls: ['./creation-fiche.component.css']
 })
-export class CreationFicheComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CreationFicheComponent {
+  selected = 'option2';
 }

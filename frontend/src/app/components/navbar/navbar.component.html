@@ -1,28 +1,28 @@
-
-<mat-toolbar>
-    <button type="button" mat-button (click)="drawer.toggle()">
-        MENU
-    </button>
+<!-- ToolBar -->
+<mat-toolbar class="toolbar">
+    <div class="toolbarTitle"><h1>RestaurAngular</h1></div>
+    <div class="menu-btn"><button type="button" mat-button (click)="drawer.toggle()">MENU</button></div>
+    <div class="register-btn"><button class="btn btn-secondary" routerLink="/inscription">S'inscrire</button></div>
+    <div class="login-btn"><button class="btn btn-primary" routerLink="/connexion">Se connecter</button></div>
 </mat-toolbar>
 
-<mat-drawer-container class="example-container" autosize>
+<!-- Page -->
+<mat-drawer-container class="sidenav-container" autosize>
 
-    <!--navbar-->
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-        <p>Auto-resizing sidenav</p>
-        <mat-nav-list>
-            <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-            <a (click)="showFiller = !showFiller" mat-raised-button>
-                Toggle extra text
-            </a><br>
-            <a class="btn btn-primary" routerLink="/accueil">Accueil</a><br>
-            <a class="btn btn-primary" routerLink="/gestionIngredient">Ingredients</a><br>
-            <a class="btn btn-primary" routerLink="/consultationFiche">Fiches Techniques</a><br>
+    <!-- SideNavBar -->
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <h2>MENU</h2>
+        <mat-nav-list class="navbar-content">
+            <div class="row align-items-start">
+                <div class="col"><button class="home-btn btn btn-primary m-3" routerLink="/accueil">Accueil</button></div>
+                <div class="col"><button class="ingr-btn btn btn-primary m-3" routerLink="/gestionIngredient">Ingredients</button></div>
+                <div class="col"><button class="fiche-btn btn btn-primary m-3" routerLink="/consultationFiche">Fiches Techniques</button></div>
+                <div class="col"><button class="creation-fiche-btn btn btn-primary m-3" routerLink="/creationFiche">Création fiches Techniques</button></div>
+            </div>
         </mat-nav-list>
-
     </mat-drawer>
 
-    <!--content-->
+    <!--Content Page-->
     <mat-drawer-content>
             <router-outlet></router-outlet>
     </mat-drawer-content>
