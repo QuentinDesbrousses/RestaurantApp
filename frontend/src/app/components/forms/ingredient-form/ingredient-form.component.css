@@ -1,5 +1,5 @@
 .ingredient-form-container {
-    width: 30%;
+    width: 50%;
     padding-top: 30px;
     padding-bottom: 30px;
     border: 3px solid cadetblue;
@@ -10,6 +10,7 @@
 }
 
 .ingredient-form {
+    max-height: inherit;
     padding-top: 5%;
     padding-bottom: 5%;
     padding-left: 5%;
@@ -28,6 +29,7 @@
 
 input {
     margin-left: 10px;
+    width: 50%;
     color: #9C9C9C;
     border-radius: 10px;
     border: 5px solid rgba(116,16,52,0.75);
@@ -36,16 +38,19 @@ input {
 select {
     margin-left: 10px;
     color: #9C9C9C;
+    width: 50%;
     border-radius: 10px;
     border: 5px solid rgba(116,16,52,0.75);
 }
 
 .button {
+    width: 25%;
+    margin-right: 30px;
     --offset: 10px;
     --border-size: 2px;
     display: block;
     position: relative;
-    padding: 1.5em 10.5em;
+    padding: 1.5em 1.5em 1.5em 1.5em;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -53,7 +58,7 @@ select {
     background: transparent;
     color: rgba(116,16,52,0.75);
     text-transform: uppercase;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.1em;
     outline: none;
     cursor: pointer;
     font-weight: bold;

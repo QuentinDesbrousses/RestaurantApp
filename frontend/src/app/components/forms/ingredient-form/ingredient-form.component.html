@@ -41,11 +41,19 @@
             <div class="formgroup warning">
                 <p *ngIf="creationIngredient.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
-                <button  class="button text-center" type="submit"  [disabled]="!creationIngredient.valid">
+            <div class="btn-toolbar">
+                <button  class="button pull-left" type="submit"  [disabled]="!creationIngredient.valid">
                     Valider
                     <div class="button__horizontal"></div>
                     <div class="button__vertical"></div>
                 </button>
+                <button  class="button pull-right m-3" type="submit"  [disabled]="!creationIngredient.valid">
+                    Annuler
+                    <div class="button__horizontal"></div>
+                    <div class="button__vertical"></div>
+                </button>
+            </div>
+
         </form>
     </div>
 
