@@ -1,9 +1,9 @@
 <!-- ToolBar -->
 <mat-toolbar class="toolbar">
     <div class="toolbarTitle"><h1>RestaurAngular</h1></div>
-    <div class="menu-btn"><button type="button" mat-button (click)="drawer.toggle()">MENU</button></div>
-    <div class="register-btn"><button class="btn btn-secondary" routerLink="/inscription">S'inscrire</button></div>
-    <div class="login-btn"><button class="btn btn-primary" routerLink="/connexion">Se connecter</button></div>
+        <button class="toolbar-btn menu-btn" type="button" mat-button (click)="drawer.toggle()">MENU</button>
+        <button class="toolbar-btn register-btn" routerLink="/inscription">S'inscrire</button>
+        <button class="toolbar-btn login-btn" routerLink="/connexion">Se connecter</button>
 </mat-toolbar>
 
 <!-- Page -->
@@ -11,12 +11,11 @@
 
     <!-- SideNavBar -->
     <mat-drawer #drawer class="sidenav" mode="side">
-        <h2>MENU</h2>
         <mat-nav-list class="navbar-content">
-            <div class="row align-items-start">
-                <div class="col"><button class="home-btn btn btn-primary m-3" routerLink="/accueil">Accueil</button></div>
-                <div class="col"><button class="ingr-btn btn btn-primary m-3" routerLink="/ingredients">Ingredients</button></div>
-                <div class="col"><button class="fiche-btn btn btn-primary m-3" routerLink="/recettes">Recettes</button></div>
+            <div class="row align-items-start sidebar">
+                <div class=""><button class="sidebar-btn" routerLink="/accueil">Accueil</button></div>
+                <div class=""><button class="sidebar-btn" routerLink="/ingredients">Ingredients</button></div>
+                <div class=""><button class="sidebar-btn" routerLink="/recettes">Recettes</button></div>
             </div>
         </mat-nav-list>
     </mat-drawer>
@@ -25,7 +24,6 @@
     <mat-drawer-content>
             <router-outlet></router-outlet>
     </mat-drawer-content>
-
 
 </mat-drawer-container>
 

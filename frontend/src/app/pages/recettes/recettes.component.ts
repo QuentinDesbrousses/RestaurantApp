@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-recettes',
   templateUrl: './recettes.component.html',
   styleUrls: ['./recettes.component.css']
 })
-export class RecettesComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class RecettesComponent {
+  categorieTab = ["Entrée","Plat principal","Dessert"]
+  etapeTab = ["Ajouter le sucre","Ajouter une pincée de sel","Monter les oeufs en neige"]
 }

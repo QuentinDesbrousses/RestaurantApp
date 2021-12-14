@@ -1,11 +1,12 @@
-
 .toolbar {
-    background-color: cadetblue;
+    background-color: rgba(53,44,42,0.31);
+    border-radius: 0px;
+    border-top: 2px solid rgba(116,16,52,0.75);
+    border-bottom: 2px solid rgba(116,16,52,0.75);
 }
-
-.menu-btn {
-    margin-left: 15px;
-    color: white;
+.userBtn {
+    margin-left: 68%;
+    width: 100%;
 }
 
 .toolbarTitle {
@@ -14,13 +15,28 @@
     font-family: Georgia;
 }
 
-.register-btn {
-    margin-right: 15px;
-    margin-left: 70%;
- }
+.toolbar-btn {
+    color: #9C9C9C;
+    border-radius: 3px;
+    border: 3px solid rgba(116,16,52,0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
 
+.toolbar-btn:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    background-color: rgba(153,153,151,0.51);
+    color: white;
+}
+.menu-btn {
+    margin-left: 10px;
+}
 .login-btn {
-    margin-right: 10%;
+    margin-left: 10px;
+}
+
+.register-btn {
+    margin-left: 68%;
 }
 
 .navbar-content {
@@ -30,18 +46,38 @@
 
 .sidenav-container {
     width: 100%;
-    height: 1080px;
+    height: 100%;
 }
 
 .sidenav-content {
-    display: flex;
     height: auto;
     justify-content: center;
     text-align: center;
-
 }
 
 .sidenav {
-    background-color: lightblue;
-    padding: 50px;
+    background-color: rgba(153,153,151,0.51);
+    width: 15%;
+    border-right: 2px solid rgba(116,16,52,0.75);
+}
+
+.sidebar {
+    padding-top: 30%;
+}
+
+.sidebar-btn {
+    width: 70%;
+    padding: 2%;
+    margin: 15%;
+    color: #9C9C9C;
+    border-radius: 3px;
+    border: 5px solid rgba(116,16,52,0.75);
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
+
+.sidebar-btn:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    background-color: rgba(153,153,151,0.51);
+    color: white;
 }
