@@ -1,9 +1,6 @@
 <!-- Creation FormGroup-->
 <div class="ingredient-form-container">
-    <div class="formgroup text-center">
-        <h1 class="title"><strong>Ajout d'un nouvel ingrédient</strong></h1>
-    </div>
-
+        <h1 class="text-center"><strong>Ajout d'un nouvel ingrédient</strong></h1>
     <div class="ingredient-form">
         <form [formGroup]="creationIngredient" (ngSubmit)="onSubmit()">
             <div class="formgroup">
@@ -38,19 +35,17 @@
                 <label for="coutU">Coût unitaire*</label>
                 <input id="coutU" type="text" formControlName="coutU">
             </div>
-            <div class="formgroup warning">
+            <div class="warning">
                 <p *ngIf="creationIngredient.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
             <div class="btn-toolbar">
-                <button  class="button pull-left" type="submit"  [disabled]="!creationIngredient.valid">
-                    Valider
-                    <div class="button__horizontal"></div>
-                    <div class="button__vertical"></div>
+                <button  class="button" type="submit"  [disabled]="!creationIngredient.valid">
+                    <span class="btn-text">Valider</span>
+
                 </button>
-                <button  class="button pull-right m-3" type="submit"  [disabled]="!creationIngredient.valid">
-                    Annuler
-                    <div class="button__horizontal"></div>
-                    <div class="button__vertical"></div>
+                <button  class="button" type="submit"  [disabled]="!creationIngredient.valid">
+                    <span class="btn-text">Annuler</span>
+
                 </button>
             </div>
 

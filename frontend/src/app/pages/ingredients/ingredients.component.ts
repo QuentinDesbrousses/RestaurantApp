@@ -6,7 +6,6 @@ import { Component} from '@angular/core';
   styleUrls: ['./ingredients.component.css']
 })
 export class IngredientsComponent {
-  title = 'Ajout d\'un nouvel ingrédient'
   categorieTab= ['Légume','Fruit','Fromage']
   allergeneTab = ['Aucun',
     'Arachide',
