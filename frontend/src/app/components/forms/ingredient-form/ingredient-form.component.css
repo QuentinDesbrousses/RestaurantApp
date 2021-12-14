@@ -7,6 +7,7 @@
     color: rgba(116,16,52,0.75);
     font-family: "Open Sans";
     font-size: 100%;
+    background-color: rgb(255,255,255,0.9);
 }
 
 .ingredient-form {
