@@ -1,4 +1,31 @@
-<button routerLink="/accueil">Accueil</button>
-<button routerLink="/gestionIngredient">Ingredients</button>
-<button routerLink="/consultationFiche">Fiches Techniques</button>
-test
+<!-- ToolBar -->
+<mat-toolbar class="toolbar">
+    <div class="toolbarTitle"><h1>RestaurAngular</h1></div>
+        <button class="square-btn menu-btn"  mat-button (click)="drawer.toggle()">MENU</button>
+        <button class="square-btn register-btn" mat-button routerLink="/inscription">S'inscrire</button>
+        <button class="square-btn login-btn" mat-button routerLink="/connexion">Se connecter</button>
+</mat-toolbar>
+
+<!-- Page -->
+<mat-drawer-container class="sidenav-container" autosize>
+
+    <!-- SideNavBar -->
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <mat-nav-list class="navbar-content">
+            <div class="row align-items-start">
+                <div class=""><button class="square-btn sidenav-btn" mat-button routerLink="/accueil">Accueil</button></div>
+                <div class=""><button class="square-btn sidenav-btn" mat-button routerLink="/ingredients">Ingredients</button></div>
+                <div class=""><button class="square-btn sidenav-btn" mat-button routerLink="/recettes">Recettes</button></div>
+            </div>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <!--Content Page-->
+    <mat-drawer-content>
+            <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+</mat-drawer-container>
+
+
+

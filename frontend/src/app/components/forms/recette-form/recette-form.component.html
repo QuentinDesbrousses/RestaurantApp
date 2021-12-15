@@ -1,0 +1,55 @@
+<!-- Creation FormGroup-->
+<div class="recette-form-container">
+    <h1 class="text-center"><strong>Création d'une recette</strong></h1>
+    <div class="recette-form">
+        <form [formGroup]="creationRecette" (ngSubmit)="onSubmit()">
+            <div class="formgroup">
+                <label for="titre">Titre*</label>
+                <input id="titre" type="text" formControlName="titre">
+            </div>
+
+            <div class="formgroup">
+                <label for="description">Description*</label>
+                <input id="description" type="text" formControlName="description">
+            </div>
+
+            <div class="formgroup">
+                <label for="etapes">Etapes* TODO</label>
+                <select id="etapes" type="text" formControlName="etapes">
+                    <option *ngFor="let e of etapes">{{e}}</option>
+                </select>
+            </div>
+
+            <div class="formgroup">
+                <label for="categorie">Catégorie*</label>
+                <select id="categorie" type="text" formControlName="categorie">
+                    <option *ngFor="let cat of categories">{{cat}}</option>
+                </select>
+            </div>
+
+            <div class="formgroup">
+                <label for="nbCouvert">Nombre de couvert(s)*</label>
+                <input id="nbCouvert" type="text" formControlName="nbCouvert">
+            </div>
+
+            <div class="formgroup">
+                <label for="temps">Temps (min)*</label>
+                <input id="temps" type="text" formControlName="temps">
+            </div>
+
+            <div class="warning">
+                <p *ngIf="creationRecette.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button form-btn" type="submit"  [disabled]="!creationRecette.valid">Valider</button>
+                <button  class="button form-btn" type="submit"  [disabled]="!creationRecette.valid">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
