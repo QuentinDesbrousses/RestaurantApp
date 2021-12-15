@@ -1,4 +1,11 @@
+const model = require("./model");
+
+exports.Utilisateur = class Utilisateur{
+  
+}
+
 const pool = require('../config/db');
+
 
 // toutes les requêtes sql genre select, selectAll, definition des queries, exécution des requêtes
 //avoir tous les utilisateurs
