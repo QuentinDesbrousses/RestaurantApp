@@ -63,15 +63,4 @@ select {
 .button {
     padding: 2%;
     margin: 5%;
-    color: #9C9C9C;
-    border-radius: 3px;
-    border: 5px solid rgba(116,16,52,0.75);
-    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
-}
-
-.button:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-    background-color: rgba(153,153,151,0.51);
-    color: white;
 }
