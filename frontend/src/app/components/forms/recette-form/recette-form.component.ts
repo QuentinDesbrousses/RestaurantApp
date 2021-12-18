@@ -22,16 +22,8 @@ export class RecetteFormComponent {
     temps : ['',Validators.required],
   })
 
-  timePeriods = [
-    'Bronze age',
-    'Iron age',
-    'Middle ages',
-    'Early modern period',
-    'Long nineteenth century',
-  ];
-
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.etapes, event.previousIndex, event.currentIndex);
   }
 
   onSubmit(){
