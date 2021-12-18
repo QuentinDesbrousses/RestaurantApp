@@ -1,0 +1,14 @@
+/* Général */
+.square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
+    color: #9C9C9C;
+    border-radius: 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+    background-color: white;
+}
+.square-btn:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    background-color: rgba(153,153,151,0.51);
+    color: white;
+    transition-duration: 0.4s;
+}

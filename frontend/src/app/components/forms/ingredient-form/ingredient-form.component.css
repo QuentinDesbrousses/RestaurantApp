@@ -1,57 +1,24 @@
 .ingredient-form-container {
-    width: 30%;
+    width: 50%;
     padding-top: 30px;
     padding-bottom: 30px;
     border: 3px;
     border-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
-    color: rgba(116,16,52,0.75);
+    color: rgba(124,153,255,0.83);
     font-family: "Open Sans";
     font-size: 100%;
-    background-color: rgba(53,44,42,0.11);
 }
 
 .ingredient-form {
     max-height: inherit;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
+    padding: 5%;
     align-items: center;
     border: 3px;
     border-radius: 0px;
     color: white;
     margin-left: 15px;
     margin-right: 15px;
-}
-
-.formgroup {
-    padding-bottom: 5%;
-    margin: 10px;
-    padding: 3%;
-    background-color: rgba(153,153,151,0.51);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.formgroup:hover {
-    -webkit-transform: scale(1.02);
-    transform: scale(1.02);
-}
-
-
-input {
-    margin-left: 10px;
-    width: 50%;
-    color: #9C9C9C;
-    border-radius: 3px;
-    border: 5px solid rgba(116,16,52,0.75);
-}
-
-select {
-    margin-left: 10px;
-    color: #9C9C9C;
-    width: 50%;
-    border-radius: 3px;
-    border: 5px solid rgba(116,16,52,0.75);
 }
 
 .warning {
