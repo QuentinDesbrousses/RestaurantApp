@@ -1,8 +1,25 @@
 const model = require("./model");
 
-exports.Recette = class Recette{
+exports.Recette = class Recette extends model.Model{
 
-    selectAll(tableName){
-        return super(tableName);
+    constructor(){
+        super();
+        table = "recette";
+    }
+
+    select(elToFind, conditions){
+        super.select(table,elToFind, conditions);
+    }
+
+    selectByID(id,elToFind){
+        super.selectByID(table,id,elToFind);
+    }
+
+    selectAll(){
+        super.selectAll(table);
+    }
+
+    save(valuesToSave){
+        super.save(table, valuesToSave);
     }
 }
