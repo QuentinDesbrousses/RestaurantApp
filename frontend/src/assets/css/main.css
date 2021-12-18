@@ -5,7 +5,7 @@
 }
 
 .square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
-    color: #9C9C9C;
+    color: rgba(124,153,255,0.83);
     border-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
     background-color: white;
