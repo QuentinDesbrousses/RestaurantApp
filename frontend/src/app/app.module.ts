@@ -26,6 +26,7 @@ import { RecettesComponent } from './pages/recettes/recettes.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { InscriptionFormComponent } from './components/forms/inscription-form/inscription-form.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { InscriptionFormComponent } from './components/forms/inscription-form/in
     RecettesComponent,
     LoginFormComponent,
     InscriptionFormComponent,
+    ModalComponent,
   ],
     imports: [
         BrowserModule,
