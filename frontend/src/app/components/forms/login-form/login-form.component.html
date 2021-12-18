@@ -1,1 +1,31 @@
-<p>login-form works!</p>
+<!-- Creation FormGroup-->
+<div class="login-form-container form-content">
+    <h1 class="text-center"><strong>Connectez-vous à votre compte</strong></h1>
+    <div class="login-form">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-field">
+                <label for="email">Adresse mail*</label>
+                <input id="email" type="text" formControlName="email">
+            </div>
+
+            <div class="form-field">
+                <label for="password">Mot de passe*</label>
+                <input id="password" type="text" formControlName="password">
+            </div>
+
+            <div class="warning">
+                <p *ngIf="loginForm.status == 'INVALID'">Vous devez remplir toutes les clauses*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!loginForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" type="submit">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+

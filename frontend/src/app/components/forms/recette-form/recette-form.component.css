@@ -79,25 +79,3 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-
-
-/* fin du form */
-.warning {
-    color: black;
-    font-style: italic;
-    font-size: 14px;
-}
-
-.button-validate {
-    padding: 2%;
-    margin-left: 20%;
-}
-
-.button-cancel {
-    padding: 2%;
-    margin-left: 30%;
-}
-.button-cancel:hover {
-    background-color: red;
-    border-color: red;
-}

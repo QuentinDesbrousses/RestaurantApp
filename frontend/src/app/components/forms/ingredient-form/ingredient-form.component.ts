@@ -25,5 +25,4 @@ export class IngredientFormComponent {
   onSubmit(){
     console.log(this.creationIngredient.value)
   }
-
 }
