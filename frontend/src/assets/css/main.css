@@ -1,4 +1,9 @@
 /* Général */
+.body {
+    min-height: 1080px;
+    background-color: rgba(255,148,0,0.1);
+}
+
 .square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
     color: #9C9C9C;
     border-radius: 0px;

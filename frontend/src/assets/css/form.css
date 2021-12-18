@@ -1,6 +1,7 @@
 /* Formulaire */
 .form-content {
     background-color: white;
+    color: rgba(124,153,255,0.83);
 }
 .form-field {
     padding-bottom: 5%;
