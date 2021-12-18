@@ -11,7 +11,7 @@
 
     <!-- SideNavBar -->
     <mat-drawer #drawer class="sidenav" mode="side">
-        <mat-nav-list class="navbar-content">
+        <mat-nav-list class="sidenav-content">
             <div class="row align-items-start">
                 <div class=""><button class="square-btn sidenav-btn" mat-button routerLink="/accueil">Accueil</button></div>
                 <div class=""><button class="square-btn sidenav-btn" mat-button routerLink="/ingredients">Ingredients</button></div>
@@ -22,7 +22,9 @@
 
     <!--Content Page-->
     <mat-drawer-content>
+        <div class="content">
             <router-outlet></router-outlet>
+        </div>
     </mat-drawer-content>
 
 </mat-drawer-container>

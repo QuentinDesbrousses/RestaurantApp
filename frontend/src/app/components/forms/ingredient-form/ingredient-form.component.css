@@ -1,5 +1,5 @@
 .ingredient-form-container {
-    width: 30%;
+    width: 50%;
     padding-top: 30px;
     padding-bottom: 30px;
     border: 3px;
@@ -13,9 +13,7 @@
 
 .ingredient-form {
     max-height: inherit;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    padding-left: 5%;
+    padding: 5%;
     align-items: center;
     border: 3px;
     border-radius: 0px;
