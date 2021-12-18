@@ -48,7 +48,7 @@ create table avoir(
     id_ingredient int not  null,
     primary key (id_allergene,id_ingredient),
     constraint id_allergene foreign key(id_allergene) references allergene(id_allergene),
-    constraint id_ingredient foreign key(id_ingredient) references ingredient(id_ingredient),
+    constraint id_ingredient foreign key(id_ingredient) references ingredient(id_ingredient)
 );
 
 create table etape(
