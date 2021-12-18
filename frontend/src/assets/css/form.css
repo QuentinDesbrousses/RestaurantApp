@@ -1,6 +1,6 @@
 /* Formulaire */
 .form-content {
-    background-color: white;
+    background-color: rgba(255,255,255,0.95);
     color: rgba(124,153,255,0.83);
     width: 50%;
     border: 3px;

@@ -1,7 +1,7 @@
 /* Général */
 .body {
     min-height: 1080px;
-    background-color: rgba(255,148,0,0.1);
+    background-image: url("../img/cafeteria.jpg");
 }
 
 .square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
