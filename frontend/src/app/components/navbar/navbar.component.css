@@ -1,11 +1,10 @@
 /* Toolbar */
 
 .toolbar {
-    background-color: rgba(53,44,42,0.31);
+    background-color: rgba(124,153,255,0.83);
     border-radius: 0px;
-    border-top: 2px solid rgba(116,16,52,0.75);
-    border-bottom: 2px solid rgba(116,16,52,0.75);
 }
+
 .userBtn {
     margin-left: 68%;
     width: 100%;
@@ -18,21 +17,26 @@
 }
 
 .toolbar-btn {
-    color: #9C9C9C;
-    border-radius: 0px;
-    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
     background-color: white;
 }
-
 .toolbar-btn:hover {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-    background-color: rgba(153,153,151,0.51);
+    background-color: rgba(124,153,255,0.83);
     color: white;
+    border: 1px solid white;
 }
+
 .menu-btn {
-    margin-left: 10px;
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 1%;
+    border-radius: 1px;
+    color: white;
+    background-color: rgba(124,153,255,0.83);
 }
+.menu-btn:hover {
+    background-color: rgba(124,153,255,1);
+}
+
 .login-btn {
     margin-left: 10px;
     margin-right: 1%;
@@ -50,7 +54,7 @@
 }
 
 .sidenav {
-    background-color: rgba(153,153,151,0.51);
+    background-color: white;
     width: 25%;
     border-right: 2px solid rgba(116,16,52,0.75);
 }
@@ -63,6 +67,12 @@
     padding-right: 2%;
     margin-top: 5%;
     margin-left: 10%;
+    color: white;
+    background-color: rgba(124,153,255,0.83);
+}
+
+.sidenav-btn:hover {
+    background-color: rgba(124,153,255,1);
 }
 
 .content {

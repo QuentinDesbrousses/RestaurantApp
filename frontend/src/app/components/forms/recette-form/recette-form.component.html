@@ -18,6 +18,9 @@
                 <select id="etapes" type="text" formControlName="etapes">
                     <option *ngFor="let e of etapes">{{e}}</option>
                 </select>
+                <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+                </div>
             </div>
 
             <div class="formgroup">

@@ -23,6 +23,7 @@ import {MatOptionModule} from "@angular/material/core";
 import { ReactiveFormsModule } from '@angular/forms';
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { RecettesComponent } from './pages/recettes/recettes.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { RecettesComponent } from './pages/recettes/recettes.component';
         MatButtonModule,
         MatSelectModule,
         MatOptionModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DragDropModule
     ],
   providers: [],
   bootstrap: [RootComponent]

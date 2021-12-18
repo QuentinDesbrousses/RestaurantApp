@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-recette-form',
@@ -20,6 +21,18 @@ export class RecetteFormComponent {
     nbCouvert : ['',Validators.required],
     temps : ['',Validators.required],
   })
+
+  timePeriods = [
+    'Bronze age',
+    'Iron age',
+    'Middle ages',
+    'Early modern period',
+    'Long nineteenth century',
+  ];
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
+  }
 
   onSubmit(){
     console.log(this.creationRecette.value)
