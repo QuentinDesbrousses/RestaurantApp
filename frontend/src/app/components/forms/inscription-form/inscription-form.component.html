@@ -1,1 +1,36 @@
-<p>inscription-form works!</p>
+<!-- Creation FormGroup-->
+<div class="inscription-form-container form-content">
+    <h1 class="text-center"><strong>Inscrivez-vous</strong></h1>
+    <div class="inscription-form">
+        <form [formGroup]="inscriptionForm" (ngSubmit)="inscription()">
+            <div class="form-field">
+                <label for="email">Adresse mail*</label>
+                <input id="email" type="text" formControlName="email">
+            </div>
+
+            <div class="form-field">
+                <label for="password1">Mot de passe*</label>
+                <input id="password1" type="text" formControlName="password1">
+            </div>
+
+            <div class="form-field">
+                <label for="password2">Confirmation du mot de passe*</label>
+                <input id="password2" type="text" formControlName="password2">
+            </div>
+
+            <div class="warning">
+                <p *ngIf="inscriptionForm.status == 'INVALID'">Vous devez remplir toutes les clauses*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!inscriptionForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" type="submit">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
