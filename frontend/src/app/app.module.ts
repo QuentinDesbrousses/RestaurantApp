@@ -29,6 +29,8 @@ import { InscriptionFormComponent } from './components/forms/inscription-form/in
 import { ModalComponent } from './components/modal/modal.component';
 import { IngredientListComponent } from './components/listes/ingredient-list/ingredient-list.component';
 import { RecetteListComponent } from './components/listes/recette-list/recette-list.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -63,7 +65,9 @@ import { RecetteListComponent } from './components/listes/recette-list/recette-l
         MatSelectModule,
         MatOptionModule,
         ReactiveFormsModule,
-        DragDropModule
+        DragDropModule,
+        MatTableModule,
+        MatPaginatorModule
     ],
   providers: [],
   bootstrap: [RootComponent]
