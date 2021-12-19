@@ -1,14 +1,25 @@
 /* Formulaire */
 .form-content {
-    background-color: white;
+    background-color: rgba(255,255,255,0.95);
     color: rgba(124,153,255,0.83);
+    width: 50%;
+    border: 3px;
+    border-radius: 0px;
+    font-family: "Open Sans";
+    font-size: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
 }
+/* Clause */
 .form-field {
-    padding-bottom: 5%;
     margin: 10px;
     padding: 3%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: rgba(124,153,255,0.83);
+    max-height: inherit;
+    align-items: center;
+    border: 3px;
+    border-radius: 0px;
+    color: white;
 }
 .form-field:hover {
     -webkit-transform: scale(1.02);

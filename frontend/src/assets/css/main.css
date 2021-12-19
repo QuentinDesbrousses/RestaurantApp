@@ -1,11 +1,11 @@
 /* Général */
 .body {
     min-height: 1080px;
-    background-color: rgba(255,148,0,0.1);
+    background-image: url("../img/cafeteria.jpg");
 }
 
 .square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
-    color: #9C9C9C;
+    color: rgba(124,153,255,0.83);
     border-radius: 0px;
     box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
     background-color: white;

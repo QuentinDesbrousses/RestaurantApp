@@ -6,7 +6,26 @@ import { Component} from '@angular/core';
   styleUrls: ['./ingredients.component.css']
 })
 export class IngredientsComponent {
-  categorieTab= ['Légume','Fruit','Fromage']
+
+  ingredientTab = [
+      {
+    nom : "Maïs",
+    categorie : "Céréale",
+    allergene : "Aucun",
+    unite : "kg",
+    quantite : "3",
+    coutU : "0.2"
+      },
+    {
+      nom : "Salade",
+      categorie : "Crudité",
+      allergene : "Aucun",
+      unite : "pièce",
+      quantite : "3",
+      coutU : "0.7"
+    }
+  ]
+  categorieTab= ['Légume','Fruit','Fromage','Céréale','Crudité']
   allergeneTab = ['Aucun',
     'Arachide',
     'Céleri',
