@@ -1,15 +1,15 @@
-import {Unite} from "./Unite";
+import {Unite} from "./unite";
 
 export class Ingredient {
     private nom : string;
     private categorie : string;
     private allergene : string;
-    private unite : Unite;
+    private unite : string;
     private quantité : number;
     private coutU : number;
 
 
-    constructor(nom: string, categorie: string, allergene: string, unite: Unite, quantité: number, coutU: number) {
+    constructor(nom: string, categorie: string, allergene: string, unite: string, quantité: number, coutU: number) {
         this.nom = nom;
         this.categorie = categorie;
         this.allergene = allergene;
@@ -43,11 +43,11 @@ export class Ingredient {
         this.allergene = value;
     }
 
-    getUnite(): Unite {
+    getUnite(): string {
         return this.unite;
     }
 
-    setUnite(value: Unite) {
+    setUnite(value: string) {
         this.unite = value;
     }
 
