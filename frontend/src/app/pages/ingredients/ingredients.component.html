@@ -1,5 +1,9 @@
 <div class="body">
-    <app-ingredient-list></app-ingredient-list>
-    <app-ingredient-form [categories]="categorieTab" [allergenes]="allergeneTab" ></app-ingredient-form>
+    <div class="tableau">
+        <app-ingredient-list [ingredients]="ingredientTab"></app-ingredient-list>
+    </div>
+    <div class="formulaire">
+        <app-ingredient-form [categories]="categorieTab" [allergenes]="allergeneTab" ></app-ingredient-form>
+    </div>
 </div>
 

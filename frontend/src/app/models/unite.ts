@@ -1,15 +1,15 @@
 export class Unite {
-    private unites  : [''];
+    private unites  : [string];
 
-    constructor(unites: [""]) {
+    constructor(unites: [string]) {
         this.unites = unites;
     }
 
-    getUnites(): [""] {
+    getUnites(): [string] {
         return this.unites;
     }
 
-    setUnites(value: [""]) {
+    setUnites(value: [string]) {
         this.unites = value;
     }
 }
