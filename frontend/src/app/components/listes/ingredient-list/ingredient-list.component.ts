@@ -42,21 +42,30 @@ const ELEMENT_DATA2: IngredientInterface[] = [
   templateUrl: './ingredient-list.component.html',
   styleUrls: ['./ingredient-list.component.css']
 })
-export class IngredientListComponent implements OnInit{
-  /*
+export class IngredientListComponent implements AfterViewInit, OnInit{
+  @Input() ingredients : IngredientInterface[] | undefined;
+  displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
+  dataSource = new MatTableDataSource<IngredientInterface>();
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  */
-  @Input() ingredients : IngredientInterface[] | undefined;
-  displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU'];
-  dataSource : IngredientInterface[] = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
     if(this.ingredients){
-      this.dataSource = this.ingredients;
+      this.dataSource = new MatTableDataSource<IngredientInterface>(this.ingredients);
     }
+  }
+  ngAfterViewInit() {
+    if (this.paginator){
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+
+  modifierIngredient(id:string){
+    console.log(id);
+  }
+
+  supprimerIngredient(id:string){
+    console.log(id);
   }
 
 }

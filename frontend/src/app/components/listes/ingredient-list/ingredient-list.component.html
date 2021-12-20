@@ -39,6 +39,29 @@
         <td mat-cell *matCellDef="let element"> {{element.coutU}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef> Modifier </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="square-btn" (click)="modifierIngredient(element.id)">
+                <mat-icon class="mat-18">system_update</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="supprimer">
+        <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="square-btn" (click)="supprimerIngredient(element.id)">
+                <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+               showFirstLastButtons
+               aria-label="Select page of periodic elements">
+</mat-paginator>

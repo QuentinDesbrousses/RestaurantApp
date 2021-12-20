@@ -38,6 +38,6 @@ export class IngredientsComponent {
     'Sésame',
     'Soja',
     'Sulfites'
-  ]
+  ];
 
 }
