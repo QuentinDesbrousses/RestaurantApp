@@ -5,6 +5,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
 
+
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.component.html',
@@ -54,5 +55,10 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  creerIngredient(){
+    //TODO Link the controller
+    console.log("création ingrédient");
   }
 }

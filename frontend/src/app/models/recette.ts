@@ -10,14 +10,14 @@ export class Recette {
     private temps : number; //nombre de minutes
 
 
-    constructor(id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbcouvert: number, temps: number) {
-        this.id = id;
-        this.titre = titre;
-        this.description = description;
-        this.etapes = etapes;
-        this.categorie = categorie;
-        this.nbcouvert = nbcouvert;
-        this.temps = temps;
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbcouvert: number, temps: number}) {
+        this.id = recette.id;
+        this.titre = recette.titre;
+        this.description = recette.description;
+        this.etapes = recette.etapes;
+        this.categorie = recette.categorie;
+        this.nbcouvert = recette.nbcouvert;
+        this.temps = recette.temps;
     }
 
     getId() : string {

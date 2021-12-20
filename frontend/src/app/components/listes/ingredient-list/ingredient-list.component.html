@@ -1,66 +1,72 @@
-<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+<div class="table-container">
+    <h1><strong>Stock des ingrédients</strong></h1>
+    <button class="square-btn creerIngredient" (click)="creerIngredient()">
+        <strong>Créer un ingrédient</strong>
+    </button>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+        <!-- Nom -->
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par nom"> Nom </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
 
-    <!-- Nom -->
-    <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par nom"> Nom </th>
-        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-    </ng-container>
+        <!-- Catégorie -->
+        <ng-container matColumnDef="categorie">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par catégorie"> Catégorie </th>
+            <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
+        </ng-container>
 
-    <!-- Catégorie -->
-    <ng-container matColumnDef="categorie">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par catégorie"> Catégorie </th>
-        <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
-    </ng-container>
+        <!-- Allergene -->
+        <ng-container matColumnDef="allergene">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par allergène"> Allergène </th>
+            <td mat-cell *matCellDef="let element"> {{element.allergene}} </td>
+        </ng-container>
 
-    <!-- Allergene -->
-    <ng-container matColumnDef="allergene">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par allergène"> Allergène </th>
-        <td mat-cell *matCellDef="let element"> {{element.allergene}} </td>
-    </ng-container>
+        <!-- Unité -->
+        <ng-container matColumnDef="unite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par unité"> Unité </th>
+            <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
+        </ng-container>
 
-    <!-- Unité -->
-    <ng-container matColumnDef="unite">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par unité"> Unité </th>
-        <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
-    </ng-container>
+        <!-- Qunatité -->
+        <ng-container matColumnDef="quantite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par quantité"> Quantité </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
+        </ng-container>
 
-    <!-- Qunatité -->
-    <ng-container matColumnDef="quantite">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par quantité"> Quantité </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
-    </ng-container>
+        <!-- Coût unitaire -->
+        <ng-container matColumnDef="coutU">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par coût unitaire"> Coût unitaire </th>
+            <td mat-cell *matCellDef="let element"> {{element.coutU}} </td>
+        </ng-container>
 
-    <!-- Coût unitaire -->
-    <ng-container matColumnDef="coutU">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par coût unitaire"> Coût unitaire </th>
-        <td mat-cell *matCellDef="let element"> {{element.coutU}} </td>
-    </ng-container>
+        <!-- Modifier -->
+        <ng-container matColumnDef="modifier">
+            <th mat-header-cell *matHeaderCellDef> Modifier </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="square-btn update" (click)="modifierIngredient(element.nom)">
+                    <mat-icon class="mat-18">update</mat-icon>
+                </button>
+            </td>
+        </ng-container>
 
-    <!-- Modifier -->
-    <ng-container matColumnDef="modifier">
-        <th mat-header-cell *matHeaderCellDef> Modifier </th>
-        <td mat-cell *matCellDef="let element">
-            <button class="square-btn update" (click)="modifierIngredient(element.nom)">
-                <mat-icon class="mat-18">update</mat-icon>
-            </button>
-        </td>
-    </ng-container>
+        <!-- Supprimer -->
+        <ng-container matColumnDef="supprimer">
+            <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="square-btn delete" (click)="supprimerIngredient(element.nom)">
+                    <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
 
-    <!-- Supprimer -->
-    <ng-container matColumnDef="supprimer">
-        <th mat-header-cell *matHeaderCellDef> Supprimer </th>
-        <td mat-cell *matCellDef="let element">
-            <button class="square-btn delete" (click)="supprimerIngredient(element.nom)">
-                <mat-icon class="mat-18">delete</mat-icon>
-            </button>
-        </td>
-    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <mat-paginator [pageSizeOptions]="[10, 15]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 15]"
-               showFirstLastButtons
-               aria-label="Select page of periodic elements">
-</mat-paginator>
+</div>
