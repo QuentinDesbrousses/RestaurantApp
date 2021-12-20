@@ -31,6 +31,7 @@ import { IngredientListComponent } from './components/listes/ingredient-list/ing
 import { RecetteListComponent } from './components/listes/recette-list/recette-list.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     InscriptionFormComponent,
     ModalComponent,
     IngredientListComponent,
-    RecetteListComponent,
+    RecetteListComponent
   ],
     imports: [
         BrowserModule,
@@ -67,7 +68,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         ReactiveFormsModule,
         DragDropModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatSortModule
     ],
   providers: [],
   bootstrap: [RootComponent]

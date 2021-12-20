@@ -58,7 +58,7 @@
     width: 25%;
 }
 .sidenav:hover {
-    background-color: rgba(124,153,255,0.38);
+    background-color: rgba(124,153,255,0.1);
     transition: 1s;
 }
 
