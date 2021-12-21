@@ -3,7 +3,6 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
-import {Ingredient} from "../../../models/ingredient";
 import {Recette} from "../../../models/recette";
 
 @Component({
@@ -11,7 +10,7 @@ import {Recette} from "../../../models/recette";
   templateUrl: './recette-list.component.html',
   styleUrls: ['./recette-list.component.css']
 })
-export class RecetteListComponent implements OnInit {
+export class RecetteListComponent implements OnInit, AfterViewInit {
 
   @Input() recettes : Recette[] | undefined;
   displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','modifier','supprimer'];
@@ -36,16 +35,6 @@ export class RecetteListComponent implements OnInit {
     }
   }
 
-  modifierIngredient(id:string){
-    //TODO Link with form
-    console.log(id+" modifié");
-  }
-
-  supprimerIngredient(id:string){
-    //TODO Link with controller
-    console.log(id+" supprimé");
-  }
-
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
@@ -59,7 +48,7 @@ export class RecetteListComponent implements OnInit {
   }
 
   modifierRecette(id:string){
-    //TODO Link the controller
+    //TODO Link the form
     console.log("recette n°"+id+" modifiée")
   }
 
@@ -69,7 +58,12 @@ export class RecetteListComponent implements OnInit {
   }
 
   creerRecette(){
-    //TODO Link the controller
+    //TODO Link the form
     console.log("recette créée")
+  }
+
+  montrerEtapes(id:string){
+    //TODO Use modal component and link the controller
+    console.log("Voici les étapes de la recette "+id);
   }
 }

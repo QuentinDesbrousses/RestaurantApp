@@ -6,17 +6,17 @@ export class Recette {
     private description : string;
     private etapes : [Etape];
     private categorie : string;
-    private nbcouvert : number;
+    private nbCouvert : number;
     private temps : number; //nombre de minutes
 
 
-    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbcouvert: number, temps: number}) {
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbCouvert: number, temps: number}) {
         this.id = recette.id;
         this.titre = recette.titre;
         this.description = recette.description;
         this.etapes = recette.etapes;
         this.categorie = recette.categorie;
-        this.nbcouvert = recette.nbcouvert;
+        this.nbCouvert = recette.nbCouvert;
         this.temps = recette.temps;
     }
 
@@ -57,11 +57,11 @@ export class Recette {
     }
 
     getNbCouvert() : number {
-        return this.nbcouvert;
+        return this.nbCouvert;
     }
 
     setNbCouvert(nbCouvert : number) {
-        this.nbcouvert = nbCouvert;
+        this.nbCouvert = nbCouvert;
     }
 
     getTemps() : number {
