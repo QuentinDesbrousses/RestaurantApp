@@ -1,9 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const Ingredient = require('../models/ingredient')
 
-const Ingredient = require('../models/ingredient');
-
-router.post('/', (req, res, next) => {
+exports.createIngredient('/ingredient', (req, res, next) => {
   const ingredient = new Ingredient({
     nom_ingredient: req.body.nom_ingredient,
     unite: req.body.unite,
@@ -11,38 +8,21 @@ router.post('/', (req, res, next) => {
     cout_unitaire: req.body.cout_unitaire,
     quantite: req.body.quantite
   });
-  thing.save().then(
-    () => {
-      res.status(201).json({
-        message: 'Ingredient saved successfully!'
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
+  ingredient.save()
+  .then(() => res.status(201).json({ message: 'Ingredient créé'}))
+  .catch((error) => res.status(400).json({ error: error}));
 });
 
-router.get('/:id', (req, res, next) => {
-  Ingredient.findOne({
+exports.getIngredient('/:id', (req, res, next) => {
+  selectById({
     _id: req.params.id
-  }).then(
-    (thing) => {
-      res.status(200).json(thing);
-    }
-  ).catch(
-    (error) => {
-      res.status(404).json({
-        error: error
-      });
-    }
+  })
+  .then((thing) => res.status(200).json(thing))
+  .catch((error) => res.status(404).json({error: error})
   );
 });
-
-router.put('/:id', (req, res, next) => {
+/*
+exports.modifyIngredient('/ingredient/:id', (req, res, next) => {
   const ingredient = new Ingredient({
     _id: req.params.id,
     nom_ingredient: req.body.nom_ingredient,
@@ -51,7 +31,7 @@ router.put('/:id', (req, res, next) => {
     cout_unitaire: req.body.cout_unitaire,
     quantite: req.body.quantite
   });
-  Thing.updateOne({_id: req.params.id}, thing).then(
+  ingredient.updateOne({_id: req.params.id}, thing).then(
     () => {
       res.status(201).json({
         message: 'Ingredient updated successfully!'
@@ -64,10 +44,10 @@ router.put('/:id', (req, res, next) => {
       });
     }
   );
-});
+});*/
 
-router.delete('/:id', (req, res, next) => {
-  Ingredient.deleteOne({_id: req.params.id}).then(
+/*deleteIngredient('/:id', (req, res, next) => {
+  delete({_id: req.params.id}).then(
     () => {
       res.status(200).json({
         message: 'Ingredient Deleted!'
@@ -82,9 +62,9 @@ router.delete('/:id', (req, res, next) => {
   );
 });
 
-router.get('/' +
+getAllIngredient('/ingredient' +
   '', (req, res, next) => {
-  Ingredient.find().then(
+  selectAll().then(
     (ingredients) => {
       res.status(200).json(ingredients);
     }
@@ -95,6 +75,4 @@ router.get('/' +
       });
     }
   );
-});
-
-module.exports = router;
+});*/

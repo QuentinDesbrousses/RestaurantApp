@@ -2,6 +2,8 @@ const express = require('express');
 const pool = require('./config/db');
 const bodyParser = require('body-parser');
 const app = express();
+//const ingredientRoute = require('./routes/ingredient');
+const utilisateurRoute = require('./routes/utilisateur');
 
 app.use(bodyParser.json());
 
@@ -12,6 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const ingredient = require('./models/ingredient');
+//app.use('/ingredient',ingredientRoute);
+app.use('/utilisateur',utilisateurRoute);
 
 module.exports = app;

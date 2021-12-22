@@ -7,21 +7,21 @@ exports.Model = class Model{
     constructor(){
         this.user=user; //connexion BD
     }
-
+/*
     /* Chercher un ou plusieurs éléments contenus dans le tableau elToFind, 
-    dans une table selon un ou plusieurs critères, contenus dans le dictionnaire conditions */ 
+    dans une table selon un ou plusieurs critères, contenus dans le dictionnaire conditions 
     select(tableName,elToFind, conditions){
         return new Promise((resolve,reject)=>{
             var request = "SELECT ";
             elToFind.forEach(element => {
                 request+=element+", "
             });
-            request.substring(0, str.length - 2);
+            request.substring(0, request.length - 2);
             request+=" FROM "+tableName+" WHERE ";
             for (var [key,value] of condition){
                 request+=key+" = \'"+value+"\' AND "; 
             }
-            request.substring(0, str.length - 4);
+            request.substring(0, request.length - 4);
             request+=";";
             
             const query = {
@@ -42,29 +42,24 @@ exports.Model = class Model{
     }
 
     /*selection d'un seul élément par son id*/
-    selectByID(tableName,id,elToFind){
+    selectById(tableName,id,tableId){
         return new Promise((resolve,reject)=>{
-            var request = "SELECT ";
-            elToFind.forEach(element => {
-                request+=element+", "
-            });
-            request.substring(0, str.length - 2);
-            request+=" FROM "+tableName+" WHERE id =$1;";
-            
+            var request = "select * from "+tableName+" where "+tableId+" = "+id+";";
+
             const query = {
-                name :"select_by_id",
+                name:"selectbyid",
                 text:request,
-                values:[id]
+                values:[]
             }
 
-            this.user.query(query, function(err, res){
+            this.user.query(query,function(err,res){
                 if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
                     reject(err.stack)
                 } 
                 else{
                     resolve(res.rows[0]);
                 }
-            });
+            })
         });
     }
 
@@ -84,27 +79,28 @@ exports.Model = class Model{
                     reject(err.stack)
                 } 
                 else{
-                    resolve(res.rows[0]);
+                    resolve(res.rows);
                 }
             })
         });
     }
 
-    /*enregistrement de nonuvelles valeurs dans une table avec les valeurs du dictionnaire valuesToSave*/
-    save(tableName, valuesToSave){
+    /*enregistrement de nonuvelles valeurs dans une table avec les valeurs du dictionnaire valuesToSave*/ 
+    addValue(tableName, valuesToSave){
         return new Promise((resolve,reject)=>{
+            valuesToSave=valuesToSave[0]
+            var attributs = Object.keys(valuesToSave);
             var request = "INSERT INTO "+tableName+" (";
-            for(var [key,value] of valuesToSave){
-                request+=key+", ";
-            }
-            request.substring(0, str.length - 2);
+            attributs.forEach(att => 
+                request+=att +", "
+                );
+            request=request.substring(0, request.length - 2);
             request+=") values (";
-            for(var [key,value] of valuesToSave){
-                request+="\'"+value+"\', ";
+            for (var el in valuesToSave){
+                request+="\'"+valuesToSave[el]+"\', ";
             }
-            request.substring(0, str.length - 2);
+            request=request.substring(0, request.length - 2);
             request+=");";
-
             this.user.query(request,function(err,res){
                 if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
                     reject(err.stack)
@@ -119,12 +115,15 @@ exports.Model = class Model{
     /*supprime u ou plusieurs éléments d'une table correspondant aux conditions du dictionnaire condition*/
     delete(tableName,condition){
         return new Promise((resolve,reject)=>{
+            condition=condition[0]
+            var attributs = Object.keys(condition);
             var request = "DELETE FROM "+tableName+" WHERE ";
-            for (var [key,value] of condition){
-                request+=key+" = \'"+value+"\' AND "; 
+            for (var el in condition){
+                request+=el+" = \'"+condition[el]+"\' AND ";
             }
-            request.substring(0, str.length - 4);
+            request=request.substring(0, request.length - 4);
             request+=";";
+            console.log(request)
             this.user.query(request,function(err,res){
                 if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
                     reject(err.stack)
@@ -136,4 +135,37 @@ exports.Model = class Model{
         })
     }
 
+    deleteById(tableName,tableId,id){
+        return new Promise((resolve,reject)=>{
+            var request = "delete from "+tableName+" where "+tableId+" = "+id+";";
+            this.user.query(request,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows[0]);
+                }
+            })
+        })
+    }
+
+    modify(tableName,tableId,id,changements){
+        return new Promise((resolve,reject)=>{
+            changements=changements[0]
+            var request = "update "+tableName+" set ";
+            for (var el in changements){
+                request+=el+" = \'"+changements[el]+"\', ";
+            }
+            request=request.substring(0, request.length - 2);
+            request+="where "+tableId+" = "+id+";";
+            this.user.query(request,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows[0]);
+                }
+            })
+        })
+    }
 }

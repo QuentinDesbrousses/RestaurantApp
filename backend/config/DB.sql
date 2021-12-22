@@ -116,4 +116,7 @@ create table composer(
     constraint id_recette foreign key(id_recette) references recette(id_recette),
     constraint id_etape foreign key(id_etape) references etape(id_etape)
 );
+insert into categorie_ingredient (nom_cat_ingr) values ('legume');
 
+insert into ingredient (nom_ingredient,unite, cout_unitaire, quantite, id_cat_ingr) 
+values ('tomate','kg',3.4,12,1);

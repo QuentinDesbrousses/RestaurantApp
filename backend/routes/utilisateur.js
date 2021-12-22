@@ -3,10 +3,11 @@ const router = express.Router();
 
 const utilisateurContr = require('../controllers/utilisateur');
 
-router.get('/utilisateur', utilisateurContr.getAllUtilisateur);
-router.get('/utilisateur/:id',utilisateurContr.getUtilisateur);
-router.post('/utilisateur', utilisateurContr.createUtilisateur);
-router.put('/utilisateur/:id', utilisateurContr.modifyUtilisateur);
-router.delete('/utilisateur/:id', utilisateurContr.deleteUtilisateur);
+router.get('/', utilisateurContr.getAllUtilisateur); //selectionner tous les utilisateurs
+router.get('/:id',utilisateurContr.getUtilisateur); //selectionner un utilisateur par son id
+router.post('/', utilisateurContr.createUtilisateur); //creer un nouvel utilisateur
+router.put('/:id', utilisateurContr.modifyUtilisateur); //modifier un utilisateur en ayant son id
+router.delete('/', utilisateurContr.deleteUtilisateur); //supprimer un utilisateur selon certaines conditions
+router.delete('/:id',utilisateurContr.deleteById);  //supprimer un utilisateur par son id
 
 module.exports = router;
