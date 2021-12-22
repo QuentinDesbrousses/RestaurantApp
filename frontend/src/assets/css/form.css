@@ -1,0 +1,80 @@
+/* Formulaire */
+.form-content {
+    background-color: rgba(255,255,255,0.95);
+    color: rgba(124,153,255,0.83);
+    width: 50%;
+    border: 3px;
+    border-radius: 0px;
+    font-family: "Open Sans";
+    font-size: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
+/* Clause */
+.form-field {
+    margin: 10px;
+    padding: 3%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgba(124,153,255,0.83);
+    max-height: inherit;
+    align-items: center;
+    border: 3px;
+    border-radius: 0px;
+    color: white;
+}
+.form-field:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+}
+/* Entrée au clavier */
+input {
+    margin-left: 10px;
+    width: 50%;
+    color: #9C9C9C;
+    border-radius: 3px;
+    border: 3px solid rgba(124,153,255,1);
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
+/* Sélection d'items */
+select {
+    margin-left: 10px;
+    color: #9C9C9C;
+    width: 50%;
+    border-radius: 3px;
+    border: 3px solid rgba(124,153,255,1);
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
+/* Boutons de validation / annulation de formulaire */
+.form-btn {
+    padding: 2%;
+    margin: 5%;
+    color: rgba(124,153,255,0.83);
+    border-radius: 3px;
+    border: 3px solid rgba(124,153,255,0.83);
+    box-shadow: rgba(0, 0, 0, 0.24) 5px 3px 8px;
+}
+.form-btn:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    border: 3px solid rgba(124,153,255,1);
+    background-color: rgba(124,153,255,0.83);
+    color: white;
+}
+.warning {
+    color: black;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.button-validate {
+    padding: 2%;
+    margin-left: 20%;
+}
+
+.button-cancel {
+    padding: 2%;
+    margin-left: 30%;
+}
+.button-cancel:hover {
+    background-color: red;
+    border-color: red;
+}

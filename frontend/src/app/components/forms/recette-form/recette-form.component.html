@@ -1,38 +1,41 @@
 <!-- Creation FormGroup-->
-<div class="recette-form-container">
+<div class="recette-form-container form-content">
     <h1 class="text-center"><strong>Création d'une recette</strong></h1>
-    <div class="recette-form">
+    <div>
         <form [formGroup]="creationRecette" (ngSubmit)="onSubmit()">
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="titre">Titre*</label>
                 <input id="titre" type="text" formControlName="titre">
             </div>
 
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="description">Description*</label>
                 <input id="description" type="text" formControlName="description">
             </div>
 
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="etapes">Etapes* TODO</label>
                 <select id="etapes" type="text" formControlName="etapes">
                     <option *ngFor="let e of etapes">{{e}}</option>
                 </select>
+                <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let eSelected of etapes" cdkDrag>{{eSelected}}</div>
+                </div>
             </div>
 
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="categorie">Catégorie*</label>
                 <select id="categorie" type="text" formControlName="categorie">
                     <option *ngFor="let cat of categories">{{cat}}</option>
                 </select>
             </div>
 
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="nbCouvert">Nombre de couvert(s)*</label>
                 <input id="nbCouvert" type="text" formControlName="nbCouvert">
             </div>
 
-            <div class="formgroup">
+            <div class="form-field">
                 <label for="temps">Temps (min)*</label>
                 <input id="temps" type="text" formControlName="temps">
             </div>
@@ -42,8 +45,8 @@
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button form-btn" type="submit"  [disabled]="!creationRecette.valid">Valider</button>
-                <button  class="button form-btn" type="submit"  [disabled]="!creationRecette.valid">Annuler</button>
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!creationRecette.valid">Valider</button>
+                <button  class="button-cancel form-btn" type="submit">Annuler</button>
             </div>
 
         </form>
