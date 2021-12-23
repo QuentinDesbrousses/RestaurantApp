@@ -7,39 +7,6 @@ exports.Model = class Model{
     constructor(){
         this.user=user; //connexion BD
     }
-/*
-    /* Chercher un ou plusieurs éléments contenus dans le tableau elToFind, 
-    dans une table selon un ou plusieurs critères, contenus dans le dictionnaire conditions 
-    select(tableName,elToFind, conditions){
-        return new Promise((resolve,reject)=>{
-            var request = "SELECT ";
-            elToFind.forEach(element => {
-                request+=element+", "
-            });
-            request.substring(0, request.length - 2);
-            request+=" FROM "+tableName+" WHERE ";
-            for (var [key,value] of condition){
-                request+=key+" = \'"+value+"\' AND "; 
-            }
-            request.substring(0, request.length - 4);
-            request+=";";
-            
-            const query = {
-                name :"select",
-                text:request,
-                values:valCondition
-            }
-
-            this.user.query(query, function(err, res){
-                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
-                    reject(err.stack)
-                } 
-                else{
-                    resolve(res.rows[0]);
-                }
-            });
-        });
-    }
 
     /*selection d'un seul élément par son id*/
     selectById(tableName,id,tableId){

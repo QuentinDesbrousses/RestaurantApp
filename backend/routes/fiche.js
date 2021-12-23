@@ -3,10 +3,11 @@ const router = express.Router();
 
 const ficheContr = require('../controllers/fiche');
 
-router.get('/fiche', ficheContr.getAllFiche);
-router.get('/fiche/:id',ficheContr.getFiche);
-router.post('/fiche', ficheContr.createFiche);
-router.put('/fiche/:id', ficheContr.modifyFiche);
-router.delete('/fiche/:id', ficheContr.deleteFiche);
+router.get('/', ficheContr.getAllFiche);
+router.get('/:id',ficheContr.getFiche);
+router.post('/', ficheContr.createFiche);
+router.put('/:id', ficheContr.modifyFiche);
+router.delete('/:id', ficheContr.deleteById);
+router.delete('/', ficheContr.deleteFiche);
 
 module.exports = router;
