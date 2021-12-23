@@ -3,23 +3,32 @@ const model = require("./model");
 exports.Allergene = class Allergene extends model.Model{
     constructor(){
         super();
-        table = "allergene";
-    }
-
-    select(elToFind, conditions){
-        super.select(this.table,elToFind, conditions);
-    }
-
-    selectByID(id,elToFind){
-        super.selectByID(this.table,id,elToFind);
-    }
-
-    selectAll(){
-        super.selectAll(this.table);
-    }
-
-    save(valuesToSave){
-        super.save(this.table, valuesToSave);
-    }
+        this.table="utilisateur";
+        this.tableId="id_utilisateur";
+      }
+    
+      selectById(id){
+        return super.selectById(this.table,id,this.tableId);
+      }
+    
+      selectAll(){
+          return super.selectAll(this.table);
+      }
+    
+      addValue(valuesToSave){
+        return super.addValue(this.table, valuesToSave);
+      }
+    
+      delete(condition){
+        return super.delete(this.table,condition);
+      }
+    
+      deleteById(id){
+        return super.deleteById(this.table,this.tableId,id);
+      }
+    
+      modify(id,changements){
+        return super.modify(this.table,this.tableId,id,changements);
+      }
     
 }

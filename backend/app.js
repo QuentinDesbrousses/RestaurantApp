@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 //const ingredientRoute = require('./routes/ingredient');
 const utilisateurRoute = require('./routes/utilisateur');
+const cat_allergeneRoute = require('./routes/categorie_allergene');
 
 app.use(bodyParser.json());
 
@@ -16,5 +17,6 @@ app.use((req, res, next) => {
 
 //app.use('/ingredient',ingredientRoute);
 app.use('/utilisateur',utilisateurRoute);
+app.use('/cat_allergene',cat_allergeneRoute);
 
 module.exports = app;

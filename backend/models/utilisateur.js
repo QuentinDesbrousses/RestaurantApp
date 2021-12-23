@@ -8,10 +8,6 @@ exports.Utilisateur = class Utilisateur extends model.Model{
     this.tableId="id_utilisateur";
   }
 
-  /*select(elToFind, conditions){
-    return super.select(this.table,elToFind, conditions);
-  }
-*/
   selectById(id){
     return super.selectById(this.table,id,this.tableId);
   }
