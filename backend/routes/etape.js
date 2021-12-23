@@ -3,10 +3,11 @@ const router = express.Router();
 
 const etapeContr = require('../controllers/etape');
 
-router.get('/etape', etapeContr.getAllEtape);
-router.get('/etape/:id',etapeContr.getEtape);
-router.post('/etape', etapeContr.createEtape);
-router.put('/etape/:id', etapeContr.modifyEtape);
-router.delete('/etape/:id', etapeContr.deleteEtape);
+router.get('/', etapeContr.getAllEtape);
+router.get('/:id',etapeContr.getEtape);
+router.post('/', etapeContr.createEtape);
+router.put('/:id', etapeContr.modifyEtape);
+router.delete('/:id', etapeContr.deleteById);
+router.delete('/', etapeContr.deleteEtape);
 
 module.exports = router;

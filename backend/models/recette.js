@@ -1,25 +1,34 @@
 const model = require("./model");
 
 exports.Recette = class Recette extends model.Model{
+  constructor(){
+    super();
+    this.table="recette";
+    this.tableId="id_recette";
+  }
 
-    constructor(){
-        super();
-        table = "recette";
-    }
+  selectById(id){
+      return super.selectById(this.table,id,this.tableId);
+  }
 
-    select(elToFind, conditions){
-        super.select(table,elToFind, conditions);
-    }
+  selectAll(){
+      return super.selectAll(this.table);
+  }
 
-    selectByID(id,elToFind){
-        super.selectByID(table,id,elToFind);
-    }
+  addValue(valuesToSave){
+      return super.addValue(this.table, valuesToSave);
+  }
 
-    selectAll(){
-        super.selectAll(table);
-    }
+  delete(condition){
+      return super.delete(this.table,condition);
+  }
 
-    save(valuesToSave){
-        super.save(table, valuesToSave);
-    }
+  deleteById(id){
+      return super.deleteById(this.table,this.tableId,id);
+  }
+
+  modify(id,changements){
+      return super.modify(this.table,this.tableId,id,changements);
+  }
+    
 }

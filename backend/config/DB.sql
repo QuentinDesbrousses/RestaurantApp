@@ -97,7 +97,7 @@ create table fiche_technique(
     coef_fluide float,
     coef_pers float,
     prix_vente float,
-    constraint id_recette foreign key(id_recette) references recette(id_recette),
+    constraint id_recette foreign key(id_recette) references recette(id_recette)
 );
 
 create table contenir(

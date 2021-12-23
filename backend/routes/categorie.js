@@ -3,10 +3,11 @@ const router = express.Router();
 
 const categorieContr = require('../controllers/categorie');
 
-router.get('/categorie', categorieContr.getAllCategorie);
-router.get('/categorie/:id',categorieContr.getCategorie);
-router.post('/categorie', categorieContr.createCategorie);
-router.put('/categorie/:id', categorieContr.modifyCategorie);
-router.delete('/categorie/:id', categorieContr.deleteCategorie);
+router.get('/', categorieContr.getAllCategorie);
+router.get('/:id',categorieContr.getCategorie);
+router.post('/', categorieContr.createCategorie);
+router.put('/:id', categorieContr.modifyCategorie);
+router.delete('/:id', categorieContr.deleteById);
+router.delete('/', categorieContr.deleteCategorie);
 
 module.exports = router;
