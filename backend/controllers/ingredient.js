@@ -1,78 +1,57 @@
-const Ingredient = require('../models/ingredient')
+const Ingredient = require('../models/ingredient');
+const pool =require('../config/db')
 
-exports.createIngredient('/ingredient', (req, res, next) => {
-  const ingredient = new Ingredient({
-    nom_ingredient: req.body.nom_ingredient,
-    unite: req.body.unite,
-    id_cat_ingr: req.body.id_cat_ingr,
-    cout_unitaire: req.body.cout_unitaire,
-    quantite: req.body.quantite
-  });
-  ingredient.save()
-  .then(() => res.status(201).json({ message: 'Ingredient créé'}))
-  .catch((error) => res.status(400).json({ error: error}));
-});
+exports.getAllIngredient = (req, res, next) => {
+    const ingredient = new Ingredient.Ingredient();
+    ingredient.selectAll()
+    .then((ingredients) => {
+          res.status(200).json(ingredients)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'ingredients non-envoyes'})}
+      ); 
+    }
 
-exports.getIngredient('/:id', (req, res, next) => {
-  selectById({
-    _id: req.params.id
-  })
-  .then((thing) => res.status(200).json(thing))
-  .catch((error) => res.status(404).json({error: error})
-  );
-});
-/*
-exports.modifyIngredient('/ingredient/:id', (req, res, next) => {
-  const ingredient = new Ingredient({
-    _id: req.params.id,
-    nom_ingredient: req.body.nom_ingredient,
-    unite: req.body.unite,
-    id_cat_ingr: req.body.id_cat_ingr,
-    cout_unitaire: req.body.cout_unitaire,
-    quantite: req.body.quantite
-  });
-  ingredient.updateOne({_id: req.params.id}, thing).then(
-    () => {
-      res.status(201).json({
-        message: 'Ingredient updated successfully!'
-      });
+    exports.getIngredient = (req, res, next) => {
+      const ingredient = new Ingredient.Ingredient();
+      ingredient.selectById(req.params.id)
+        .then((ingr) => {
+            res.status(200).json(ingr)})
+        .catch((error) => {
+            res.status(400).json({
+                error: error,
+                message:"ingredient non-envoye"})}
+        ); 
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});*/
 
-/*deleteIngredient('/:id', (req, res, next) => {
-  delete({_id: req.params.id}).then(
-    () => {
-      res.status(200).json({
-        message: 'Ingredient Deleted!'
-      });
+    exports.createIngredient = (req, res, next) =>{
+      const ingredient = new Ingredient.Ingredient();
+      var valuesToSave = [req.body];
+        ingredient.addValue(valuesToSave)
+        .then(()=> res.status(201).json({message:"ingredient créée"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
 
-getAllIngredient('/ingredient' +
-  '', (req, res, next) => {
-  selectAll().then(
-    (ingredients) => {
-      res.status(200).json(ingredients);
+    exports.deleteIngredient = (req,res,next) =>{
+      const ingredient = new Ingredient.Ingredient();
+      var condition = [req.body];
+        ingredient.delete(condition)
+        .then(()=> res.status(200).json({message:"ingredient supprimé"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
+
+    exports.deleteById = (req,res,next) => {
+      const ingredient = new Ingredient.Ingredient();
+      ingredient.deleteById(req.params.id)
+        .then(()=> res.status(201).json({message:"ingredient supprimé"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  );
-});*/
+
+    exports.modifyIngredient = (req,res,next)=>{
+      const ingredient = new Ingredient.Ingredient();
+      var changements = [req.body];
+        ingredient.modify(req.params.id,changements)
+        .then(()=> res.status(200).json({message:"ingredient modifié"}))
+        .catch((err) => res.status(400).json({error:err}));
+    }
