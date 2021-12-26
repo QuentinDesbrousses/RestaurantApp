@@ -31,4 +31,18 @@ exports.Utilisateur = class Utilisateur extends model.Model{
   modify(id,changements){
     return super.modify(this.table,this.tableId,id,changements);
   }
+
+  selectByEmail(email){
+    return new Promise((resolve,reject)=>{
+      var request = "select * from utilisateur where email = "+email+";";
+      this.user.query(request,function(err,res){
+        if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+            reject(err.stack)
+        } 
+        else{
+            resolve(res.rows[0]);
+        }
+    })
+    }); 
+  }
 }

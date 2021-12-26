@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 
 const allergeneContr = require('../controllers/allergene');
 
-router.get('/', allergeneContr.getAllAllergene);
-router.get('/:id',allergeneContr.getAllergene);
-router.post('/', allergeneContr.createAllergene);
-router.put('/:id', allergeneContr.modifyAllergene);
-router.delete('/:id', allergeneContr.deleteById);
-router.delete('/', allergeneContr.deleteAllergene);
+router.get('/', auth, allergeneContr.getAllAllergene);
+router.get('/:id',auth,allergeneContr.getAllergene);
+router.post('/',auth, allergeneContr.createAllergene);
+router.put('/:id',auth, allergeneContr.modifyAllergene);
+router.delete('/:id',auth, allergeneContr.deleteById);
+router.delete('/',auth, allergeneContr.deleteAllergene);
 
 module.exports = router;

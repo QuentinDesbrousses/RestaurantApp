@@ -7,8 +7,7 @@ email varchar(50)
 );
 
 insert into utilisateur(nom, prenom, description, email) 
-values ('michel','des','chef','micheldes@test.fr'),
-('adrien','dest','etudiant','adriendest@test.fr');
+values ('adrien','dest','test','adriendest@test.fr');
 
 create table categorie_ingredient(
     id_cat_ingr serial primary key,
@@ -120,3 +119,30 @@ insert into categorie_ingredient (nom_cat_ingr) values ('legume');
 
 insert into ingredient (nom_ingredient,unite, cout_unitaire, quantite, id_cat_ingr) 
 values ('tomate','kg',3.4,12,1);
+
+alter table utilisateur
+add constraint NomPrenom unique (nom,prenom);
+
+alter table utilisateur
+add constraint emailUnique unique (email);
+
+alter table utilisateur
+add column mdp varchar(100) unique not null;
+
+/*
+{
+    "nom":"a",
+    "prenom":"b",
+    "description":"etudiant",
+    "email":"c@mail.fr",
+    "mdp":"motdepasse"
+}
+
+{
+    "nom":"a",
+    "prenom":"b",
+    "description":"etudiant",
+    "email":"c@mail.fr",
+    "mdp":"motdepasse"
+}
+*/
