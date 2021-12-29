@@ -23,7 +23,12 @@ export class IngredientService {
     console.log(this.IngredientForm.value)
   }
 
-  getIngredients(){}
+  obtenirListeIngredients(){}
 
-  setIngredient(nom : string){}
+  creerIngredient(){}
+
+  modifierIngredient(nom : string){}
+
+  supprimerIngredient(){}
+
 }

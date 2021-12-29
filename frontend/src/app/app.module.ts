@@ -26,7 +26,6 @@ import { RecettesComponent } from './pages/recettes/recettes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { InscriptionFormComponent } from './components/forms/inscription-form/inscription-form.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { IngredientListComponent } from './components/listes/ingredient-list/ingredient-list.component';
 import { RecetteListComponent } from './components/listes/recette-list/recette-list.component';
 import { MatTableModule } from '@angular/material/table';
@@ -49,7 +48,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     RecettesComponent,
     LoginFormComponent,
     InscriptionFormComponent,
-    ModalComponent,
     IngredientListComponent,
     RecetteListComponent
   ],
