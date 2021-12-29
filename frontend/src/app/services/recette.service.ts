@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecetteService {
-  creationRecette : FormGroup;
+  RecetteForm : FormGroup;
 
   constructor() {
-    this.creationRecette = new FormGroup({
+    this.RecetteForm = new FormGroup({
       titre : new FormControl('',Validators.required),
       description : new FormControl('Sans description'),
       etapes : new FormControl('Ajouter une pincée de sel',Validators.required),
@@ -20,6 +19,10 @@ export class RecetteService {
   }
 
   onSubmit(){
-    console.log(this.creationRecette.value)
+    console.log(this.RecetteForm.value)
   }
+
+  getRecettes(){}
+
+  setRecette(id : string){}
 }

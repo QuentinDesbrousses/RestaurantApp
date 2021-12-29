@@ -2,7 +2,7 @@
 <div class="ingredient-form-container form-content">
         <h1 class="text-center"><strong>Ajout d'un nouvel ingrédient</strong></h1>
     <div>
-        <form [formGroup]="service.creationIngredient" (ngSubmit)="service.onSubmit()">
+        <form [formGroup]="service.IngredientForm" (ngSubmit)="service.onSubmit()">
                 <input id="id" type="hidden" formControlName="$id">
             <div class="form-field">
                 <label for="nom">Nom de l'ingrédient*</label>
@@ -38,11 +38,11 @@
             </div>
 
             <div class="warning">
-                <p *ngIf="service.creationIngredient.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+                <p *ngIf="service.IngredientForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!service.creationIngredient.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!service.IngredientForm.valid">Valider</button>
                 <button  class="button-cancel form-btn" type="submit" href="#">Annuler</button>
             </div>
 

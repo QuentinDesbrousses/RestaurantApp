@@ -5,11 +5,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   providedIn: 'root'
 })
 export class IngredientService {
-
-  public creationIngredient : FormGroup;
+  IngredientForm : FormGroup;
 
   constructor() {
-    this.creationIngredient  = new FormGroup({
+    this.IngredientForm  = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
       categorie : new FormControl('Légume',Validators.required),
@@ -21,6 +20,10 @@ export class IngredientService {
   }
 
   onSubmit(){
-    console.log(this.creationIngredient.value)
+    console.log(this.IngredientForm.value)
   }
+
+  getIngredients(){}
+
+  setIngredient(nom : string){}
 }
