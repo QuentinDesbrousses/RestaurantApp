@@ -1,100 +1,57 @@
-const express = require('express');
-const router = express.Router();
-
 const Ingredient = require('../models/ingredient');
+const pool =require('../config/db')
 
-router.post('/', (req, res, next) => {
-  const ingredient = new Ingredient({
-    nom_ingredient: req.body.nom_ingredient,
-    unite: req.body.unite,
-    id_cat_ingr: req.body.id_cat_ingr,
-    cout_unitaire: req.body.cout_unitaire,
-    quantite: req.body.quantite
-  });
-  thing.save().then(
-    () => {
-      res.status(201).json({
-        message: 'Ingredient saved successfully!'
-      });
+exports.getAllIngredient = (req, res, next) => {
+    const ingredient = new Ingredient.Ingredient();
+    ingredient.selectAll()
+    .then((ingredients) => {
+          res.status(200).json(ingredients)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'ingredients non-envoyes'})}
+      ); 
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
 
-router.get('/:id', (req, res, next) => {
-  Ingredient.findOne({
-    _id: req.params.id
-  }).then(
-    (thing) => {
-      res.status(200).json(thing);
+    exports.getIngredient = (req, res, next) => {
+      const ingredient = new Ingredient.Ingredient();
+      ingredient.selectById(req.params.id)
+        .then((ingr) => {
+            res.status(200).json(ingr)})
+        .catch((error) => {
+            res.status(400).json({
+                error: error,
+                message:"ingredient non-envoye"})}
+        ); 
     }
-  ).catch(
-    (error) => {
-      res.status(404).json({
-        error: error
-      });
-    }
-  );
-});
 
-router.put('/:id', (req, res, next) => {
-  const ingredient = new Ingredient({
-    _id: req.params.id,
-    nom_ingredient: req.body.nom_ingredient,
-    unite: req.body.unite,
-    id_cat_ingr: req.body.id_cat_ingr,
-    cout_unitaire: req.body.cout_unitaire,
-    quantite: req.body.quantite
-  });
-  Thing.updateOne({_id: req.params.id}, thing).then(
-    () => {
-      res.status(201).json({
-        message: 'Ingredient updated successfully!'
-      });
+    exports.createIngredient = (req, res, next) =>{
+      const ingredient = new Ingredient.Ingredient();
+      var valuesToSave = [req.body];
+        ingredient.addValue(valuesToSave)
+        .then(()=> res.status(201).json({message:"ingredient créée"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
 
-router.delete('/:id', (req, res, next) => {
-  Ingredient.deleteOne({_id: req.params.id}).then(
-    () => {
-      res.status(200).json({
-        message: 'Ingredient Deleted!'
-      });
+    exports.deleteIngredient = (req,res,next) =>{
+      const ingredient = new Ingredient.Ingredient();
+      var condition = [req.body];
+        ingredient.delete(condition)
+        .then(()=> res.status(200).json({message:"ingredient supprimé"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
 
-router.get('/' +
-  '', (req, res, next) => {
-  Ingredient.find().then(
-    (ingredients) => {
-      res.status(200).json(ingredients);
+    exports.deleteById = (req,res,next) => {
+      const ingredient = new Ingredient.Ingredient();
+      ingredient.deleteById(req.params.id)
+        .then(()=> res.status(201).json({message:"ingredient supprimé"}))
+        .catch((err) => res.status(400).json({error:err}));
     }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
 
-module.exports = router;
+    exports.modifyIngredient = (req,res,next)=>{
+      const ingredient = new Ingredient.Ingredient();
+      var changements = [req.body];
+        ingredient.modify(req.params.id,changements)
+        .then(()=> res.status(200).json({message:"ingredient modifié"}))
+        .catch((err) => res.status(400).json({error:err}));
+    }

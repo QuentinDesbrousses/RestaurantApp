@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
 
 const ficheContr = require('../controllers/fiche');
 
-router.get('/fiche', ficheContr.getAllFiche);
-router.get('/fiche/:id',ficheContr.getFiche);
-router.post('/fiche', ficheContr.createFiche);
-router.put('/fiche/:id', ficheContr.modifyFiche);
-router.delete('/fiche/:id', ficheContr.deleteFiche);
+router.get('/',ficheContr.getAllFiche);
+router.get('/:id',ficheContr.getFiche);
+router.post('/',auth, ficheContr.createFiche);
+router.put('/:id',auth, ficheContr.modifyFiche);
+router.delete('/:id',auth, ficheContr.deleteById);
+router.delete('/',auth, ficheContr.deleteFiche);
 
 module.exports = router;

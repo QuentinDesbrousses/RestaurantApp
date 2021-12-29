@@ -4,23 +4,31 @@ exports.categorie_ingredient = class categorie_ingredient extends model.Model{
 
     constructor(){
         super();
-        table="categorie_ingredient";
+        this.table="categorie_ingredient";
+        this.tableId="id_cat_ingr";
     }
 
-    select(elToFind, conditions){
-        super.select(table,elToFind, conditions);
-    }
-
-    selectByID(id,elToFind){
-        super.selectByID(table,id,elToFind);
+    selectById(id){
+        return super.selectById(this.table,id,this.tableId);
     }
 
     selectAll(){
-        super.selectAll(table);
+        return super.selectAll(this.table);
     }
 
-    save(valuesToSave){
-        super.save(table, valuesToSave);
+    addValue(valuesToSave){
+        return super.addValue(this.table, valuesToSave);
     }
-    
+
+    delete(condition){
+        return super.delete(this.table,condition);
+    }
+
+    deleteById(id){
+        return super.deleteById(this.table,this.tableId,id);
+    }
+
+    modify(id,changements){
+        return super.modify(this.table,this.tableId,id,changements);
+    }
 }
