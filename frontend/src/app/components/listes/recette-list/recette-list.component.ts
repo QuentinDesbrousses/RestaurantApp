@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {Recette} from "../../../models/recette";
+import {MatDialog,MatDialogConfig} from "@angular/material/dialog";
+import {RecetteFormComponent} from "../../forms/recette-form/recette-form.component";
 
 @Component({
   selector: 'app-recette-list',
@@ -19,7 +21,7 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
 
   ngOnInit() {
     if(this.recettes){
@@ -35,6 +37,11 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  montrerEtapes(id:string){
+    //TODO Use modal component and link the controller
+    console.log("Voici les étapes de la recette "+id);
+  }
+
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
@@ -47,6 +54,27 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  // CRUD Recette
+  creerRecette(){
+    //TODO Link the form
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RecetteFormComponent,dialogConfig);
+    console.log("recette créée")
+  }
+
   modifierRecette(id:string){
     //TODO Link the form
     console.log("recette n°"+id+" modifiée")
@@ -57,13 +85,4 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     console.log("recette n°"+id+" supprimée")
   }
 
-  creerRecette(){
-    //TODO Link the form
-    console.log("recette créée")
-  }
-
-  montrerEtapes(id:string){
-    //TODO Use modal component and link the controller
-    console.log("Voici les étapes de la recette "+id);
-  }
 }

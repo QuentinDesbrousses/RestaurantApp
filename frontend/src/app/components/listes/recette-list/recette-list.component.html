@@ -1,5 +1,7 @@
 <div class="table-container">
     <h1><strong>Gestion des recettes</strong></h1>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Titre de la recette" #input>
     <button class="square-btn creerRecette" (click)="creerRecette()">
         <strong>Créer une recette</strong>
     </button>

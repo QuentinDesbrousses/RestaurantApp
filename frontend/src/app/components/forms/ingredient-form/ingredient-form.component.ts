@@ -1,6 +1,5 @@
-import {Component, Input} from '@angular/core';
-import { FormBuilder} from '@angular/forms';
-import { Validators } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {IngredientService} from "../../../services/ingredient.service";
 
 @Component({
   selector: 'app-ingredient-form',
@@ -8,21 +7,26 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./ingredient-form.component.css']
 })
 export class IngredientFormComponent {
-  @Input() categories = [''];
-  @Input() allergenes = [''];
+  categories = [''];
+  allergenes = [''];
 
-  constructor(private fb: FormBuilder) { }
-
-  creationIngredient = this.fb.group({
-    nom : ['',Validators.required],
-    categorie : ['Légume',Validators.required],
-    allergene : ['Aucun',Validators.required],
-    unite : ['',Validators.required],
-    quantite : ['',Validators.required],
-    coutU : ['',Validators.required],
-  })
-
-  onSubmit(){
-    console.log(this.creationIngredient.value)
+  constructor(public service : IngredientService) {
+    this.categories = ['Légume','Fruit','Fromage','Céréale','Crudité']
+    this.allergenes = ['Aucun',
+      'Arachide',
+      'Céleri',
+      'Crabe','Crevette','Écrevisse','Homard','Langoustine',
+      'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
+      'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
+      'Lactose',
+      'Lupin',
+      'Oeuf',
+      'Poisson',
+      'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
+      'Moutarde',
+      'Sésame',
+      'Soja',
+      'Sulfites'
+    ];
   }
 }

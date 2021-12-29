@@ -4,6 +4,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
+
 
 
 @Component({
@@ -19,7 +22,7 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
 
   ngOnInit() {
     if(this.ingredients){
@@ -35,16 +38,6 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     }
   }
 
-  modifierIngredient(id:string){
-    //TODO Link with form
-    console.log(id+" modifié");
-  }
-
-  supprimerIngredient(id:string){
-    //TODO Link with controller
-    console.log(id+" supprimé");
-  }
-
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
@@ -57,8 +50,31 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     }
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  //CRUD Ingredient
   creerIngredient(){
     //TODO Link the controller
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("création ingrédient");
+  }
+  modifierIngredient(id:string){
+    //TODO Link with form
+    console.log(id+" modifié");
+  }
+  supprimerIngredient(id:string){
+    //TODO Link with controller
+    console.log(id+" supprimé");
   }
 }

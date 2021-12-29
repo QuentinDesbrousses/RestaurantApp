@@ -20,22 +20,4 @@ export class IngredientsComponent {
       new Ingredient({nom:"Beurre",categorie:"Produit laitier",allergene:"Lactose",unite:"kg",quantite:8,coutU:5.2}),
       new Ingredient({nom:"Sucre",categorie:"Aide culinaire",allergene:"Aucun",unite:"kg",quantite:11,coutU:0.8})
   ]
-  categorieTab= ['Légume','Fruit','Fromage','Céréale','Crudité']
-  allergeneTab = ['Aucun',
-    'Arachide',
-    'Céleri',
-    'Crabe','Crevette','Écrevisse','Homard','Langoustine',
-    'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
-    'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
-    'Lactose',
-    'Lupin',
-    'Oeuf',
-    'Poisson',
-    'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
-    'Moutarde',
-    'Sésame',
-    'Soja',
-    'Sulfites'
-  ];
-
 }
