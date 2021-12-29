@@ -2,7 +2,7 @@
 <div class="recette-form-container form-content">
     <h1 class="text-center"><strong>Création d'une recette</strong></h1>
     <div>
-        <form [formGroup]="creationRecette" (ngSubmit)="onSubmit()">
+        <form [formGroup]="service.creationRecette" (ngSubmit)="service.onSubmit()">
             <div class="form-field">
                 <label for="titre">Titre*</label>
                 <input id="titre" type="text" formControlName="titre">
@@ -41,11 +41,11 @@
             </div>
 
             <div class="warning">
-                <p *ngIf="creationRecette.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+                <p *ngIf="service.creationRecette.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!creationRecette.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!service.creationRecette.valid">Valider</button>
                 <button  class="button-cancel form-btn" type="submit">Annuler</button>
             </div>
 

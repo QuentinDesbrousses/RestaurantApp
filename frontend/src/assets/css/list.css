@@ -1,3 +1,42 @@
 .tableau {
     padding: 5%;
 }
+.table-container {
+    background-color: rgba(255,255,255,0.95);
+    color: #7c99ff;
+    padding: 2%;
+    text-align: center;
+}
+
+table {
+    margin-top: 30px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24)  8px 8px 8px 8px;
+}
+table:hover {
+    border: 3px solid rgba(124,153,255,0.38);
+    transition: 0.2s;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.update {
+    background-color: white;
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.update:hover{
+    background-color: #7c99ff;
+}
+
+.delete {
+    background-color: white;
+    color: red;
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.delete:hover{
+    background-color: red;
+}

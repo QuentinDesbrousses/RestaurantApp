@@ -1,62 +1,80 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild,} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from '@angular/material/table';
+import {LiveAnnouncer} from "@angular/cdk/a11y";
+import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
-import {Unite} from "../../../models/unite";
-/*
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-*/
-export interface IngredientInterface {
-  nom: string;
-  categorie: string;
-  allergene: string;
-  unite: string;
-  quantite: number;
-  coutU: number;
-}
 
-const ELEMENT_DATA2: IngredientInterface[] = [
-  {nom:'Poivron',categorie:'Légume',allergene:'Aucun',unite:'kg',quantite:3,coutU:5}
-];
 
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.component.html',
   styleUrls: ['./ingredient-list.component.css']
 })
-export class IngredientListComponent implements OnInit{
-  /*
+export class IngredientListComponent implements AfterViewInit, OnInit{
+  @Input() ingredients : Ingredient[] | undefined;
+  displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
+  dataSource = new MatTableDataSource<Ingredient>();
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  */
-  @Input() ingredients : IngredientInterface[] | undefined;
-  displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU'];
-  dataSource : IngredientInterface[] = [];
+  @ViewChild(MatSort) sort: MatSort | undefined;
 
-  ngOnInit(): void {
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
+
+  ngOnInit() {
     if(this.ingredients){
-      this.dataSource = this.ingredients;
+      this.dataSource = new MatTableDataSource<Ingredient>(this.ingredients);
+    }
+  }
+  ngAfterViewInit() {
+    if (this.paginator){
+      this.dataSource.paginator = this.paginator;
+    }
+    if(this.sort){
+      this.dataSource.sort = this.sort;
     }
   }
 
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  //CRUD Ingredient
+  creerIngredient(){
+    //TODO Link the controller
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    this.dialog.open(IngredientFormComponent,dialogConfig);
+    console.log("création ingrédient");
+  }
+  modifierIngredient(id:string){
+    //TODO Link with form
+    console.log(id+" modifié");
+  }
+  supprimerIngredient(id:string){
+    //TODO Link with controller
+    console.log(id+" supprimé");
+  }
 }
