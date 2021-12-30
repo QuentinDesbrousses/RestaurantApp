@@ -52,6 +52,16 @@
             <td mat-cell *matCellDef="let element"> {{element.temps}} </td>
         </ng-container>
 
+        <!-- Fiche technique -->
+        <ng-container matColumnDef="modifier">
+            <th mat-header-cell *matHeaderCellDef> Fiche technique </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="square-btn update" (click)="ficheTechnique(element.id)">
+                    <mat-icon class="mat-18">download</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
         <!-- Modifier -->
         <ng-container matColumnDef="modifier">
             <th mat-header-cell *matHeaderCellDef> Modifier </th>

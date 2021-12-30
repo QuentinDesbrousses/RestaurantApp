@@ -32,6 +32,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     LoginFormComponent,
     InscriptionFormComponent,
     IngredientListComponent,
-    RecetteListComponent
+    RecetteListComponent,
+    FicheTechniqueComponent
   ],
     imports: [
         BrowserModule,

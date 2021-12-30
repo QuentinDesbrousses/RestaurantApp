@@ -7,6 +7,7 @@ import { InscriptionComponent } from './pages/inscription/inscription.component'
 import {IngredientFormComponent} from "./components/forms/ingredient-form/ingredient-form.component";
 import {IngredientsComponent} from "./pages/ingredients/ingredients.component";
 import {RecettesComponent} from "./pages/recettes/recettes.component";
+import {FicheTechniqueComponent} from "./pages/fiche-technique/fiche-technique.component";
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path : "creationIngredient", component:IngredientFormComponent },
   { path : "ingredients", component:IngredientsComponent },
   { path : "recettes", component:RecettesComponent },
+  { path : "ficheTechnique", component:FicheTechniqueComponent },
   
 ];
 

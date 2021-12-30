@@ -63,6 +63,11 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ficheTechnique(id : string){
+    console.log("Génération d'une fiche technique pour la recette n° "+id)
+    
+  }
+
   // CRUD Recette
   creerRecette(){
     //TODO Link the form
