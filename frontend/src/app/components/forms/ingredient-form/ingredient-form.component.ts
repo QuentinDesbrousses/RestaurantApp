@@ -11,7 +11,7 @@ export class IngredientFormComponent {
   allergenes = [''];
 
   constructor(public service : IngredientService) {
-    this.categories = ['Légume','Fruit','Fromage','Céréale','Crudité']
+    this.categories = ['Légume','Fruit','Fromage','Céréale','Crudité'];
     this.allergenes = ['Aucun',
       'Arachide',
       'Céleri',

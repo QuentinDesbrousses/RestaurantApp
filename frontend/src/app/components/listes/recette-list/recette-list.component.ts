@@ -15,7 +15,7 @@ import {RecetteFormComponent} from "../../forms/recette-form/recette-form.compon
 export class RecetteListComponent implements OnInit, AfterViewInit {
 
   @Input() recettes : Recette[] | undefined;
-  displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','modifier','supprimer'];
+  displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','Fiche technique','modifier','supprimer'];
   dataSource = new MatTableDataSource<Recette>();
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
@@ -65,7 +65,6 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
 
   ficheTechnique(id : string){
     console.log("Génération d'une fiche technique pour la recette n° "+id)
-    
   }
 
   // CRUD Recette
