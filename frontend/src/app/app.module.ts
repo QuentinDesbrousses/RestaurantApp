@@ -33,6 +33,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
+import { VerificationPopupComponent } from './components/verification-popup/verification-popup.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique
     InscriptionFormComponent,
     IngredientListComponent,
     RecetteListComponent,
-    FicheTechniqueComponent
+    FicheTechniqueComponent,
+    VerificationPopupComponent
   ],
     imports: [
         BrowserModule,

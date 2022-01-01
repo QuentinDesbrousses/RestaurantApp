@@ -6,6 +6,7 @@ import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
+import {VerificationPopupComponent} from "../../verification-popup/verification-popup.component";
 
 
 
@@ -75,6 +76,11 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
   }
   supprimerIngredient(id:string){
     //TODO Link with controller
-    console.log(id+" supprimé");
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    this.dialog.open(VerificationPopupComponent,dialogConfig);
+    console.log("Ingrédient n° "+id+" supprimé");
   }
 }

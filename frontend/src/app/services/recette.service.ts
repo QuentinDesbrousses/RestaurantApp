@@ -6,6 +6,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class RecetteService {
   RecetteForm : FormGroup;
+  EtapeForm : FormGroup;
+  etapeSelected = [""];
 
   constructor() {
     this.RecetteForm = new FormGroup({
@@ -16,10 +18,24 @@ export class RecetteService {
       nbCouvert : new FormControl('',Validators.required),
       temps : new FormControl('',Validators.required)
     });
+    this.EtapeForm = new FormGroup({
+      selectEtape : new FormControl("",Validators.required)
+    })
   }
 
   onSubmit(){
     console.log(this.RecetteForm.value)
+  }
+
+  selectEtape(){
+    if(this.etapeSelected[0] != ""){
+      this.etapeSelected.push(this.EtapeForm.value.selectEtape);
+    }
+    else {
+      this.etapeSelected = [this.EtapeForm.value.selectEtape]
+    }
+    console.log(this.etapeSelected);
+
   }
 
   getRecettes(){}

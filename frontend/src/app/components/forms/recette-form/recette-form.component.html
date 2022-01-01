@@ -14,12 +14,15 @@
             </div>
 
             <div class="form-field">
-                <label for="etapes">Etapes*</label>
-                <select id="etapes" type="text" formControlName="etapes">
-                    <option *ngFor="let e of etapes">{{e}}</option>
-                </select>
+                <form [formGroup]="service.EtapeForm" (ngSubmit)="service.selectEtape()">
+                    <label for="selectEtape">Etapes*</label>
+                    <select id="selectEtape" type="text" formControlName="selectEtape">
+                        <option *ngFor="let e of etapes">{{e}}</option>
+                    </select>
+                    <button class="form-btn" type="submit">+</button>
+                </form>
                 <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="example-box" *ngFor="let eSelected of etapes" cdkDrag>{{eSelected}}</div>
+                    <div class="example-box" *ngFor="let eSelected of service.etapeSelected"  cdkDrag>{{eSelected}}</div>
                 </div>
             </div>
 
