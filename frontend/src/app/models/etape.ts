@@ -1,7 +1,7 @@
 import {Ingredient} from "./ingredient";
 
 export class Etape {
-    private id : string;
+    private id : number = 0;
     private titre : string;
     private description : string;
     private ingredients : [Ingredient];
@@ -9,8 +9,8 @@ export class Etape {
     private cout : number;
 
 
-    constructor(id: string, titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number) {
-        this.id = id;
+    constructor(titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number) {
+        this.id += 1;
         this.titre = titre;
         this.description = description;
         this.ingredients = ingredients;
@@ -18,7 +18,7 @@ export class Etape {
         this.cout = cout;
     }
 
-    getId() : string {
+    getId() : number {
         return this.id;
     }
 

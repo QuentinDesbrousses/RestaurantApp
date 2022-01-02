@@ -25,9 +25,7 @@ export class RecetteFormComponent {
     ];
   }
 
-  // Etapes
-
-
+  // Drag & Drop etapes
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.service.etapeSelected, event.previousIndex, event.currentIndex);
   }

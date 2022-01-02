@@ -21,9 +21,12 @@
                     </select>
                     <button class="form-btn" type="submit">+</button>
                 </form>
-                <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="example-box" *ngFor="let eSelected of service.etapeSelected"  cdkDrag>{{eSelected}}</div>
-                </div>
+                <form [formGroup]="service.EtapeSelectedForm" (ngSubmit)="service.unselectEtape()">
+                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let eSelected of service.etapeSelected"  cdkDrag>{{eSelected}}</div>
+                    </div>
+                    <button class="form-btn button-cancel text-center" type="submit">Supprimer la dernière étape</button>
+                </form>
             </div>
 
             <div class="form-field">
