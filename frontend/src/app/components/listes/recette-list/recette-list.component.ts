@@ -81,11 +81,23 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
 
   modifierRecette(id:string){
     //TODO Link the form
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette n°"+id+" modifiée")
   }
 
   supprimerRecette(id:string){
     //TODO Link the controller
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette n°"+id+" supprimée")
   }
 

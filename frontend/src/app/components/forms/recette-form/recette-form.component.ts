@@ -27,7 +27,6 @@ export class RecetteFormComponent {
 
   // Drag & Drop etapes
   drop(event: CdkDragDrop<string[]>) {
-    //TODO Add a scrolling bar
     moveItemInArray(this.service.etapeSelected, event.previousIndex, event.currentIndex);
   }
 }
