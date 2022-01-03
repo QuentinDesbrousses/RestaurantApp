@@ -16,7 +16,7 @@ import {MatPaginator} from "@angular/material/paginator";
 export class AllergeneListComponent implements OnInit,AfterViewInit {
   @Input() allergenes : Allergene[] | undefined;
   dataSource = new MatTableDataSource<Allergene>();
-  displayedColumns2 = ['ID','nom', 'categorie','modifier','supprimer'];
+  displayedColumns = ['ID','nom', 'categorie','modifier','supprimer'];
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
