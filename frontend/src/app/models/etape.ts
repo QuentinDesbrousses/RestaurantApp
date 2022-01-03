@@ -6,12 +6,12 @@ export class Etape {
     private id : string;
     private titre : string;
     private description : string;
-    private ingredients : [Ingredient];
+    private ingredients : [{ingredient : Ingredient,quantite : number}];
     private temps : number;
     private cout : number;
 
 
-    constructor(etape : {id : string, titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number}) {
+    constructor(etape : {id : string, titre: string, description: string, ingredients: [{ingredient : Ingredient,quantite:number}], temps: number, cout: number}) {
         this.id = etape.id;
         this.titre = etape.titre;
         this.description = etape.description;
@@ -44,11 +44,11 @@ export class Etape {
         this.description = description;
     }
 
-    getIngredients() : [Ingredient] {
+    getIngredients() : [{ingredient : Ingredient,quantite:number}] {
         return this.ingredients;
     }
 
-    setIngredients(ingredients : [Ingredient]) {
+    setIngredients(ingredients : [{ingredient : Ingredient,quantite:number}]) {
         this.ingredients = ingredients;
     }
 

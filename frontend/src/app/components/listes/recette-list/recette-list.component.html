@@ -41,7 +41,7 @@
         <!-- Catégorie -->
         <ng-container matColumnDef="categorie">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par catégorie"> Catégorie </th>
-            <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.categorie.getNom()}} </td>
         </ng-container>
 
         <!-- Nombre de couvert -->

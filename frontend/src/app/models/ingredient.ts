@@ -1,14 +1,16 @@
+import {CategorieAllergene} from "./categorie-allergene";
+
 export class Ingredient {
 
     private id : string;
     private nom : string;
-    private categorie : string;
+    private categorie : CategorieAllergene;
     private allergene : string;
     private unite : string;
     private quantite : number;
     private coutU : number;
 
-    constructor(ingredient:{id:string,nom:string,categorie:string,allergene:string,unite:string,quantite:number,coutU:number}) {
+    constructor(ingredient:{id:string,nom:string,categorie:CategorieAllergene,allergene:string,unite:string,quantite:number,coutU:number}) {
         this.id = ingredient.id;
         this.nom = ingredient.nom;
         this.categorie = ingredient.categorie;
@@ -35,11 +37,11 @@ export class Ingredient {
         this.nom = nom;
     }
 
-    getCategorie(): string {
+    getCategorie(): CategorieAllergene {
         return this.categorie;
     }
 
-    setCategorie(categorie: string) {
+    setCategorie(categorie: CategorieAllergene) {
         this.categorie = categorie;
     }
 

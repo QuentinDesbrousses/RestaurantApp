@@ -1,4 +1,5 @@
 import {Etape} from "./etape";
+import {CategorieRecette} from "./categorie-recette";
 
 export class Recette {
 
@@ -6,12 +7,12 @@ export class Recette {
     private titre : string;
     private description : string;
     private etapes : [Etape];
-    private categorie : string;
+    private categorie : CategorieRecette;
     private nbCouvert : number;
     private temps : number; //nombre de minutes
 
 
-    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbCouvert: number, temps: number}) {
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: CategorieRecette, nbCouvert: number, temps: number}) {
         this.id = recette.id;
         this.titre = recette.titre;
         this.description = recette.description;
@@ -45,7 +46,7 @@ export class Recette {
         this.description= description;
     }
 
-    getEtape() : [Etape] {
+    getEtapes() : [Etape] {
         return this.etapes;
     }
 
@@ -53,11 +54,11 @@ export class Recette {
         this.etapes = etapes;
     }
 
-    getCategorie() : string {
+    getCategorie() : CategorieRecette {
         return this.categorie;
     }
 
-    setCategorie(categorie : string) {
+    setCategorie(categorie : CategorieRecette) {
         this.categorie = categorie;
     }
 
