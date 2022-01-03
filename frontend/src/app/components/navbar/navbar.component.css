@@ -54,11 +54,11 @@
 }
 
 .sidenav {
-    background: rgba(255,255,255,0.1);
+    background-color: rgba(124,153,255,0.1);
     width: 25%;
 }
 .sidenav:hover {
-    background-color: rgba(124,153,255,0.1);
+    background-color: rgba(99,95,98,0.4);
     transition: 1s;
 }
 

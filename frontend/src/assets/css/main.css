@@ -2,6 +2,7 @@
 .body {
     min-height: 1080px;
     background-image: url("../img/cafeteria.jpg");
+    /*background-color: rgba(37,35,36,0.80);*/
 }
 
 .square-btn { /* Boutons carrés utilisés dans la toolbar et navbar notamment */
