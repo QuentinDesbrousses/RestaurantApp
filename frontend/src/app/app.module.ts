@@ -20,7 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { RecettesComponent } from './pages/recettes/recettes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -31,10 +31,10 @@ import { RecetteListComponent } from './components/listes/recette-list/recette-l
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from '@angular/material/sort';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
-import { VerificationPopupComponent } from './components/verification-popup/verification-popup.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { ConfirmationFormComponent } from './components/forms/confirmation-form/confirmation-form.component';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     IngredientListComponent,
     RecetteListComponent,
     FicheTechniqueComponent,
-    VerificationPopupComponent
+    ConfirmationFormComponent
   ],
     imports: [
         BrowserModule,

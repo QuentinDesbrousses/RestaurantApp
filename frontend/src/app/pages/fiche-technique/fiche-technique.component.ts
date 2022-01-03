@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-fiche-technique',
   templateUrl: './fiche-technique.component.html',
   styleUrls: ['./fiche-technique.component.css']
 })
-export class FicheTechniqueComponent implements OnInit {
+export class FicheTechniqueComponent{
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
