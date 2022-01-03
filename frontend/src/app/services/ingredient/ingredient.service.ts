@@ -6,25 +6,23 @@ import {Ingredient} from "../../models/ingredient";
   providedIn: 'root'
 })
 export class IngredientService {
-  @Input() ingredient : Ingredient | undefined;
 
   constructor(private http : HttpClient) {}
 
   getAllIngredients(){
-    console.log(this.http.get<Ingredient>("http://localhost:3000/ingredient/").subscribe());
-    return this.http.get<Ingredient>("http://localhost:3000/ingredient/").subscribe();
+    return this.http.get<Ingredient>("http://localhost:3000/ingredient/");
   }
 
   getIngredient(id : string){
     return this.http.get<Ingredient>("http://localhost:3000/ingredient/:"+id);
   }
 
-  createIngredient(ingr : Ingredient){
-    return this.http.post<Ingredient>("http://localhost:3000/ingredient/",ingr);
+  createIngredient(ingredient : Ingredient){
+    return this.http.post<Ingredient>("http://localhost:3000/ingredient/",ingredient);
   }
 
-  modifyIngredient(id : string,ingr : Ingredient){
-    return this.http.put<Ingredient>("http://localhost:3000/ingredient/:"+id,ingr);
+  modifyIngredient(id : string,ingredient : Ingredient){
+    return this.http.put<Ingredient>("http://localhost:3000/ingredient/:"+id,ingredient);
   }
 
   deleteIngredient(id : string){
