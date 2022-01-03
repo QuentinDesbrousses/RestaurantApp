@@ -35,6 +35,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
 import { ConfirmationFormComponent } from './components/forms/confirmation-form/confirmation-form.component';
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { AllergenesComponent } from './pages/allergenes/allergenes.component';
+import { AllergeneListComponent } from './components/listes/allergene-list/allergene-list.component';
+import { EtapeListComponent } from './components/listes/etape-list/etape-list.component';
+import { FicheListComponent } from './components/listes/fiche-list/fiche-list.component';
+import { CategorieAllergeneListComponent } from './components/listes/categorie-allergene-list/categorie-allergene-list.component';
+import { CategorieIngredientListComponent } from './components/listes/categorie-ingredient-list/categorie-ingredient-list.component';
+import { CategorieRecetteListComponent } from './components/listes/categorie-recette-list/categorie-recette-list.component';
+import { UtilisateurListComponent } from './components/listes/utilisateur-list/utilisateur-list.component';
+import { AllergeneFormComponent } from './components/forms/allergene-form/allergene-form.component';
+import { CategorieAllergeneFormComponent } from './components/forms/categorie-allergene-form/categorie-allergene-form.component';
+import { EtapeFormComponent } from './components/forms/etape-form/etape-form.component';
+import { CategorieIngredientFormComponent } from './components/forms/categorie-ingredient-form/categorie-ingredient-form.component';
+import { CategorieRecetteFormComponent } from './components/forms/categorie-recette-form/categorie-recette-form.component';
+import { FicheFormComponent } from './components/forms/fiche-form/fiche-form.component';
 
 
 @NgModule({
@@ -54,7 +68,21 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
     IngredientListComponent,
     RecetteListComponent,
     FicheTechniqueComponent,
-    ConfirmationFormComponent
+    ConfirmationFormComponent,
+    AllergenesComponent,
+    AllergeneListComponent,
+    EtapeListComponent,
+    FicheListComponent,
+    CategorieAllergeneListComponent,
+    CategorieIngredientListComponent,
+    CategorieRecetteListComponent,
+    UtilisateurListComponent,
+    AllergeneFormComponent,
+    CategorieAllergeneFormComponent,
+    EtapeFormComponent,
+    CategorieIngredientFormComponent,
+    CategorieRecetteFormComponent,
+    FicheFormComponent
   ],
     imports: [
         BrowserModule,
