@@ -1,9 +1,8 @@
 import {Etape} from "./etape";
 
 export class Recette {
-    private static count : number = 0;
 
-    private id : number = 0;
+    private id : string;
     private titre : string;
     private description : string;
     private etapes : [Etape];
@@ -12,9 +11,8 @@ export class Recette {
     private temps : number; //nombre de minutes
 
 
-    constructor(recette:{titre: string, description: string, etapes: [Etape], categorie: string, nbCouvert: number, temps: number}) {
-        this.id = Recette.count + 1;
-        Recette.count ++;
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbCouvert: number, temps: number}) {
+        this.id = recette.id;
         this.titre = recette.titre;
         this.description = recette.description;
         this.etapes = recette.etapes;
@@ -23,8 +21,12 @@ export class Recette {
         this.temps = recette.temps;
     }
 
-    getId() : number {
+    getId() : string {
         return this.id;
+    }
+
+    setId(id : string){
+        this.id = id;
     }
 
     getTitre() : string {

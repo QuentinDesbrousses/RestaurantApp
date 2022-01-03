@@ -34,6 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
 import { VerificationPopupComponent } from './components/verification-popup/verification-popup.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { VerificationPopupComponent } from './components/verification-popup/veri
         MatPaginatorModule,
         MatSortModule,
         FormsModule,
-        MatDialogModule
+        MatDialogModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [RootComponent],

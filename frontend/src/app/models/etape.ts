@@ -3,7 +3,7 @@ import {Ingredient} from "./ingredient";
 export class Etape {
     private static count : number = 0;
 
-    private id : number = 0;
+    private id : string;
     private titre : string;
     private description : string;
     private ingredients : [Ingredient];
@@ -11,18 +11,21 @@ export class Etape {
     private cout : number;
 
 
-    constructor(titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number) {
-        this.id = Etape.count + 1;
-        Etape.count ++;
-        this.titre = titre;
-        this.description = description;
-        this.ingredients = ingredients;
-        this.temps = temps;
-        this.cout = cout;
+    constructor(etape : {id : string, titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number}) {
+        this.id = etape.id;
+        this.titre = etape.titre;
+        this.description = etape.description;
+        this.ingredients = etape.ingredients;
+        this.temps = etape.temps;
+        this.cout = etape.cout;
     }
 
-    getId() : number {
+    getId() : string {
         return this.id;
+    }
+
+    setId(id : string){
+        this.id = id;
     }
 
     getTitre() : string {

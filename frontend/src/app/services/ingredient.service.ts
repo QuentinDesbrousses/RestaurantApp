@@ -8,38 +8,27 @@ import {Ingredient} from "../models/ingredient";
 })
 export class IngredientService {
   @Input() ingredient : Ingredient | undefined;
-  @Input() update : boolean = false;
 
-  IngredientForm : FormGroup;
+  constructor(private http : HttpClient) {}
 
-  constructor(private http : HttpClient) {
-    this.IngredientForm  = new FormGroup({
-      $id : new FormControl(null),
-      nom : new FormControl('',Validators.required),
-      categorie : new FormControl('Légume',Validators.required),
-      allergene : new FormControl('Aucun',Validators.required),
-      unite : new FormControl('',Validators.required),
-      quantite : new FormControl('',Validators.required),
-      coutU : new FormControl('',Validators.required)
-    });
+  getAllIngredients(){
+    return this.http.get<Ingredient>("http://localhost:5432/ingredient/");
   }
 
-  onSubmit(){
-    console.log(this.IngredientForm.value)
-    //creation Ingredient
-    if(!this.update){
-      let tmpIngredient = new Ingredient(this.IngredientForm.value);
-    }
+  getIngredient(id : string){
+    return this.http.get<Ingredient>("http://localhost:5432/ingredient/:"+id);
   }
 
-  obtenirListeIngredients(){}
-
-  creerIngredient(){
-
+  createIngredient(ingr : Ingredient){
+    return this.http.post<Ingredient>("http://localhost:5432/ingredient/",ingr);
   }
 
-  modifierIngredient(nom : string){}
+  modifyIngredient(id : number){
+    return this.http.put<Ingredient>("http://localhost:5432/ingredient/:",id);
+  }
 
-  supprimerIngredient(){}
+  deleteIngredient(id : number){
+    return this.http.delete<Ingredient>("http://localhost:5432/ingredient/:"+id);
+  }
 
 }

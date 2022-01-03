@@ -1,20 +1,30 @@
 export class Ingredient {
+
+    private id : string;
     private nom : string;
     private categorie : string;
     private allergene : string;
     private unite : string;
     private quantite : number;
-    //TODO propriété calculée
     private coutU : number;
 
-
-    constructor(ingredient:{nom:string,categorie:string,allergene:string,unite:string,quantite:number,coutU:number}) {
+    constructor(ingredient:{id:string,nom:string,categorie:string,allergene:string,unite:string,quantite:number,coutU:number}) {
+        this.id = ingredient.id;
         this.nom = ingredient.nom;
         this.categorie = ingredient.categorie;
         this.allergene = ingredient.allergene;
         this.unite = ingredient.unite;
         this.quantite = ingredient.quantite;
         this.coutU = ingredient.coutU;
+    }
+
+
+    getId(): string {
+        return this.id;
+    }
+
+    setId(id: string) {
+        this.id = id;
     }
 
     getNom(): string {
