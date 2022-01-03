@@ -61,7 +61,7 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  //CRUD Allergene
+  //CRUD Catégorie allergène
   creerCategorieAllergene(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -89,5 +89,4 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("Catégorie d'allergène n° "+id+" supprimé");
   }
-
 }
