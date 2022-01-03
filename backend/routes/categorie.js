@@ -4,11 +4,11 @@ const auth = require('../middleware/auth');
 
 const categorieContr = require('../controllers/categorie');
 
-router.get('/', auth,categorieContr.getAllCategorie);
-router.get('/:id',auth,categorieContr.getCategorie);
-router.post('/', auth,categorieContr.createCategorie);
-router.put('/:id',auth, categorieContr.modifyCategorie);
-router.delete('/:id', auth,categorieContr.deleteById);
-router.delete('/',auth, categorieContr.deleteCategorie);
+router.get('/',categorieContr.getAllCategorie);
+router.get('/:id',categorieContr.getCategorie);
+router.post('/',categorieContr.createCategorie);
+router.put('/:id', categorieContr.modifyCategorie);
+router.delete('/:id',categorieContr.deleteById);
+router.delete('/', categorieContr.deleteCategorie);
 
 module.exports = router;

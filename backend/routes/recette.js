@@ -4,11 +4,11 @@ const auth = require('../middleware/auth');
 
 const recetteContr = require('../controllers/recette');
 
-router.get('/',auth, recetteContr.getAllRecette);
-router.get('/:id',auth,recetteContr.getRecette);
-router.post('/',auth, recetteContr.createRecette);
-router.put('/:id',auth, recetteContr.modifyRecette);
-router.delete('/:id', auth,recetteContr.deleteById);
-router.delete('/',auth, recetteContr.deleteRecette);
+router.get('/', recetteContr.getAllRecette);
+router.get('/:id',recetteContr.getRecette);
+router.post('/', recetteContr.createRecette);
+router.put('/:id', recetteContr.modifyRecette);
+router.delete('/:id',recetteContr.deleteById);
+router.delete('/', recetteContr.deleteRecette);
 
 module.exports = router;
