@@ -49,6 +49,7 @@ import { EtapeFormComponent } from './components/forms/etape-form/etape-form.com
 import { CategorieIngredientFormComponent } from './components/forms/categorie-ingredient-form/categorie-ingredient-form.component';
 import { CategorieRecetteFormComponent } from './components/forms/categorie-recette-form/categorie-recette-form.component';
 import { FicheFormComponent } from './components/forms/fiche-form/fiche-form.component';
+import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import { FicheFormComponent } from './components/forms/fiche-form/fiche-form.com
     EtapeFormComponent,
     CategorieIngredientFormComponent,
     CategorieRecetteFormComponent,
-    FicheFormComponent
+    FicheFormComponent,
+    UtilisateursComponent
   ],
     imports: [
         BrowserModule,

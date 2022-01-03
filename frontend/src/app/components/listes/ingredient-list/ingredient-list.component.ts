@@ -17,6 +17,7 @@ import {IngredientService} from "../../../services/ingredient/ingredient.service
   styleUrls: ['./ingredient-list.component.css']
 })
 export class IngredientListComponent implements AfterViewInit, OnInit{
+  //TODO Link with back
   @Input() ingredients : Ingredient[] | undefined;
   displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
   dataSource = new MatTableDataSource<Ingredient>();

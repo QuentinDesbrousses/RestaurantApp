@@ -18,15 +18,15 @@ export class UtilisateurService {
     return this.http.get<Utilisateur>("http://localhost:3000/utilisateur/:"+id);
   }
 
-  createIngredient(utilisateur : Utilisateur){
+  createUtilisateur(utilisateur : Utilisateur){
     return this.http.post<Utilisateur>("http://localhost:3000/utilisateur/",utilisateur);
   }
 
-  modifyIngredient(id : string,utilisateur : Utilisateur){
+  modifyUtilisateur(id : string,utilisateur : Utilisateur){
     return this.http.put<Utilisateur>("http://localhost:3000/utilisateur/:"+id,utilisateur);
   }
 
-  deleteIngredient(id : string){
+  deleteUtilisateur(id : string){
     return this.http.delete<Utilisateur>("http://localhost:3000/utilisateur/:"+id);
   }
 }
