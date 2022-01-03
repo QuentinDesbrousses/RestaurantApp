@@ -7,7 +7,7 @@ import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
-import {IngredientService} from "../../../services/ingredient/ingredient.service";
+
 
 
 
