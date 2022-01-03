@@ -2,7 +2,7 @@ const Utilisateur = require('../models/utilisateur');
 const pool =require('../config/db');
 const bcrypt = require('bcrypt');
 const utilisateur = new Utilisateur.Utilisateur();
-const jwt = require('jsonwebtoken');
+const tokenKey = require('../middleware/tokenKey');
 
 
 exports.getAllUtilisateur = (req, res, next) => {
@@ -53,14 +53,13 @@ exports.getAllUtilisateur = (req, res, next) => {
               if (!valid) {
                 return res.status(401).json({ error: 'Mot de passe incorrect !' });
               }
+              console.log(user.id_utilisateur)
               res.status(200).json({
-                userId: user._id,
-                token: jwt.sign(
-                  { userId: user._id },
-                  'RANDOM_TOKEN_SECRET',
-                  { expiresIn: '24h' }
-                )
+                userId: user.id_utilisateur,
+                token: tokenKey.tokenUtilisateur(user)
               });
+              let token = req.headers["x-access-token"];
+              console.log(token);
             })
             .catch(error => res.status(500).json({ error }));
         })

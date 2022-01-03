@@ -4,11 +4,11 @@ const auth = require('../middleware/auth');
 
 const etapeContr = require('../controllers/etape');
 
-router.get('/', auth,etapeContr.getAllEtape);
-router.get('/:id',auth,etapeContr.getEtape);
-router.post('/', auth,etapeContr.createEtape);
-router.put('/:id', auth,etapeContr.modifyEtape);
-router.delete('/:id', auth,etapeContr.deleteById);
-router.delete('/', auth,etapeContr.deleteEtape);
+router.get('/', etapeContr.getAllEtape);
+router.get('/:id',etapeContr.getEtape);
+router.post('/',etapeContr.createEtape);
+router.put('/:id',etapeContr.modifyEtape);
+router.delete('/:id',etapeContr.deleteById);
+router.delete('/',etapeContr.deleteEtape);
 
 module.exports = router;

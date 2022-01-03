@@ -34,7 +34,8 @@ exports.Utilisateur = class Utilisateur extends model.Model{
 
   selectByEmail(email){
     return new Promise((resolve,reject)=>{
-      var request = "select * from utilisateur where email = "+email+";";
+      var request = "select * from utilisateur where email = \'"+email+"\';";
+      console.log(request);
       this.user.query(request,function(err,res){
         if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
             reject(err.stack)
