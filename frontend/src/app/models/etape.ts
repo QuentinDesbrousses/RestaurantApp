@@ -1,25 +1,31 @@
 import {Ingredient} from "./ingredient";
 
 export class Etape {
+    private static count : number = 0;
+
     private id : string;
     private titre : string;
     private description : string;
-    private ingredients : [Ingredient];
+    private ingredients : [{ingredient : Ingredient,quantite : number}];
     private temps : number;
     private cout : number;
 
 
-    constructor(id: string, titre: string, description: string, ingredients: [Ingredient], temps: number, cout: number) {
-        this.id = id;
-        this.titre = titre;
-        this.description = description;
-        this.ingredients = ingredients;
-        this.temps = temps;
-        this.cout = cout;
+    constructor(etape : {id : string, titre: string, description: string, ingredients: [{ingredient : Ingredient,quantite:number}], temps: number, cout: number}) {
+        this.id = etape.id;
+        this.titre = etape.titre;
+        this.description = etape.description;
+        this.ingredients = etape.ingredients;
+        this.temps = etape.temps;
+        this.cout = etape.cout;
     }
 
     getId() : string {
         return this.id;
+    }
+
+    setId(id : string){
+        this.id = id;
     }
 
     getTitre() : string {
@@ -38,11 +44,11 @@ export class Etape {
         this.description = description;
     }
 
-    getIngredients() : [Ingredient] {
+    getIngredients() : [{ingredient : Ingredient,quantite:number}] {
         return this.ingredients;
     }
 
-    setIngredients(ingredients : [Ingredient]) {
+    setIngredients(ingredients : [{ingredient : Ingredient,quantite:number}]) {
         this.ingredients = ingredients;
     }
 

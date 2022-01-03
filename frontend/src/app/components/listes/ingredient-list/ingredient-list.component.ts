@@ -6,6 +6,7 @@ import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
+import {VerificationPopupComponent} from "../../verification-popup/verification-popup.component";
 
 
 
@@ -18,6 +19,23 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
   @Input() ingredients : Ingredient[] | undefined;
   displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
   dataSource = new MatTableDataSource<Ingredient>();
+  categories = ['Légume','Fruit','Fromage','Céréale','Crudité'];
+  allergenes = ['Aucun',
+    'Arachide',
+    'Céleri',
+    'Crabe','Crevette','Écrevisse','Homard','Langoustine',
+    'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
+    'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
+    'Lactose',
+    'Lupin',
+    'Oeuf',
+    'Poisson',
+    'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
+    'Moutarde',
+    'Sésame',
+    'Soja',
+    'Sulfites'
+  ];
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
@@ -61,20 +79,34 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
 
   //CRUD Ingredient
   creerIngredient(){
-    //TODO Link the controller
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
+    dialogConfig.data = {type: "creation", allergenes : this.allergenes, categories : this.categories}
+    console.log(dialogConfig.data.allergenes);
+    console.log(dialogConfig.data.categories);
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("création ingrédient");
   }
   modifierIngredient(id:string){
-    //TODO Link with form
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    dialogConfig.data = {type: "modification", allergenes : this.allergenes, categories : this.categories}
+    console.log(dialogConfig.data.allergenes);
+    console.log(dialogConfig.data.categories);
+    this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log(id+" modifié");
   }
   supprimerIngredient(id:string){
-    //TODO Link with controller
-    console.log(id+" supprimé");
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "30%";
+    dialogConfig.data = {id : id};
+    this.dialog.open(VerificationPopupComponent,dialogConfig);
+    console.log("Ingrédient n° "+id+" supprimé");
   }
 }

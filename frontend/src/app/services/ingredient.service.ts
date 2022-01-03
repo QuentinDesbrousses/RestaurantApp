@@ -1,26 +1,34 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {Ingredient} from "../models/ingredient";
 
 @Injectable({
   providedIn: 'root'
 })
 export class IngredientService {
+  @Input() ingredient : Ingredient | undefined;
 
-  public creationIngredient : FormGroup;
+  constructor(private http : HttpClient) {}
 
-  constructor() {
-    this.creationIngredient  = new FormGroup({
-      $id : new FormControl(null),
-      nom : new FormControl('',Validators.required),
-      categorie : new FormControl('Légume',Validators.required),
-      allergene : new FormControl('Aucun',Validators.required),
-      unite : new FormControl('',Validators.required),
-      quantite : new FormControl('',Validators.required),
-      coutU : new FormControl('',Validators.required)
-    });
+  getAllIngredients(){
+    return this.http.get<Ingredient>("http://localhost:5432/ingredient/");
   }
 
-  onSubmit(){
-    console.log(this.creationIngredient.value)
+  getIngredient(id : string){
+    return this.http.get<Ingredient>("http://localhost:5432/ingredient/:"+id);
   }
+
+  createIngredient(ingr : Ingredient){
+    return this.http.post<Ingredient>("http://localhost:5432/ingredient/",ingr);
+  }
+
+  modifyIngredient(id : number){
+    return this.http.put<Ingredient>("http://localhost:5432/ingredient/:",id);
+  }
+
+  deleteIngredient(id : number){
+    return this.http.delete<Ingredient>("http://localhost:5432/ingredient/:"+id);
+  }
+
 }

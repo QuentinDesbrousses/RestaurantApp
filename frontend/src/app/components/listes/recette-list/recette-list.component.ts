@@ -15,7 +15,7 @@ import {RecetteFormComponent} from "../../forms/recette-form/recette-form.compon
 export class RecetteListComponent implements OnInit, AfterViewInit {
 
   @Input() recettes : Recette[] | undefined;
-  displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','modifier','supprimer'];
+  displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','Fiche technique','modifier','supprimer'];
   dataSource = new MatTableDataSource<Recette>();
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
@@ -63,6 +63,10 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ficheTechnique(id : string){
+    console.log("Génération d'une fiche technique pour la recette n° "+id)
+  }
+
   // CRUD Recette
   creerRecette(){
     //TODO Link the form
@@ -77,11 +81,23 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
 
   modifierRecette(id:string){
     //TODO Link the form
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette n°"+id+" modifiée")
   }
 
   supprimerRecette(id:string){
     //TODO Link the controller
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "20%";
+    dialogConfig.height = "95%";
+    this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette n°"+id+" supprimée")
   }
 

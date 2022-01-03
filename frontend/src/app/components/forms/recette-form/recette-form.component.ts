@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import {RecetteService} from "../../../services/recette.service";
 
@@ -13,7 +12,7 @@ export class RecetteFormComponent {
   categories = [""];
 
   constructor(public service : RecetteService) {
-    this.categories = ["Entrée","Plat principal","Dessert"]
+    this.categories = ["Entrée","Plat principal","Dessert"];
     this.etapes = [
       "Ajouter le sucre",
       "Ajouter une pincée de sel",
@@ -23,10 +22,11 @@ export class RecetteFormComponent {
       "Faire préchauffer le four à 200°C",
       "Laisser reposer 15 minutes",
       "Mettre au frais pendant 6 heures"
-    ]
+    ];
   }
 
+  // Drag & Drop etapes
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.etapes, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.service.etapeSelected, event.previousIndex, event.currentIndex);
   }
 }
