@@ -1,7 +1,10 @@
 .content {
     position: absolute;
     color: rgba(124,153,255,0.83);
-    margin-left: 40%;
-    margin-top: 15%;
+    width: 80%;
+    background-color: white;
+    margin-left:10%;
+    margin-top: 10%;
+    padding: 5%;
 }
 

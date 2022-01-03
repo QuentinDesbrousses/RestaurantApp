@@ -1,5 +1,4 @@
 import {Recette} from "./recette";
-import {Etape} from "./etape";
 
 export class FicheTechnique {
 

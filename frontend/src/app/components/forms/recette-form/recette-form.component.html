@@ -1,8 +1,9 @@
 <!-- Creation FormGroup-->
 <div class="recette-form-container form-content">
-    <h1 class="text-center"><strong>Création d'une recette</strong></h1>
+    <h1 *ngIf="this.data.type=='creation'" class="text-center"><strong>Création d'une recette</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'une recette</strong></h1>
     <div>
-        <form [formGroup]="service.RecetteForm" (ngSubmit)="service.onSubmit()">
+        <form [formGroup]="RecetteForm" (ngSubmit)="onSubmit()">
             <div class="form-field">
                 <label for="titre">Titre*</label>
                 <input id="titre" type="text" formControlName="titre">
@@ -14,16 +15,16 @@
             </div>
 
             <div class="form-field">
-                <form [formGroup]="service.EtapeForm" (ngSubmit)="service.selectEtape()">
+                <form [formGroup]="EtapeForm" (ngSubmit)="selectEtape()">
                     <label for="selectEtape">Etapes*</label>
                     <select id="selectEtape" type="text" formControlName="selectEtape">
-                        <option *ngFor="let e of etapes">{{e}}</option>
+                        <option *ngFor="let e of this.data.etapes">{{e}}</option>
                     </select>
                     <button class="form-btn" type="submit">+</button>
                 </form>
-                <form [formGroup]="service.EtapeSelectedForm" (ngSubmit)="service.unselectEtape()">
+                <form [formGroup]="EtapeSelectedForm" (ngSubmit)="unselectEtape()">
                     <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let eSelected of service.etapeSelected"  cdkDrag>{{eSelected}}</div>
+                        <div class="example-box" *ngFor="let eSelected of etapeSelected"  cdkDrag>{{eSelected}}</div>
                     </div>
                     <button class="form-btn button-cancel text-center" type="submit">Supprimer la dernière étape</button>
                 </form>
@@ -32,7 +33,7 @@
             <div class="form-field">
                 <label for="categorie">Catégorie*</label>
                 <select id="categorie" type="text" formControlName="categorie">
-                    <option *ngFor="let cat of categories">{{cat}}</option>
+                    <option *ngFor="let cat of this.data.categories">{{cat}}</option>
                 </select>
             </div>
 
@@ -47,12 +48,12 @@
             </div>
 
             <div class="warning">
-                <p *ngIf="service.RecetteForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+                <p *ngIf="RecetteForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!service.RecetteForm.valid">Valider</button>
-                <button  class="button-cancel form-btn" type="submit">Annuler</button>
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!RecetteForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" (click)="cancel()">Annuler</button>
             </div>
 
         </form>
