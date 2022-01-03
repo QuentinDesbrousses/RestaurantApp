@@ -6,9 +6,9 @@ const ficheContr = require('../controllers/fiche');
 
 router.get('/',ficheContr.getAllFiche);
 router.get('/:id',ficheContr.getFiche);
-router.post('/',auth, ficheContr.createFiche);
-router.put('/:id',auth, ficheContr.modifyFiche);
-router.delete('/:id',auth, ficheContr.deleteById);
-router.delete('/',auth, ficheContr.deleteFiche);
+router.post('/', ficheContr.createFiche);
+router.put('/:id', ficheContr.modifyFiche);
+router.delete('/:id', ficheContr.deleteById);
+router.delete('/', ficheContr.deleteFiche);
 
 module.exports = router;
