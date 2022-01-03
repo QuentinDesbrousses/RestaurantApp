@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class IngredientFormComponent {
   IngredientForm : FormGroup;
 
-  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {type: string, categories : string[],allergenes : string[] }) {
+  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
     this.IngredientForm  = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),

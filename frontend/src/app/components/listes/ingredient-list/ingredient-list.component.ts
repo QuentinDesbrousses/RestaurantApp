@@ -41,7 +41,7 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : IngredientService) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
 
   ngOnInit() {
     if(this.ingredients){
