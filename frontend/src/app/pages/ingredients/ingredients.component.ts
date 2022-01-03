@@ -1,8 +1,6 @@
 import { Component} from '@angular/core';
 import {Ingredient} from "../../models/ingredient";
-import {Unite} from "../../models/unite";
-import {newArray} from "@angular/compiler/src/util";
-import {IngredientInterface} from "../../components/listes/ingredient-list/ingredient-list.component";
+import {CategorieAllergene} from "../../models/categorie-allergene";
 
 @Component({
   selector: 'app-ingredients',
@@ -10,34 +8,17 @@ import {IngredientInterface} from "../../components/listes/ingredient-list/ingre
   styleUrls: ['./ingredients.component.css']
 })
 export class IngredientsComponent {
-  ingredientTab : IngredientInterface[] = [
-    {nom:"Maïs",categorie:"Céréale",allergene:"Aucun",unite:"kg",quantite:3,coutU:1.5},
-    {nom:"Salade",categorie:"Crudité",allergene:"Aucun",unite:"pièce",quantite:3,coutU:1.3},
-    {nom:"Farine",categorie:"Céréale",allergene:"Gluten",unite:"kg",quantite:20,coutU:0.7},
-    {nom:"Pomme",categorie:"Fruit",allergene:"Aucun",unite:"kg",quantite:15,coutU:3},
-    {nom:"Carotte",categorie:"Légume",allergene:"Aucun",unite:"kg",quantite:10,coutU:1.2},
-    {nom:"Lait",categorie:"Produit laitier",allergene:"Lactose",unite:"1L",quantite:12,coutU:0.6},
-    {nom:"Poulet",categorie:"Viande",allergene:"Aucun",unite:"kg",quantite:13,coutU:9},
-    {nom:"Saucisse",categorie:"Viande",allergene:"Aucun",unite:"kg",quantite:10,coutU:5},
-    {nom:"Saumon",categorie:"Poisson",allergene:"Aucun",unite:"kg",quantite:3,coutU:25},
-    {nom:"Beurre",categorie:"Produit laitier",allergene:"Lactose",unite:"kg",quantite:8,coutU:5.2}
+  ingredientTab : Ingredient[] = [
+      new Ingredient({id:"1",nom:"Maïs",categorie:new CategorieAllergene({id:"1",nom:"Céréale"}),allergene:"Aucun",unite:"kg",quantite:3,coutU:1.5}),
+      new Ingredient({id:"2",nom:"Salade",categorie:new CategorieAllergene({id:"2",nom:"Légume"}),allergene:"Aucun",unite:"pièce",quantite:3,coutU:1.3}),
+      new Ingredient({id:"3",nom:"Farine",categorie:new CategorieAllergene({id:"1",nom:"Céréale"}),allergene:"Gluten",unite:"kg",quantite:20,coutU:0.7}),
+      new Ingredient({id:"4",nom:"Pomme",categorie:new CategorieAllergene({id:"3",nom:"Fruit"}),allergene:"Aucun",unite:"kg",quantite:15,coutU:3}),
+      new Ingredient({id:"5",nom:"Carotte",categorie:new CategorieAllergene({id:"4",nom:"Légume"}),allergene:"Aucun",unite:"kg",quantite:10,coutU:1.2}),
+      new Ingredient({id:"6",nom:"Lait",categorie:new CategorieAllergene({id:"5",nom:"Produit laitier"}),allergene:"Lactose",unite:"L",quantite:12,coutU:0.6}),
+      new Ingredient({id:"7",nom:"Poulet",categorie:new CategorieAllergene({id:"6",nom:"Viande"}),allergene:"Aucun",unite:"kg",quantite:13,coutU:9}),
+      new Ingredient({id:"8",nom:"Saucisse",categorie:new CategorieAllergene({id:"6",nom:"Viande"}),allergene:"Aucun",unite:"kg",quantite:10,coutU:5}),
+      new Ingredient({id:"9",nom:"Saumon",categorie:new CategorieAllergene({id:"7",nom:"Poisson"}),allergene:"Aucun",unite:"kg",quantite:3,coutU:25}),
+      new Ingredient({id:"10",nom:"Beurre",categorie:new CategorieAllergene({id:"5",nom:"Produit laitier"}),allergene:"Lactose",unite:"kg",quantite:8,coutU:5.2}),
+      new Ingredient({id:"11",nom:"Sucre",categorie:new CategorieAllergene({id:"8",nom:"Aide culinaire"}),allergene:"Aucun",unite:"kg",quantite:11,coutU:0.8})
   ]
-  categorieTab= ['Légume','Fruit','Fromage','Céréale','Crudité']
-  allergeneTab = ['Aucun',
-    'Arachide',
-    'Céleri',
-    'Crabe','Crevette','Écrevisse','Homard','Langoustine',
-    'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
-    'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
-    'Lactose',
-    'Lupin',
-    'Oeuf',
-    'Poisson',
-    'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
-    'Moutarde',
-    'Sésame',
-    'Soja',
-    'Sulfites'
-  ]
-
 }

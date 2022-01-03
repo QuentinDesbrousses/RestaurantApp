@@ -1,27 +1,33 @@
 import {Etape} from "./etape";
+import {CategorieRecette} from "./categorie-recette";
 
 export class Recette {
+
     private id : string;
     private titre : string;
     private description : string;
     private etapes : [Etape];
-    private categorie : string;
-    private nbcouvert : number;
+    private categorie : CategorieRecette;
+    private nbCouvert : number;
     private temps : number; //nombre de minutes
 
 
-    constructor(id: string, titre: string, description: string, etapes: [Etape], categorie: string, nbcouvert: number, temps: number) {
-        this.id = id;
-        this.titre = titre;
-        this.description = description;
-        this.etapes = etapes;
-        this.categorie = categorie;
-        this.nbcouvert = nbcouvert;
-        this.temps = temps;
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: CategorieRecette, nbCouvert: number, temps: number}) {
+        this.id = recette.id;
+        this.titre = recette.titre;
+        this.description = recette.description;
+        this.etapes = recette.etapes;
+        this.categorie = recette.categorie;
+        this.nbCouvert = recette.nbCouvert;
+        this.temps = recette.temps;
     }
 
     getId() : string {
         return this.id;
+    }
+
+    setId(id : string){
+        this.id = id;
     }
 
     getTitre() : string {
@@ -40,7 +46,7 @@ export class Recette {
         this.description= description;
     }
 
-    getEtape() : [Etape] {
+    getEtapes() : [Etape] {
         return this.etapes;
     }
 
@@ -48,20 +54,20 @@ export class Recette {
         this.etapes = etapes;
     }
 
-    getCategorie() : string {
+    getCategorie() : CategorieRecette {
         return this.categorie;
     }
 
-    setCategorie(categorie : string) {
+    setCategorie(categorie : CategorieRecette) {
         this.categorie = categorie;
     }
 
     getNbCouvert() : number {
-        return this.nbcouvert;
+        return this.nbCouvert;
     }
 
     setNbCouvert(nbCouvert : number) {
-        this.nbcouvert = nbCouvert;
+        this.nbCouvert = nbCouvert;
     }
 
     getTemps() : number {

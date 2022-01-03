@@ -2,7 +2,7 @@
 <div class="recette-form-container form-content">
     <h1 class="text-center"><strong>Création d'une recette</strong></h1>
     <div>
-        <form [formGroup]="creationRecette" (ngSubmit)="onSubmit()">
+        <form [formGroup]="service.RecetteForm" (ngSubmit)="service.onSubmit()">
             <div class="form-field">
                 <label for="titre">Titre*</label>
                 <input id="titre" type="text" formControlName="titre">
@@ -14,13 +14,19 @@
             </div>
 
             <div class="form-field">
-                <label for="etapes">Etapes* TODO</label>
-                <select id="etapes" type="text" formControlName="etapes">
-                    <option *ngFor="let e of etapes">{{e}}</option>
-                </select>
-                <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="example-box" *ngFor="let eSelected of etapes" cdkDrag>{{eSelected}}</div>
-                </div>
+                <form [formGroup]="service.EtapeForm" (ngSubmit)="service.selectEtape()">
+                    <label for="selectEtape">Etapes*</label>
+                    <select id="selectEtape" type="text" formControlName="selectEtape">
+                        <option *ngFor="let e of etapes">{{e}}</option>
+                    </select>
+                    <button class="form-btn" type="submit">+</button>
+                </form>
+                <form [formGroup]="service.EtapeSelectedForm" (ngSubmit)="service.unselectEtape()">
+                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let eSelected of service.etapeSelected"  cdkDrag>{{eSelected}}</div>
+                    </div>
+                    <button class="form-btn button-cancel text-center" type="submit">Supprimer la dernière étape</button>
+                </form>
             </div>
 
             <div class="form-field">
@@ -41,11 +47,11 @@
             </div>
 
             <div class="warning">
-                <p *ngIf="creationRecette.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+                <p *ngIf="service.RecetteForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!creationRecette.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!service.RecetteForm.valid">Valider</button>
                 <button  class="button-cancel form-btn" type="submit">Annuler</button>
             </div>
 

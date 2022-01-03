@@ -12,25 +12,29 @@ import { IngredientFormComponent } from './components/forms/ingredient-form/ingr
 import { RecetteFormComponent } from './components/forms/recette-form/recette-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatIconModule} from "@angular/material/icon";
-import {MatListModule} from "@angular/material/list";
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from "@angular/material/button";
-import {MatSelectModule} from "@angular/material/select";
-import {MatOptionModule} from "@angular/material/core";
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { RecettesComponent } from './pages/recettes/recettes.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { InscriptionFormComponent } from './components/forms/inscription-form/inscription-form.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { IngredientListComponent } from './components/listes/ingredient-list/ingredient-list.component';
 import { RecetteListComponent } from './components/listes/recette-list/recette-list.component';
-import {MatTableModule} from "@angular/material/table";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
+import { VerificationPopupComponent } from './components/verification-popup/verification-popup.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -47,9 +51,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     RecettesComponent,
     LoginFormComponent,
     InscriptionFormComponent,
-    ModalComponent,
     IngredientListComponent,
     RecetteListComponent,
+    FicheTechniqueComponent,
+    VerificationPopupComponent
   ],
     imports: [
         BrowserModule,
@@ -67,9 +72,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
         ReactiveFormsModule,
         DragDropModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatSortModule,
+        FormsModule,
+        MatDialogModule,
+        HttpClientModule
     ],
   providers: [],
-  bootstrap: [RootComponent]
+  bootstrap: [RootComponent],
+  entryComponents :[IngredientFormComponent,RecetteFormComponent]
 })
 export class AppModule { }

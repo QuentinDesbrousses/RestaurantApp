@@ -1,6 +1,8 @@
-import {Component, Input} from '@angular/core';
-import { FormBuilder} from '@angular/forms';
-import { Validators } from '@angular/forms';
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {IngredientService} from "../../../services/ingredient.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Ingredient} from "../../../models/ingredient";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-ingredient-form',
@@ -8,21 +10,29 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./ingredient-form.component.css']
 })
 export class IngredientFormComponent {
-  @Input() categories = [''];
-  @Input() allergenes = [''];
+  IngredientForm : FormGroup;
 
-  constructor(private fb: FormBuilder) { }
-
-  creationIngredient = this.fb.group({
-    nom : ['',Validators.required],
-    categorie : ['Légume',Validators.required],
-    allergene : ['Aucun',Validators.required],
-    unite : ['',Validators.required],
-    quantite : ['',Validators.required],
-    coutU : ['',Validators.required],
-  })
+  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {type: string, categories : string[],allergenes : string[] }) {
+    this.IngredientForm  = new FormGroup({
+      $id : new FormControl(null),
+      nom : new FormControl('',Validators.required),
+      categorie : new FormControl('Légume',Validators.required),
+      allergene : new FormControl('Aucun',Validators.required),
+      unite : new FormControl('',Validators.required),
+      quantite : new FormControl('',Validators.required),
+      coutU : new FormControl('',Validators.required)
+    });
+  }
 
   onSubmit(){
-    console.log(this.creationIngredient.value)
+    //creation Ingredient
+    if(this.data.type == "creation"){
+      let tmpIngredient = new Ingredient(this.IngredientForm.value);
+      this.service.createIngredient(tmpIngredient);
+      console.log("Ingredient créé : "+tmpIngredient.toJSON())
+    }
+    else{
+      this.service.modifyIngredient(this.IngredientForm.value.id)
+    }
   }
 }

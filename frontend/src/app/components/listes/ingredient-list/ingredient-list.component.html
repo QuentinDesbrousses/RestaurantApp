@@ -1,44 +1,81 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="table-container">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+    <div class="text-center">
+        <h1><strong>Stock des ingrédients</strong></h1>
+        <mat-label>Rechercher</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Nom de l'ingrédient" #input>
+        <button class="square-btn creerIngredient" (click)="creerIngredient()">
+            <strong>Créer un ingrédient</strong>
+        </button>
+    </div>
 
-    <!-- Nom -->
-    <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef> Nom </th>
-        <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-    </ng-container>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+        <!-- Nom -->
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par nom"> Nom </th>
+            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+        </ng-container>
 
-    <!-- Catégorie -->
-    <ng-container matColumnDef="categorie">
-        <th mat-header-cell *matHeaderCellDef> Catégorie </th>
-        <td mat-cell *matCellDef="let element"> {{element.categorie}} </td>
-    </ng-container>
+        <!-- Catégorie -->
+        <ng-container matColumnDef="categorie">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par catégorie"> Catégorie </th>
+            <td mat-cell *matCellDef="let element"> {{element.categorie.getNom()}} </td>
+        </ng-container>
 
-    <!-- Allergene -->
-    <ng-container matColumnDef="allergene">
-        <th mat-header-cell *matHeaderCellDef> Allergène </th>
-        <td mat-cell *matCellDef="let element"> {{element.allergene}} </td>
-    </ng-container>
+        <!-- Allergene -->
+        <ng-container matColumnDef="allergene">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par allergène"> Allergène </th>
+            <td mat-cell *matCellDef="let element"> {{element.allergene}} </td>
+        </ng-container>
 
-    <!-- Unité -->
-    <ng-container matColumnDef="unite">
-        <th mat-header-cell *matHeaderCellDef> Unité </th>
-        <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
-    </ng-container>
+        <!-- Unité -->
+        <ng-container matColumnDef="unite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par unité"> Unité </th>
+            <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
+        </ng-container>
 
-    <!-- Qunatité -->
-    <ng-container matColumnDef="quantite">
-        <th mat-header-cell *matHeaderCellDef> Quantité </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
-    </ng-container>
+        <!-- Qunatité -->
+        <ng-container matColumnDef="quantite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par quantité"> Quantité </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
+        </ng-container>
 
-    <!-- Coût unitaire -->
-    <ng-container matColumnDef="coutU">
-        <th mat-header-cell *matHeaderCellDef> Coût unitaire </th>
-        <td mat-cell *matCellDef="let element"> {{element.coutU}} </td>
-    </ng-container>
+        <!-- Coût unitaire -->
+        <ng-container matColumnDef="coutU">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par coût unitaire"> Coût unitaire </th>
+            <td mat-cell *matCellDef="let element"> {{element.coutU}} </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        <!-- Modifier -->
+        <ng-container matColumnDef="modifier">
+            <th mat-header-cell *matHeaderCellDef> Modifier </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="square-btn update" (click)="modifierIngredient(element.nom)">
+                    <mat-icon class="mat-18">update</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Supprimer -->
+        <ng-container matColumnDef="supprimer">
+            <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="square-btn delete" (click)="supprimerIngredient(element.nom)">
+                    <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 15]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+</div>

@@ -1,4 +1,12 @@
-table {
-    margin-top: 30px;
-    width: 100%;
+.creerIngredient {
+    margin-top: 2%;
+    margin-left: 2%;
+    padding: 0.5%;
+    background-color: white;
+    border: 3px solid #7c99ff;
+}
+.creerIngredient:hover {
+    background-color: #7c99ff;
+    border: 3px solid #7c99ff;
+    color: white;
 }
