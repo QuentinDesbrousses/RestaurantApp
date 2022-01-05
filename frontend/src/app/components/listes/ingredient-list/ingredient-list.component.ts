@@ -6,7 +6,8 @@ import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
-import {VerificationPopupComponent} from "../../verification-popup/verification-popup.component";
+import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
+
 
 
 
@@ -16,6 +17,7 @@ import {VerificationPopupComponent} from "../../verification-popup/verification-
   styleUrls: ['./ingredient-list.component.css']
 })
 export class IngredientListComponent implements AfterViewInit, OnInit{
+  //TODO Link with back
   @Input() ingredients : Ingredient[] | undefined;
   displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
   dataSource = new MatTableDataSource<Ingredient>();
@@ -80,33 +82,29 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
   //CRUD Ingredient
   creerIngredient(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation", allergenes : this.allergenes, categories : this.categories}
-    console.log(dialogConfig.data.allergenes);
-    console.log(dialogConfig.data.categories);
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("création ingrédient");
   }
   modifierIngredient(id:string){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification", allergenes : this.allergenes, categories : this.categories}
-    console.log(dialogConfig.data.allergenes);
-    console.log(dialogConfig.data.categories);
+    dialogConfig.data = {type: "modification", allergenes : this.allergenes, categories : this.categories,id:id}
     this.dialog.open(IngredientFormComponent,dialogConfig);
-    console.log(id+" modifié");
+    console.log("Ingrédient n° "+id+" modifié");
   }
   supprimerIngredient(id:string){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {id : id};
-    this.dialog.open(VerificationPopupComponent,dialogConfig);
+    dialogConfig.data = {id: id,type:"ingredient"};
+    this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("Ingrédient n° "+id+" supprimé");
   }
 }

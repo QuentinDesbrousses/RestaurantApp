@@ -1,5 +1,5 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {IngredientService} from "../../../services/ingredient.service";
+import {IngredientService} from "../../../services/ingredient/ingredient.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Ingredient} from "../../../models/ingredient";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class IngredientFormComponent {
   IngredientForm : FormGroup;
 
-  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {type: string, categories : string[],allergenes : string[] }) {
+  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
     this.IngredientForm  = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
@@ -25,14 +25,17 @@ export class IngredientFormComponent {
   }
 
   onSubmit(){
-    //creation Ingredient
+    let tmpIngredient = new Ingredient(this.IngredientForm.value);
     if(this.data.type == "creation"){
-      let tmpIngredient = new Ingredient(this.IngredientForm.value);
       this.service.createIngredient(tmpIngredient);
-      console.log("Ingredient créé : "+tmpIngredient.toJSON())
+      console.log("Ingredient créé : "+tmpIngredient)
     }
     else{
-      this.service.modifyIngredient(this.IngredientForm.value.id)
+      this.service.modifyIngredient(this.IngredientForm.value.id,tmpIngredient)
     }
+    this.dialogRef.close();
+  }
+  cancel(){
+    this.dialogRef.close();
   }
 }

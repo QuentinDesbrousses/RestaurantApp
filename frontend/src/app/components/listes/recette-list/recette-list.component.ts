@@ -6,6 +6,7 @@ import {MatSort, Sort} from "@angular/material/sort";
 import {Recette} from "../../../models/recette";
 import {MatDialog,MatDialogConfig} from "@angular/material/dialog";
 import {RecetteFormComponent} from "../../forms/recette-form/recette-form.component";
+import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 
 @Component({
   selector: 'app-recette-list',
@@ -17,6 +18,18 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
   @Input() recettes : Recette[] | undefined;
   displayedColumns = ['id','titre', 'description', 'etapes', 'categorie','nbCouvert','temps','Fiche technique','modifier','supprimer'];
   dataSource = new MatTableDataSource<Recette>();
+
+  categories = ["Entrée","Plat principal","Dessert"];
+  etapes = [
+    "Ajouter le sucre",
+    "Ajouter une pincée de sel",
+    "Monter les oeufs en neige",
+    "Faire fondre le beurre",
+    "Beurrer le moule",
+    "Faire préchauffer le four à 200°C",
+    "Laisser reposer 15 minutes",
+    "Mettre au frais pendant 6 heures"
+  ];
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
@@ -69,35 +82,34 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
 
   // CRUD Recette
   creerRecette(){
-    //TODO Link the form
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.height = "95%";
+    dialogConfig.data = {type:"creation",categories:this.categories,etapes:this.etapes}
     this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette créée")
   }
 
   modifierRecette(id:string){
-    //TODO Link the form
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.height = "95%";
+    dialogConfig.data = {type:"modification",id:id,categories:this.categories,etapes:this.etapes}
     this.dialog.open(RecetteFormComponent,dialogConfig);
     console.log("recette n°"+id+" modifiée")
   }
 
   supprimerRecette(id:string){
-    //TODO Link the controller
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "20%";
-    dialogConfig.height = "95%";
-    this.dialog.open(RecetteFormComponent,dialogConfig);
+    dialogConfig.width = "30%";
+    dialogConfig.data = {id: id, type:"recette"};
+    this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("recette n°"+id+" supprimée")
   }
 

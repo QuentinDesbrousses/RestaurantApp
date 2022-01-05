@@ -7,10 +7,10 @@ export class Allergene {
     private categorie : CategorieAllergene;
 
 
-    constructor(catAl:{id: string, nom: string, categorie : CategorieAllergene}) {
-        this.id = catAl.id;
-        this.nom = catAl.nom;
-        this.categorie = catAl.categorie;
+    constructor(allergene:{id: string, nom: string, categorie : CategorieAllergene}) {
+        this.id = allergene.id;
+        this.nom = allergene.nom;
+        this.categorie = allergene.categorie;
     }
 
     getId() : string {

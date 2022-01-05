@@ -20,7 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IngredientsComponent } from './pages/ingredients/ingredients.component';
 import { RecettesComponent } from './pages/recettes/recettes.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -31,10 +31,25 @@ import { RecetteListComponent } from './components/listes/recette-list/recette-l
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from '@angular/material/sort';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FicheTechniqueComponent } from './pages/fiche-technique/fiche-technique.component';
-import { VerificationPopupComponent } from './components/verification-popup/verification-popup.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { ConfirmationFormComponent } from './components/forms/confirmation-form/confirmation-form.component';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { AllergenesComponent } from './pages/allergenes/allergenes.component';
+import { AllergeneListComponent } from './components/listes/allergene-list/allergene-list.component';
+import { EtapeListComponent } from './components/listes/etape-list/etape-list.component';
+import { FicheListComponent } from './components/listes/fiche-list/fiche-list.component';
+import { CategorieAllergeneListComponent } from './components/listes/categorie-allergene-list/categorie-allergene-list.component';
+import { CategorieIngredientListComponent } from './components/listes/categorie-ingredient-list/categorie-ingredient-list.component';
+import { CategorieRecetteListComponent } from './components/listes/categorie-recette-list/categorie-recette-list.component';
+import { UtilisateurListComponent } from './components/listes/utilisateur-list/utilisateur-list.component';
+import { AllergeneFormComponent } from './components/forms/allergene-form/allergene-form.component';
+import { CategorieAllergeneFormComponent } from './components/forms/categorie-allergene-form/categorie-allergene-form.component';
+import { EtapeFormComponent } from './components/forms/etape-form/etape-form.component';
+import { CategorieIngredientFormComponent } from './components/forms/categorie-ingredient-form/categorie-ingredient-form.component';
+import { CategorieRecetteFormComponent } from './components/forms/categorie-recette-form/categorie-recette-form.component';
+import { FicheFormComponent } from './components/forms/fiche-form/fiche-form.component';
+import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 
 
 @NgModule({
@@ -54,7 +69,22 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     IngredientListComponent,
     RecetteListComponent,
     FicheTechniqueComponent,
-    VerificationPopupComponent
+    ConfirmationFormComponent,
+    AllergenesComponent,
+    AllergeneListComponent,
+    EtapeListComponent,
+    FicheListComponent,
+    CategorieAllergeneListComponent,
+    CategorieIngredientListComponent,
+    CategorieRecetteListComponent,
+    UtilisateurListComponent,
+    AllergeneFormComponent,
+    CategorieAllergeneFormComponent,
+    EtapeFormComponent,
+    CategorieIngredientFormComponent,
+    CategorieRecetteFormComponent,
+    FicheFormComponent,
+    UtilisateursComponent
   ],
     imports: [
         BrowserModule,
