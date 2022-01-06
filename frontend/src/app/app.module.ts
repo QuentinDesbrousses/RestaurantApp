@@ -44,12 +44,10 @@ import { CategorieIngredientListComponent } from './components/listes/categorie-
 import { CategorieRecetteListComponent } from './components/listes/categorie-recette-list/categorie-recette-list.component';
 import { UtilisateurListComponent } from './components/listes/utilisateur-list/utilisateur-list.component';
 import { AllergeneFormComponent } from './components/forms/allergene-form/allergene-form.component';
-import { CategorieAllergeneFormComponent } from './components/forms/categorie-allergene-form/categorie-allergene-form.component';
 import { EtapeFormComponent } from './components/forms/etape-form/etape-form.component';
-import { CategorieIngredientFormComponent } from './components/forms/categorie-ingredient-form/categorie-ingredient-form.component';
-import { CategorieRecetteFormComponent } from './components/forms/categorie-recette-form/categorie-recette-form.component';
 import { FicheFormComponent } from './components/forms/fiche-form/fiche-form.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
+import { CategorieFormComponent } from './components/forms/categorie-form/categorie-form.component';
 
 
 @NgModule({
@@ -79,12 +77,10 @@ import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.compone
     CategorieRecetteListComponent,
     UtilisateurListComponent,
     AllergeneFormComponent,
-    CategorieAllergeneFormComponent,
     EtapeFormComponent,
-    CategorieIngredientFormComponent,
-    CategorieRecetteFormComponent,
     FicheFormComponent,
-    UtilisateursComponent
+    UtilisateursComponent,
+    CategorieFormComponent
   ],
     imports: [
         BrowserModule,

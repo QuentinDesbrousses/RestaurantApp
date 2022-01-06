@@ -15,6 +15,13 @@ import {MatPaginator} from "@angular/material/paginator";
 })
 export class AllergeneListComponent implements OnInit,AfterViewInit {
   @Input() allergenes : Allergene[] | undefined;
+  categories = [
+      "Lactose",
+      "Fruit de mer",
+      "Fruit à coque",
+      "Gluten",
+      "Oeuf"
+  ]
   dataSource = new MatTableDataSource<Allergene>();
   displayedColumns = ['ID','nom', 'categorie','modifier','supprimer'];
 
@@ -65,7 +72,7 @@ export class AllergeneListComponent implements OnInit,AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation"}
+    dialogConfig.data = {type: "creation",categories:this.categories}
     this.dialog.open(AllergeneFormComponent,dialogConfig);
     console.log("création allergene");
   }
@@ -74,7 +81,7 @@ export class AllergeneListComponent implements OnInit,AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification",id:id}
+    dialogConfig.data = {type: "modification",categories:this.categories,id:id}
     this.dialog.open(AllergeneFormComponent,dialogConfig);
     console.log("Allergène n° "+id+" modifié");
   }

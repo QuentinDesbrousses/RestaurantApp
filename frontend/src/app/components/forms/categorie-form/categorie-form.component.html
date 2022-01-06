@@ -1,0 +1,33 @@
+<div class="form-content">
+    <h1 *ngIf="this.data.type=='creation' && this.data.element=='allergene'" class="text-center"><strong>Ajout d'une nouvelle catégorie d'allergène</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'&& this.data.element=='allergene'" class="text-center"><strong>Modification d'une catégorie d'allergène</strong></h1>
+    <h1 *ngIf="this.data.type=='creation' && this.data.element=='ingredient'" class="text-center"><strong>Ajout d'une nouvelle catégorie d'ingrédient</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'&& this.data.element=='ingredient'" class="text-center"><strong>Modification d'une catégorie d'ingrédient</strong></h1>
+    <h1 *ngIf="this.data.type=='creation' && this.data.element=='recette'" class="text-center"><strong>Ajout d'une nouvelle catégorie de recette</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'&& this.data.element=='recette'" class="text-center"><strong>Modification d'une catégorie de recette</strong></h1>
+    <div>
+        <form [formGroup]="CategorieForm" (ngSubmit)="onSubmit()">
+            <input id="id" type="hidden" formControlName="$id">
+            <div class="form-field">
+                <label *ngIf="this.data.element=='allergene'" for="nom">Nom de la catégorie d'allergène*</label>
+                <label *ngIf="this.data.element=='ingredient'" for="nom">Nom de la catégorie d'ingredient*</label>
+                <label *ngIf="this.data.element=='recette'" for="nom">Nom de la catégorie de recette*</label>
+                <input id="nom" type="text" formControlName="nom">
+            </div>
+
+            <div class="warning">
+                <p *ngIf="CategorieForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!CategorieForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" type="submit" (click)="cancel()">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+

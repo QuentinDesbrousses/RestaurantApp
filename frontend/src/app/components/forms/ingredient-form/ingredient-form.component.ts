@@ -1,8 +1,8 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {IngredientService} from "../../../services/ingredient/ingredient.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Ingredient} from "../../../models/ingredient";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {IngredientService} from "../../../services/ingredient/ingredient.service";
 
 @Component({
   selector: 'app-ingredient-form',
@@ -30,8 +30,11 @@ export class IngredientFormComponent {
       this.service.createIngredient(tmpIngredient);
       console.log("Ingredient créé : "+tmpIngredient)
     }
-    else{
+    else if(this.data.type == "modification"){
       this.service.modifyIngredient(this.IngredientForm.value.id,tmpIngredient)
+    }
+    else{
+      console.log("data.type doit être égal à creation ou modification")
     }
     this.dialogRef.close();
   }
