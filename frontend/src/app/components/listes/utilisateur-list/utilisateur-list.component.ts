@@ -1,11 +1,9 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Allergene} from "../../../models/allergene";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AllergeneFormComponent} from "../../forms/allergene-form/allergene-form.component";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {Utilisateur} from "../../../models/utilisateur";
 
@@ -17,7 +15,7 @@ import {Utilisateur} from "../../../models/utilisateur";
 export class UtilisateurListComponent implements OnInit, AfterViewInit {
   @Input() utilisateurs : Utilisateur[] | undefined;
   dataSource = new MatTableDataSource<Utilisateur>();
-  displayedColumns = ['ID','nom', 'prenom','description','email','supprimer'];
+  displayedColumns = ['ID','prenom','nom','description','email','supprimer'];
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;

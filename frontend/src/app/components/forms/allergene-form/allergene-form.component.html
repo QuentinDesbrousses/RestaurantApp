@@ -1,1 +1,34 @@
-<p>allergene-form works!</p>
+<div class="form-content">
+    <h1 *ngIf="this.data.type=='creation'" class="text-center"><strong>Ajout d'un nouvel allergène</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'un allergène</strong></h1>
+    <div>
+        <form [formGroup]="AllergeneForm" (ngSubmit)="onSubmit()">
+            <input id="id" type="hidden" formControlName="$id">
+            <div class="form-field">
+                <label for="nom">Nom de l'allergène*</label>
+                <input id="nom" type="text" formControlName="nom">
+            </div>
+
+            <div class="form-field">
+                <label for="categorie">Catégorie*</label>
+                <select id="categorie" type="text" formControlName="categorie">
+                    <option *ngFor="let cat of data.categories">{{cat}}</option>
+                </select>
+            </div>
+
+            <div class="warning">
+                <p *ngIf="AllergeneForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!AllergeneForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" type="submit" (click)="cancel()">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+

@@ -1,1 +1,58 @@
-<p>etape-form works!</p>
+<div class="form-content">
+    <h1 *ngIf="this.data.type=='creation'" class="text-center"><strong>Création d'une étape</strong></h1>
+    <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'une étape</strong></h1>
+    <div>
+        <form [formGroup]="EtapeForm" (ngSubmit)="onSubmit()">
+            <input id="id" type="hidden" formControlName="$id">
+            <div class="form-field">
+                <label for="titre">Titre*</label>
+                <input id="titre" type="text" formControlName="titre">
+            </div>
+
+            <div class="form-field">
+                <label for="description">Description*</label>
+                <input id="description" type="text" formControlName="description">
+            </div>
+
+            <div class="form-field">
+                <form [formGroup]="IngredientForm" (ngSubmit)="selectIngredient()">
+                    <label for="selectEtape">Ingrédient(s)*</label>
+                    <select id="selectEtape" type="text" formControlName="selectIngredient">
+                        <option *ngFor="let e of this.data.ingredients">{{e}}</option>
+                    </select>
+                    <button class="form-btn" type="submit">+</button>
+                </form>
+                <form [formGroup]="IngredientSelectedForm" (ngSubmit)="unselectIngredient()">
+                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let eSelected of ingredientSelected"  cdkDrag>{{eSelected}}</div>
+                    </div>
+                    <button class="form-btn button-cancel text-center" type="submit">Supprimer le dernier ingrédient</button>
+                </form>
+            </div>
+
+            <div class="form-field">
+                <label for="temps">Temps*</label>
+                <input id="temps" type="text" formControlName="temps">
+            </div>
+
+            <div class="form-field">
+                <label for="cout">Coût*</label>
+                <input id="cout" type="text" formControlName="cout">
+            </div>
+
+            <div class="warning">
+                <p *ngIf="EtapeForm.status == 'INVALID'">Vous devez remplir toutes les formalités*</p>
+            </div>
+
+            <div class="btn-toolbar">
+                <button  class="button-validate form-btn" type="submit"  [disabled]="!EtapeForm.valid">Valider</button>
+                <button  class="button-cancel form-btn" (click)="cancel()">Annuler</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+

@@ -75,7 +75,7 @@ export class ConfirmationFormComponent {
     }
 
     else{
-      console.log("La valeur du paramètre type de data n'est pas reconnue");
+      console.log("La valeur du paramètre data.type n'est pas reconnue");
     }
   }
 

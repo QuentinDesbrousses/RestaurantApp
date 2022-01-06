@@ -4,6 +4,8 @@ import {RecetteService} from "../../../services/recette/recette.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Recette} from "../../../models/recette";
+import {Etape} from "../../../models/etape";
+import {CategorieRecette} from "../../../models/categorie-recette";
 
 @Component({
   selector: 'app-recette-form',
@@ -16,8 +18,9 @@ export class RecetteFormComponent {
   EtapeSelectedForm : FormGroup;
   etapeSelected = [""];
 
-  constructor(public service : RecetteService, public dialogRef: MatDialogRef<RecetteFormComponent>, @Inject(MAT_DIALOG_DATA) public data: {type: string, categories : string[],etapes : string[], id:string }) {
+  constructor(public service : RecetteService, public dialogRef: MatDialogRef<RecetteFormComponent>, @Inject(MAT_DIALOG_DATA) public data: {type: string, categories : CategorieRecette[],etapes : Etape[], id:string }) {
     this.RecetteForm = new FormGroup({
+      //TODO Create $id field
       titre : new FormControl('',Validators.required),
       description : new FormControl('Sans description'),
       etapes : new FormControl('Ajouter une pincée de sel',Validators.required),
@@ -59,8 +62,11 @@ export class RecetteFormComponent {
       this.service.createRecette(tmpRecette);
       console.log("Ingredient créé : "+tmpRecette)
     }
-    else{
+    else if(this.data.type == "modification"){
       this.service.modifyRecette(this.RecetteForm.value.id,tmpRecette)
+    }
+    else{
+      console.log("data.type doit être égal à creation ou modification")
     }
     this.dialogRef.close();
   }

@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {CategorieAllergene} from "../../../models/categorie-allergene";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
@@ -7,7 +6,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {CategorieIngredient} from "../../../models/categorie-ingredient";
-import {CategorieIngredientFormComponent} from "../../forms/categorie-ingredient-form/categorie-ingredient-form.component";
+import {CategorieFormComponent} from "../../forms/categorie-form/categorie-form.component";
 
 @Component({
   selector: 'app-categorie-ingredient-list',
@@ -67,8 +66,8 @@ export class CategorieIngredientListComponent implements OnInit, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation"}
-    this.dialog.open(CategorieIngredientFormComponent,dialogConfig);
+    dialogConfig.data = {type: "creation",element:"ingredient"}
+    this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("création catégorie ingrédient");
   }
   modifierCategorieIngredient(id:string){
@@ -76,8 +75,8 @@ export class CategorieIngredientListComponent implements OnInit, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification",id:id}
-    this.dialog.open(CategorieIngredientFormComponent,dialogConfig);
+    dialogConfig.data = {type: "modification",element:"ingredient",id:id}
+    this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("Catégorie d'ingrédient n° "+id+" modifié");
   }
   supprimerCategorieIngredient(id:string){
