@@ -5,10 +5,9 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort, Sort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {CategorieAllergeneFormComponent} from "../../forms/categorie-allergene-form/categorie-allergene-form.component";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {CategorieRecette} from "../../../models/categorie-recette";
-import {CategorieRecetteFormComponent} from "../../forms/categorie-recette-form/categorie-recette-form.component";
+import {CategorieFormComponent} from "../../forms/categorie-form/categorie-form.component";
 
 @Component({
   selector: 'app-categorie-recette-list',
@@ -68,8 +67,8 @@ export class CategorieRecetteListComponent implements OnInit, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation"}
-    this.dialog.open(CategorieRecetteFormComponent,dialogConfig);
+    dialogConfig.data = {type: "creation",element:"ingredient"}
+    this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("création catégorie recette");
   }
   modifierCategorieRecette(id:string){
@@ -77,8 +76,8 @@ export class CategorieRecetteListComponent implements OnInit, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification",id:id}
-    this.dialog.open(CategorieRecetteFormComponent,dialogConfig);
+    dialogConfig.data = {type: "modification",element:"ingredient",id:id}
+    this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("Catégorie de recette n° "+id+" modifié");
   }
   supprimerCategorieRecette(id:string){

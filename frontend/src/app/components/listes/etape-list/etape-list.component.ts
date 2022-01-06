@@ -16,7 +16,7 @@ import {EtapeFormComponent} from "../../forms/etape-form/etape-form.component";
 })
 export class EtapeListComponent implements OnInit, AfterViewInit {
   @Input() etapes : Etape[] | undefined;
-  @Input() ingredients : Ingredient[] | undefined;
+  @Input() ingredients : string[] | undefined;
   displayedColumns = ['ID','titre', 'description','ingredients','temps', 'cout','modifier','supprimer'];
   dataSource = new MatTableDataSource<Etape>();
 
@@ -65,7 +65,7 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = "50%";
     dialogConfig.data = {type: "creation", ingredients : this.ingredients}
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("création étape");
@@ -74,7 +74,7 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = "50%";
     dialogConfig.data = {type: "modification", ingredients : this.ingredients,id:id}
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("Etape n° "+id+" modifiée");
