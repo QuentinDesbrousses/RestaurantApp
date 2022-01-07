@@ -9,17 +9,14 @@ export class Recette {
     private etapes : [Etape];
     private categorie : CategorieRecette;
     private nbCouvert : number;
-    private temps : number; //nombre de minutes
 
-
-    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: CategorieRecette, nbCouvert: number, temps: number}) {
+    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: CategorieRecette, nbCouvert: number}) {
         this.id = recette.id;
         this.titre = recette.titre;
         this.description = recette.description;
         this.etapes = recette.etapes;
         this.categorie = recette.categorie;
         this.nbCouvert = recette.nbCouvert;
-        this.temps = recette.temps;
     }
 
     getId() : string {
@@ -70,11 +67,19 @@ export class Recette {
         this.nbCouvert = nbCouvert;
     }
 
-    getTemps() : number {
-        return this.temps;
+    get Temps() : number {
+        var temps : number = 0;
+        this.etapes.forEach(i =>{
+            temps += i.getTemps()
+        });
+        return temps;
     }
 
-    setTemps(temps : number) {
-        this.temps = temps;
+    get cout() : number {
+        var cout : number = 0;
+        this.etapes.forEach(i=>{
+            cout += i.getCout();
+        });
+        return cout;
     }
 }

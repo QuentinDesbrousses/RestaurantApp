@@ -22,8 +22,7 @@ export class EtapeFormComponent {
       titre : new FormControl('',Validators.required),
       description : new FormControl('Sans description'),
       ingredients : new FormControl('Aucun',Validators.required),
-      temps : new FormControl('',Validators.required),
-      cout : new FormControl('',Validators.required)
+      temps : new FormControl('',Validators.required)
     });
     this.IngredientForm = new FormGroup({
       selectIngredient : new FormControl("",Validators.required)
@@ -54,7 +53,13 @@ export class EtapeFormComponent {
   }
 
   onSubmit(){
-    let tmpEtape = new Etape(this.EtapeForm.value);
+    let tmpEtape = new Etape({
+      id:this.EtapeForm.value.id,
+      titre:this.EtapeForm.value.titre,
+      description:this.EtapeForm.value.description,
+      ingredients:this.EtapeForm.value.ingredients,
+      temps:this.EtapeForm.value.temps
+    });
     if(this.data.type=="creation"){
       this.service.createEtape(tmpEtape);
       console.log("Ingredient créé : "+tmpEtape)
