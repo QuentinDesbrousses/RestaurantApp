@@ -8,16 +8,13 @@ export class Etape {
     private description : string;
     private ingredients : [{ingredient : Ingredient,quantite : number}];
     private temps : number;
-    private cout : number;
 
-
-    constructor(etape : {id : string, titre: string, description: string, ingredients: [{ingredient : Ingredient,quantite:number}], temps: number, cout: number}) {
+    constructor(etape : {id : string, titre: string, description: string, ingredients: [{ingredient : Ingredient,quantite:number}], temps: number}) {
         this.id = etape.id;
         this.titre = etape.titre;
         this.description = etape.description;
         this.ingredients = etape.ingredients;
         this.temps = etape.temps;
-        this.cout = etape.cout;
     }
 
     getId() : string {
@@ -61,12 +58,11 @@ export class Etape {
     }
 
     getCout() : number {
-        return this.cout;
+        var cout : number = 0
+        this.ingredients.forEach(i =>{
+            cout+=i.quantite * i.ingredient.getCoutU();
+        })
+        return cout;
     }
-
-    setCout(cout : number) {
-        this.cout = cout;
-    }
-
 
 }

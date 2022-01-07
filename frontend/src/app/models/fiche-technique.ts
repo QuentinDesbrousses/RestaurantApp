@@ -15,17 +15,14 @@ export class FicheTechnique {
 
     //Propriétés calculées
     get coutMatiere() : number {
-        var cm = 0;
-        var r = JSON.parse(JSON.stringify(this.recette))
-        var e = JSON.parse(JSON.stringify(r.etapes))
-        e.forEach((e2: { cout: number; }) => {
-            cm += e2.cout;
-        })
+        var cm = this.recette.cout;
+        //valeur absolue
         if(this.typeAssaisonnement){
-            cm*=this.assaisonnement;
-        }
-        else{
             cm+=this.assaisonnement;
+        }
+        //valeur relative
+        else{
+            cm=cm*(1+this.assaisonnement);
         }
         return cm;
     }
@@ -127,4 +124,9 @@ export class FicheTechnique {
     setTypeAssaisonnement(typeAssaisonnement : boolean){
         this.typeAssaisonnement = typeAssaisonnement;
     }
+
+    get nbCouvert() : number {
+        return this.recette.getNbCouvert()
+    }
+
 }

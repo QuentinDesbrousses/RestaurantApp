@@ -21,13 +21,18 @@ export class AllergeneFormComponent {
     })
   }
   onSubmit(){
-    let tmpAllergene = new Allergene(this.AllergeneForm.value);
+    let tmpAllergene = new Allergene({
+      id:this.AllergeneForm.value.id,
+      nom:this.AllergeneForm.value.nom,
+      categorie:new CategorieAllergene({id:"",nom:this.AllergeneForm.value.categorie})
+    });
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);
-      console.log("Allergène créé : "+tmpAllergene)
+      console.log("Allergène créé : "+tmpAllergene);
     }
     else if(this.data.type == "modification"){
       this.service.modifyAllergene(this.AllergeneForm.value.id,tmpAllergene)
+      console.log("Allergène modifié : "+tmpAllergene);
     }
     else{
       console.log("data.type doit être égal à creation ou modification")
