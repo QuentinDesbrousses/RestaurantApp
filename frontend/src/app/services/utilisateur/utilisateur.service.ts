@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Ingredient} from "../../models/ingredient";
 import {HttpClient} from "@angular/common/http";
 import {Utilisateur} from "../../models/utilisateur";
-import {ServicesConfigComponent} from "../services-config";
-import {CategorieAllergene} from "../../models/categorie-allergene";
+import {ServicesConfigComponent} from "../services-config"
 
 @Injectable({
   providedIn: 'root'
