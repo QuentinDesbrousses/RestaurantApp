@@ -1,27 +1,27 @@
 export class CategorieIngredient {
 
-    private id : string;
-    private nom : string;
+    private id_cat_ingr : number;
+    private nom_cat_ingr : string;
 
 
-    constructor(catIngr:{id: string, nom: string}) {
-        this.id = catIngr.id;
-        this.nom = catIngr.nom;
+    constructor(id_cat_ingr: number, nom_cat_ingr: string) {
+        this.id_cat_ingr = id_cat_ingr;
+        this.nom_cat_ingr = nom_cat_ingr;
     }
 
-    getId() : string {
-        return this.id
+    getId() : number {
+        return this.id_cat_ingr
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_cat_al : number){
+        this.id_cat_ingr = id_cat_al;
     }
 
     getNom() : string {
-        return this.nom;
+        return this.nom_cat_ingr;
     }
 
-    setNom(nom : string){
-        this.nom = nom;
+    setNom(nom_cat_al : string){
+        this.nom_cat_ingr = nom_cat_al;
     }
 }

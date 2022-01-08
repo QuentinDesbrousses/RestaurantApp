@@ -1,19 +1,19 @@
 export class Utilisateur {
 
-    private id : string;
+    private id_utilisateur : number;
     private nom : string;
     private prenom : string;
     private description : string;
     private email : string;
+    private mdp : string;
 
 
-    constructor(utilisateur:{id: string, nom: string, prenom: string, description: string, email: string}) {
-        this.id = utilisateur.id;
-        this.nom = utilisateur.nom;
-        this.prenom = utilisateur.prenom;
-        this.description = utilisateur.description;
-        this.email = utilisateur.email;
+    constructor(id_utilisateur: number, nom: string, prenom: string, description: string, email: string, mdp: string) {
+        this.id_utilisateur = id_utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.description = description;
+        this.email = email;
+        this.mdp = mdp;
     }
-
-
 }
