@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Allergene} from "../../models/allergene";
+import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
 
 @Injectable({
   providedIn: 'root'

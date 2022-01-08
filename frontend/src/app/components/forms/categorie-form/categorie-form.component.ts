@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {AllergeneService} from "../../../services/allergene/allergene.service";
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CategorieAllergene} from "../../../models/categorie-allergene";
 import {CategorieAllergeneService} from "../../../services/categorie-allergene/categorie-allergene.service";
@@ -7,7 +6,6 @@ import {CategorieIngredientService} from "../../../services/categorie-ingredient
 import {CategorieRecette} from "../../../models/categorie-recette";
 import {CategorieRecetteService} from "../../../services/categorie-recette/categorie-recette.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Allergene} from "../../../models/allergene";
 import {CategorieIngredient} from "../../../models/categorie-ingredient";
 
 @Component({
@@ -43,7 +41,7 @@ export class CategorieFormComponent {
         console.log("Catégorie Recette créée : "+tmpCatRecette)
       }
       else{
-        console.log("data.element doit être égal à allergene, ingredient ou recette")
+        console.log("data.type doit être égal à creation ou modification")
       }
     }
     else if(this.data.type=="modification"){
@@ -63,11 +61,11 @@ export class CategorieFormComponent {
         console.log("Catégorie Recette modifiée : "+tmpCatRecette)
       }
       else{
-        console.log("data.element doit être égal à allergene, ingredient ou recette")
+        console.log("data.type doit être égal à creation ou modification")
       }
     }
     else{
-      console.log("data.type doit être égal à creation ou modification")
+      console.log("data.element doit être égal à allergene, ingredient ou recette")
     }
     this.dialogRef.close();
   }

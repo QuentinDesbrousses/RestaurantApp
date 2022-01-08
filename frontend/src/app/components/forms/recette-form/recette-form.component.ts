@@ -25,8 +25,7 @@ export class RecetteFormComponent {
       description : new FormControl('Sans description'),
       etapes : new FormControl('Ajouter une pincée de sel',Validators.required),
       categorie : new FormControl('Entrée',Validators.required),
-      nbCouvert : new FormControl('',Validators.required),
-      temps : new FormControl('',Validators.required)
+      nbCouvert : new FormControl('',Validators.required)
     });
     this.EtapeForm = new FormGroup({
       selectEtape : new FormControl("",Validators.required)

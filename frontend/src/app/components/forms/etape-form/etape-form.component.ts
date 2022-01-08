@@ -22,8 +22,7 @@ export class EtapeFormComponent {
       titre : new FormControl('',Validators.required),
       description : new FormControl('Sans description'),
       ingredients : new FormControl('Aucun',Validators.required),
-      temps : new FormControl('',Validators.required),
-      cout : new FormControl('',Validators.required)
+      temps : new FormControl('',Validators.required)
     });
     this.IngredientForm = new FormGroup({
       selectIngredient : new FormControl("",Validators.required)
