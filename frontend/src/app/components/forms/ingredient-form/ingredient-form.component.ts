@@ -3,6 +3,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Ingredient} from "../../../models/ingredient";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IngredientService} from "../../../services/ingredient/ingredient.service";
+import { CategorieIngredientService } from 'src/app/services/categorie-ingredient/categorie-ingredient.service';
+import { CatIngr } from 'src/app/models/cat_ingr';
 
 @Component({
   selector: 'app-ingredient-form',
@@ -11,8 +13,9 @@ import {IngredientService} from "../../../services/ingredient/ingredient.service
 })
 export class IngredientFormComponent {
   IngredientForm : FormGroup;
+  categorieIngredient: CatIngr | undefined;
 
-  constructor(public service : IngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
+  constructor(public service : IngredientService, public servicecat : CategorieIngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
     this.IngredientForm  = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
@@ -24,7 +27,15 @@ export class IngredientFormComponent {
     });
   }
 
+  ngOnInit(){
+    console.log("debut on init de ingredient form")
+    this.servicecat.getCategorieIngredient("1").subscribe(
+      (data) => this.categorieIngredient = new CatIngr(data.id_cat_ingr,data.nom_cat_ingr));
+    ;
+  }
+
   onSubmit(){
+
     let tmpIngredient = new Ingredient(
         this.IngredientForm.value.id,
         this.IngredientForm.value.nom,
@@ -34,6 +45,7 @@ export class IngredientFormComponent {
         this.IngredientForm.value.coutU,
         this.IngredientForm.value.allergene
         );
+
     if(this.data.type == "creation"){
       this.service.createIngredient(tmpIngredient);
       console.log("Ingredient créé : "+tmpIngredient)
