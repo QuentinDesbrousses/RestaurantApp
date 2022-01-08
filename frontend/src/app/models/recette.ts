@@ -1,85 +1,79 @@
-import {Etape} from "./etape";
-import {CategorieRecette} from "./categorie-recette";
+import {Optional} from "@angular/core";
 
 export class Recette {
 
-    private id : string;
-    private titre : string;
-    private description : string;
-    private etapes : [Etape];
-    private categorie : CategorieRecette;
-    private nbCouvert : number;
+    private id_recette : number;
+    private titre_recette : string;
+    private description_recette : string;
+    private id_categorie : number;
+    private nb_couvert : number;
+    private temps_recette : number; //nombre de minutes
+    @Optional() private etapes_recette : Map<number,string>; //number = id, string = type (recette ou etape)
 
-    constructor(recette:{id: string, titre: string, description: string, etapes: [Etape], categorie: CategorieRecette, nbCouvert: number}) {
-        this.id = recette.id;
-        this.titre = recette.titre;
-        this.description = recette.description;
-        this.etapes = recette.etapes;
-        this.categorie = recette.categorie;
-        this.nbCouvert = recette.nbCouvert;
+
+    constructor(id_recette: number, titre_recette: string, description_recette: string, id_categorie: number, nb_couvert: number, temps_recette: number,@Optional() etapes_recette: Map<number, string>) {
+        this.id_recette = id_recette;
+        this.titre_recette = titre_recette;
+        this.description_recette = description_recette;
+        this.id_categorie = id_categorie;
+        this.nb_couvert = nb_couvert;
+        this.temps_recette = temps_recette;
+        this.etapes_recette = etapes_recette;
     }
 
-    getId() : string {
-        return this.id;
+    getId() : number {
+        return this.id_recette;
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_recette : number){
+        this.id_recette = id_recette;
     }
 
     getTitre() : string {
-        return this.titre;
+        return this.titre_recette;
     }
 
-    setTitre(titre : string) {
-        this.titre = titre;
+    setTitre(titre_recette : string) {
+        this.titre_recette = titre_recette;
     }
 
     getDescription() : string {
-        return this.description;
+        return this.description_recette;
     }
 
-    setDescription(description : string) {
-        this.description= description;
+    setDescription(description_recette : string) {
+        this.description_recette = description_recette;
     }
 
-    getEtapes() : [Etape] {
-        return this.etapes;
+    getEtapes() : Map<number,string> {
+        return this.etapes_recette;
     }
 
-    setEtapes(etapes : [Etape]) {
-        this.etapes = etapes;
+    setEtapes(etapes_recette : Map<number,string>) {
+        this.etapes_recette = etapes_recette;
     }
 
-    getCategorie() : CategorieRecette {
-        return this.categorie;
+    getCategorie() : number {
+        return this.id_categorie;
     }
 
-    setCategorie(categorie : CategorieRecette) {
-        this.categorie = categorie;
+    setCategorie(id_categorie : number) {
+        this.id_categorie = id_categorie;
     }
 
     getNbCouvert() : number {
-        return this.nbCouvert;
+        return this.nb_couvert;
     }
 
-    setNbCouvert(nbCouvert : number) {
-        this.nbCouvert = nbCouvert;
+    setNbCouvert(nb_couvert : number) {
+        this.nb_couvert = nb_couvert;
     }
 
-    get Temps() : number {
-        var temps : number = 0;
-        this.etapes.forEach(i =>{
-            temps += i.getTemps()
-        });
-        return temps;
+    getTemps() : number {
+        return this.temps_recette;
     }
 
-    get cout() : number {
-        var cout : number = 0;
-        this.etapes.forEach(i=>{
-            cout += i.getCout();
-        });
-        return cout;
+    setTemps(temps_recette : number) {
+        this.temps_recette = temps_recette;
     }
 }

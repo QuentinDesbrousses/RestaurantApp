@@ -53,13 +53,13 @@ export class EtapeFormComponent {
   }
 
   onSubmit(){
-    let tmpEtape = new Etape({
-      id:this.EtapeForm.value.id,
-      titre:this.EtapeForm.value.titre,
-      description:this.EtapeForm.value.description,
-      ingredients:this.EtapeForm.value.ingredients,
-      temps:this.EtapeForm.value.temps
-    });
+    let tmpEtape = new Etape(this.EtapeForm.value.id,
+        this.EtapeForm.value.titre,
+        this.EtapeForm.value.description,
+        this.EtapeForm.value.temps,
+        this.EtapeForm.value.cout,
+        this.EtapeForm.value.ingredients
+    );
     if(this.data.type=="creation"){
       this.service.createEtape(tmpEtape);
       console.log("Ingredient créé : "+tmpEtape)

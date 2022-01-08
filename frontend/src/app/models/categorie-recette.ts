@@ -1,26 +1,26 @@
 export class CategorieRecette {
-    private id : string;
-    private nom : string;
+    private id_categorie : number;
+    private nom_categorie : string;
 
 
-    constructor(catIngr:{id: string, nom: string}) {
-        this.id = catIngr.id;
-        this.nom = catIngr.nom;
+    constructor(id_categorie: number, nom_categorie: string) {
+        this.id_categorie = id_categorie;
+        this.nom_categorie = nom_categorie;
     }
 
-    getId() : string {
-        return this.id
+    getId() : number {
+        return this.id_categorie
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_categorie : number){
+        this.id_categorie = id_categorie;
     }
 
     getNom() : string {
-        return this.nom;
+        return this.nom_categorie;
     }
 
-    setNom(nom : string){
-        this.nom = nom;
+    setNom(nom_categorie : string){
+        this.nom_categorie = nom_categorie;
     }
 }

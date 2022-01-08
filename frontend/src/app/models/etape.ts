@@ -1,68 +1,69 @@
-import {Ingredient} from "./ingredient";
 
 export class Etape {
-    private static count : number = 0;
 
-    private id : string;
-    private titre : string;
-    private description : string;
-    private ingredients : [{ingredient : Ingredient,quantite : number}];
-    private temps : number;
+    private id_etape : number;
+    private titre_etape : string;
+    private description_etape : string;
+    private temps_etape : number;
+    private cout_etape : number;
+    private ingredients_etape : number[];
 
-    constructor(etape : {id : string, titre: string, description: string, ingredients: [{ingredient : Ingredient,quantite:number}], temps: number}) {
-        this.id = etape.id;
-        this.titre = etape.titre;
-        this.description = etape.description;
-        this.ingredients = etape.ingredients;
-        this.temps = etape.temps;
+
+    constructor(id_etape: number, titre_etape: string, description_etape: string, temps_etape: number, cout_etape: number, ingredients_etape: number[]) {
+        this.id_etape = id_etape;
+        this.titre_etape = titre_etape;
+        this.description_etape = description_etape;
+        this.temps_etape = temps_etape;
+        this.cout_etape = cout_etape;
+        this.ingredients_etape = ingredients_etape;
     }
 
-    getId() : string {
-        return this.id;
+    getId() : number {
+        return this.id_etape;
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_etape : number){
+        this.id_etape = id_etape;
     }
 
     getTitre() : string {
-        return this.titre;
+        return this.titre_etape;
     }
 
-    setTitre(titre : string) {
-        this.titre = titre;
+    setTitre(titre_etape : string) {
+        this.titre_etape = titre_etape;
     }
 
     getDescritpion() : string {
-        return this.description;
+        return this.description_etape;
     }
 
-    setDescription(description : string) {
-        this.description = description;
+    setDescription(description_etape : string) {
+        this.description_etape = description_etape;
     }
 
-    getIngredients() : [{ingredient : Ingredient,quantite:number}] {
-        return this.ingredients;
+    getIngredients() : number[] {
+        return this.ingredients_etape;
     }
 
-    setIngredients(ingredients : [{ingredient : Ingredient,quantite:number}]) {
-        this.ingredients = ingredients;
+    setIngredients(ingredients_etape : number[]) {
+        this.ingredients_etape = ingredients_etape;
     }
 
     getTemps() : number {
-        return this.temps;
+        return this.temps_etape;
     }
 
-    setTemps(temps : number) {
-        this.temps = temps;
+    setTemps(temps_etape : number) {
+        this.temps_etape = temps_etape;
     }
 
     getCout() : number {
-        var cout : number = 0
-        this.ingredients.forEach(i =>{
-            cout+=i.quantite * i.ingredient.getCoutU();
-        })
-        return cout;
+        return this.cout_etape;
+    }
+
+    setCout(cout_etape : number) {
+        this.cout_etape = cout_etape;
     }
 
 }

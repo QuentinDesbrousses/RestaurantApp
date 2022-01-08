@@ -1,57 +1,55 @@
-import {CategorieAllergene} from "./categorie-allergene";
-import {CategorieIngredient} from "./categorie-ingredient";
 
 export class Ingredient {
 
-    private id : string;
-    private nom : string;
-    private categorie : CategorieIngredient;
-    private allergene : string;
+    private id_ingredient : number;
+    private nom_ingredient : string;
+    private id_cat_ingr : number;
     private unite : string;
     private quantite : number;
-    private coutU : number;
+    private cout_unitaire : number;
+    private id_allergene : number;
 
-    constructor(ingredient:{id:string,nom:string,categorie:CategorieIngredient,allergene:string,unite:string,quantite:number,coutU:number}) {
-        this.id = ingredient.id;
-        this.nom = ingredient.nom;
-        this.categorie = ingredient.categorie;
-        this.allergene = ingredient.allergene;
-        this.unite = ingredient.unite;
-        this.quantite = ingredient.quantite;
-        this.coutU = ingredient.coutU;
+
+    constructor(id_ingredient: number, nom_ingredient: string, id_cat_ingr: number, unite: string, quantite: number, cout_unitaire: number, id_allergene: number) {
+        this.id_ingredient = id_ingredient;
+        this.nom_ingredient = nom_ingredient;
+        this.id_cat_ingr = id_cat_ingr;
+        this.unite = unite;
+        this.quantite = quantite;
+        this.cout_unitaire = cout_unitaire;
+        this.id_allergene = id_allergene;
     }
 
-
-    getId(): string {
-        return this.id;
+    getId(): number {
+        return this.id_ingredient;
     }
 
-    setId(id: string) {
-        this.id = id;
+    setId(id_ingredient: number) {
+        this.id_ingredient = id_ingredient;
     }
 
     getNom(): string {
-        return this.nom;
+        return this.nom_ingredient;
     }
 
-    setNom(nom: string) {
-        this.nom = nom;
+    setNom(nom_ingredient: string) {
+        this.nom_ingredient = nom_ingredient;
     }
 
-    getCategorie(): CategorieIngredient {
-        return this.categorie;
+    getCategorie(): number {
+        return this.id_cat_ingr;
     }
 
-    setCategorie(categorie: CategorieIngredient) {
-        this.categorie = categorie;
+    setCategorie(id_cat_ingr: number) {
+        this.id_cat_ingr = id_cat_ingr;
     }
 
-    getAllergene(): string {
-        return this.allergene;
+    getAllergene(): number {
+        return this.id_allergene;
     }
 
-    setAllergene(allergene: string) {
-        this.allergene = allergene;
+    setAllergene(id_allergene: number) {
+        this.id_allergene = id_allergene;
     }
 
     getUnite(): string {
@@ -71,14 +69,10 @@ export class Ingredient {
     }
 
     getCoutU(): number {
-        return this.coutU;
+        return this.cout_unitaire;
     }
 
-    setCoutU(coutU: number) {
-        this.coutU = coutU;
-    }
-
-    toJSON(){
-        return {nom:this.getNom(),categorie:this.getCategorie(),allergene:this.getAllergene(),unite:this.getUnite(),quantite:this.getQuantite(),coutU:this.getCoutU()}
+    setCoutU(cout_unitaire: number) {
+        this.cout_unitaire = cout_unitaire;
     }
 }
