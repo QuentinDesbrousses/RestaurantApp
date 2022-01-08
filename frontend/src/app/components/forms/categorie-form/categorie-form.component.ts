@@ -28,8 +28,7 @@ export class CategorieFormComponent implements  OnInit{
     if(this.data.type == "modification"){
       console.log("debut on init de catégorie form")
       if(this.data.element == "ingredient"){
-        this.catIngredientService.getCategorieIngredient(this.data.id).subscribe(
-            (data) => this.currentCategorie = new CategorieIngredient(data.getId(),data.getNom()));
+        this.currentCategorie = this.catIngredientService.getCategorieIngredient(this.data.id);
       }
       else if(this.data.element == "allergene"){
         this.currentCategorie = this.catAllergeneService.getCategorieAllergene(this.data.id);

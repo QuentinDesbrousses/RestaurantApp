@@ -23,7 +23,10 @@ export class CategorieIngredientService {
   }
 
   getCategorieIngredient(id : number){
-    return this.http.get<CategorieIngredient>("http://localhost:3000/cat_ingredient/"+id);
+        var res : CategorieIngredient | undefined;
+      let req = this.http.get<any>("http://localhost:3000/cat_ingredient/"+id).subscribe(
+          (data) => res = new CategorieIngredient(data.id_cat_ingr,data.nom_cat_ingr));
+    return res;
   }
 
   createCategorieIngredient(categorieIngredient : CategorieIngredient){

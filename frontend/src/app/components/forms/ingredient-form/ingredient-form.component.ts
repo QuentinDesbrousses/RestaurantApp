@@ -4,7 +4,8 @@ import {Ingredient} from "../../../models/ingredient";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IngredientService} from "../../../services/ingredient/ingredient.service";
 import { CategorieIngredientService } from 'src/app/services/categorie-ingredient/categorie-ingredient.service';
-import { CatIngr } from 'src/app/models/cat_ingr';
+import {CategorieIngredient} from "../../../models/categorie-ingredient";
+
 
 @Component({
   selector: 'app-ingredient-form',
@@ -13,7 +14,7 @@ import { CatIngr } from 'src/app/models/cat_ingr';
 })
 export class IngredientFormComponent {
   IngredientForm : FormGroup;
-  categorieIngredient: CatIngr | undefined;
+  categorieIngredient: CategorieIngredient | undefined;
 
   constructor(public service : IngredientService, public servicecat : CategorieIngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
     this.IngredientForm  = new FormGroup({
@@ -28,10 +29,6 @@ export class IngredientFormComponent {
   }
 
   ngOnInit(){
-    console.log("debut on init de ingredient form")
-    this.servicecat.getCategorieIngredient("1").subscribe(
-      (data) => this.categorieIngredient = new CatIngr(data.id_cat_ingr,data.nom_cat_ingr));
-    ;
   }
 
   onSubmit(){
