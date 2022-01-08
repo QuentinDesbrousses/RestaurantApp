@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Recette} from "../../models/recette";
+import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
   providedIn: 'root'
@@ -11,22 +12,22 @@ export class RecetteService {
   }
 
   getAllRecettes(){
-    return this.http.get<Recette>("http://localhost:3000/recette/");
+    return this.http.get<Recette>(ServicesConfigComponent.url+"recette/");
   }
 
-  getRecette(id : string){
-    return this.http.get<Recette>("http://localhost:3000/recette/:"+id);
+  getRecette(id : number){
+    return this.http.get<Recette>(ServicesConfigComponent.url+"recette/"+id);
   }
 
   createRecette(recette : Recette){
-    return this.http.post<Recette>("http://localhost:3000/recette/",recette);
+    return this.http.post<Recette>(ServicesConfigComponent.url+"recette/",recette);
   }
 
-  modifyRecette(id : string,recette : Recette){
-    return this.http.put<Recette>("http://localhost:3000/recette/:"+id,recette);
+  modifyRecette(id : number,recette : Recette){
+    return this.http.put<Recette>(ServicesConfigComponent.url+"recette/"+id,recette);
   }
 
-  deleteRecette(id : string){
-    return this.http.delete<Recette>("http://localhost:3000/recette/:"+id);
+  deleteRecette(id : number){
+    return this.http.delete<Recette>(ServicesConfigComponent.url+"recette/"+id);
   }
 }

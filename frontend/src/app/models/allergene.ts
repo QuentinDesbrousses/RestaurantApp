@@ -1,39 +1,37 @@
-import {CategorieAllergene} from "./categorie-allergene";
-
 export class Allergene {
 
-    private id : string;
-    private nom : string;
-    private categorie : CategorieAllergene;
+    private id_allergene : number;
+    private nom_allergene : string;
+    private id_cat_al : number;
 
 
-    constructor(allergene:{id: string, nom: string, categorie : CategorieAllergene}) {
-        this.id = allergene.id;
-        this.nom = allergene.nom;
-        this.categorie = allergene.categorie;
+    constructor(id_allergene: number, nom_allergene: string, id_cat_al: number) {
+        this.id_allergene = id_allergene;
+        this.nom_allergene = nom_allergene;
+        this.id_cat_al = id_cat_al;
     }
 
-    getId() : string {
-        return this.id
+    getId() : number {
+        return this.id_allergene
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_allergene : number){
+        this.id_allergene = id_allergene;
     }
 
     getNom() : string {
-        return this.nom;
+        return this.nom_allergene;
     }
 
-    setNom(nom : string){
-        this.nom = nom;
+    setNom(nom_allergene : string){
+        this.nom_allergene = nom_allergene;
     }
 
-    getCategorie() : CategorieAllergene {
-        return this.categorie;
+    getCategorieId() : number {
+        return this.id_cat_al;
     }
 
-    setCateggorie(categorie : CategorieAllergene){
-        this.categorie = categorie;
+    setCateggorie(id_cat_al : number){
+        this.id_cat_al = id_cat_al;
     }
 }

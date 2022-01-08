@@ -7,6 +7,7 @@ import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
+import {IngredientService} from "../../../services/ingredient/ingredient.service";
 
 
 
@@ -16,11 +17,10 @@ import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmat
   templateUrl: './ingredient-list.component.html',
   styleUrls: ['./ingredient-list.component.css']
 })
-export class IngredientListComponent implements AfterViewInit, OnInit{
-  //TODO Link with back
-  @Input() ingredients : Ingredient[] | undefined;
-  displayedColumns = ['nom', 'categorie', 'allergene', 'unite','quantite','coutU','modifier','supprimer'];
-  dataSource = new MatTableDataSource<Ingredient>();
+export class IngredientListComponent implements OnInit,AfterViewInit{
+  ingredients : Ingredient[] = [];
+  displayedColumns = ['ID','NOM', 'CATEGORIE', 'ALLERGENE', 'UNITE','QUANTITE','COUT UNITAIRE','Modifier','Supprimer'];
+
   categories = ['Légume','Fruit','Fromage','Céréale','Crudité'];
   allergenes = ['Aucun',
     'Arachide',
@@ -39,45 +39,18 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     'Sulfites'
   ];
 
-  @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : IngredientService) {}
 
   ngOnInit() {
-    if(this.ingredients){
-      this.dataSource = new MatTableDataSource<Ingredient>(this.ingredients);
-    }
+    this.ingredients = this.service.getAllIngredients();
+    console.log("ingredients: "+this.ingredients)
   }
+
   ngAfterViewInit() {
-    if (this.paginator){
-      this.dataSource.paginator = this.paginator;
-    }
-    if(this.sort){
-      this.dataSource.sort = this.sort;
-    }
+    this.ingredients = this.service.getAllIngredients();
+    console.log("ingredients: "+this.ingredients)
   }
 
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
 
   //CRUD Ingredient
   creerIngredient(){
@@ -89,7 +62,8 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("création ingrédient");
   }
-  modifierIngredient(id:string){
+
+  modifierIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -98,7 +72,8 @@ export class IngredientListComponent implements AfterViewInit, OnInit{
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("Ingrédient n° "+id+" modifié");
   }
-  supprimerIngredient(id:string){
+
+  supprimerIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;

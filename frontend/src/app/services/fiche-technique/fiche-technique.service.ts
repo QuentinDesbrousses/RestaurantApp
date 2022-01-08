@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FicheTechnique} from "../../models/fiche-technique";
+import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,22 @@ export class FicheTechniqueService {
   constructor(private http : HttpClient) { }
 
   getAllFiche(){
-    return this.http.get<FicheTechnique>("http://localhost:3000/fiche/");
+    return this.http.get<FicheTechnique>(ServicesConfigComponent.url+"fiche/");
   }
 
-  getFiche(id : string){
-    return this.http.get<FicheTechnique>("http://localhost:3000/fiche/:"+id);
+  getFiche(id : number){
+    return this.http.get<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id);
   }
 
   createFiche(fiche : FicheTechnique){
-    return this.http.post<FicheTechnique>("http://localhost:3000/fiche/",fiche);
+    return this.http.post<FicheTechnique>(ServicesConfigComponent.url+"fiche/",fiche);
   }
 
-  modifyFiche(id : string,fiche : FicheTechnique){
-    return this.http.put<FicheTechnique>("http://localhost:3000/fiche/:"+id,fiche);
+  modifyFiche(id : number,fiche : FicheTechnique){
+    return this.http.put<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id,fiche);
   }
 
-  deleteFiche(id : string){
-    return this.http.delete<FicheTechnique>("http://localhost:3000/fiche/:"+id);
+  deleteFiche(id : number){
+    return this.http.delete<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id);
   }
 }

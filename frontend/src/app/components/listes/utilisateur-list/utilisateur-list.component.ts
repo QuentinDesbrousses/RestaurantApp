@@ -6,6 +6,7 @@ import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {Utilisateur} from "../../../models/utilisateur";
+import {UtilisateurService} from "../../../services/utilisateur/utilisateur.service";
 
 @Component({
   selector: 'app-utilisateur-list',
@@ -20,45 +21,19 @@ export class UtilisateurListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog,private service : UtilisateurService) { }
 
   ngOnInit(): void {
-    if(this.utilisateurs){
-      this.dataSource = new MatTableDataSource<Utilisateur>(this.utilisateurs);
-    }
+    this.utilisateurs = this.service.getAllUtilisateur();
+    console.log("categories_allergene: "+this.utilisateurs)
   }
 
-  ngAfterViewInit() {
-    if (this.paginator){
-      this.dataSource.paginator = this.paginator;
-    }
-    if(this.sort){
-      this.dataSource.sort = this.sort;
-    }
+  ngAfterViewInit(): void {
+    this.utilisateurs = this.service.getAllUtilisateur();
+    console.log("categories_allergene: "+this.utilisateurs)
   }
 
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-  supprimerUtilisateur(id:string){
+  supprimerUtilisateur(id:number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;

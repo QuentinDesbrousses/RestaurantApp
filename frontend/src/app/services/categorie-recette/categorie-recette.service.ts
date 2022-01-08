@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CategorieRecette} from "../../models/categorie-recette";
+import {CategorieAllergene} from "../../models/categorie-allergene";
+import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +12,30 @@ export class CategorieRecetteService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieRecette(){
-    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/");
+    var res : CategorieRecette[] = [];
+    let req = this.http.get<any[]>(ServicesConfigComponent.url+"categorie/").subscribe(
+        data => {
+          data.forEach(e =>{
+            res.push(new CategorieRecette(e.id_categorie,e.nom_categorie));
+          })},
+        error => {console.log("error : "+error)});
+    console.log("res : "+res)
+    return res
   }
 
-  getCategorieRecette(id : string){
-    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/:"+id);
+  getCategorieRecette(id : number){
+    return this.http.get<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
   }
 
   createCategorieRecette(categorieRecette : CategorieRecette){
-    return this.http.post<CategorieRecette>("http://localhost:3000/categorie/",categorieRecette);
+    return this.http.post<CategorieRecette>(ServicesConfigComponent.url+"categorie/",categorieRecette);
   }
 
-  modifyCategorieRecette(id : string,categorieRecette : CategorieRecette){
-    return this.http.put<CategorieRecette>("http://localhost:3000/categorie/:"+id,categorieRecette);
+  modifyCategorieRecette(id : number,categorieRecette : CategorieRecette){
+    return this.http.put<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id,categorieRecette);
   }
 
-  deleteCategorieRecette(id : string){
-    return this.http.delete<CategorieRecette>("http://localhost:3000/categorie/:"+id);
+  deleteCategorieRecette(id : number){
+    return this.http.delete<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
   }
 }

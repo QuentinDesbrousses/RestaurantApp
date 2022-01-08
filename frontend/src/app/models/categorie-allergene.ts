@@ -1,28 +1,28 @@
 export class CategorieAllergene {
 
-    private id : string;
-    private nom : string;
+    private id_cat_al : number;
+    private nom_cat_al : string;
 
 
-    constructor(catAl:{id: string, nom: string}) {
-        this.id = catAl.id;
-        this.nom = catAl.nom;
+    constructor(id_cat_al: number, nom_cat_al: string) {
+        this.id_cat_al = id_cat_al;
+        this.nom_cat_al = nom_cat_al;
     }
 
-    getId() : string {
-        return this.id
+    getId() : number {
+        return this.id_cat_al
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_cat_al : number){
+        this.id_cat_al = id_cat_al;
     }
 
     getNom() : string {
-        return this.nom;
+        return this.nom_cat_al;
     }
 
-    setNom(nom : string){
-        this.nom = nom;
+    setNom(nom_cat_al : string){
+        this.nom_cat_al = nom_cat_al;
     }
 
 }
