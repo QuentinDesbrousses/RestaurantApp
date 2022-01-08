@@ -11,4 +11,5 @@ router.put('/:id', allergeneContr.modifyAllergene);
 router.delete('/:id', allergeneContr.deleteById);
 router.delete('/', allergeneContr.deleteAllergene);
 
+
 module.exports = router;

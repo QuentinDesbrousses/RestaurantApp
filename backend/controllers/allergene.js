@@ -27,6 +27,7 @@ exports.getAllAllergene = (req, res, next) => {
 
     exports.createAllergene = (req, res, next) =>{
         const allergene = new Allergene.Allergene();
+        console.log(req.body);
         var valuesToSave = [req.body];
         allergene.addValue(valuesToSave)
         .then(()=> res.status(201).json({message:"allergene créée"}))

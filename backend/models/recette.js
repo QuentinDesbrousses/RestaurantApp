@@ -8,11 +8,45 @@ exports.Recette = class Recette extends model.Model{
   }
 
   selectById(id){
-      return super.selectById(this.table,id,this.tableId);
+    return new Promise((resolve,reject)=>{
+        var request = "select * from "+this.table+" natural join categorie where "+this.tableId+" = "+id+";";
+
+        const query = {
+            name:"selectbyid",
+            text:request,
+            values:[]
+        }
+
+        this.user.query(query,function(err,res){
+            if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                reject(err.stack)
+            } 
+            else{
+                resolve(res.rows[0]);
+            }
+        })
+    });
   }
 
   selectAll(){
-      return super.selectAll(this.table);
+    return new Promise((resolve,reject)=>{
+        var request = "select * from "+this.table+" natural join categorie;";
+
+        const query = {
+            name:"selectAll",
+            text:request,
+            values:[]
+        }
+
+        this.user.query(query,function(err,res){
+            if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                reject(err.stack)
+            } 
+            else{
+                resolve(res.rows);
+            }
+        })
+    });
   }
 
   addValue(valuesToSave){

@@ -27,7 +27,11 @@ exports.getAllCat_Allergene = (req, res, next) => {
 
     exports.createCat_Allergene = (req, res, next) =>{
         const cat_allergene = new Cat_Allergene.categorie_allergene();
-        var valuesToSave = [req.body];
+        var cat_al = {
+            nom_cat_al:req.body.nom_cat_al
+        }
+        console.log(cat_al);
+        var valuesToSave = [cat_al];
         cat_allergene.addValue(valuesToSave)
         .then(()=> res.status(201).json({message:"categorie créée"}))
         .catch((err) => res.status(400).json({error:err}));
@@ -50,7 +54,10 @@ exports.getAllCat_Allergene = (req, res, next) => {
 
     exports.modifyCat_Allergene = (req,res,next)=>{
         const cat_allergene = new Cat_Allergene.categorie_allergene();
-        var changements = [req.body];
+        var cat_al = {
+            nom_cat_al:req.body.nom_cat_al
+        }
+        var changements = [cat_al];
         cat_allergene.modify(req.params.id,changements)
         .then(()=> res.status(200).json({message:"categorie d'allergene modifiée"}))
         .catch((err) => res.status(400).json({error:err}));

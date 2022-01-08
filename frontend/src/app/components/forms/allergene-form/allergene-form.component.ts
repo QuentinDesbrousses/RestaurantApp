@@ -4,6 +4,7 @@ import {AllergeneService} from "../../../services/allergene/allergene.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Allergene} from "../../../models/allergene";
 import {CategorieAllergene} from "../../../models/categorie-allergene";
+import { CategorieAllergeneService } from 'src/app/services/categorie-allergene/categorie-allergene.service';
 
 @Component({
   selector: 'app-allergene-form',
@@ -13,7 +14,7 @@ import {CategorieAllergene} from "../../../models/categorie-allergene";
 export class AllergeneFormComponent {
   AllergeneForm : FormGroup;
 
-  constructor(public service : AllergeneService, public dialogRef: MatDialogRef<AllergeneFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string,categories:CategorieAllergene[]}) {
+  constructor(public service : AllergeneService,public sca : CategorieAllergeneService, public dialogRef: MatDialogRef<AllergeneFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string,categories:CategorieAllergene[]}) {
     this.AllergeneForm = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
@@ -21,6 +22,9 @@ export class AllergeneFormComponent {
     })
   }
   onSubmit(){
+    console.log("c'est id"+this.data.id);
+    const nb : number = this.data.id;
+    this.sca.deleteCategorieAllergene(nb);
     let tmpAllergene = new Allergene(this.AllergeneForm.value.id,this.AllergeneForm.value.nom,this.AllergeneForm.value.categorie);
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);

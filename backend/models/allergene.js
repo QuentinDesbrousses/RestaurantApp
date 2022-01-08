@@ -8,12 +8,47 @@ exports.Allergene = class Allergene extends model.Model{
   }
 
   selectById(id){
-      return super.selectById(this.table,id,this.tableId);
+    return new Promise((resolve,reject)=>{
+        var request = "select * from "+this.table+" natural join categorie_allergene where "+this.tableId+" = "+id+";";
+
+        const query = {
+            name:"selectbyid",
+            text:request,
+            values:[]
+        }
+
+        this.user.query(query,function(err,res){
+            if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                reject(err.stack)
+            } 
+            else{
+                resolve(res.rows[0]);
+            }
+        })
+    });
   }
 
   selectAll(){
-      return super.selectAll(this.table);
+    return new Promise((resolve,reject)=>{
+        var request = "select * from "+this.table+" natural join categorie_allergene;";
+
+        const query = {
+            name:"selectAll",
+            text:request,
+            values:[]
+        }
+
+        this.user.query(query,function(err,res){
+            if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                reject(err.stack)
+            } 
+            else{
+                resolve(res.rows);
+            }
+        })
+    });
   }
+ 
 
   addValue(valuesToSave){
       return super.addValue(this.table, valuesToSave);

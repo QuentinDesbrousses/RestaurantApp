@@ -30,6 +30,7 @@ exports.Model = class Model{
         });
     }
 
+
     /*selectionner une table entière*/
     selectAll(tableName){
         return new Promise((resolve,reject)=>{

@@ -41,7 +41,7 @@ export class CategorieRecetteListComponent implements OnInit,AfterViewInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation",element:"ingredient"}
+    dialogConfig.data = {type: "creation",element:"recette"}
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("création catégorie recette");
   }
@@ -51,7 +51,7 @@ export class CategorieRecetteListComponent implements OnInit,AfterViewInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification",element:"ingredient",id:id}
+    dialogConfig.data = {type: "modification",element:"recette",id:id}
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("Catégorie de recette n° "+id+" modifié");
   }
