@@ -14,7 +14,7 @@ export class UtilisateurService {
     return this.http.get<Utilisateur>("http://localhost:3000/utilisateur/");
   }
 
-  getUtilisateur(id : string){
+  getUtilisateur(id : number){
     return this.http.get<Utilisateur>("http://localhost:3000/utilisateur/:"+id);
   }
 
@@ -22,11 +22,11 @@ export class UtilisateurService {
     return this.http.post<Utilisateur>("http://localhost:3000/utilisateur/",utilisateur);
   }
 
-  modifyUtilisateur(id : string,utilisateur : Utilisateur){
+  modifyUtilisateur(id : number,utilisateur : Utilisateur){
     return this.http.put<Utilisateur>("http://localhost:3000/utilisateur/:"+id,utilisateur);
   }
 
-  deleteUtilisateur(id : string){
+  deleteUtilisateur(id : number){
     return this.http.delete<Utilisateur>("http://localhost:3000/utilisateur/:"+id);
   }
 }

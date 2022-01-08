@@ -7,6 +7,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {CategorieAllergene} from "../../../models/categorie-allergene";
 import {CategorieFormComponent} from "../../forms/categorie-form/categorie-form.component";
+import {CategorieAllergeneService} from "../../../services/categorie-allergene/categorie-allergene.service";
 
 @Component({
   selector: 'app-categorie-allergene-list',
@@ -15,16 +16,23 @@ import {CategorieFormComponent} from "../../forms/categorie-form/categorie-form.
 })
 export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
 
-  @Input() categories_allergene : CategorieAllergene[] | undefined;
+  @Input() categories_allergene! : CategorieAllergene[];
   dataSource = new MatTableDataSource<CategorieAllergene>();
   displayedColumns = ['ID','nom','modifier','supprimer'];
 
   @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : CategorieAllergeneService) { }
 
   ngOnInit(): void {
+    console.log(this.service.getAllCategorieAllergene())
+    /*this.service.getAllCategorieAllergene().subscribe(
+        (data => {
+          console.log(data)
+          data.forEach(e => {this.categories_allergene.push(new CategorieAllergene(e.id_cat_al,e.nom_cat_al))})
+        }));*/
+    console.log(this.categories_allergene)
     if(this.categories_allergene){
       this.dataSource = new MatTableDataSource<CategorieAllergene>(this.categories_allergene);
     }

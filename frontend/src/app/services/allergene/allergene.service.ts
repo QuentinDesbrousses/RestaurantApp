@@ -14,7 +14,7 @@ export class AllergeneService {
     return this.http.get<Allergene>("http://localhost:3000/allergene/");
   }
 
-  getAllergene(id : string){
+  getAllergene(id : number){
     return this.http.get<Allergene>("http://localhost:3000/allergene/:"+id);
   }
 
@@ -22,11 +22,11 @@ export class AllergeneService {
     return this.http.post<Allergene>("http://localhost:3000/allergene/",allergene);
   }
 
-  modifyAllergene(id : string,allergene : Allergene){
+  modifyAllergene(id : number,allergene : Allergene){
     return this.http.put<Allergene>("http://localhost:3000/allergene/:"+id,allergene);
   }
 
-  deleteAllergene(id : string){
+  deleteAllergene(id : number){
     return this.http.delete<Allergene>("http://localhost:3000/allergene/:"+id);
   }
 }

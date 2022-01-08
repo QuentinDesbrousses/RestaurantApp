@@ -13,19 +13,19 @@ export class CategorieRecetteService {
     return this.http.get<CategorieRecette>("http://localhost:3000/categorie/");
   }
 
-  getCategorieRecette(id : string){
-    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/:"+id);
+  getCategorieRecette(id : number){
+    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/"+id);
   }
 
   createCategorieRecette(categorieRecette : CategorieRecette){
     return this.http.post<CategorieRecette>("http://localhost:3000/categorie/",categorieRecette);
   }
 
-  modifyCategorieRecette(id : string,categorieRecette : CategorieRecette){
-    return this.http.put<CategorieRecette>("http://localhost:3000/categorie/:"+id,categorieRecette);
+  modifyCategorieRecette(id : number,categorieRecette : CategorieRecette){
+    return this.http.put<CategorieRecette>("http://localhost:3000/categorie/"+id,categorieRecette);
   }
 
-  deleteCategorieRecette(id : string){
-    return this.http.delete<CategorieRecette>("http://localhost:3000/categorie/:"+id);
+  deleteCategorieRecette(id : number){
+    return this.http.delete<CategorieRecette>("http://localhost:3000/categorie/"+id);
   }
 }
