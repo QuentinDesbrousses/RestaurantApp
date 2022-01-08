@@ -13,7 +13,7 @@ export class IngredientService {
     return this.http.get<Ingredient>("http://localhost:3000/ingredient/");
   }
 
-  getIngredient(id : string){
+  getIngredient(id : number){
     return this.http.get<Ingredient>("http://localhost:3000/ingredient/:"+id);
   }
 
@@ -21,11 +21,11 @@ export class IngredientService {
     return this.http.post<Ingredient>("http://localhost:3000/ingredient/",ingredient);
   }
 
-  modifyIngredient(id : string,ingredient : Ingredient){
+  modifyIngredient(id : number,ingredient : Ingredient){
     return this.http.put<Ingredient>("http://localhost:3000/ingredient/:"+id,ingredient);
   }
 
-  deleteIngredient(id : string){
+  deleteIngredient(id : number){
     return this.http.delete<Ingredient>("http://localhost:3000/ingredient/:"+id);
   }
 

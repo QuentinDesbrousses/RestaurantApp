@@ -10,22 +10,22 @@ export class CategorieAllergeneService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieAllergene(){
-    return this.http.get<CategorieAllergene>("http://localhost:3000/categorie_allergene/");
+    return this.http.get<CategorieAllergene>("http://localhost:3000/cat_allergene/");
   }
 
-  getCategorieAllergene(id : string){
-    return this.http.get<CategorieAllergene>("http://localhost:3000/categorie_allergene/:"+id);
+  getCategorieAllergene(id : number){
+    return this.http.get<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id);
   }
 
   createCategorieAllergene(categorie_allergene : CategorieAllergene){
-    return this.http.post<CategorieAllergene>("http://localhost:3000/categorie_allergene/",categorie_allergene);
+    return this.http.post<CategorieAllergene>("http://localhost:3000/cat_allergene/",categorie_allergene);
   }
 
-  modifyCategorieAllergene(id : string,categorie_allergene : CategorieAllergene){
-    return this.http.put<CategorieAllergene>("http://localhost:3000/categorie_allergene/:"+id,categorie_allergene);
+  modifyCategorieAllergene(id : number,categorie_allergene : CategorieAllergene){
+    return this.http.put<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id,categorie_allergene);
   }
 
-  deleteCategorieAllergene(id : string){
-    return this.http.delete<CategorieAllergene>("http://localhost:3000/categorie_allergene/:"+id);
+  deleteCategorieAllergene(id : number){
+    return this.http.delete<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id);
   }
 }

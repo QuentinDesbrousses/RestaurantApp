@@ -15,7 +15,7 @@ export class FicheTechnique {
 
     //Propriétés calculées
     get coutMatiere() : number {
-        var cm = this.recette.cout;
+        var cm = 0;
         //valeur absolue
         if(this.typeAssaisonnement){
             cm+=this.assaisonnement;

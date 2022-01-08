@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CategorieAllergene} from "../../../models/categorie-allergene";
 import {CategorieAllergeneService} from "../../../services/categorie-allergene/categorie-allergene.service";
@@ -13,14 +13,36 @@ import {CategorieIngredient} from "../../../models/categorie-ingredient";
   templateUrl: './categorie-form.component.html',
   styleUrls: ['./categorie-form.component.css']
 })
-export class CategorieFormComponent {
+export class CategorieFormComponent implements  OnInit{
   CategorieForm : FormGroup;
+  currentCategorie : CategorieIngredient | CategorieAllergene | CategorieRecette | undefined;
 
-  constructor(public catAllergeneService : CategorieAllergeneService,public catIngredientService : CategorieIngredientService,public catRecetteService : CategorieRecetteService, public dialogRef: MatDialogRef<CategorieFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string,element:string}) {
+  constructor(public catAllergeneService : CategorieAllergeneService,public catIngredientService : CategorieIngredientService,public catRecetteService : CategorieRecetteService, public dialogRef: MatDialogRef<CategorieFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string,element:string}) {
     this.CategorieForm = new FormGroup({
-      $id : new FormControl(null),
-      nom : new FormControl('',Validators.required)
+      $id : new FormControl(this.currentCategorie?.getId),
+      nom : new FormControl(this.currentCategorie?.getNom,Validators.required)
     })
+  }
+
+  ngOnInit() {
+    if(this.data.type == "modification"){
+      console.log("debut on init de catégorie form")
+      if(this.data.element == "ingredient"){
+        this.catIngredientService.getCategorieIngredient(this.data.id).subscribe(
+            (data) => this.currentCategorie = new CategorieIngredient(data.getId(),data.getNom()));
+      }
+      else if(this.data.element == "allergene"){
+        this.catAllergeneService.getCategorieAllergene(this.data.id).subscribe(
+            (data) => this.currentCategorie = new CategorieAllergene(data.getId(),data.getNom()));
+      }
+      else if (this.data.element == "recette"){
+        this.catRecetteService.getCategorieRecette(this.data.id).subscribe(
+            (data) => this.currentCategorie = new CategorieRecette(data.getId(),data.getNom()));
+      }
+      else{
+        console.log("data.element doit être égal à allergene, ingredient ou recette")
+      }
+    }
   }
 
   onSubmit(){

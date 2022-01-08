@@ -29,7 +29,7 @@ export class ConfirmationFormComponent {
               private ficheService : FicheTechniqueService,
               private utilisateurService : UtilisateurService,
               public dialogRef: MatDialogRef<ConfirmationFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {id:string, type:string}) {
+              @Inject(MAT_DIALOG_DATA) public data: {id:number, type:string}) {
 
     this.confirmationForm  = new FormGroup({
       $id : new FormControl(null)

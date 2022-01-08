@@ -14,7 +14,7 @@ export class RecetteService {
     return this.http.get<Recette>("http://localhost:3000/recette/");
   }
 
-  getRecette(id : string){
+  getRecette(id : number){
     return this.http.get<Recette>("http://localhost:3000/recette/:"+id);
   }
 
@@ -22,11 +22,11 @@ export class RecetteService {
     return this.http.post<Recette>("http://localhost:3000/recette/",recette);
   }
 
-  modifyRecette(id : string,recette : Recette){
+  modifyRecette(id : number,recette : Recette){
     return this.http.put<Recette>("http://localhost:3000/recette/:"+id,recette);
   }
 
-  deleteRecette(id : string){
+  deleteRecette(id : number){
     return this.http.delete<Recette>("http://localhost:3000/recette/:"+id);
   }
 }

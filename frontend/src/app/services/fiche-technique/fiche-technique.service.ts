@@ -13,7 +13,7 @@ export class FicheTechniqueService {
     return this.http.get<FicheTechnique>("http://localhost:3000/fiche/");
   }
 
-  getFiche(id : string){
+  getFiche(id : number){
     return this.http.get<FicheTechnique>("http://localhost:3000/fiche/:"+id);
   }
 
@@ -21,11 +21,11 @@ export class FicheTechniqueService {
     return this.http.post<FicheTechnique>("http://localhost:3000/fiche/",fiche);
   }
 
-  modifyFiche(id : string,fiche : FicheTechnique){
+  modifyFiche(id : number,fiche : FicheTechnique){
     return this.http.put<FicheTechnique>("http://localhost:3000/fiche/:"+id,fiche);
   }
 
-  deleteFiche(id : string){
+  deleteFiche(id : number){
     return this.http.delete<FicheTechnique>("http://localhost:3000/fiche/:"+id);
   }
 }
