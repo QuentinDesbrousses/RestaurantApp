@@ -10,22 +10,39 @@ export class CategorieAllergeneService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieAllergene(){
-    return this.http.get<CategorieAllergene[]>("http://localhost:3000/cat_allergene/");
+    var res : CategorieAllergene[] = [];
+    let req = this.http.get<any[]>("http://localhost:3000/cat_allergene/").subscribe(
+        data => {
+          data.forEach(e =>{
+            res.push(new CategorieAllergene(e.id_cat_al,e.nom_cat_al));
+          })},
+        error => {console.log("error : "+error)});
+    console.log("res : "+res)
+    return res
   }
 
   getCategorieAllergene(id : number){
-    return this.http.get<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id);
+    var res : CategorieAllergene | undefined;
+    let req = this.http.get<any>("http://localhost:3000/cat_allergene/").subscribe(
+        data => { res = data},
+        error => {console.log("error : "+error)});
+    console.log("res : "+res)
+    return res;
   }
 
   createCategorieAllergene(categorie_allergene : CategorieAllergene){
-    return this.http.post<CategorieAllergene>("http://localhost:3000/cat_allergene/",categorie_allergene);
+    var req = {"id_cat_al":categorie_allergene.getId(),"nom_cat_al":categorie_allergene.getNom()}
+    console.log("service");
+    return this.http.post<CategorieAllergene>("http://localhost:3000/cat_allergene/",req);
   }
 
   modifyCategorieAllergene(id : number,categorie_allergene : CategorieAllergene){
-    return this.http.put<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id,categorie_allergene);
+    var req = {"id_cat_al":categorie_allergene.getId(),"nom_cat_al":categorie_allergene.getNom()}
+    console.log("service");
+    return this.http.put<CategorieAllergene>("http://localhost:3000/cat_allergene/"+id,req);
   }
 
   deleteCategorieAllergene(id : number){
-    return this.http.delete<CategorieAllergene>("http://localhost:3000/cat_allergene/:"+id);
+    return this.http.delete("http://localhost:3000/cat_allergene/"+id);
   }
 }

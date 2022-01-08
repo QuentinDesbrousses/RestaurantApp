@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
+import {MatSort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
@@ -14,58 +14,16 @@ import {CategorieAllergeneService} from "../../../services/categorie-allergene/c
   templateUrl: './categorie-allergene-list.component.html',
   styleUrls: ['./categorie-allergene-list.component.css']
 })
-export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
+export class CategorieAllergeneListComponent implements OnInit {
 
-  @Input() categories_allergene! : CategorieAllergene[];
-  dataSource = new MatTableDataSource<CategorieAllergene>();
-  displayedColumns = ['ID','nom','modifier','supprimer'];
-
-  @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
+  categories_allergene : CategorieAllergene[] = [];
+  displayedColumns = ['ID','NOM','Modifier','Supprimer'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : CategorieAllergeneService) { }
 
   ngOnInit(): void {
-    console.log(this.service.getAllCategorieAllergene())
-    /*this.service.getAllCategorieAllergene().subscribe(
-        (data => {
-          console.log(data)
-          data.forEach(e => {this.categories_allergene.push(new CategorieAllergene(e.id_cat_al,e.nom_cat_al))})
-        }));*/
-    console.log(this.categories_allergene)
-    if(this.categories_allergene){
-      this.dataSource = new MatTableDataSource<CategorieAllergene>(this.categories_allergene);
-    }
-  }
-
-  ngAfterViewInit() {
-    if (this.paginator){
-      this.dataSource.paginator = this.paginator;
-    }
-    if(this.sort){
-      this.dataSource.sort = this.sort;
-    }
-  }
-
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.categories_allergene = this.service.getAllCategorieAllergene();
+    console.log("categories_allergene: "+this.categories_allergene)
   }
 
   //CRUD Catégorie allergène
@@ -78,7 +36,7 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("création catégorie allergene");
   }
-  modifierCategorieAllergene(id:string){
+  modifierCategorieAllergene(id:number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -87,7 +45,7 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("Catégorie d'allergène n° "+id+" modifié");
   }
-  supprimerCategorieAllergene(id:string){
+  supprimerCategorieAllergene(id:number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;

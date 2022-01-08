@@ -1,63 +1,28 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {CategorieIngredient} from "../../../models/categorie-ingredient";
 import {CategorieFormComponent} from "../../forms/categorie-form/categorie-form.component";
+import {CategorieIngredientService} from "../../../services/categorie-ingredient/categorie-ingredient.service";
 
 @Component({
   selector: 'app-categorie-ingredient-list',
   templateUrl: './categorie-ingredient-list.component.html',
   styleUrls: ['./categorie-ingredient-list.component.css']
 })
-export class CategorieIngredientListComponent implements OnInit, AfterViewInit {
+export class CategorieIngredientListComponent implements OnInit {
 
   @Input() categories_ingredient : CategorieIngredient[] | undefined;
   dataSource = new MatTableDataSource<CategorieIngredient>();
-  displayedColumns = ['ID','nom','modifier','supprimer'];
+  displayedColumns = ['ID','NOM','Modifier','Supprimer'];
 
-  @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog,private service : CategorieIngredientService) { }
 
   ngOnInit(): void {
-    if(this.categories_ingredient){
-      this.dataSource = new MatTableDataSource<CategorieIngredient>(this.categories_ingredient);
-    }
-  }
-
-  ngAfterViewInit() {
-    if (this.paginator){
-      this.dataSource.paginator = this.paginator;
-    }
-    if(this.sort){
-      this.dataSource.sort = this.sort;
-    }
-  }
-
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.categories_ingredient = this.service.getAllCategorieIngredient();
+    console.log("categories_allergene: "+this.categories_ingredient)
   }
 
   //CRUD Allergene
@@ -70,7 +35,8 @@ export class CategorieIngredientListComponent implements OnInit, AfterViewInit {
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("création catégorie ingrédient");
   }
-  modifierCategorieIngredient(id:string){
+
+  modifierCategorieIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -88,4 +54,5 @@ export class CategorieIngredientListComponent implements OnInit, AfterViewInit {
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("Catégorie d'ingrédient n° "+id+" supprimé");
   }
+
 }

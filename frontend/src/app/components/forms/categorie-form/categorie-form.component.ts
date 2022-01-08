@@ -32,8 +32,7 @@ export class CategorieFormComponent implements  OnInit{
             (data) => this.currentCategorie = new CategorieIngredient(data.getId(),data.getNom()));
       }
       else if(this.data.element == "allergene"){
-        this.catAllergeneService.getCategorieAllergene(this.data.id).subscribe(
-            (data) => this.currentCategorie = new CategorieAllergene(data.getId(),data.getNom()));
+        this.currentCategorie = this.catAllergeneService.getCategorieAllergene(this.data.id);
       }
       else if (this.data.element == "recette"){
         this.catRecetteService.getCategorieRecette(this.data.id).subscribe(

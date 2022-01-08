@@ -15,7 +15,7 @@ export class RecetteService {
   }
 
   getRecette(id : number){
-    return this.http.get<Recette>("http://localhost:3000/recette/:"+id);
+    return this.http.get<Recette>("http://localhost:3000/recette/"+id);
   }
 
   createRecette(recette : Recette){
@@ -23,10 +23,10 @@ export class RecetteService {
   }
 
   modifyRecette(id : number,recette : Recette){
-    return this.http.put<Recette>("http://localhost:3000/recette/:"+id,recette);
+    return this.http.put<Recette>("http://localhost:3000/recette/"+id,recette);
   }
 
   deleteRecette(id : number){
-    return this.http.delete<Recette>("http://localhost:3000/recette/:"+id);
+    return this.http.delete<Recette>("http://localhost:3000/recette/"+id);
   }
 }

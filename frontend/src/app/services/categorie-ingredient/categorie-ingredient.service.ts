@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Ingredient} from "../../models/ingredient";
 import {CategorieIngredient} from "../../models/categorie-ingredient";
-import { CatIngr } from 'src/app/models/cat_ingr';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategorieIngredientService {
 
-  constructor(private http : HttpClient) { }
+    constructor(private http : HttpClient) { }
 
-  getAllCategorieIngredient(){
-
-    return this.http.get<CategorieIngredient[]>("http://localhost:3000/cat_ingredient/");
+    getAllCategorieIngredient(){
+        var res : CategorieIngredient[] = [];
+        let req = this.http.get<any[]>("http://localhost:3000/cat_ingredient/").subscribe(
+            data => {
+              data.forEach(e =>{
+                res.push(new CategorieIngredient(e.id_cat_ingr,e.nom_cat_ingr));
+              })},
+            error => {console.log("error : "+error)});
+        console.log("res : "+res)
+    return res
   }
 
   getCategorieIngredient(id : number){
-    return this.http.get<CatIngr>("http://localhost:3000/cat_ingredient/"+id);
+    return this.http.get<CategorieIngredient>("http://localhost:3000/cat_ingredient/"+id);
   }
 
   createCategorieIngredient(categorieIngredient : CategorieIngredient){

@@ -14,7 +14,7 @@ export class FicheTechniqueService {
   }
 
   getFiche(id : number){
-    return this.http.get<FicheTechnique>("http://localhost:3000/fiche/:"+id);
+    return this.http.get<FicheTechnique>("http://localhost:3000/fiche/"+id);
   }
 
   createFiche(fiche : FicheTechnique){
@@ -22,10 +22,10 @@ export class FicheTechniqueService {
   }
 
   modifyFiche(id : number,fiche : FicheTechnique){
-    return this.http.put<FicheTechnique>("http://localhost:3000/fiche/:"+id,fiche);
+    return this.http.put<FicheTechnique>("http://localhost:3000/fiche/"+id,fiche);
   }
 
   deleteFiche(id : number){
-    return this.http.delete<FicheTechnique>("http://localhost:3000/fiche/:"+id);
+    return this.http.delete<FicheTechnique>("http://localhost:3000/fiche/"+id);
   }
 }
