@@ -4,6 +4,7 @@ import {CategorieAllergene} from "../../models/categorie-allergene";
 import {ServicesConfigComponent} from "../services-config";
 
 
+
 @Injectable({
   providedIn: 'root'
 })
