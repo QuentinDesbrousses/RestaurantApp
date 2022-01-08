@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CategorieRecette} from "../../models/categorie-recette";
+import {CategorieAllergene} from "../../models/categorie-allergene";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,15 @@ export class CategorieRecetteService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieRecette(){
-    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/");
+    var res : CategorieRecette[] = [];
+    let req = this.http.get<any[]>("http://localhost:3000/categorie/").subscribe(
+        data => {
+          data.forEach(e =>{
+            res.push(new CategorieRecette(e.id_categorie,e.nom_categorie));
+          })},
+        error => {console.log("error : "+error)});
+    console.log("res : "+res)
+    return res
   }
 
   getCategorieRecette(id : number){
