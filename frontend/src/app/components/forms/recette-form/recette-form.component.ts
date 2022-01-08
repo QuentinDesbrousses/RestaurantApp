@@ -20,7 +20,7 @@ export class RecetteFormComponent {
 
   constructor(public service : RecetteService, public dialogRef: MatDialogRef<RecetteFormComponent>, @Inject(MAT_DIALOG_DATA) public data: {type: string, categories : CategorieRecette[],etapes : Etape[], id:string }) {
     this.RecetteForm = new FormGroup({
-      //TODO Create $id field
+      $id : new FormControl(null),
       titre : new FormControl('',Validators.required),
       description : new FormControl('Sans description'),
       etapes : new FormControl('Ajouter une pincée de sel',Validators.required),
@@ -57,7 +57,15 @@ export class RecetteFormComponent {
   }
 
   onSubmit(){
-    let tmpRecette = new Recette(this.RecetteForm.value);
+    let tmpRecette = new Recette(
+        this.RecetteForm.value.id,
+        this.RecetteForm.value.titre,
+        this.RecetteForm.value.description,
+        this.RecetteForm.value.categorie,
+        this.RecetteForm.value.nbCouvert,
+        this.RecetteForm.value.temps,
+        this.RecetteForm.value.etapes
+    );
     if(this.data.type=="creation"){
       this.service.createRecette(tmpRecette);
       console.log("Ingredient créé : "+tmpRecette)

@@ -3,6 +3,7 @@
     <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'une recette</strong></h1>
     <div>
         <form [formGroup]="RecetteForm" (ngSubmit)="onSubmit()">
+            <input id="id" type="hidden" formControlName="$id">
             <div class="form-field">
                 <label for="titre">Titre*</label>
                 <input id="titre" type="text" formControlName="titre">

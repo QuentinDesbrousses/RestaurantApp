@@ -28,17 +28,17 @@ export class CategorieFormComponent {
   onSubmit(){
     if(this.data.type == "creation"){
       if(this.data.element == "allergene"){
-        let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value)
+        let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catAllergeneService.createCategorieAllergene(tmpCatAllergene);
         console.log("Catégorie Allergène créée : "+tmpCatAllergene)
       }
       else if(this.data.element == "ingredient"){
-        let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value)
+        let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catIngredientService.createCategorieIngredient(tmpCatIngredient);
         console.log("Catégorie Ingrédient créée : "+tmpCatIngredient)
       }
       else if(this.data.element == "recette"){
-        let tmpCatRecette = new CategorieRecette(this.CategorieForm.value)
+        let tmpCatRecette = new CategorieRecette(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catRecetteService.createCategorieRecette(tmpCatRecette);
         console.log("Catégorie Recette créée : "+tmpCatRecette)
       }
@@ -48,17 +48,17 @@ export class CategorieFormComponent {
     }
     else if(this.data.type=="modification"){
       if(this.data.element == "allergene"){
-        let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value)
+        let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catAllergeneService.modifyCategorieAllergene(this.CategorieForm.value.id,tmpCatAllergene);
         console.log("Catégorie Allergène modifiée : "+tmpCatAllergene)
       }
       else if(this.data.element == "ingredient"){
-        let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value)
+        let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catIngredientService.modifyCategorieIngredient(this.CategorieForm.value.id,tmpCatIngredient);
         console.log("Catégorie Ingrédient modifiée : "+tmpCatIngredient)
       }
       else if(this.data.element == "recette"){
-        let tmpCatRecette = new CategorieRecette(this.CategorieForm.value)
+        let tmpCatRecette = new CategorieRecette(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catRecetteService.modifyCategorieRecette(this.CategorieForm.value.id,tmpCatRecette);
         console.log("Catégorie Recette modifiée : "+tmpCatRecette)
       }

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AllergeneService} from "../../../services/allergene/allergene.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -21,7 +21,7 @@ export class AllergeneFormComponent {
     })
   }
   onSubmit(){
-    let tmpAllergene = new Allergene(this.AllergeneForm.value);
+    let tmpAllergene = new Allergene(this.AllergeneForm.value.id,this.AllergeneForm.value.nom,this.AllergeneForm.value.categorie);
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);
       console.log("Allergène créé : "+tmpAllergene)

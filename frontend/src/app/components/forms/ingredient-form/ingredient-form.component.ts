@@ -25,7 +25,15 @@ export class IngredientFormComponent {
   }
 
   onSubmit(){
-    let tmpIngredient = new Ingredient(this.IngredientForm.value);
+    let tmpIngredient = new Ingredient(
+        this.IngredientForm.value.id,
+        this.IngredientForm.value.nom,
+        this.IngredientForm.value.categorie,
+        this.IngredientForm.value.unite,
+        this.IngredientForm.value.quantite,
+        this.IngredientForm.value.coutU,
+        this.IngredientForm.value.allergene
+        );
     if(this.data.type == "creation"){
       this.service.createIngredient(tmpIngredient);
       console.log("Ingredient créé : "+tmpIngredient)

@@ -8,15 +8,5 @@ import {CategorieAllergene} from "../../models/categorie-allergene";
   styleUrls: ['./allergenes.component.css']
 })
 export class AllergenesComponent{
-  allergeneTaB : Allergene[] = [
-    new Allergene({id: "1", nom: "Lait", categorie: new CategorieAllergene({id: "1", nom: "Lactose"})}),
-    new Allergene({id: "2", nom: "Moules", categorie: new CategorieAllergene({id: "2", nom: "Crustacés"})}),
-    new Allergene({id: "3", nom: "Noix", categorie: new CategorieAllergene({id: "3", nom: "Fruit à coque"})})
-  ]
-  categories_allergeneTab : CategorieAllergene[] =[
-    new CategorieAllergene({id:"1",nom:"Lactose"}),
-    new CategorieAllergene({id:"2",nom:"Fruit à coque"}),
-    new CategorieAllergene({id:"3",nom:"Arachide"}),
-  ]
 
 }
