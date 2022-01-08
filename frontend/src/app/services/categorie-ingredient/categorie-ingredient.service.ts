@@ -30,15 +30,21 @@ export class CategorieIngredientService {
     return res;
   }
 
-  createCategorieIngredient(categorieIngredient : CategorieIngredient){
-    return this.http.post<CategorieIngredient>(ServicesConfigComponent.url+"cat_ingredient/",categorieIngredient);
+  createCategorieIngredient(categorieIngredient : any){
+    var tmp = {"nom_cat_ingr":categorieIngredient.getNom()}
+    return this.http.post<any>(ServicesConfigComponent.url+"cat_ingredient/",tmp).subscribe(
+      data => console.log("Catégorie créée")
+    );
   }
 
-  modifyCategorieIngredient(id : number,categorieIngredient : CategorieIngredient){
-    return this.http.put<CategorieIngredient>(ServicesConfigComponent.url+"cat_ingredient/"+id,categorieIngredient);
+  modifyCategorieIngredient(id : number,categorieIngredient : any){
+    var tmp = {"nom_cat_ingr":categorieIngredient.getNom()}
+    return this.http.put<any>(ServicesConfigComponent.url+"cat_ingredient/"+id,tmp).subscribe(
+      data => console.log("Catégorie ingredient modifiée")
+    );
   }
 
   deleteCategorieIngredient(id : number){
-    this.http.delete(ServicesConfigComponent.url+"cat_ingredient/"+id);
+    this.http.delete(ServicesConfigComponent.url+"cat_ingredient/"+id).subscribe(() => console.log("cat-ingredient supprimé"));;
   }
 }

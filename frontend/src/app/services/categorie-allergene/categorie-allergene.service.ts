@@ -32,19 +32,21 @@ export class CategorieAllergeneService {
     return res;
   }
 
-  createCategorieAllergene(categorie_allergene : CategorieAllergene): void{
-    var tmp = {"id_cat_al":categorie_allergene.getId(),"nom_cat_al":categorie_allergene.getNom()}
-    console.log("service");
-    this.http.post<any>(ServicesConfigComponent.url+"cat_allergene/",tmp);
+  createCategorieAllergene( categorie_allergene:any): void{
+    var tmp = {"nom_cat_al":categorie_allergene.getNom()}
+    this.http.post<any>(ServicesConfigComponent.url+"cat_allergene/",tmp).subscribe(
+      data => console.log("Catégorie Allergene créée")
+    );
   }
 
-  modifyCategorieAllergene(id : number,categorie_allergene : CategorieAllergene){
-    var req = {"id_cat_al":categorie_allergene.getId(),"nom_cat_al":categorie_allergene.getNom()}
-    console.log("service");
-    return this.http.put<CategorieAllergene>(ServicesConfigComponent.url+"cat_allergene/"+id,req);
+  modifyCategorieAllergene(id : number,categorie_allergene: any){
+    var req = {nom_cat_al:categorie_allergene.nom_cat_al}
+    return this.http.put<any>(ServicesConfigComponent.url+"cat_allergene/"+id,req).subscribe(
+      data => console.log("Catégorie allergene modifiée")
+    );
   }
 
   deleteCategorieAllergene(id : number){
-    return this.http.delete(ServicesConfigComponent.url+"cat_allergene/"+id);
+    return this.http.delete(ServicesConfigComponent.url+"cat_allergene/"+id).subscribe(() => console.log("cat-allergene supprimée"));
   }
 }
