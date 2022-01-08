@@ -11,7 +11,7 @@ export class CategorieIngredientService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieIngredient(){
-    return this.http.get<CategorieIngredient>("http://localhost:3000/cat_ingredient/");
+    return this.http.get<CategorieIngredient[]>("http://localhost:3000/cat_ingredient/");
   }
 
   getCategorieIngredient(id : number){

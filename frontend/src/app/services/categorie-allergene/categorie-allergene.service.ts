@@ -10,7 +10,7 @@ export class CategorieAllergeneService {
   constructor(private http : HttpClient) { }
 
   getAllCategorieAllergene(){
-    return this.http.get<CategorieAllergene>("http://localhost:3000/cat_allergene/");
+    return this.http.get<CategorieAllergene[]>("http://localhost:3000/cat_allergene/");
   }
 
   getCategorieAllergene(id : number){
