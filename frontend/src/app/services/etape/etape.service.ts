@@ -14,7 +14,7 @@ export class EtapeService {
   }
 
   getEtape(id : number){
-    return this.http.get<Etape>("http://localhost:3000/etape/:"+id);
+    return this.http.get<Etape>("http://localhost:3000/etape/"+id);
   }
 
   createEtape(etape : Etape){
@@ -22,10 +22,10 @@ export class EtapeService {
   }
 
   modifyEtape(id : number,etape : Etape){
-    return this.http.put<Etape>("http://localhost:3000/etape/:"+id,etape);
+    return this.http.put<Etape>("http://localhost:3000/etape/"+id,etape);
   }
 
   deleteEtape(id : number){
-    return this.http.delete<Etape>("http://localhost:3000/etape/:"+id);
+    return this.http.delete<Etape>("http://localhost:3000/etape/"+id);
   }
 }

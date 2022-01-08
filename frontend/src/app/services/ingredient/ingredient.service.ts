@@ -14,7 +14,7 @@ export class IngredientService {
   }
 
   getIngredient(id : number){
-    return this.http.get<Ingredient>("http://localhost:3000/ingredient/:"+id);
+    return this.http.get<Ingredient>("http://localhost:3000/ingredient/"+id);
   }
 
   createIngredient(ingredient : Ingredient){
@@ -22,11 +22,11 @@ export class IngredientService {
   }
 
   modifyIngredient(id : number,ingredient : Ingredient){
-    return this.http.put<Ingredient>("http://localhost:3000/ingredient/:"+id,ingredient);
+    return this.http.put<Ingredient>("http://localhost:3000/ingredient/"+id,ingredient);
   }
 
   deleteIngredient(id : number){
-    return this.http.delete<Ingredient>("http://localhost:3000/ingredient/:"+id);
+    return this.http.delete<Ingredient>("http://localhost:3000/ingredient/"+id);
   }
 
 }
