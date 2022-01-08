@@ -2,62 +2,25 @@
 
     <div class="text-center">
         <h1><strong>Gestion des utilisateurs</strong></h1>
-        <mat-label>Rechercher</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Utilisateur" #input>
     </div>
 
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
-
-        <!-- ID -->
-        <ng-container matColumnDef="ID">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par id"> ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
-        <!-- Prénom -->
-        <ng-container matColumnDef="prenom">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par prenom"> Prénom </th>
-            <td mat-cell *matCellDef="let element"> {{element.prenom}} </td>
-        </ng-container>
-
-        <!-- Nom -->
-        <ng-container matColumnDef="nom">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Trier par nom"> Nom </th>
-            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
-        </ng-container>
-
-        <!-- Description -->
-        <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-        </ng-container>
-
-        <!-- E-mail -->
-        <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> E-mail </th>
-            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-        </ng-container>
-
-        <!-- Supprimer -->
-        <ng-container matColumnDef="supprimer">
-            <th mat-header-cell *matHeaderCellDef> Supprimer </th>
-            <td mat-cell *matCellDef="let element">
-                <button class="square-btn delete" (click)="supprimerUtilisateur(element.nom)">
-                    <mat-icon class="mat-18">delete</mat-icon>
-                </button>
-            </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th *ngFor="let col of displayedColumns">{{col}}</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ligne of utilisateurs">
+            <td>{{ligne.id_utilisateur}}</td>
+            <td>{{ligne.prenom}}</td>
+            <td>{{ligne.nom}}</td>
+            <td>{{ligne.description}}</td>
+            <td>{{ligne.email}}</td>
+            <td>{{ligne.mdp}}</td>
+            <td><button class="square-btn delete" (click)="supprimerUtilisateur(ligne.id_utilisateur)"><mat-icon class="mat-18">delete</mat-icon></button></td>
+        </tr>
+        </tbody>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[10, 15]"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
 
 </div>

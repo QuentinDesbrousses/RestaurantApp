@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -14,7 +14,7 @@ import {CategorieAllergeneService} from "../../../services/categorie-allergene/c
   templateUrl: './categorie-allergene-list.component.html',
   styleUrls: ['./categorie-allergene-list.component.css']
 })
-export class CategorieAllergeneListComponent implements OnInit {
+export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
 
   categories_allergene : CategorieAllergene[] = [];
   displayedColumns = ['ID','NOM','Modifier','Supprimer'];
@@ -22,6 +22,10 @@ export class CategorieAllergeneListComponent implements OnInit {
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : CategorieAllergeneService) { }
 
   ngOnInit(): void {
+    this.categories_allergene = this.service.getAllCategorieAllergene();
+    console.log("categories_allergene: "+this.categories_allergene)
+  }
+  ngAfterViewInit(): void {
     this.categories_allergene = this.service.getAllCategorieAllergene();
     console.log("categories_allergene: "+this.categories_allergene)
   }

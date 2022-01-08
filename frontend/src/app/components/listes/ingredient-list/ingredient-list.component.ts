@@ -17,7 +17,7 @@ import {IngredientService} from "../../../services/ingredient/ingredient.service
   templateUrl: './ingredient-list.component.html',
   styleUrls: ['./ingredient-list.component.css']
 })
-export class IngredientListComponent implements OnInit{
+export class IngredientListComponent implements OnInit,AfterViewInit{
   ingredients : Ingredient[] = [];
   displayedColumns = ['ID','NOM', 'CATEGORIE', 'ALLERGENE', 'UNITE','QUANTITE','COUT UNITAIRE','Modifier','Supprimer'];
 
@@ -43,8 +43,14 @@ export class IngredientListComponent implements OnInit{
 
   ngOnInit() {
     this.ingredients = this.service.getAllIngredients();
-    console.log("categories_allergene: "+this.ingredients)
+    console.log("ingredients: "+this.ingredients)
   }
+
+  ngAfterViewInit() {
+    this.ingredients = this.service.getAllIngredients();
+    console.log("ingredients: "+this.ingredients)
+  }
+
 
   //CRUD Ingredient
   creerIngredient(){
