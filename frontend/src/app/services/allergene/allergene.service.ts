@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Allergene} from "../../models/allergene";
+import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AllergeneService {
 
   getAllAllergene(){
     var res : Allergene[] = [];
-    let req = this.http.get<any[]>("http://localhost:3000/allergene/").subscribe(
+    let req = this.http.get<any[]>(ServicesConfigComponent.url+"allergene/").subscribe(
         data => {
           data.forEach(e =>{
             res.push(new Allergene(e.id_allergene,e.nom_allergene,e.id_cat_al));
@@ -22,18 +23,18 @@ export class AllergeneService {
   }
 
   getAllergene(id : number){
-    return this.http.get<Allergene>("http://localhost:3000/allergene/:"+id);
+    return this.http.get<Allergene>(ServicesConfigComponent.url+"allergene/"+id);
   }
 
   createAllergene(allergene : Allergene){
-    return this.http.post<Allergene>("http://localhost:3000/allergene/",allergene);
+    return this.http.post<Allergene>(ServicesConfigComponent.url+"allergene/",allergene);
   }
 
   modifyAllergene(id : number,allergene : Allergene){
-    return this.http.put<Allergene>("http://localhost:3000/allergene/:"+id,allergene);
+    return this.http.put<Allergene>(ServicesConfigComponent.url+"allergene/"+id,allergene);
   }
 
   deleteAllergene(id : number){
-    return this.http.delete<Allergene>("http://localhost:3000/allergene/:"+id);
+    return this.http.delete<Allergene>(ServicesConfigComponent.url+"allergene/"+id);
   }
 }

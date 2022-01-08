@@ -38,12 +38,12 @@ export class ConfirmationFormComponent {
 
   supprimer(){
     if(this.data.type == "ingredient"){
+      console.log("Demande de suppression de l'ingrédient : "+this.data.id);
       this.ingredientService.deleteIngredient(this.data.id)
-      console.log("Confirmation de suppression de l'ingrédient : "+this.data.id);
     }
     else if(this.data.type == "categorie-ingredient"){
+      console.log("Demande de suppression de la catégorie d'ingrédient' : "+this.data.id);
       this.categorieIngredientService.deleteCategorieIngredient(this.data.id)
-      console.log("Confirmation de suppression de la catégorie d'ingrédient' : "+this.data.id);
     }
     else if(this.data.type == "recette"){
       this.recetteService.deleteRecette(this.data.id)

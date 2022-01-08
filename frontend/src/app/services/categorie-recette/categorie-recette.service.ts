@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CategorieRecette} from "../../models/categorie-recette";
 import {CategorieAllergene} from "../../models/categorie-allergene";
+import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CategorieRecetteService {
 
   getAllCategorieRecette(){
     var res : CategorieRecette[] = [];
-    let req = this.http.get<any[]>("http://localhost:3000/categorie/").subscribe(
+    let req = this.http.get<any[]>(ServicesConfigComponent.url+"categorie/").subscribe(
         data => {
           data.forEach(e =>{
             res.push(new CategorieRecette(e.id_categorie,e.nom_categorie));
@@ -23,18 +24,18 @@ export class CategorieRecetteService {
   }
 
   getCategorieRecette(id : number){
-    return this.http.get<CategorieRecette>("http://localhost:3000/categorie/"+id);
+    return this.http.get<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
   }
 
   createCategorieRecette(categorieRecette : CategorieRecette){
-    return this.http.post<CategorieRecette>("http://localhost:3000/categorie/",categorieRecette);
+    return this.http.post<CategorieRecette>(ServicesConfigComponent.url+"categorie/",categorieRecette);
   }
 
   modifyCategorieRecette(id : number,categorieRecette : CategorieRecette){
-    return this.http.put<CategorieRecette>("http://localhost:3000/categorie/"+id,categorieRecette);
+    return this.http.put<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id,categorieRecette);
   }
 
   deleteCategorieRecette(id : number){
-    return this.http.delete<CategorieRecette>("http://localhost:3000/categorie/"+id);
+    return this.http.delete<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
   }
 }

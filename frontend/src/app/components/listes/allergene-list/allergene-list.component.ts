@@ -1,4 +1,4 @@
-import {Component,OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {AllergeneFormComponent} from "../../forms/allergene-form/allergene-form.component";
@@ -11,7 +11,7 @@ import {AllergeneService} from "../../../services/allergene/allergene.service";
   templateUrl: './allergene-list.component.html',
   styleUrls: ['./allergene-list.component.css']
 })
-export class AllergeneListComponent implements OnInit{
+export class AllergeneListComponent implements OnInit, AfterViewInit{
   allergenes : Allergene[] = [];
   categories = [
       "Lactose",
@@ -26,6 +26,11 @@ export class AllergeneListComponent implements OnInit{
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog,private service : AllergeneService) { }
 
   ngOnInit(): void {
+    this.allergenes = this.service.getAllAllergene();
+    console.log("categories_allergene: "+this.allergenes)
+  }
+
+  ngAfterViewInit(): void {
     this.allergenes = this.service.getAllAllergene();
     console.log("categories_allergene: "+this.allergenes)
   }

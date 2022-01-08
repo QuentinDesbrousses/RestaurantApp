@@ -14,7 +14,7 @@ import {CategorieRecetteService} from "../../../services/categorie-recette/categ
   templateUrl: './categorie-recette-list.component.html',
   styleUrls: ['./categorie-recette-list.component.css']
 })
-export class CategorieRecetteListComponent implements OnInit{
+export class CategorieRecetteListComponent implements OnInit,AfterViewInit{
 
   categories_recette : CategorieRecette[] = [];
   dataSource = new MatTableDataSource<CategorieRecette>();
@@ -26,6 +26,11 @@ export class CategorieRecetteListComponent implements OnInit{
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : CategorieRecetteService) { }
 
   ngOnInit(): void {
+    this.categories_recette = this.service.getAllCategorieRecette();
+    console.log("categories_allergene: "+this.categories_recette)
+  }
+
+  ngAfterViewInit(): void {
     this.categories_recette = this.service.getAllCategorieRecette();
     console.log("categories_allergene: "+this.categories_recette)
   }

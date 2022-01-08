@@ -12,7 +12,7 @@ import {CategorieIngredientService} from "../../../services/categorie-ingredient
   templateUrl: './categorie-ingredient-list.component.html',
   styleUrls: ['./categorie-ingredient-list.component.css']
 })
-export class CategorieIngredientListComponent implements OnInit {
+export class CategorieIngredientListComponent implements OnInit,AfterViewInit{
 
   @Input() categories_ingredient : CategorieIngredient[] | undefined;
   dataSource = new MatTableDataSource<CategorieIngredient>();
@@ -25,6 +25,12 @@ export class CategorieIngredientListComponent implements OnInit {
     console.log("categories_allergene: "+this.categories_ingredient)
   }
 
+  ngAfterViewInit(): void {
+    this.categories_ingredient = this.service.getAllCategorieIngredient();
+    console.log("categories_allergene: "+this.categories_ingredient)
+  }
+
+
   //CRUD Allergene
   creerCategorieIngredient(){
     const dialogConfig = new MatDialogConfig();
@@ -33,7 +39,6 @@ export class CategorieIngredientListComponent implements OnInit {
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation",element:"ingredient"}
     this.dialog.open(CategorieFormComponent,dialogConfig);
-    console.log("création catégorie ingrédient");
   }
 
   modifierCategorieIngredient(id: number){
@@ -43,16 +48,15 @@ export class CategorieIngredientListComponent implements OnInit {
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",element:"ingredient",id:id}
     this.dialog.open(CategorieFormComponent,dialogConfig);
-    console.log("Catégorie d'ingrédient n° "+id+" modifié");
   }
-  supprimerCategorieIngredient(id:string){
+
+    supprimerCategorieIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {id: id,type:"categorie-ingredient"};
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
-    console.log("Catégorie d'ingrédient n° "+id+" supprimé");
   }
 
 }
