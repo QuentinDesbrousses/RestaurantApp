@@ -2,7 +2,7 @@
 <div class="inscription-form-container form-content">
     <h1 class="text-center"><strong>Inscrivez-vous</strong></h1>
     <div>
-        <form [formGroup]="inscriptionForm" (ngSubmit)="inscription()">
+        <form [formGroup]="inscriptionForm">
             <div class="form-field">
                 <label for="email">Adresse mail*</label>
                 <input id="email" type="text" formControlName="email">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!inscriptionForm.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit" (click)="inscription()" [disabled]="!inscriptionForm.valid">Valider</button>
                 <button  class="button-cancel form-btn">Annuler</button>
             </div>
 

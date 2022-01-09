@@ -2,7 +2,7 @@
     <h1 *ngIf="this.data.type=='creation'" class="text-center"><strong>Création d'une recette</strong></h1>
     <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'une recette</strong></h1>
     <div>
-        <form [formGroup]="RecetteForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="RecetteForm">
             <input id="id" type="hidden" formControlName="$id">
             <div class="form-field">
                 <label for="titre">Titre*</label>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!RecetteForm.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit" (click)="onSubmit()" [disabled]="!RecetteForm.valid">Valider</button>
                 <button  class="button-cancel form-btn" (click)="cancel()">Annuler</button>
             </div>
 
