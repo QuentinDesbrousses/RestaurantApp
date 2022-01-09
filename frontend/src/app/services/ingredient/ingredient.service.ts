@@ -21,7 +21,8 @@ export class IngredientService {
           })},
         error => {console.log("error : "+error)});
     console.log("getAllIngredient : "+res)
-    return res  }
+    return res
+  }
 
   getIngredient(id : number){
     //TODO
