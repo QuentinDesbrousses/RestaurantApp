@@ -30,7 +30,7 @@ export class IngredientFormComponent {
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
       categorie : new FormControl('Légume',Validators.required),
-      allergene : new FormControl('Aucun',Validators.required),
+      allergene : new FormControl(''),
       unite : new FormControl('',Validators.required),
       quantite : new FormControl('',Validators.required),
       coutU : new FormControl('',Validators.required)

@@ -19,7 +19,7 @@ export class AllergeneFormComponent implements OnInit {
     this.AllergeneForm = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
-      categorie : new FormControl('',Validators.required)
+      categorie : new FormControl('')
     })
   }
 
