@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {FicheTechniqueService} from "../../services/fiche-technique/fiche-technique.service";
+import {Recette} from "../../models/recette";
 
 @Component({
   selector: 'app-fiche-technique',
@@ -7,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class FicheTechniqueComponent{
 
-  constructor() { }
-
+  constructor(public service: FicheTechniqueService,
+              public dialogRef: MatDialogRef<FicheTechniqueComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {recette : Recette}) { }
 }

@@ -4,17 +4,20 @@ import {Etape} from "./etape";
 export class Recette {
 
     private id_recette : number;
+    private id_categorie : number;
+    private id_utilisateur : number;
     private titre_recette : string;
     private description_recette : string;
-    private id_categorie : number;
     private nb_couvert : number;
     private temps_recette : number; //nombre de minutes
 
-    constructor(id_recette: number, titre_recette: string, description_recette: string, id_categorie: number, nb_couvert: number, temps_recette: number) {
+
+    constructor(id_recette: number, id_categorie: number, id_utilisateur: number, titre_recette: string, description_recette: string, nb_couvert: number, temps_recette: number) {
         this.id_recette = id_recette;
+        this.id_categorie = id_categorie;
+        this.id_utilisateur = id_utilisateur;
         this.titre_recette = titre_recette;
         this.description_recette = description_recette;
-        this.id_categorie = id_categorie;
         this.nb_couvert = nb_couvert;
         this.temps_recette = temps_recette;
     }
@@ -49,6 +52,14 @@ export class Recette {
 
     setCategorie(id_categorie : number) {
         this.id_categorie = id_categorie;
+    }
+
+    getUtilisateur() : number {
+        return this.id_utilisateur;
+    }
+
+    setUtilisateur(id_utilisateur : number) {
+        this.id_utilisateur = id_utilisateur;
     }
 
     getNbCouvert() : number {
