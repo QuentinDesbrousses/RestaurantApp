@@ -21,24 +21,6 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
   ingredients : Ingredient[] = [];
   displayedColumns = ['ID','NOM', 'CATEGORIE', 'ALLERGENE', 'UNITE','QUANTITE','COUT UNITAIRE','Modifier','Supprimer'];
 
-  categories = ['Légume','Fruit','Fromage','Céréale','Crudité'];
-  allergenes = ['Aucun',
-    'Arachide',
-    'Céleri',
-    'Crabe','Crevette','Écrevisse','Homard','Langoustine',
-    'Avoine','Blé','Épeautre','Kamut et leurs souches hybridées','Orge','Seigle',
-    'Amande','Noisette','Noix','Noix du Brésil','Noix de Cajou','Noix de macadamia','Noix de pécan','Noix de Queensland','Pistache',
-    'Lactose',
-    'Lupin',
-    'Oeuf',
-    'Poisson',
-    'Bulot','Calamar','Escargot','Huitre','Moule','Palourde','Pétoncle','Pieuvre',
-    'Moutarde',
-    'Sésame',
-    'Soja',
-    'Sulfites'
-  ];
-
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : IngredientService) {}
 
   ngOnInit() {
@@ -51,14 +33,13 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
     console.log("ingredients: "+this.ingredients)
   }
 
-
   //CRUD Ingredient
   creerIngredient(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation", allergenes : this.allergenes, categories : this.categories}
+    dialogConfig.data = {type: "creation"}
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("création ingrédient");
   }
@@ -68,7 +49,7 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification", allergenes : this.allergenes, categories : this.categories,id:id}
+    dialogConfig.data = {type: "modification",id:id}
     this.dialog.open(IngredientFormComponent,dialogConfig);
     console.log("Ingrédient n° "+id+" modifié");
   }
