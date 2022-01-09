@@ -48,21 +48,19 @@ export class CategorieFormComponent implements  OnInit{
   }
 
   onSubmit(){
+    const nb : number = this.data.id;
     if(this.data.type == "creation"){
       if(this.data.element == "allergene"){
         let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catAllergeneService.createCategorieAllergene(tmpCatAllergene);
-        console.log("Catégorie Allergène créée : "+tmpCatAllergene)
       }
       else if(this.data.element == "ingredient"){
         let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catIngredientService.createCategorieIngredient(tmpCatIngredient);
-        console.log("Catégorie Ingrédient créée : "+tmpCatIngredient)
       }
       else if(this.data.element == "recette"){
         let tmpCatRecette = new CategorieRecette(this.CategorieForm.value.id,this.CategorieForm.value.nom)
         this.catRecetteService.createCategorieRecette(tmpCatRecette);
-        console.log("Catégorie Recette créée : "+tmpCatRecette)
       }
       else{
         console.log("data.type doit être égal à creation ou modification")
@@ -70,19 +68,16 @@ export class CategorieFormComponent implements  OnInit{
     }
     else if(this.data.type=="modification"){
       if(this.data.element == "allergene"){
-        let tmpCatAllergene = new CategorieAllergene(this.CategorieForm.value.id,this.CategorieForm.value.nom)
-        this.catAllergeneService.modifyCategorieAllergene(this.CategorieForm.value.id,tmpCatAllergene);
-        console.log("Catégorie Allergène modifiée : "+tmpCatAllergene)
+        let tmpCatAllergene = new CategorieAllergene(nb,this.CategorieForm.value.nom)
+        this.catAllergeneService.modifyCategorieAllergene(nb,tmpCatAllergene);
       }
       else if(this.data.element == "ingredient"){
-        let tmpCatIngredient = new CategorieIngredient(this.CategorieForm.value.id,this.CategorieForm.value.nom)
-        this.catIngredientService.modifyCategorieIngredient(this.CategorieForm.value.id,tmpCatIngredient);
-        console.log("Catégorie Ingrédient modifiée : "+tmpCatIngredient)
+        let tmpCatIngredient = new CategorieIngredient(nb,this.CategorieForm.value.nom)
+        this.catIngredientService.modifyCategorieIngredient(nb,tmpCatIngredient);
       }
       else if(this.data.element == "recette"){
-        let tmpCatRecette = new CategorieRecette(this.CategorieForm.value.id,this.CategorieForm.value.nom)
-        this.catRecetteService.modifyCategorieRecette(this.CategorieForm.value.id,tmpCatRecette);
-        console.log("Catégorie Recette modifiée : "+tmpCatRecette)
+        let tmpCatRecette = new CategorieRecette(nb,this.CategorieForm.value.nom)
+        this.catRecetteService.modifyCategorieRecette(nb,tmpCatRecette);
       }
       else{
         console.log("data.type doit être égal à creation ou modification")

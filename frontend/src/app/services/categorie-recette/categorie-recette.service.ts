@@ -27,15 +27,21 @@ export class CategorieRecetteService {
     return this.http.get<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
   }
 
-  createCategorieRecette(categorieRecette : CategorieRecette){
-    return this.http.post<CategorieRecette>(ServicesConfigComponent.url+"categorie/",categorieRecette);
+  createCategorieRecette(categorieRecette : any){
+    var req = {nom_categorie:categorieRecette.nom_categorie}
+    return this.http.post<any>(ServicesConfigComponent.url+"categorie/",req).subscribe(
+      data => console.log("Catégorie créée")
+    );
   }
 
-  modifyCategorieRecette(id : number,categorieRecette : CategorieRecette){
-    return this.http.put<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id,categorieRecette);
+  modifyCategorieRecette(id : number,categorieRecette : any){
+    var tmp = {"nom_categorie":categorieRecette.getNom()}
+    return this.http.put<any>(ServicesConfigComponent.url+"categorie/"+id,tmp).subscribe(
+      data => console.log("Catégorie ingredient modifiée")
+    );
   }
 
   deleteCategorieRecette(id : number){
-    return this.http.delete<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
+    return this.http.delete(ServicesConfigComponent.url+"categorie/"+id).subscribe(() => console.log("categorie supprimée"));
   }
 }
