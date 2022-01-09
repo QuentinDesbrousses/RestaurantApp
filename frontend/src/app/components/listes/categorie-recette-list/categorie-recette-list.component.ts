@@ -67,4 +67,8 @@ export class CategorieRecetteListComponent implements OnInit,AfterViewInit{
     console.log("Catégorie de recette n° "+id+" supprimé");
   }
 
+  refresh() : void {
+    this.categories_recette = this.service.getAllCategorieRecette();
+  }
+
 }

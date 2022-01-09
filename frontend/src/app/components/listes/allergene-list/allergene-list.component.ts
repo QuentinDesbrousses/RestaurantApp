@@ -66,4 +66,8 @@ export class AllergeneListComponent implements OnInit, AfterViewInit{
     console.log("Allergène n° "+id+" supprimé");
   }
 
+  refresh() : void {
+    this.allergenes = this.service.getAllAllergene();
+  }
+
 }

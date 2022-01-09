@@ -82,4 +82,8 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("Ingrédient n° "+id+" supprimé");
   }
+
+  refresh() : void {
+    this.ingredients = this.service.getAllIngredients();
+  }
 }
