@@ -14,8 +14,7 @@ import {CategorieIngredientService} from "../../../services/categorie-ingredient
 })
 export class CategorieIngredientListComponent implements OnInit,AfterViewInit{
 
-  @Input() categories_ingredient : CategorieIngredient[] | undefined;
-  dataSource = new MatTableDataSource<CategorieIngredient>();
+  categories_ingredient : CategorieIngredient[] = [];
   displayedColumns = ['ID','NOM','Modifier','Supprimer'];
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog,private service : CategorieIngredientService) { }
@@ -57,6 +56,10 @@ export class CategorieIngredientListComponent implements OnInit,AfterViewInit{
     dialogConfig.width = "30%";
     dialogConfig.data = {id: id,type:"categorie-ingredient"};
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
+  }
+
+  refresh() : void {
+    this.categories_ingredient = this.service.getAllCategorieIngredient();
   }
 
 }

@@ -17,26 +17,45 @@ export class IngredientService {
         data => {
           data.forEach(e =>{
             console.log(e)
-            res.push(new Ingredient(e.id_ingredient,e.nom_ingredient,e.id_cat_ingr,e.unite,e.quantite,e.cout_unitaire));
+            res.push(new Ingredient(e.id_ingredient,e.nom_ingredient,e.id_cat_ingr,e.unite,e.quantite,e.cout_unitaire,e.id_allergene));
           })},
         error => {console.log("error : "+error)});
     console.log("getAllIngredient : "+res)
     return res  }
 
   getIngredient(id : number){
+    //TODO
     return this.http.get<Ingredient>(ServicesConfigComponent.url+"ingredient/"+id);
   }
 
   createIngredient(ingredient : Ingredient){
-    return this.http.post<Ingredient>(ServicesConfigComponent.url+"ingredient/",ingredient);
-  }
+    var tmp = {
+      nom_ingredient:ingredient.getNom(),
+      unite:ingredient.getUnite(),
+      quantite:ingredient.getQuantite(),
+      cout_unite:ingredient.getCoutU(),
+      id_cat_ingr:ingredient.getCategorie(),
+      id_allergene:ingredient.getAllergene()
+    }
+    this.http.post<any>(ServicesConfigComponent.url+"ingredient/",tmp).subscribe(
+        data => console.log("Ingrédient créé")
+    );  }
 
   modifyIngredient(id : number,ingredient : Ingredient){
-    return this.http.put<Ingredient>(ServicesConfigComponent.url+"ingredient/"+id,ingredient);
-  }
+    var req = {
+      nom_ingredient:ingredient.getNom(),
+      unite:ingredient.getUnite(),
+      quantite:ingredient.getQuantite(),
+      cout_unite:ingredient.getCoutU(),
+      id_cat_ingr:ingredient.getCategorie(),
+      id_allergene:ingredient.getAllergene()
+    }
+    return this.http.put<any>(ServicesConfigComponent.url+"ingredient/"+id,req).subscribe(
+        data => console.log("Ingrédient modifié")
+    );  }
 
   deleteIngredient(id : number){
-    return this.http.delete<Ingredient>(ServicesConfigComponent.url+"ingredient/"+id);
+    return this.http.delete(ServicesConfigComponent.url+"ingredient/"+id).subscribe(() => console.log("Ingrédient supprimé"));;
   }
 
 }

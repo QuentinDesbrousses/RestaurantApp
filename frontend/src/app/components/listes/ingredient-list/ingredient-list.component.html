@@ -5,6 +5,7 @@
         <button class="square-btn create" (click)="creerIngredient()">
             <strong>Créer un ingrédient</strong>
         </button>
+        <button class="square-btn create" (click)="refresh()">Actualiser le tableau</button>
     </div>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -18,6 +19,7 @@
             <td>{{ligne.getId()}}</td>
             <td>{{ligne.getNom()}}</td>
             <td>{{ligne.getCategorie()}}</td>
+            <td>{{ligne.getAllergene()}}</td>
             <td>{{ligne.getUnite()}}</td>
             <td>{{ligne.getQuantite()}}</td>
             <td>{{ligne.getCoutU()}}</td>

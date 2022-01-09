@@ -58,4 +58,8 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     this.dialog.open(ConfirmationFormComponent,dialogConfig);
     console.log("Catégorie d'allergène n° "+id+" supprimé");
   }
+
+  refresh() : void {
+    this.categories_allergene = this.service.getAllCategorieAllergene();
+  }
 }
