@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
+import {MatSort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
@@ -52,6 +52,7 @@ export class CategorieRecetteListComponent implements OnInit,AfterViewInit{
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",element:"recette",id:id}
+
     this.dialog.open(CategorieFormComponent,dialogConfig);
     console.log("Catégorie de recette n° "+id+" modifié");
   }

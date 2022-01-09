@@ -17,7 +17,11 @@ export class CategorieFormComponent implements  OnInit{
   CategorieForm : FormGroup;
   currentCategorie : CategorieIngredient | CategorieAllergene | CategorieRecette | undefined;
 
-  constructor(public catAllergeneService : CategorieAllergeneService,public catIngredientService : CategorieIngredientService,public catRecetteService : CategorieRecetteService, public dialogRef: MatDialogRef<CategorieFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string,element:string}) {
+  constructor(public catAllergeneService : CategorieAllergeneService,
+              public catIngredientService : CategorieIngredientService,
+              public catRecetteService : CategorieRecetteService,
+              public dialogRef: MatDialogRef<CategorieFormComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {id:number,type: string,element:string}) {
     this.CategorieForm = new FormGroup({
       $id : new FormControl(this.currentCategorie?.getId),
       nom : new FormControl(this.currentCategorie?.getNom,Validators.required)
