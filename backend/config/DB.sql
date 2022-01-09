@@ -61,9 +61,7 @@ create table etape(
 create table utiliser(
     id_etape int not null,
     id_ingredient int not null, 
-    primary key (id_etape,id_ingredient),
-    constraint id_ingredient foreign key(id_ingredient) references ingredient(id_ingredient),
-    constraint id_etape foreign key(id_etape) references etape(id_etape)
+    constraint id_ingredient foreign key(id_ingredient) references ingredient(id_ingredient)
 );
 
 create table recette(
@@ -133,6 +131,9 @@ alter table ingredient
 add column id_allergene int;
 alter table ingredient
 add constraint id_allergene foreign key(id_allergene) references allergene(id_allergene);
+
+alter table utiliser
+add column quantite float;
 
 /*
 {

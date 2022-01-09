@@ -11,6 +11,7 @@ exports.getAllAllergene = async (req, res, next) => {
             error: error,
             message:'allergenes non-envoyes'})}
       ); 
+      
     }
 
     exports.getAllergene = async (req, res, next) => {

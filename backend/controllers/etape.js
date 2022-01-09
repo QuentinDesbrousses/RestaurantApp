@@ -1,4 +1,5 @@
 const Etape = require('../models/etape');
+const Utiliser = require('../models/utiliser');
 const pool =require('../config/db')
 
 exports.getAllEtape = async (req, res, next) => {
@@ -25,15 +26,28 @@ exports.getAllEtape = async (req, res, next) => {
         ); 
     }
 
-    exports.createEtape = async (req, res, next) =>{
+    exports.createEtape = (req, res, next) =>{
         const etape = new Etape.Etape();
-        var valuesToSave = [req.body];
+        const utiliser = new Utiliser.Utiliser();
+        var val = {
+            "titre_etape":req.body.titre_etape,
+            "description_etape":req.body.description_etape,
+            "temps_etape":req.body.temps_etape
+        }
+        var ingr=req.body.ingredients;
+        var valuesToSave = [val];
         etape.addValue(valuesToSave)
-        .then(()=> res.status(201).json({message:"etape créée"}))
-        .catch((err) => res.status(400).json({error:err}));
+        .then((etape)=> {
+        ingr.forEach(element => {
+            utiliser.addValue([etape.id_etape,element.id_ingredient,element.quantite])
+            .then(()=> 
+            console.log("utiliser créé"))
+        }); 
+        res.status(201).json(etape)})
+        .catch(error=>console.log(error))
     }
 
-    exports.deleteEtape = async (req,res,next) =>{
+    exports.deleteEtape = (req,res,next) =>{
         const etape = new Etape.Etape();
         var condition = [req.body];
         etape.delete(condition)
@@ -41,17 +55,31 @@ exports.getAllEtape = async (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = async (req,res,next) => {
+    exports.deleteById = (req,res,next) => {
         const etape = new Etape.Etape();
         etape.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"etape supprimée"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyEtape = async (req,res,next)=>{
+    exports.modifyEtape = (req,res,next)=>{
         const etape = new Etape.Etape();
-        var changements = [req.body];
-        etape.modify(req.params.id,changements)
-        .then(()=> res.status(200).json({message:"etape modifiée"}))
-        .catch((err) => res.status(400).json({error:err}));
+        const utiliser = new Utiliser.Utiliser();
+        var val = {
+            "titre_etape":req.body.titre_etape,
+            "description_etape":req.body.description_etape,
+            "temps_etape":req.body.temps_etape
+        }
+        var ingr=req.body.ingredients;
+        var valuesToSave = [val];
+        etape.modify(req.params.id,valuesToSave)
+        .then((etape)=> {
+        ingr.forEach(element => {
+            utiliser.deleteById(element.id_ingredient);
+            utiliser.addValue([etape.id_etape,element.id_ingredient,element.quantite])
+            .then(()=> 
+            console.log("utiliser créé"))
+        }); 
+        res.status(201).json(etape)})
+        .catch(error=>console.log(error))
     }
