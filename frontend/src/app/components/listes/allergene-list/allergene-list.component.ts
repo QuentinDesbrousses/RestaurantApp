@@ -41,7 +41,7 @@ export class AllergeneListComponent implements OnInit, AfterViewInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "creation",categories:this.categories}
+    dialogConfig.data = {type: "creation"}
     this.dialog.open(AllergeneFormComponent,dialogConfig);
     console.log("création allergene");
   }
@@ -51,7 +51,7 @@ export class AllergeneListComponent implements OnInit, AfterViewInit{
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
-    dialogConfig.data = {type: "modification",categories:this.categories,id:id}
+    dialogConfig.data = {type: "modification",id:id}
     this.dialog.open(AllergeneFormComponent,dialogConfig);
     console.log("Allergène n° "+id+" modifié");
   }

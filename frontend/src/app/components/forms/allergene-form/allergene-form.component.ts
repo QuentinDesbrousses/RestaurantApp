@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {AllergeneService} from "../../../services/allergene/allergene.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -11,16 +11,22 @@ import { CategorieAllergeneService } from 'src/app/services/categorie-allergene/
   templateUrl: './allergene-form.component.html',
   styleUrls: ['./allergene-form.component.css']
 })
-export class AllergeneFormComponent {
+export class AllergeneFormComponent implements OnInit {
   AllergeneForm : FormGroup;
+  categories : CategorieAllergene[] = [];
 
-  constructor(public service : AllergeneService,public sca : CategorieAllergeneService, public dialogRef: MatDialogRef<AllergeneFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string,categories:CategorieAllergene[]}) {
+  constructor(public service : AllergeneService,public sca : CategorieAllergeneService, public dialogRef: MatDialogRef<AllergeneFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string}) {
     this.AllergeneForm = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
       categorie : new FormControl('',Validators.required)
     })
   }
+
+  ngOnInit(){
+    this.categories = this.sca.getAllCategorieAllergene();
+  }
+
   onSubmit(){
     console.log("c'est id"+this.data.id);
     const nb : number = this.data.id;
