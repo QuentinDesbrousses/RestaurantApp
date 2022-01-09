@@ -26,15 +26,21 @@ export class AllergeneService {
     return this.http.get<Allergene>(ServicesConfigComponent.url+"allergene/"+id);
   }
 
-  createAllergene(allergene : Allergene){
-    return this.http.post<Allergene>(ServicesConfigComponent.url+"allergene/",allergene);
+  createAllergene(allergene : any){
+    var req={"nom_allergene":allergene.nom_allergene, "id_cat_al":allergene.id_cat_al}
+    return this.http.post<any>(ServicesConfigComponent.url+"allergene/",req).subscribe(
+      data => console.log("allergene créé")
+    );
   }
 
-  modifyAllergene(id : number,allergene : Allergene){
-    return this.http.put<Allergene>(ServicesConfigComponent.url+"allergene/"+id,allergene);
+  modifyAllergene(id : number,allergene : any){
+    var req={"nom_allergene":allergene.nom_allergene, "id_cat_al":allergene.id_cat_al}
+    return this.http.put<any>(ServicesConfigComponent.url+"allergene/"+id,req).subscribe(
+      data => console.log("allergene modifié")
+    );
   }
 
   deleteAllergene(id : number){
-    return this.http.delete<Allergene>(ServicesConfigComponent.url+"allergene/"+id);
+    return this.http.delete<any>(ServicesConfigComponent.url+"allergene/"+id).subscribe(() => console.log("allergene supprimé"));
   }
 }

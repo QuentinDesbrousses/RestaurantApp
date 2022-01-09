@@ -30,25 +30,26 @@ export class IngredientService {
 
   createIngredient(ingredient : Ingredient){
     var tmp = {
-      nom_ingredient:ingredient.getNom(),
-      unite:ingredient.getUnite(),
-      quantite:ingredient.getQuantite(),
-      cout_unitaire:ingredient.getCoutU(),
-      id_cat_ingr:ingredient.getCategorie(),
-      id_allergene:ingredient.getAllergene()
+      "nom_ingredient":ingredient.getNom(),
+      "unite":ingredient.getUnite(),
+      "quantite":ingredient.getQuantite(),
+      "cout_unitaire":ingredient.getCoutU(),
+      "id_cat_ingr":ingredient.getCategorie(),
+      "id_allergene":ingredient.getAllergene()
     }
+    console.log(tmp);
     this.http.post<any>(ServicesConfigComponent.url+"ingredient/",tmp).subscribe(
         data => console.log("Ingrédient créé")
     );  }
 
   modifyIngredient(id : number,ingredient : Ingredient){
     var req = {
-      nom_ingredient:ingredient.getNom(),
-      unite:ingredient.getUnite(),
-      quantite:ingredient.getQuantite(),
-      cout_unitaire:ingredient.getCoutU(),
-      id_cat_ingr:ingredient.getCategorie(),
-      id_allergene:ingredient.getAllergene()
+      "nom_ingredient":ingredient.getNom(),
+      "unite":ingredient.getUnite(),
+      "quantite":ingredient.getQuantite(),
+      "cout_unitaire":ingredient.getCoutU(),
+      "id_cat_ingr":ingredient.getCategorie(),
+      "id_allergene":ingredient.getAllergene()
     }
     return this.http.put<any>(ServicesConfigComponent.url+"ingredient/"+id,req).subscribe(
         data => console.log("Ingrédient modifié")
