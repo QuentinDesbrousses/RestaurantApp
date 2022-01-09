@@ -9,15 +9,71 @@ exports.Etape = class Etape extends model.Model{
       }
     
       selectById(id){
-          return super.selectById(this.table,id,this.tableId);
+        return new Promise((resolve,reject)=>{
+            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient where etape.id_etape="+id+";";
+
+            const query = {
+                name:"selectbyid",
+                text:request,
+                values:[]
+            }
+
+            this.user.query(query,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows);
+                }
+            })
+        });
       }
     
       selectAll(){
-          return super.selectAll(this.table);
+        return new Promise((resolve,reject)=>{
+            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient;";
+
+            const query = {
+                name:"selectAll",
+                text:request,
+                values:[]
+            }
+
+            this.user.query(query,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows);
+                }
+            })
+        });
       }
     
-      addValue(valuesToSave){
-          return super.addValue(this.table, valuesToSave);
+      addValue(valuesToSave,ingr){
+           return new Promise((resolve,reject)=>{
+            valuesToSave=valuesToSave[0]
+            var attributs = Object.keys(valuesToSave);
+            var request = "INSERT INTO "+this.table+" (";
+            attributs.forEach(att => 
+                request+=att +", "
+                );
+            request=request.substring(0, request.length - 2);
+            request+=") values (";
+            for (var el in valuesToSave){
+                request+="\'"+valuesToSave[el]+"\', ";
+            }
+            request=request.substring(0, request.length - 2);
+            request+=") returning *; ";
+            this.user.query(request,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows[0]);
+                }
+            })
+        })
       }
     
       delete(condition){

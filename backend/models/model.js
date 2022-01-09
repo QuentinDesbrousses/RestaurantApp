@@ -68,7 +68,7 @@ exports.Model = class Model{
                 request+="\'"+valuesToSave[el]+"\', ";
             }
             request=request.substring(0, request.length - 2);
-            request+=");";
+            request+=") returning *;";
             this.user.query(request,function(err,res){
                 if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
                     reject(err.stack)
@@ -125,7 +125,7 @@ exports.Model = class Model{
                 request+=el+" = \'"+changements[el]+"\', ";
             }
             request=request.substring(0, request.length - 2);
-            request+="where "+tableId+" = "+id+";";
+            request+="where "+tableId+" = "+id+" returning *;";
             this.user.query(request,function(err,res){
                 if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
                     reject(err.stack)

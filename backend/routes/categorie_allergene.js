@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 
 const categorie_alContr = require('../controllers/categorie_allergene');
 
-router.get('/', categorie_alContr.getAllCat_Allergene);
+router.get('/',categorie_alContr.getAllCat_Allergene);
 router.get('/:id',categorie_alContr.getCat_Allergene);
 router.post('/',categorie_alContr.createCat_Allergene);
 router.put('/:id',categorie_alContr.modifyCat_Allergene);

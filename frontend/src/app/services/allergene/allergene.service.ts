@@ -28,6 +28,7 @@ export class AllergeneService {
 
   createAllergene(allergene : any){
     var req={"nom_allergene":allergene.nom_allergene, "id_cat_al":allergene.id_cat_al}
+    console.log(req.id_cat_al);
     return this.http.post<any>(ServicesConfigComponent.url+"allergene/",req).subscribe(
       data => console.log("allergene créé")
     );

@@ -1,7 +1,7 @@
 const Fiche = require('../models/fiche');
 const pool =require('../config/db')
 
-exports.getAllFiche = (req, res, next) => {
+exports.getAllFiche = async (req, res, next) => {
     const fiche = new Fiche.Fiche();
     fiche.selectAll()
     .then((fiches) => {
@@ -13,7 +13,7 @@ exports.getAllFiche = (req, res, next) => {
       ); 
     }
 
-    exports.getFiche = (req, res, next) => {
+    exports.getFiche = async (req, res, next) => {
         const fiche = new Fiche.Fiche();
         fiche.selectById(req.params.id)
         .then((fiche) => {
@@ -25,7 +25,7 @@ exports.getAllFiche = (req, res, next) => {
         ); 
     }
 
-    exports.createFiche = (req, res, next) =>{
+    exports.createFiche = async (req, res, next) =>{
         const fiche = new Fiche.Fiche();
         var valuesToSave = [req.body];
         fiche.addValue(valuesToSave)
@@ -33,7 +33,7 @@ exports.getAllFiche = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteFiche = (req,res,next) =>{
+    exports.deleteFiche = async (req,res,next) =>{
         const fiche = new Fiche.Fiche();
         var condition = [req.body];
         fiche.delete(condition)
@@ -41,14 +41,14 @@ exports.getAllFiche = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = (req,res,next) => {
+    exports.deleteById = async (req,res,next) => {
         const fiche = new Fiche.Fiche();
         fiche.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"fiche supprimée"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyFiche = (req,res,next)=>{
+    exports.modifyFiche = async (req,res,next)=>{
         const fiche = new Fiche.Fiche();
         var changements = [req.body];
         fiche.modify(req.params.id,changements)
