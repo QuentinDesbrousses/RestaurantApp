@@ -1,7 +1,7 @@
 const Categorie = require('../models/categorie');
 const pool =require('../config/db')
 
-exports.getAllCategorie = (req, res, next) => {
+exports.getAllCategorie = async (req, res, next) => {
     const categorie = new Categorie.Categorie();
     categorie.selectAll()
     .then((categories) => {
@@ -13,7 +13,7 @@ exports.getAllCategorie = (req, res, next) => {
       ); 
     }
 
-    exports.getCategorie = (req, res, next) => {
+    exports.getCategorie = async (req, res, next) => {
         const categorie = new Categorie.Categorie();
         categorie.selectById(req.params.id)
         .then((cat) => {
@@ -25,7 +25,7 @@ exports.getAllCategorie = (req, res, next) => {
         ); 
     }
 
-    exports.createCategorie = (req, res, next) =>{
+    exports.createCategorie = async (req, res, next) =>{
         const categorie = new Categorie.Categorie();
         var valuesToSave = [req.body];
         categorie.addValue(valuesToSave)
@@ -33,7 +33,7 @@ exports.getAllCategorie = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteCategorie = (req,res,next) =>{
+    exports.deleteCategorie = async (req,res,next) =>{
         const categorie = new Categorie.Categorie();
         var condition = [req.body];
         categorie.delete(condition)
@@ -41,14 +41,14 @@ exports.getAllCategorie = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = (req,res,next) => {
+    exports.deleteById = async (req,res,next) => {
         const categorie = new Categorie.Categorie();
         categorie.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"categorie supprimée"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyCategorie = (req,res,next)=>{
+    exports.modifyCategorie = async (req,res,next)=>{
         const categorie = new Categorie.Categorie();
         var changements = [req.body];
         categorie.modify(req.params.id,changements)

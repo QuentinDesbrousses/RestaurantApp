@@ -1,7 +1,7 @@
 const Recette = require('../models/recette');
 const pool =require('../config/db')
 
-exports.getAllRecette = (req, res, next) => {
+exports.getAllRecette = async (req, res, next) => {
     const recette = new Recette.Recette();
     recette.selectAll()
     .then((recettes) => {
@@ -13,7 +13,7 @@ exports.getAllRecette = (req, res, next) => {
       ); 
 }
 
-exports.getRecette = (req, res, next) => {
+exports.getRecette = async (req, res, next) => {
     const recette = new Recette.Recette();
     recette.selectById(req.params.id)
     .then((recette) => {
@@ -25,7 +25,7 @@ exports.getRecette = (req, res, next) => {
     ); 
 }
 
-exports.createRecette = (req, res, next) =>{
+exports.createRecette = async (req, res, next) =>{
     const recette = new Recette.Recette();
     var valuesToSave = [req.body];
     recette.addValue(valuesToSave)
@@ -33,7 +33,7 @@ exports.createRecette = (req, res, next) =>{
     .catch((err) => res.status(400).json({error:err}));
 }
 
-exports.deleteRecette = (req,res,next) =>{
+exports.deleteRecette = async (req,res,next) =>{
     const recette = new Recette.Recette();
     var condition = [req.body];
     recette.delete(condition)
@@ -41,14 +41,14 @@ exports.deleteRecette = (req,res,next) =>{
     .catch((err) => res.status(400).json({error:err}));
 }
 
-exports.deleteById = (req,res,next) => {
+exports.deleteById = async (req,res,next) => {
     const recette = new Recette.Recette();
     recette.deleteById(req.params.id)
     .then(()=> res.status(201).json({message:"recette supprimée"}))
     .catch((err) => res.status(400).json({error:err}));
 }
 
-exports.modifyRecette = (req,res,next)=>{
+exports.modifyRecette = async (req,res,next)=>{
     const recette = new Recette.Recette();
     var changements = [req.body];
     recette.modify(req.params.id,changements)

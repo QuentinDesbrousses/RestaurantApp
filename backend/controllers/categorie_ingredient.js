@@ -1,7 +1,7 @@
 const Cat_Ingredient = require('../models/categorie_ingredient');
 const pool =require('../config/db')
 
-exports.getAllCat_Ingredient = (req, res, next) => {
+exports.getAllCat_Ingredient = async (req, res, next) => {
     const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
     cat_ingredient.selectAll()
     .then((catingredient) => {
@@ -13,7 +13,7 @@ exports.getAllCat_Ingredient = (req, res, next) => {
       ); 
     }
 
-    exports.getCat_Ingredient = (req, res, next) => {
+    exports.getCat_Ingredient = async(req, res, next) => {
         const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
         cat_ingredient.selectById(req.params.id)
         .then((catingredient) => {
@@ -25,7 +25,7 @@ exports.getAllCat_Ingredient = (req, res, next) => {
         ); 
     }
 
-    exports.createCat_Ingredient = (req, res, next) =>{
+    exports.createCat_Ingredient = async (req, res, next) =>{
         const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
         var valuesToSave = [req.body];
         cat_ingredient.addValue(valuesToSave)
@@ -33,7 +33,7 @@ exports.getAllCat_Ingredient = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteCat_Ingredient = (req,res,next) =>{
+    exports.deleteCat_Ingredient = async(req,res,next) =>{
         const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
         var condition = [req.body];
         cat_ingredient.delete(condition)
@@ -41,14 +41,14 @@ exports.getAllCat_Ingredient = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = (req,res,next) => {
+    exports.deleteById = async (req,res,next) => {
         const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
         cat_ingredient.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"categorie d'ingredient supprimée"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyCat_Ingredient = (req,res,next)=>{
+    exports.modifyCat_Ingredient = async (req,res,next)=>{
         const cat_ingredient = new Cat_Ingredient.categorie_ingredient();
         var changements = [req.body];
         cat_ingredient.modify(req.params.id,changements)
