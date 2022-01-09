@@ -75,7 +75,6 @@ export class EtapeFormComponent {
         this.EtapeForm.value.titre,
         this.EtapeForm.value.description,
         this.EtapeForm.value.temps,
-        this.EtapeForm.value.cout,
         ingr
     );
     if(this.data.type=="creation"){

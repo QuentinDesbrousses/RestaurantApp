@@ -5,15 +5,13 @@ export class Etape {
     private titre_etape : string;
     private description_etape : string;
     private temps_etape : number;
-    private cout_etape : number;
     private ingredients : [{id_ingredient:number,quantite:number}];
 
-    constructor(id_etape: number, titre_etape: string, description_etape: string, temps_etape: number, cout_etape: number, ingredients : [{id_ingredient:number,quantite:number}]) {
+    constructor(id_etape: number, titre_etape: string, description_etape: string, temps_etape: number, ingredients : [{id_ingredient:number,quantite:number}]) {
         this.id_etape = id_etape;
         this.titre_etape = titre_etape;
         this.description_etape = description_etape;
         this.temps_etape = temps_etape;
-        this.cout_etape = cout_etape;
         this.ingredients = ingredients;
     }
 
@@ -33,7 +31,7 @@ export class Etape {
         this.titre_etape = titre_etape;
     }
 
-    getDescritpion() : string {
+    getDescription() : string {
         return this.description_etape;
     }
 
@@ -47,14 +45,6 @@ export class Etape {
 
     setTemps(temps_etape : number) {
         this.temps_etape = temps_etape;
-    }
-
-    getCout() : number {
-        return this.cout_etape;
-    }
-
-    setCout(cout_etape : number) {
-        this.cout_etape = cout_etape;
     }
 
     getIngredients() : [{id_ingredient:number,quantite:number}]{

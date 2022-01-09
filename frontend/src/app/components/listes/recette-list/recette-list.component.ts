@@ -16,7 +16,7 @@ import {CategorieRecetteService} from "../../../services/categorie-recette/categ
 })
 export class RecetteListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns = ['ID','Titre', 'Description', 'Etapes', 'Categorie','Couverts','Temps','Fiche technique','modifier','supprimer'];
+  displayedColumns = ['ID','Titre', 'Description','Couverts','Temps','Fiche technique','modifier','supprimer'];
   categories : CategorieRecette[] = [];
   recettes : Recette[] = [];
 

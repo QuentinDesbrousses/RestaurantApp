@@ -1,13 +1,10 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Ingredient} from "../../../models/ingredient";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort, Sort} from "@angular/material/sort";
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
 import {Etape} from "../../../models/etape";
 import {EtapeFormComponent} from "../../forms/etape-form/etape-form.component";
+import {EtapeService} from "../../../services/etape/etape.service";
 
 @Component({
   selector: 'app-etape-list',
@@ -15,49 +12,17 @@ import {EtapeFormComponent} from "../../forms/etape-form/etape-form.component";
   styleUrls: ['./etape-list.component.css']
 })
 export class EtapeListComponent implements OnInit, AfterViewInit {
-  @Input() etapes : Etape[] | undefined;
+  etapes : Etape[] = [];
   @Input() ingredients : string[] | undefined;
-  displayedColumns = ['ID','titre', 'description','ingredients','temps', 'cout','modifier','supprimer'];
-  dataSource = new MatTableDataSource<Etape>();
+  displayedColumns = ['ID','Titre', 'Description','Ingredients','Temps', 'Cout','Modifier','Supprimer'];
 
-  @ViewChild(MatPaginator) paginator : MatPaginator | undefined;
-  @ViewChild(MatSort) sort: MatSort | undefined;
-
-  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog) {}
+  constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog,private service : EtapeService) {}
 
   ngOnInit() {
-    if(this.etapes){
-      this.dataSource = new MatTableDataSource<Etape>(this.etapes);
-    }
+    this.etapes = this.service.getAllEtape();
   }
   ngAfterViewInit() {
-    if (this.paginator){
-      this.dataSource.paginator = this.paginator;
-    }
-    if(this.sort){
-      this.dataSource.sort = this.sort;
-    }
-  }
-
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.etapes = this.service.getAllEtape();
   }
 
   //CRUD Etape
@@ -70,16 +35,18 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("création étape");
   }
-  modifierEtape(id:string){
+
+  modifierEtape(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
-    dialogConfig.data = {type: "modification", ingredients : this.ingredients,id:id}
+    dialogConfig.data = {type: "modification",id:id}
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("Etape n° "+id+" modifiée");
   }
-  supprimerEtape(id:string){
+
+  supprimerEtape(id: number){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -89,8 +56,12 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
     console.log("Etape n° "+id+" supprimée");
   }
 
-  montrerIngredients(id : string) {
+  montrerIngredients(id: number) {
     //TODO
     console.log("Voici les étapes de la recette "+id);
+  }
+
+  refresh() : void {
+    this.etapes = this.service.getAllEtape();
   }
 }
