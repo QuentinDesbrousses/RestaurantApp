@@ -9,8 +9,7 @@ exports.Ingredient = class Ingredient extends model.Model {
     
       selectById(id){
         return new Promise((resolve,reject)=>{
-            //var request = "select * from "+this.table+"natural join categorie_ingredient where "+this.tableId+" = "+id+";";
-            var request ="select * from "+this.table+" natural join categorie_ingredient where "+this.tableId+"  = "+id+";";
+            var request ="select * from ingredient as i left join categorie_ingredient as ci on i.id_cat_ingr=ci.id_cat_ingr left join allergene as a on a.id_allergene=i.id_allergene left join categorie_allergene as ca on ca.id_cat_al=a.id_cat_al where id_ingredient="+id+";"
             const query = {
                 name:"selectbyid",
                 text:request,
@@ -30,8 +29,7 @@ exports.Ingredient = class Ingredient extends model.Model {
     
       selectAll(){
         return new Promise((resolve,reject)=>{
-            var request = "select * from "+this.table+" natural join categorie_ingredient;";
-
+            var request ="select * from ingredient as i left join categorie_ingredient as ci on i.id_cat_ingr=ci.id_cat_ingr left join allergene as a on a.id_allergene=i.id_allergene left join categorie_allergene as ca on ca.id_cat_al=a.id_cat_al;"
             const query = {
                 name:"selectAll",
                 text:request,

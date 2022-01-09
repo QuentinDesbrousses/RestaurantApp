@@ -45,6 +45,6 @@ export class CategorieIngredientService {
   }
 
   deleteCategorieIngredient(id : number){
-    this.http.delete(ServicesConfigComponent.url+"cat_ingredient/"+id).subscribe(() => console.log("cat-ingredient supprimé"));;
+    this.http.delete(ServicesConfigComponent.url+"cat_ingredient/"+id).subscribe(() => console.log("cat-ingredient supprimé"));
   }
 }

@@ -28,7 +28,7 @@ export class CategorieRecetteService {
   }
 
   createCategorieRecette(categorieRecette : any){
-    var req = {nom_categorie:categorieRecette.nom_categorie}
+    var req = {"nom_categorie":categorieRecette.nom_categorie}
     return this.http.post<any>(ServicesConfigComponent.url+"categorie/",req).subscribe(
       data => console.log("Catégorie créée")
     );
