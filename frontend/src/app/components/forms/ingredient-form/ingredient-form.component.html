@@ -12,6 +12,7 @@
             <div class="form-field">
                 <label for="categorie">Catégorie*</label>
                 <select id="categorie" type="text" formControlName="categorie">
+                    <option>Sélection</option>
                     <option *ngFor="let cat of categories">{{cat.getNom()}}</option>
                 </select>
             </div>

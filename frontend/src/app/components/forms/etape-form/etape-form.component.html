@@ -18,6 +18,7 @@
                 <form [formGroup]="IngredientForm" (ngSubmit)="selectIngredient()">
                     <label for="selectEtape">Ingrédient(s)*</label>
                     <select id="selectEtape" type="text" formControlName="selectIngredient">
+                        <option>Sélection</option>
                         <option *ngFor="let e of this.data.ingredients">{{e}}</option>
                     </select>
                     <button class="form-btn" type="submit">+</button>
