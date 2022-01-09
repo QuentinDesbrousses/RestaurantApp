@@ -2,22 +2,24 @@ const Etape = require('../models/etape');
 const Utiliser = require('../models/utiliser');
 const pool =require('../config/db')
 
-exports.getAllEtape = async (req, res, next) => {
+exports.getAllEtape = (req, res, next) => {
     const etape = new Etape.Etape();
     etape.selectAll()
-    .then((etapes) => {
-          res.status(200).json(etapes)})
-    .catch((error) => {
-          res.status(400).json({
-            error: error,
-            message:'etapes non-envoyees'})}
-      ); 
-    }
+    .then((etape) => {
 
-    exports.getEtape = async (req, res, next) => {
+        res.status(200).json(etape)})
+    .catch((error) => {
+        res.status(400).json({
+            error: error,
+            message:"etape non-envoyee"})}
+    ); 
+}
+
+    exports.getEtape = (req, res, next) => {
         const etape = new Etape.Etape();
         etape.selectById(req.params.id)
         .then((etape) => {
+
             res.status(200).json(etape)})
         .catch((error) => {
             res.status(400).json({
@@ -57,8 +59,13 @@ exports.getAllEtape = async (req, res, next) => {
 
     exports.deleteById = (req,res,next) => {
         const etape = new Etape.Etape();
+        const utiliser = new Utiliser.Utiliser();
         etape.deleteById(req.params.id)
-        .then(()=> res.status(201).json({message:"etape supprimée"}))
+        .then(()=> {
+            utiliser.deleteById(req.params.id)
+            .then(()=>console.log("utiliser supprime"))
+            .catch((error)=>console.log(error))
+            res.status(201).json({message:"etape supprimée"})})
         .catch((err) => res.status(400).json({error:err}));
     }
 
@@ -83,3 +90,38 @@ exports.getAllEtape = async (req, res, next) => {
         res.status(201).json(etape)})
         .catch(error=>console.log(error))
     }
+
+
+
+
+    /*new Promise((resolve,reject)=>{
+        var etapeComplete=[];
+        var listeingr=[];
+    etape.selectAll()
+    .then((etapes) => {
+        etapes.forEach(etape=>{
+            listeingr=[];
+            utiliser.selectById(etape.id_etape)
+            .then((uses)=>{
+                uses.forEach(use=>{
+                    console.log("use"+use)
+                    listeingr.push({"id_ingredient":use.id_ingredient,"quantite":use.quantite})
+                })
+                etapeComplete.push({
+                    "titre_etape":etape.titre_etape,
+                    "description_etape":etape.description_etape,
+                    "temps_etape":etape.temps_etape,
+                    "ingredients":listeingr
+                })
+            })
+            .catch(error=>console.log(error))
+        });
+    })
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'etapes non-envoyees'})}
+      ); 
+      resolve(etapeComplete)
+    })
+      .then((et)=>res.send(et))*/

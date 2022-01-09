@@ -1,15 +1,15 @@
 const model = require("./model");
 
-exports.Utiliser = class Utiliser extends model.Model{
+exports.RecetteComposer = class RecetteComposer extends model.Model{
 
     constructor(){
         super();
-        this.table="utiliser";
-        this.tableId="id_etape";
+        this.table="recettecomposer";
+        this.tableId="id_recette";
     }
     selectById(id){
         return new Promise((resolve,reject)=>{
-            var request = "select * from "+this.table+" where id_etape="+id+";";
+            var request = "select * from "+this.table+" where id_recette="+id+";";
 
             const query = {
                 name:"selectbyid",
@@ -34,7 +34,7 @@ exports.Utiliser = class Utiliser extends model.Model{
 
     addValue(valuesToSave){
         return new Promise((resolve,reject)=>{
-            var request = "INSERT INTO "+this.table+" (id_etape,id_ingredient,quantite) values (";
+            var request = "INSERT INTO "+this.table+" (id_recette,id_recetteincluse,placer) values (";
             for (var el in valuesToSave){
                 request+=valuesToSave[el]+", ";
             }
@@ -56,7 +56,7 @@ exports.Utiliser = class Utiliser extends model.Model{
     }
 
     deleteById(id){
-        return super.deleteById(this.table,"id_ingredient",id);
+        return super.deleteById(this.table,"id_recette",id);
     }
 
 /*    modify(changements){

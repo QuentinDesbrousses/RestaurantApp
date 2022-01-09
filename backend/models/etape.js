@@ -9,12 +9,29 @@ exports.Etape = class Etape extends model.Model{
       }
     
       selectById(id){
-          return super.selectById(this.table,id,this.tableId);
+        return new Promise((resolve,reject)=>{
+            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient where etape.id_etape="+id+";";
+
+            const query = {
+                name:"selectbyid",
+                text:request,
+                values:[]
+            }
+
+            this.user.query(query,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows);
+                }
+            })
+        });
       }
     
       selectAll(){
         return new Promise((resolve,reject)=>{
-            var request = "select * from "+this.table+" as e natural join utiliser ;";
+            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient;";
 
             const query = {
                 name:"selectAll",

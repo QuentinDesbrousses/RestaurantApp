@@ -53,7 +53,7 @@ create table avoir(
 create table etape(
     id_etape serial primary key,
     titre_etape varchar(100),
-    description_etape text,
+    description_etape varchar(250),
     temps_etape float,
     cout_etape float
 );
@@ -67,13 +67,11 @@ create table utiliser(
 create table recette(
     id_recette serial primary key,
     id_categorie int,
-    id_utilisateur int,
     titre_recette varchar(100),
     description_recette text,
     nb_couvert int,
     temps_recette float,
-    constraint id_categorie foreign key(id_categorie) references categorie(id_categorie),
-    constraint id_utilisateur foreign key(id_utilisateur) references utilisateur(id_utilisateur)
+    constraint id_categorie foreign key(id_categorie) references categorie(id_categorie)
 );
 
 create table voir(
@@ -134,6 +132,18 @@ add constraint id_allergene foreign key(id_allergene) references allergene(id_al
 
 alter table utiliser
 add column quantite float;
+
+create table etapecomposer(
+    id_recette int,
+    id_etape int,
+    place int
+);
+
+create table recettecomposer(
+    id_recette int,
+    id_recetteincluse int,
+    placer int
+);
 
 /*
 {
