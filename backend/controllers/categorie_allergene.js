@@ -1,7 +1,7 @@
 const Cat_Allergene = require('../models/categorie_allergene');
 const pool =require('../config/db')
 
-exports.getAllCat_Allergene = (req, res, next) => {
+exports.getAllCat_Allergene = async (req, res, next) => {
     const cat_allergene = new Cat_Allergene.categorie_allergene();
     cat_allergene.selectAll()
     .then((catallergene) => {
@@ -13,7 +13,7 @@ exports.getAllCat_Allergene = (req, res, next) => {
       ); 
     }
 
-    exports.getCat_Allergene = (req, res, next) => {
+    exports.getCat_Allergene =async  (req, res, next) => {
         const cat_allergene = new Cat_Allergene.categorie_allergene();
         cat_allergene.selectById(req.params.id)
         .then((catallergene) => {
@@ -25,7 +25,7 @@ exports.getAllCat_Allergene = (req, res, next) => {
         ); 
     }
 
-    exports.createCat_Allergene = (req, res, next) =>{
+    exports.createCat_Allergene = async(req, res, next) =>{
         const cat_allergene = new Cat_Allergene.categorie_allergene();
         var cat_al = {
             nom_cat_al:req.body.nom_cat_al
@@ -37,7 +37,7 @@ exports.getAllCat_Allergene = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteCat_Allergene = (req,res,next) =>{
+    exports.deleteCat_Allergene = async (req,res,next) =>{
         const cat_allergene = new Cat_Allergene.categorie_allergene();
         var condition = [req.body];
         cat_allergene.delete(condition)
@@ -45,14 +45,14 @@ exports.getAllCat_Allergene = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = (req,res,next) => {
+    exports.deleteById = async (req,res,next) => {
         const cat_allergene = new Cat_Allergene.categorie_allergene();
         cat_allergene.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"categorie d'allergene supprimée"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyCat_Allergene = (req,res,next)=>{
+    exports.modifyCat_Allergene = async (req,res,next)=>{
         const cat_allergene = new Cat_Allergene.categorie_allergene();
         var cat_al = {
             nom_cat_al:req.body.nom_cat_al

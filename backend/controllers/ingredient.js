@@ -1,7 +1,7 @@
 const Ingredient = require('../models/ingredient');
 const pool =require('../config/db')
 
-exports.getAllIngredient = (req, res, next) => {
+exports.getAllIngredient = async (req, res, next) => {
     const ingredient = new Ingredient.Ingredient();
     ingredient.selectAll()
     .then((ingredients) => {
@@ -13,7 +13,7 @@ exports.getAllIngredient = (req, res, next) => {
       ); 
     }
 
-    exports.getIngredient = (req, res, next) => {
+    exports.getIngredient = async (req, res, next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.selectById(req.params.id)
         .then((ingr) => {
@@ -25,7 +25,7 @@ exports.getAllIngredient = (req, res, next) => {
         ); 
     }
 
-    exports.createIngredient = (req, res, next) =>{
+    exports.createIngredient = async (req, res, next) =>{
       const ingredient = new Ingredient.Ingredient();
       var val ={
         nom_ingredient:req.body.nom_ingredient,
@@ -41,7 +41,7 @@ exports.getAllIngredient = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteIngredient = (req,res,next) =>{
+    exports.deleteIngredient = async (req,res,next) =>{
       const ingredient = new Ingredient.Ingredient();
       var condition = [req.body];
         ingredient.delete(condition)
@@ -49,14 +49,14 @@ exports.getAllIngredient = (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = (req,res,next) => {
+    exports.deleteById = async (req,res,next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"ingredient supprimé"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyIngredient = (req,res,next)=>{
+    exports.modifyIngredient = async (req,res,next)=>{
       const ingredient = new Ingredient.Ingredient();
       var val;
       if (req.body.id_allergene==0){

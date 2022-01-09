@@ -31,7 +31,8 @@ export class AllergeneFormComponent implements OnInit {
     var cat : number = 0;
     this.categories.forEach(c=>{console.log(this.AllergeneForm.value.categorie,c.getNom());if(this.AllergeneForm.value.categorie==c.getNom()){cat = c.getId()}})
     const nb : number = this.data.id;
-    console.log(cat)
+
+    console.log(cat);
     let tmpAllergene = new Allergene(nb,this.AllergeneForm.value.nom,cat);
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);
