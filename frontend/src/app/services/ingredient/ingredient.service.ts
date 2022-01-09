@@ -40,7 +40,8 @@ export class IngredientService {
     console.log(tmp);
     this.http.post<any>(ServicesConfigComponent.url+"ingredient/",tmp).subscribe(
         data => console.log("Ingrédient créé")
-    );  }
+    );
+  }
 
   modifyIngredient(id : number,ingredient : Ingredient){
     var req = {

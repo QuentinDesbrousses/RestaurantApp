@@ -16,16 +16,19 @@
 
             <div class="form-field">
                 <form [formGroup]="IngredientForm" (ngSubmit)="selectIngredient()">
-                    <label for="selectEtape">Ingrédient(s)*</label>
+                    <label for="selectEtape">Ingrédient(s)</label>
                     <select id="selectEtape" type="text" formControlName="selectIngredient">
                         <option>Sélection</option>
-                        <option *ngFor="let e of this.data.ingredients">{{e}}</option>
+                        <option *ngFor="let e of this.ingredients">{{e.getNom()}} ({{e.getUnite()}})</option>
                     </select>
-                    <button class="form-btn" type="submit">+</button>
+                    <br>
+                    <label for="quantite">Quantité</label>
+                    <input id="quantite" type="text" formControlName="quantite">
+                    <button class="form-btn" type="submit">Ajouter</button>
                 </form>
                 <form [formGroup]="IngredientSelectedForm" (ngSubmit)="unselectIngredient()">
                     <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-                        <div class="example-box" *ngFor="let eSelected of ingredientSelected"  cdkDrag>{{eSelected}}</div>
+                        <div class="example-box" *ngFor="let eSelected of ingredientSelected"  cdkDrag>{{eSelected.nom_ingredient}} : {{eSelected.quantite}}</div>
                     </div>
                     <button class="form-btn button-cancel text-center" type="submit">Supprimer le dernier ingrédient</button>
                 </form>

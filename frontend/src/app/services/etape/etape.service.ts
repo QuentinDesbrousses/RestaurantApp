@@ -19,7 +19,16 @@ export class EtapeService {
   }
 
   createEtape(etape : Etape){
-    return this.http.post<Etape>(ServicesConfigComponent.url+"etape/",etape);
+    var tmp = {
+      titre_etape:etape.getTitre(),
+      description_etape:etape.getDescritpion(),
+      temps_etape:etape.getTemps(),
+      ingredients:etape.getIngredients(),
+    }
+    console.log(tmp);
+    this.http.post<any>(ServicesConfigComponent.url+"etape/",tmp).subscribe(
+        data => console.log("Etape créée")
+    );
   }
 
   modifyEtape(id : number,etape : Etape){
