@@ -7,17 +7,14 @@ export class Ingredient {
     private unite : string;
     private quantite : number;
     private cout_unitaire : number;
-    private id_allergene : number;
 
-
-    constructor(id_ingredient: number, nom_ingredient: string, id_cat_ingr: number, unite: string, quantite: number, cout_unitaire: number, id_allergene: number) {
+    constructor(id_ingredient: number, nom_ingredient: string, id_cat_ingr: number, unite: string, quantite: number, cout_unitaire: number) {
         this.id_ingredient = id_ingredient;
         this.nom_ingredient = nom_ingredient;
         this.id_cat_ingr = id_cat_ingr;
         this.unite = unite;
         this.quantite = quantite;
         this.cout_unitaire = cout_unitaire;
-        this.id_allergene = id_allergene;
     }
 
     getId(): number {
@@ -42,14 +39,6 @@ export class Ingredient {
 
     setCategorie(id_cat_ingr: number) {
         this.id_cat_ingr = id_cat_ingr;
-    }
-
-    getAllergene(): number {
-        return this.id_allergene;
-    }
-
-    setAllergene(id_allergene: number) {
-        this.id_allergene = id_allergene;
     }
 
     getUnite(): string {

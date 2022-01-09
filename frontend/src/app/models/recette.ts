@@ -1,4 +1,5 @@
 import {Optional} from "@angular/core";
+import {Etape} from "./etape";
 
 export class Recette {
 
@@ -8,17 +9,14 @@ export class Recette {
     private id_categorie : number;
     private nb_couvert : number;
     private temps_recette : number; //nombre de minutes
-    @Optional() private etapes_recette : Map<number,string>; //number = id, string = type (recette ou etape)
 
-
-    constructor(id_recette: number, titre_recette: string, description_recette: string, id_categorie: number, nb_couvert: number, temps_recette: number,@Optional() etapes_recette: Map<number, string>) {
+    constructor(id_recette: number, titre_recette: string, description_recette: string, id_categorie: number, nb_couvert: number, temps_recette: number) {
         this.id_recette = id_recette;
         this.titre_recette = titre_recette;
         this.description_recette = description_recette;
         this.id_categorie = id_categorie;
         this.nb_couvert = nb_couvert;
         this.temps_recette = temps_recette;
-        this.etapes_recette = etapes_recette;
     }
 
     getId() : number {
@@ -43,14 +41,6 @@ export class Recette {
 
     setDescription(description_recette : string) {
         this.description_recette = description_recette;
-    }
-
-    getEtapes() : Map<number,string> {
-        return this.etapes_recette;
-    }
-
-    setEtapes(etapes_recette : Map<number,string>) {
-        this.etapes_recette = etapes_recette;
     }
 
     getCategorie() : number {

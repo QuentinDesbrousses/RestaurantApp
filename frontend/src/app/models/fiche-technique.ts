@@ -1,80 +1,42 @@
-import {Recette} from "./recette";
 
 export class FicheTechnique {
 
-    private id : string;
-    private recette : Recette;
-    private stock : number; //TODO Propriété calculée
+    private id_fiche : number;
+    private id_recette : number;
+    private stock : number;
     private tva : number;
-    private coefFluide : number;
-    private coefH : number;
-    private assaisonnement:number;
-    private typeAssaisonnement:boolean; //true si absolut et false si pourcentage du cout matiere
-    private marge : number;
-    private coutH : number;
+    private coef_fluide : number;
+    private coef_pers : number;
+    private cout_production : number;
+    private cout_horaire : number;
+    private prix_vente : number;
 
-    //Propriétés calculées
-    get coutMatiere() : number {
-        var cm = 0;
-        //valeur absolue
-        if(this.typeAssaisonnement){
-            cm+=this.assaisonnement;
-        }
-        //valeur relative
-        else{
-            cm=cm*(1+this.assaisonnement);
-        }
-        return cm;
-    }
-
-    get coutCharges() : number {
-        var cm = 0;
-        var r = JSON.parse(JSON.stringify(this.recette))
-        var e = JSON.parse(JSON.stringify(r.etapes))
-        e.forEach((e2: { temps: number; }) => {
-            cm += e2.temps*(10*this.coefH);
-        })
-        //TODO Prendre en compte les fluides
-        return 0;
-    }
-
-    get coutProduction() : number {
-        return this.coutMatiere+this.coutCharges;
-    }
-
-    get prixVente() : number {
-        //cout production * (1 + marge que l'on veut) * (1 + TVA)
-        return this.coutProduction*(1+this.marge)*(1+this.tva);
-    }
-
-
-    constructor(id: string, recette: Recette, stock: number, tva: number, coefFluide: number, coefH: number, assaisonnement: number, typeAssaisonnement: boolean, marge: number, coutH: number) {
-        this.id = id;
-        this.recette = recette;
+    constructor(id_fiche: number, id_recette: number, stock: number, tva: number, coef_fluide: number, coef_pers: number, cout_production: number, cout_horaire: number, prix_vente: number) {
+        this.id_fiche = id_fiche;
+        this.id_recette = id_recette;
         this.stock = stock;
         this.tva = tva;
-        this.coefFluide = coefFluide;
-        this.coefH = coefH;
-        this.assaisonnement = assaisonnement;
-        this.typeAssaisonnement = typeAssaisonnement;
-        this.marge = marge;
-        this.coutH = coutH;
+        this.coef_fluide = coef_fluide;
+        this.coef_pers = coef_pers;
+        this.cout_production = cout_production;
+        this.cout_horaire = cout_horaire;
+        this.prix_vente = prix_vente;
     }
 
-    getId() : string {
-        return this.id
+    getId() : number {
+        return this.id_fiche
     }
 
-    setId(id : string){
-        this.id = id;
+    setId(id_fiche : number){
+        this.id_fiche = this.id_fiche;
     }
 
-    getRecette(): Recette {
-        return this.recette;
+    getRecette(): number {
+        return this.id_recette;
     }
 
-    setRecette(recette : Recette){
-        this.recette = recette;
+    setRecette(id_recette : number){
+        this.id_recette = id_recette;
     }
 
     getStock(): number {
@@ -94,39 +56,19 @@ export class FicheTechnique {
     }
 
     getCoefFluide() : number {
-        return this.coefFluide;
+        return this.coef_fluide;
     }
 
-    setCoefFluide(coefFluide : number){
-        this.coefFluide = coefFluide;
+    setCoefFluide(corf_fluide : number){
+        this.coef_fluide = corf_fluide;
     }
 
-    getCoefH() : number {
-        return this.coefH;
+    getCoefPers() : number {
+        return this.coef_pers;
     }
 
-    setCoefH(coefH : number){
-        this.coefH = coefH;
-    }
-
-    getAssaisonnement() : number {
-        return this.assaisonnement;
-    }
-
-    setAssaisonnement(assaisonnement : number){
-        this.assaisonnement = assaisonnement;
-    }
-
-    getTypeAssaisonnement() : boolean{
-        return this.typeAssaisonnement;
-    }
-
-    setTypeAssaisonnement(typeAssaisonnement : boolean){
-        this.typeAssaisonnement = typeAssaisonnement;
-    }
-
-    get nbCouvert() : number {
-        return this.recette.getNbCouvert()
+    setCoefPers(coef_pers: number){
+        this.coef_pers = coef_pers;
     }
 
 }
