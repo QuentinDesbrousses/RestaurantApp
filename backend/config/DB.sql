@@ -129,6 +129,11 @@ add constraint emailUnique unique (email);
 alter table utilisateur
 add column mdp varchar(100) unique not null;
 
+alter table ingredient
+add column id_allergene int;
+alter table ingredient
+add constraint id_allergene foreign key(id_allergene) references allergene(id_allergene);
+
 /*
 {
     "nom":"a",
