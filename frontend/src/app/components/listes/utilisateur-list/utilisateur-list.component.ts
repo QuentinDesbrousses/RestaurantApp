@@ -43,4 +43,8 @@ export class UtilisateurListComponent implements OnInit, AfterViewInit {
     console.log("Utilisateur n° "+id+" supprimé");
   }
 
+  refresh() : void {
+    this.utilisateurs = this.service.getAllUtilisateur();
+  }
+
 }

@@ -5,6 +5,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {IngredientService} from "../../../services/ingredient/ingredient.service";
 import { CategorieIngredientService } from 'src/app/services/categorie-ingredient/categorie-ingredient.service';
 import {CategorieIngredient} from "../../../models/categorie-ingredient";
+import {Allergene} from "../../../models/allergene";
+import {AllergeneService} from "../../../services/allergene/allergene.service";
 
 
 @Component({
@@ -15,8 +17,15 @@ import {CategorieIngredient} from "../../../models/categorie-ingredient";
 export class IngredientFormComponent {
   IngredientForm : FormGroup;
   categorieIngredient: CategorieIngredient | undefined;
+  categories : CategorieIngredient[] = [];
+  allergenes : Allergene[] = [];
 
-  constructor(public service : IngredientService, public servicecat : CategorieIngredientService, public dialogRef: MatDialogRef<IngredientFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:string,type: string, categories : string[],allergenes : string[] }) {
+
+  constructor(public service : IngredientService,
+              public servicecat : CategorieIngredientService,
+              public serviceAllergene : AllergeneService,
+              public dialogRef: MatDialogRef<IngredientFormComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {id:number,type: string}) {
     this.IngredientForm  = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
@@ -29,25 +38,31 @@ export class IngredientFormComponent {
   }
 
   ngOnInit(){
+    this.categories = this.servicecat.getAllCategorieIngredient();
+    this.allergenes = this.serviceAllergene.getAllAllergene();
   }
 
   onSubmit(){
-
+    const nb : number = this.data.id;
+    var id_al : number = 0;
+    var id_cat_ingredient : number = 0;
+    this.allergenes.forEach(a=>{if(a.getNom()==this.IngredientForm.value.allergene){id_al = a.getId()}});
+    this.categories.forEach(a=>{if(a.getNom()==this.IngredientForm.value.categorie){id_cat_ingredient = a.getId()}});
     let tmpIngredient = new Ingredient(
         this.IngredientForm.value.id,
         this.IngredientForm.value.nom,
-        this.IngredientForm.value.categorie,
+        id_cat_ingredient,
         this.IngredientForm.value.unite,
         this.IngredientForm.value.quantite,
-        this.IngredientForm.value.coutU
+        this.IngredientForm.value.coutU,
+        id_al
         );
 
     if(this.data.type == "creation"){
       this.service.createIngredient(tmpIngredient);
-      console.log("Ingredient créé : "+tmpIngredient)
     }
     else if(this.data.type == "modification"){
-      this.service.modifyIngredient(this.IngredientForm.value.id,tmpIngredient)
+      this.service.modifyIngredient(nb,tmpIngredient)
     }
     else{
       console.log("data.type doit être égal à creation ou modification")
