@@ -6,7 +6,7 @@
     <h1 *ngIf="this.data.type=='creation' && this.data.element=='recette'" class="text-center"><strong>Ajout d'une nouvelle catégorie de recette</strong></h1>
     <h1 *ngIf="this.data.type=='modification'&& this.data.element=='recette'" class="text-center"><strong>Modification d'une catégorie de recette</strong></h1>
     <div>
-        <form [formGroup]="CategorieForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="CategorieForm">
             <input id="id" type="hidden" formControlName="$id">
             <div class="form-field">
                 <label *ngIf="this.data.element=='allergene'" for="nom">Nom de la catégorie d'allergène*</label>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!CategorieForm.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit" (click)="onSubmit()"  [disabled]="!CategorieForm.valid">Valider</button>
                 <button  class="button-cancel form-btn" (click)="cancel()">Annuler</button>
             </div>
 

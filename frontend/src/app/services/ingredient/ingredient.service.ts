@@ -1,4 +1,4 @@
-import {Injectable, Input} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Ingredient} from "../../models/ingredient";
 import {ServicesConfigComponent} from "../services-config";
@@ -21,7 +21,8 @@ export class IngredientService {
           })},
         error => {console.log("error : "+error)});
     console.log("getAllIngredient : "+res)
-    return res  }
+    return res
+  }
 
   getIngredient(id : number){
     //TODO
@@ -40,7 +41,8 @@ export class IngredientService {
     console.log(tmp);
     this.http.post<any>(ServicesConfigComponent.url+"ingredient/",tmp).subscribe(
         data => console.log("Ingrédient créé")
-    );  }
+    );
+  }
 
   modifyIngredient(id : number,ingredient : Ingredient){
     var req = {

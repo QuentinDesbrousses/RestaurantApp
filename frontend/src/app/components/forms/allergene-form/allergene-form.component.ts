@@ -16,21 +16,22 @@ export class AllergeneFormComponent implements OnInit {
   categories : CategorieAllergene[] = [];
 
   constructor(public service : AllergeneService,public sca : CategorieAllergeneService, public dialogRef: MatDialogRef<AllergeneFormComponent>,@Inject(MAT_DIALOG_DATA) public data: {id:number,type: string}) {
+    this.categories = this.sca.getAllCategorieAllergene();
     this.AllergeneForm = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
-      categorie : new FormControl('')
+      categorie : new FormControl('',Validators.required)
     })
   }
 
   ngOnInit(){
-    this.categories = this.sca.getAllCategorieAllergene();
   }
 
   onSubmit(){
     var cat : number = 0;
-    this.categories.forEach(c=>{if(this.AllergeneForm.value.categorie==c.getNom()){cat = c.getId()}})
+    this.categories.forEach(c=>{console.log(this.AllergeneForm.value.categorie,c.getNom());if(this.AllergeneForm.value.categorie==c.getNom()){cat = c.getId()}})
     const nb : number = this.data.id;
+
     console.log(cat);
     let tmpAllergene = new Allergene(nb,this.AllergeneForm.value.nom,cat);
     if(this.data.type == "creation"){

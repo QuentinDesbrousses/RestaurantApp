@@ -2,7 +2,7 @@
         <h1 *ngIf="this.data.type=='creation'" class="text-center"><strong>Ajout d'un nouvel ingrédient</strong></h1>
         <h1 *ngIf="this.data.type=='modification'" class="text-center"><strong>Modification d'un ingrédient</strong></h1>
     <div>
-        <form [formGroup]="IngredientForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="IngredientForm">
                 <input id="id" type="hidden" formControlName="$id">
             <div class="form-field">
                 <label for="nom">Nom de l'ingrédient*</label>
@@ -12,6 +12,7 @@
             <div class="form-field">
                 <label for="categorie">Catégorie*</label>
                 <select id="categorie" type="text" formControlName="categorie">
+                    <option>Sélection</option>
                     <option *ngFor="let cat of categories">{{cat.getNom()}}</option>
                 </select>
             </div>
@@ -42,7 +43,7 @@
             </div>
 
             <div class="btn-toolbar">
-                <button  class="button-validate form-btn" type="submit"  [disabled]="!IngredientForm.valid">Valider</button>
+                <button  class="button-validate form-btn" type="submit" (click)="onSubmit()"  [disabled]="!IngredientForm.valid">Valider</button>
                 <button  class="button-cancel form-btn" (click)="cancel()">Annuler</button>
             </div>
 

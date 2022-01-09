@@ -2,13 +2,13 @@
     <h1 class="text-center"><strong>Vérification</strong></h1>
 
     <div>
-        <form [formGroup]="confirmationForm" (ngSubmit)="supprimer()">
+        <form [formGroup]="confirmationForm">
             <div class="form-field">
                 <h2 *ngIf="this.data.type=='ingredient'" class="text-center">Êtes-vous sûr de vouloir supprimer cet ingrédient ?</h2>
                 <h2 *ngIf="this.data.type=='recette'" class="text-center">Êtes-vous sûr de vouloir supprimer cette recette ?</h2>
                 <div>
                     <button  class="button-validate form-btn" (click)="cancel()">Annuler</button>
-                    <button  class="button-cancel form-btn" type="submit">Supprimer</button>
+                    <button  class="button-cancel form-btn" type="submit" (click)="supprimer()">Supprimer</button>
                 </div>
             </div>
         </form>
