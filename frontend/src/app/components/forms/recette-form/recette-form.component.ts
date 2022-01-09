@@ -63,7 +63,6 @@ export class RecetteFormComponent {
         this.RecetteForm.value.categorie,
         this.RecetteForm.value.nbCouvert,
         this.RecetteForm.value.temps,
-        this.RecetteForm.value.etapes
     );
     if(this.data.type=="creation"){
       this.service.createRecette(tmpRecette);

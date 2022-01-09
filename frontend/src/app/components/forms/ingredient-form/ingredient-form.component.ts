@@ -39,8 +39,7 @@ export class IngredientFormComponent {
         this.IngredientForm.value.categorie,
         this.IngredientForm.value.unite,
         this.IngredientForm.value.quantite,
-        this.IngredientForm.value.coutU,
-        this.IngredientForm.value.allergene
+        this.IngredientForm.value.coutU
         );
 
     if(this.data.type == "creation"){

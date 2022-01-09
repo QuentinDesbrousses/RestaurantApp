@@ -17,7 +17,7 @@ export class IngredientService {
         data => {
           data.forEach(e =>{
             console.log(e)
-            res.push(new Ingredient(e.id_ingredient,e.nom_ingredient,e.id_cat_ingr,e.unite,e.quantite,e.cout_unitaire,0));
+            res.push(new Ingredient(e.id_ingredient,e.nom_ingredient,e.id_cat_ingr,e.unite,e.quantite,e.cout_unitaire));
           })},
         error => {console.log("error : "+error)});
     console.log("getAllIngredient : "+res)

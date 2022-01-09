@@ -6,16 +6,13 @@ export class Etape {
     private description_etape : string;
     private temps_etape : number;
     private cout_etape : number;
-    private ingredients_etape : number[];
 
-
-    constructor(id_etape: number, titre_etape: string, description_etape: string, temps_etape: number, cout_etape: number, ingredients_etape: number[]) {
+    constructor(id_etape: number, titre_etape: string, description_etape: string, temps_etape: number, cout_etape: number) {
         this.id_etape = id_etape;
         this.titre_etape = titre_etape;
         this.description_etape = description_etape;
         this.temps_etape = temps_etape;
         this.cout_etape = cout_etape;
-        this.ingredients_etape = ingredients_etape;
     }
 
     getId() : number {
@@ -40,14 +37,6 @@ export class Etape {
 
     setDescription(description_etape : string) {
         this.description_etape = description_etape;
-    }
-
-    getIngredients() : number[] {
-        return this.ingredients_etape;
-    }
-
-    setIngredients(ingredients_etape : number[]) {
-        this.ingredients_etape = ingredients_etape;
     }
 
     getTemps() : number {
