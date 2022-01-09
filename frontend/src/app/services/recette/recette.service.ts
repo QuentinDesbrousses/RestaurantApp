@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Recette} from "../../models/recette";
 import {ServicesConfigComponent} from "../services-config";
+import {CategorieIngredient} from "../../models/categorie-ingredient";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,15 @@ export class RecetteService {
   }
 
   getAllRecettes(){
-    return this.http.get<Recette>(ServicesConfigComponent.url+"recette/");
+    var res : Recette[] = [];
+    let req = this.http.get<any[]>(ServicesConfigComponent.url+"recette/").subscribe(
+        data => {
+          data.forEach(e =>{
+            res.push(new Recette(e.id_recette,e.id_categorie,e.id_utilisateur,e.titre_recette,e.description_recette,e.nb_couvert,e.temps_recette));
+          })},
+        error => {console.log("error : "+error)});
+    console.log("res : "+res)
+    return res
   }
 
   getRecette(id : number){
