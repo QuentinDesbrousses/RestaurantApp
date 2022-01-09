@@ -33,7 +33,7 @@ export class IngredientService {
       nom_ingredient:ingredient.getNom(),
       unite:ingredient.getUnite(),
       quantite:ingredient.getQuantite(),
-      cout_unite:ingredient.getCoutU(),
+      cout_unitaire:ingredient.getCoutU(),
       id_cat_ingr:ingredient.getCategorie(),
       id_allergene:ingredient.getAllergene()
     }
@@ -46,7 +46,7 @@ export class IngredientService {
       nom_ingredient:ingredient.getNom(),
       unite:ingredient.getUnite(),
       quantite:ingredient.getQuantite(),
-      cout_unite:ingredient.getCoutU(),
+      cout_unitaire:ingredient.getCoutU(),
       id_cat_ingr:ingredient.getCategorie(),
       id_allergene:ingredient.getAllergene()
     }

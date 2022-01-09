@@ -19,7 +19,7 @@ export class AllergeneFormComponent implements OnInit {
     this.AllergeneForm = new FormGroup({
       $id : new FormControl(null),
       nom : new FormControl('',Validators.required),
-      categorie : new FormControl('',Validators.required)
+      categorie : new FormControl('')
     })
   }
 
@@ -29,9 +29,11 @@ export class AllergeneFormComponent implements OnInit {
 
   onSubmit(){
     console.log("c'est id"+this.data.id);
+    var cat : number = 0;
+    this.categories.forEach(c=>{if(this.AllergeneForm.value.categorie==c.getNom()){cat = c.getId()}})
     const nb : number = this.data.id;
     this.sca.deleteCategorieAllergene(nb);
-    let tmpAllergene = new Allergene(this.AllergeneForm.value.id,this.AllergeneForm.value.nom,this.AllergeneForm.value.categorie);
+    let tmpAllergene = new Allergene(this.AllergeneForm.value.id,this.AllergeneForm.value.nom,cat);
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);
       console.log("Allergène créé : "+tmpAllergene);
