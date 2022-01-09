@@ -27,6 +27,27 @@ exports.Utiliser = class Utiliser extends model.Model{
             })
         });
     }
+    selectByIdPrRecette(id){
+        return new Promise((resolve,reject)=>{
+            var request = "select * from "+this.table+" natural join ingredient where id_etape="+id+";";
+
+            const query = {
+                name:"selectbyid",
+                text:request,
+                values:[]
+            }
+
+            this.user.query(query,function(err,res){
+                if (err || (res==undefined && res.rows==undefined && res.rows.length==0)) {
+                    reject(err.stack)
+                } 
+                else{
+                    resolve(res.rows);
+                }
+            })
+        });
+    }
+
 
     selectAll(){
         return super.selectAll(this.table);

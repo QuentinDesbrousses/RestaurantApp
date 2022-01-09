@@ -1,9 +1,11 @@
 const Recette = require('../models/recette');
 const RecetteComposer = require("../models/recettecomposer");
 const EtapeComposer = require("../models/etapecomposer");
-const pool =require('../config/db')
+const Utiliser = require("../models/utiliser")
+const pool =require('../config/db');
+const { Etape } = require('../models/etape');
 
-exports.getAllRecette = async (req, res, next) => {
+exports.getAllRecette = (req, res, next) => {
     const recette = new Recette.Recette();
     recette.selectAll()
     .then((recettes) => {
@@ -15,7 +17,19 @@ exports.getAllRecette = async (req, res, next) => {
       ); 
 }
 
-exports.getRecette = async (req, res, next) => {
+exports.getEtapeByRecette = (req, res, next) => {
+    const etcomp = new EtapeComposer.EtapeComposer();
+    etcomp.selectById(req.params.id)
+    .then((etapes) => {
+          res.status(200).json(etapes)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'recettes non-envoyees'})}
+      ); 
+}
+
+exports.getRecette = (req, res, next) => {
     const recette = new Recette.Recette();
     recette.selectById(req.params.id)
     .then((recette) => {
@@ -27,7 +41,7 @@ exports.getRecette = async (req, res, next) => {
     ); 
 }
 
-exports.createRecette = async (req, res, next) =>{
+exports.createRecette = (req, res, next) =>{
     const recette = new Recette.Recette();
         const recettecomposer = new RecetteComposer.RecetteComposer();
         const etapecomposer = new EtapeComposer.EtapeComposer();
@@ -60,7 +74,7 @@ exports.createRecette = async (req, res, next) =>{
         .catch(error=>console.log(error))
 }
 
-exports.deleteRecette = async (req,res,next) =>{
+exports.deleteRecette = (req,res,next) =>{
     const recette = new Recette.Recette();
     var condition = [req.body];
     recette.delete(condition)
@@ -68,7 +82,7 @@ exports.deleteRecette = async (req,res,next) =>{
     .catch((err) => res.status(400).json({error:err}));
 }
 
-exports.deleteById = async (req,res,next) => {
+exports.deleteById = (req,res,next) => {
     const recette = new Recette.Recette();
     const recettecomposer = new RecetteComposer.RecetteComposer();
     const etapecomposer = new EtapeComposer.EtapeComposer();
@@ -84,7 +98,7 @@ exports.deleteById = async (req,res,next) => {
     .catch((err) => res.status(400).json({error:err}));
 }
 
-exports.modifyRecette = async (req,res,next)=>{
+exports.modifyRecette = (req,res,next)=>{
     const recette = new Recette.Recette();
     const recettecomposer = new RecetteComposer.RecetteComposer();
         const etapecomposer = new EtapeComposer.EtapeComposer();
@@ -137,6 +151,5 @@ exports.modifyRecette = async (req,res,next)=>{
     "recettesincluses":[{
         "id_recetteincluse":1,
         "placer":3
-
     }]
     }*/ 

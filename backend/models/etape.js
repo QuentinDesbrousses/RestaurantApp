@@ -10,7 +10,7 @@ exports.Etape = class Etape extends model.Model{
     
       selectById(id){
         return new Promise((resolve,reject)=>{
-            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient where etape.id_etape="+id+";";
+            var request = "select * from "+this.table+" where etape.id_etape="+id+";";
 
             const query = {
                 name:"selectbyid",
@@ -31,7 +31,7 @@ exports.Etape = class Etape extends model.Model{
     
       selectAll(){
         return new Promise((resolve,reject)=>{
-            var request = "select * from "+this.table+" natural join utiliser inner join ingredient on ingredient.id_ingredient=utiliser.id_ingredient;";
+            var request = "select * from "+this.table+";";
 
             const query = {
                 name:"selectAll",
