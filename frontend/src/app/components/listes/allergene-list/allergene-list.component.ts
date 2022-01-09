@@ -13,8 +13,9 @@ import {AllergeneService} from "../../../services/allergene/allergene.service";
 })
 export class AllergeneListComponent implements OnInit, AfterViewInit{
   allergenes : Allergene[] = [];
+  //TODO changer ça
   categories = [
-      "Lactose",
+      1,
       "Fruit de mer",
       "Fruit à coque",
       "Gluten",

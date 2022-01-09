@@ -58,7 +58,16 @@ exports.getAllIngredient = (req, res, next) => {
 
     exports.modifyIngredient = (req,res,next)=>{
       const ingredient = new Ingredient.Ingredient();
-      var val ={
+      var val;
+      if (req.body.id_allergene==0){
+        val ={
+          nom_ingredient:req.body.nom_ingredient,
+          id_cat_ingr:req.body.id_cat_ingr,
+          unite:req.body.unite,
+          cout_unitaire:req.body.cout_unitaire,
+          quantite:req.body.quantite
+      }} else {
+        val ={
         nom_ingredient:req.body.nom_ingredient,
         id_cat_ingr:req.body.id_cat_ingr,
         unite:req.body.unite,
@@ -66,6 +75,7 @@ exports.getAllIngredient = (req, res, next) => {
         quantite:req.body.quantite,
         id_allergene:req.body.id_allergene
       }
+    }
       var changements = [req.body];
         ingredient.modify(req.params.id,changements)
         .then(()=> res.status(200).json({message:"ingredient modifié"}))

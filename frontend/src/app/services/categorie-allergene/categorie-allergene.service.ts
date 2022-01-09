@@ -41,7 +41,7 @@ export class CategorieAllergeneService {
   }
 
   modifyCategorieAllergene(id : number,categorie_allergene: any){
-    var req = {nom_cat_al:categorie_allergene.nom_cat_al}
+    var req = {"nom_cat_al":categorie_allergene.nom_cat_al}
     return this.http.put<any>(ServicesConfigComponent.url+"cat_allergene/"+id,req).subscribe(
       data => console.log("Catégorie allergene modifiée")
     );

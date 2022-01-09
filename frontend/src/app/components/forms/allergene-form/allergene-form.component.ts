@@ -24,14 +24,13 @@ export class AllergeneFormComponent {
   onSubmit(){
     console.log("c'est id"+this.data.id);
     const nb : number = this.data.id;
-    this.sca.deleteCategorieAllergene(nb);
-    let tmpAllergene = new Allergene(this.AllergeneForm.value.id,this.AllergeneForm.value.nom,this.AllergeneForm.value.categorie);
+    let tmpAllergene = new Allergene(nb,this.AllergeneForm.value.nom,this.AllergeneForm.value.categorie);
     if(this.data.type == "creation"){
       this.service.createAllergene(tmpAllergene);
       console.log("Allergène créé : "+tmpAllergene);
     }
     else if(this.data.type == "modification"){
-      this.service.modifyAllergene(this.AllergeneForm.value.id,tmpAllergene)
+      this.service.modifyAllergene(nb,tmpAllergene)
       console.log("Allergène modifié : "+tmpAllergene);
     }
     else{
