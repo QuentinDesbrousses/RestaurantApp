@@ -63,8 +63,13 @@ export class Ingredient {
         return this.quantite_stock;
     }
 
+
+    setQuantite(quantite_stock: number) {
+        this.quantite_stock = quantite_stock;
+
     setQuantite(quantite: number) {
         this.quantite_stock = quantite;
+
     }
 
     getCoutU(): number {
