@@ -27,13 +27,23 @@ exports.getAllIngredient = async (req, res, next) => {
 
     exports.createIngredient = async (req, res, next) =>{
       const ingredient = new Ingredient.Ingredient();
-      var val ={
-        nom_ingredient:req.body.nom_ingredient,
-        id_cat_ingr:req.body.id_cat_ingr,
-        unite:req.body.unite,
-        cout_unitaire:req.body.cout_unitaire,
-        quantite:req.body.quantite,
-        id_allergene:req.body.id_allergene
+      if (req.body.id_allergene==0){
+        var val ={
+          nom_ingredient:req.body.nom_ingredient,
+          id_cat_ingr:req.body.id_cat_ingr,
+          unite:req.body.unite,
+          cout_unitaire:req.body.cout_unitaire,
+          quantite:req.body.quantite,
+        }
+      }else{
+        var val ={
+          nom_ingredient:req.body.nom_ingredient,
+          id_cat_ingr:req.body.id_cat_ingr,
+          unite:req.body.unite,
+          cout_unitaire:req.body.cout_unitaire,
+          quantite:req.body.quantite,
+          id_allergene:req.body.id_allergene
+        }
       }
       var valuesToSave = [val];
         ingredient.addValue(valuesToSave)
