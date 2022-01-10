@@ -6,15 +6,15 @@ export class Ingredient {
     private id_cat_ingr : number;
     private id_allergene : number;
     private unite : string;
-    private quantite : number;
+    private quantite_stock : number;
     private cout_unitaire : number;
 
-    constructor(id_ingredient: number, nom_ingredient: string, id_cat_ingr: number, unite: string, quantite: number, cout_unitaire: number,id_allergene : number) {
+    constructor(id_ingredient: number, nom_ingredient: string, id_cat_ingr: number, unite: string, quantite_stock: number, cout_unitaire: number,id_allergene : number) {
         this.id_ingredient = id_ingredient;
         this.nom_ingredient = nom_ingredient;
         this.id_cat_ingr = id_cat_ingr;
         this.unite = unite;
-        this.quantite = quantite;
+        this.quantite_stock = quantite_stock;
         this.cout_unitaire = cout_unitaire;
         this.id_allergene = id_allergene;
     }
@@ -60,11 +60,11 @@ export class Ingredient {
     }
 
     getQuantite(): number {
-        return this.quantite;
+        return this.quantite_stock;
     }
 
     setQuantite(quantite: number) {
-        this.quantite = quantite;
+        this.quantite_stock = quantite;
     }
 
     getCoutU(): number {

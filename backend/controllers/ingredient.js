@@ -33,7 +33,7 @@ exports.getAllIngredient = (req, res, next) => {
           id_cat_ingr:req.body.id_cat_ingr,
           unite:req.body.unite,
           cout_unitaire:req.body.cout_unitaire,
-          quantite:req.body.quantite,
+          quantite_stock:req.body.quantite_stock,
         }
       }else{
         var val ={
@@ -41,7 +41,7 @@ exports.getAllIngredient = (req, res, next) => {
           id_cat_ingr:req.body.id_cat_ingr,
           unite:req.body.unite,
           cout_unitaire:req.body.cout_unitaire,
-          quantite:req.body.quantite,
+          quantite_stock:req.body.quantite_stock,
           id_allergene:req.body.id_allergene
         }
       }
@@ -75,14 +75,14 @@ exports.getAllIngredient = (req, res, next) => {
           id_cat_ingr:req.body.id_cat_ingr,
           unite:req.body.unite,
           cout_unitaire:req.body.cout_unitaire,
-          quantite:req.body.quantite
+          quantite_stock:req.body.quantite_stock
       }} else {
         val ={
         nom_ingredient:req.body.nom_ingredient,
         id_cat_ingr:req.body.id_cat_ingr,
         unite:req.body.unite,
         cout_unitaire:req.body.cout_unitaire,
-        quantite:req.body.quantite,
+        quantite_stock:req.body.quantite_stock,
         id_allergene:req.body.id_allergene
       }
     }
