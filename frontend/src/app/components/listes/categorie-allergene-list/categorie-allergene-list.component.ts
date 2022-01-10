@@ -1,7 +1,4 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
 import {LiveAnnouncer} from "@angular/cdk/a11y";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmationFormComponent} from "../../forms/confirmation-form/confirmation-form.component";
@@ -33,21 +30,35 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
   //CRUD Catégorie allergène
   creerCategorieAllergene(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation",element:"allergene"}
-    this.dialog.open(CategorieFormComponent,dialogConfig);
-    console.log("création catégorie allergene");
+    let req = this.dialog.open(CategorieFormComponent,dialogConfig);
+    if(req){
+      this.refresh();
+      console.log("création catégorie allergene");
+    }
+    else{
+      console.log("Abandon")
+    }
+
   }
   modifierCategorieAllergene(id:number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",element:"allergene",id:id}
-    this.dialog.open(CategorieFormComponent,dialogConfig);
-    console.log("Catégorie d'allergène n° "+id+" modifié");
+    let req = this.dialog.open(CategorieFormComponent,dialogConfig);
+    if(req){
+      this.refresh();
+      console.log("Catégorie d'allergène n° "+id+" modifié");
+    }
+    else{
+      console.log("Abandon")
+    }
+
   }
   supprimerCategorieAllergene(id:number){
     const dialogConfig = new MatDialogConfig();
@@ -55,8 +66,15 @@ export class CategorieAllergeneListComponent implements OnInit, AfterViewInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {id: id,type:"categorie-allergene"};
-    this.dialog.open(ConfirmationFormComponent,dialogConfig);
-    console.log("Catégorie d'allergène n° "+id+" supprimé");
+    let req = this.dialog.open(ConfirmationFormComponent,dialogConfig);
+    if(req){
+      this.refresh();
+      console.log("Catégorie d'allergène n° "+id+" supprimé");
+    }
+    else{
+      console.log("Abandon")
+    }
+
   }
 
   refresh() : void {

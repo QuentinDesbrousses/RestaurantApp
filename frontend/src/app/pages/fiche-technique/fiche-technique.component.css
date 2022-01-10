@@ -1,13 +1,108 @@
-.body{
+.main{
     padding: 5%;
+    background-color: rgba(124,153,255,0.7);
+}
+
+.part5 {
+    columns: 5;
+    padding-bottom: 5%;
+    height: max-content;
+}
+
+.part3 {
+    columns: 3;
+}
+
+.part2 {
+    columns: 2;
 }
 
 .content {
     color: rgba(124,153,255,0.83);
-    width: 100%;
     background-color: white;
-    padding:5%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 3px;
 }
 
+.content-description {
+    padding-top: 10px;
+    min-height: 125px;
+}
+
+.fiche {
+    margin-bottom: 100px;
+}
+
+.content-fiche {
+    padding-top: 10px;
+    min-height: 200px;
+}
+
+.content-title {
+    color: white;
+    width: 30%;
+    margin: auto;
+    padding-bottom: 5%;
+}
+
+.content-cout {
+    color: white;
+    width: 100%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    margin: auto;
+}
+
+.content1 {
+    margin-bottom: 10%;
+    margin-left: 0%;
+    width: auto;
+}
+
+.content2 {
+    margin-bottom: 10%;
+    margin-right: 0%;
+    width: auto;
+}
+
+.content-parametres {
+    margin-top: 0%;
+    margin-left: 8%;
+    margin-right: 8%;
+    min-height: 350px;
+}
+
+.matiere {
+    padding: 10px;
+    border: 3px solid rgba(124,153,255,0.83);
+}
+
+.charges {
+    padding: 10px;
+    border: 3px solid rgba(124,153,255,0.83);
+}
+
+.parametres {
+    padding: 5px;
+    border: 3px solid rgba(124,153,255,0.83);
+    background-color: white;
+    color: rgba(124,153,255,0.83);
+}
+
+.content-resultats {
+    margin-top: 5%;
+    padding: 10px;
+    height: 200px;
+}
+
+.resultats {
+    padding: 5px;
+    background-color: rgba(124,153,255,0.83);
+    border: 3px solid white;
+    border-radius: 3px;
+    color: white;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    margin-left: 40px;
+}

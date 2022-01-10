@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import {RecetteService} from "../../../services/recette/recette.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -6,19 +6,25 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Recette} from "../../../models/recette";
 import {Etape} from "../../../models/etape";
 import {CategorieRecette} from "../../../models/categorie-recette";
+import {CategorieRecetteService} from "../../../services/categorie-recette/categorie-recette.service";
+import {EtapeService} from "../../../services/etape/etape.service";
 
 @Component({
   selector: 'app-recette-form',
   templateUrl: './recette-form.component.html',
   styleUrls: ['./recette-form.component.css']
 })
-export class RecetteFormComponent {
+export class RecetteFormComponent implements OnInit{
   RecetteForm : FormGroup;
   EtapeForm : FormGroup;
   EtapeSelectedForm : FormGroup;
   etapeSelected = [""];
+  etapes : Etape[] = [];
 
-  constructor(public service : RecetteService, public dialogRef: MatDialogRef<RecetteFormComponent>, @Inject(MAT_DIALOG_DATA) public data: {type: string, categories : CategorieRecette[],etapes : Etape[], id:string }) {
+  constructor(public service : RecetteService,
+              private serviceEtape : EtapeService,
+              public dialogRef: MatDialogRef<RecetteFormComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: {type: string, categories : CategorieRecette[], id:string }) {
     this.RecetteForm = new FormGroup({
       $id : new FormControl(null),
       titre : new FormControl('',Validators.required),
@@ -36,6 +42,9 @@ export class RecetteFormComponent {
     });
   }
 
+  ngOnInit() {
+    this.etapes = this.serviceEtape.getAllEtape();
+  }
   // Drag & Drop etapes
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.etapeSelected, event.previousIndex, event.currentIndex);

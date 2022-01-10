@@ -39,7 +39,7 @@ export class AllergeneListComponent implements OnInit, AfterViewInit{
   //CRUD Allergene
   creerAllergene(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation"}
@@ -49,7 +49,7 @@ export class AllergeneListComponent implements OnInit, AfterViewInit{
 
   modifierAllergene(id: number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",id:id}

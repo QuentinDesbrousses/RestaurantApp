@@ -23,7 +23,6 @@ export class EtapeService {
     console.log("getAllIngredient : "+res)
     return res
   }
-v
   getEtape(id : number){
     return this.http.get<Etape>(ServicesConfigComponent.url+"etape/"+id);
   }
