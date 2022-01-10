@@ -20,6 +20,7 @@
             <div class="form-field">
                 <label for="allergene">Allergène</label>
                 <select id="allergene" type="text" formControlName="allergene">
+                    <option>Aucun</option>
                     <option *ngFor="let al of allergenes">{{al.getNom()}}</option>
                 </select>
             </div>

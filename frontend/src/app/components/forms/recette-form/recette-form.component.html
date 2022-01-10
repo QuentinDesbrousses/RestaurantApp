@@ -19,7 +19,7 @@
                     <label for="selectEtape">Etapes*</label>
                     <select id="selectEtape" type="text" formControlName="selectEtape">
                         <option>Sélection</option>
-                        <option *ngFor="let e of this.data.etapes">{{e}}</option>
+                        <option *ngFor="let e of this.etapes">{{e.getTitre()}}</option>
                     </select>
                     <button class="form-btn" type="submit">+</button>
                 </form>

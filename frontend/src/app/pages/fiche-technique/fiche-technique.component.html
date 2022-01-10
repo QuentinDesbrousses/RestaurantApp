@@ -1,5 +1,184 @@
-<div class="body">
-    <div class="content">
-        <h1 class="text-center"><strong>{{data.recette.getTitre()}}</strong></h1>
+<div class="main">
+    <div class="content-title">
+        <h1 class="text-center"><strong>FICHE TECHNIQUE</strong></h1>
+    </div>
+
+    <!-- Fiche -->
+    <div class="fiche">
+
+        <!-- Informations principales -->
+        <div class="part5 text-center">
+            <div class="content content-description">
+                <p><strong>INTITULE</strong></p>
+                <h1>{{this.data.recette.getTitre()}}</h1>
+            </div>
+            <div class="content content-description">
+                <p><strong>DESCRIPTION</strong></p>
+                <h3>{{this.data.recette.getDescription()}}</h3>
+            </div>
+            <div class="content content-description">
+                <p><strong>CATEGORIE</strong></p>
+                <h1>{{this.data.recette.getCategorie()}}</h1>
+            </div>
+            <div class="content content-description">
+                <p><strong>NOMBRE DE PORTIONS</strong></p>
+                <h1>{{this.data.recette.getNbCouvert()}}</h1>
+            </div>
+            <div class="content content-description">
+                <p><strong>TEMPS DE PREPARATION</strong></p>
+                <h1>{{this.data.recette.getTemps()}} minutes</h1>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="part2 text-center">
+            <!-- Denrees -->
+            <div class="content content-fiche">
+                <p><strong>DENREES</strong></p>
+                <div class="part3">
+                    <div>
+                        <p><strong>NATURE</strong></p>
+                        <div>
+                            <p>Nom catégorie 1</p>
+                            <div>
+                                <td>Nom ingrédient 1</td>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong>UNITE</strong></p>
+                        <div>
+                            <p>Nom catégorie 1</p>
+                            <div>
+                                <td>Unité ingrédient 1</td>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong>QUANTITE</strong></p>
+                        <div>
+                            <p>Nom catégorie 1</p>
+                            <div>
+                                <td>Quantité ingrédient 1</td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progression -->
+            <div class="content content-fiche">
+                <p><strong>PROGRESSION</strong></p>
+                <div class="part3 text-center">
+                    <div>
+                        <p><strong>N° PHASE</strong></p>
+                        <div>
+                            <p>PHASE 1</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong>TECHNIQUES DE REALISATION</strong></p>
+                        <div>
+                            <div>
+                                <td>DESCRIPTION PHASE 1</td>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><strong>DUREE</strong></p>
+                        <div>
+                            <div>
+                                <td>DUREE PHASE 1</td>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- COUT -->
+    <div class="content-cout">
+        <h1 class="text-center"><strong>COUT</strong></h1>
+
+        <!-- INPUT DES PARAMETRES -->
+        <div class="part3 text-center">
+            <div class="content-parametres">
+                <form class="parametres matiere">
+                    <h2>MATIERE</h2>
+                    <div class="form-field">
+                        <p>Coût ingrédients : ## €</p>
+                    </div>
+                    <div class="form-field">
+                        <label for="assaisonnement">Coût assaisonnement</label>
+                        <input id="assaisonnement">
+                    </div>
+                    <div class="form-field">
+                        <label for="type-assaisonnement">Type d'assaisonnement</label>
+                        <select id="type-assaisonnement" type="text">
+                            <option>%</option>
+                            <option>€</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <p>Coût matière : ## €</p>
+                    </div>
+                </form>
+            </div>
+            <div class="content-parametres">
+                <form class="parametres charges">
+                    <h2>CHARGES</h2>
+                    <div class="form-field">
+                        <label for="cout-horaire-personnel">Coût horaire moyen du personnel</label>
+                        <input id="cout-horaire-personnel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cout-horaire-fluide">Coût horaire forfaitaire des fluides</label>
+                        <input id="cout-horaire-fluide">
+                    </div>
+                    <div class="form-field">
+                        <p>Coût charges</p>
+                    </div>
+                </form>
+            </div>
+            <div class="content-parametres">
+                <form class="parametres">
+                    <h2>AUTRES PARAMETRES</h2>
+                    <div class="form-field">
+                        <label for="tva">TVA (%)</label>
+                        <input id="tva">
+                    </div>
+                    <div class="form-field">
+                        <label for="marge">Marge désirée</label>
+                        <input id="marge">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- AFFICHAGE DES DONNEES CALCULEES -->
+        <div class="content-resultats">
+            <div class="part2 text-center">
+                <div class="resultats">
+                    <h2>Coût de production</h2>
+                    <p>## €</p>
+                </div>
+                <div class="resultats">
+                    <h2>Coût de production par portion</h2>
+                    <p>## €</p>
+                </div>
+            </div>
+            <div class="part2 text-center">
+                <div class="resultats">
+                    <h2>Prix de vente</h2>
+                    <p>## €</p>
+                </div>
+                <div class="resultats">
+                    <h2>Prix de vente par portion</h2>
+                    <p>## €</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
