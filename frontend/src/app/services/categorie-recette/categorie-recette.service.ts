@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CategorieRecette} from "../../models/categorie-recette";
-import {CategorieAllergene} from "../../models/categorie-allergene";
 import {ServicesConfigComponent} from "../services-config";
 
 @Injectable({
@@ -24,7 +23,11 @@ export class CategorieRecetteService {
   }
 
   getCategorieRecette(id : number){
-    return this.http.get<CategorieRecette>(ServicesConfigComponent.url+"categorie/"+id);
+    var cat : CategorieRecette = new CategorieRecette(0,"");
+    var req = this.http.get<any>(ServicesConfigComponent.url+"categorie/"+id).subscribe(
+        data => {cat = new CategorieRecette(data.id_categorie,data.nom_categorie)}
+    );
+    return cat;
   }
 
   createCategorieRecette(categorieRecette : any){

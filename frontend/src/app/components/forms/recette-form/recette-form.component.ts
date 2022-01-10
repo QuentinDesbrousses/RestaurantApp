@@ -119,7 +119,7 @@ export class RecetteFormComponent implements OnInit{
       titre_recette:this.RecetteForm.value.titre,
       description_recette:this.RecetteForm.value.description,
       nb_couvert:this.RecetteForm.value.nbCouvert,
-      temps_recette:this.RecetteForm.value.temps,
+      temps_recette:0,
       etapes_incluses:etapes_incluses,
       recettes_incluses:recettes_incluses
     }

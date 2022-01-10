@@ -35,4 +35,5 @@ export class FicheTechniqueService {
       data => console.log("fiche supprimée")
   );
   }
+
 }

@@ -1,8 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild,} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
-import {MatTableDataSource} from '@angular/material/table';
 import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {MatSort, Sort} from "@angular/material/sort";
 import {Ingredient} from "../../../models/ingredient";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {IngredientFormComponent} from "../../forms/ingredient-form/ingredient-form.component";
@@ -36,7 +33,7 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
   //CRUD Ingredient
   creerIngredient(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation"}
@@ -46,7 +43,7 @@ export class IngredientListComponent implements OnInit,AfterViewInit{
 
   modifierIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",id:id}
