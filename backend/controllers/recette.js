@@ -29,6 +29,7 @@ exports.getEtapeByRecette = (req, res, next) => {
       ); 
 }
 
+
 exports.getRecette = (req, res, next) => {
     const recette = new Recette.Recette();
     recette.selectById(req.params.id)
@@ -43,17 +44,17 @@ exports.getRecette = (req, res, next) => {
 
 exports.createRecette = (req, res, next) =>{
     const recette = new Recette.Recette();
+    console.log(req.body)
         const recettecomposer = new RecetteComposer.RecetteComposer();
         const etapecomposer = new EtapeComposer.EtapeComposer();
         var val = {
             "id_categorie":req.body.id_categorie,
             "titre_recette":req.body.titre_recette,
             "description_recette":req.body.description_recette,
-            "nb_couvert":req.body.nb_couvert,
-            "temps_recette":req.body.temps_recette
+            "nb_couvert":req.body.nb_couvert
         }
-        var rc=req.body.recettesincluses;
-        var ec=req.body.etapesincluses;
+        var rc=req.body.recettes_incluses;
+        var ec=req.body.etapes_incluses;
         var valuesToSave = [val];
         recette.addValue(valuesToSave)
         .then((recette)=> {
@@ -106,11 +107,10 @@ exports.modifyRecette = (req,res,next)=>{
             "id_categorie":req.body.id_categorie,
             "titre_recette":req.body.titre_recette,
             "description_recette":req.body.description_recette,
-            "nb_couvert":req.body.nb_couvert,
-            "temps_recette":req.body.temps_recette
+            "nb_couvert":req.body.nb_couvert
         }
-        var rc=req.body.recettesincluses;
-        var ec=req.body.etapesincluses;
+        var rc=req.body.recettes_incluses;
+        var ec=req.body.etapes_incluses;
         var valuesToSave = [val];
         recette.modify(req.params.id,valuesToSave)
         .then((recette)=> {

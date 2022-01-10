@@ -1,7 +1,7 @@
 const Ingredient = require('../models/ingredient');
 const pool =require('../config/db')
 
-exports.getAllIngredient = async (req, res, next) => {
+exports.getAllIngredient = (req, res, next) => {
     const ingredient = new Ingredient.Ingredient();
     ingredient.selectAll()
     .then((ingredients) => {
@@ -13,7 +13,7 @@ exports.getAllIngredient = async (req, res, next) => {
       ); 
     }
 
-    exports.getIngredient = async (req, res, next) => {
+    exports.getIngredient = (req, res, next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.selectById(req.params.id)
         .then((ingr) => {
@@ -25,7 +25,7 @@ exports.getAllIngredient = async (req, res, next) => {
         ); 
     }
 
-    exports.createIngredient = async (req, res, next) =>{
+    exports.createIngredient = (req, res, next) =>{
       const ingredient = new Ingredient.Ingredient();
       if (req.body.id_allergene==0){
         var val ={
@@ -51,7 +51,7 @@ exports.getAllIngredient = async (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteIngredient = async (req,res,next) =>{
+    exports.deleteIngredient = (req,res,next) =>{
       const ingredient = new Ingredient.Ingredient();
       var condition = [req.body];
         ingredient.delete(condition)
@@ -59,14 +59,14 @@ exports.getAllIngredient = async (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = async (req,res,next) => {
+    exports.deleteById = (req,res,next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"ingredient supprimé"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyIngredient = async (req,res,next)=>{
+    exports.modifyIngredient = (req,res,next)=>{
       const ingredient = new Ingredient.Ingredient();
       var val;
       if (req.body.id_allergene==0){

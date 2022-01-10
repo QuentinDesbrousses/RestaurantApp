@@ -46,8 +46,7 @@ exports.getIngredientByEtape = (req, res, next) => {
         const utiliser = new Utiliser.Utiliser();
         var val = {
             "titre_etape":req.body.titre_etape,
-            "description_etape":req.body.description_etape,
-            "temps_etape":req.body.temps_etape
+            "description_etape":req.body.description_etape
         }
         var ingr=req.body.ingredients;
         var valuesToSave = [val];
@@ -87,8 +86,7 @@ exports.getIngredientByEtape = (req, res, next) => {
         const utiliser = new Utiliser.Utiliser();
         var val = {
             "titre_etape":req.body.titre_etape,
-            "description_etape":req.body.description_etape,
-            "temps_etape":req.body.temps_etape
+            "description_etape":req.body.description_etape
         }
         var ingr=req.body.ingredients;
         var valuesToSave = [val];
