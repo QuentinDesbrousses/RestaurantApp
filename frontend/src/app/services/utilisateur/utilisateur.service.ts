@@ -26,14 +26,20 @@ export class UtilisateurService {
   }
 
   createUtilisateur(utilisateur : Utilisateur){
-    return this.http.post<Utilisateur>(ServicesConfigComponent.url+"utilisateur/",utilisateur);
+    return this.http.post<Utilisateur>(ServicesConfigComponent.url+"utilisateur/",utilisateur).subscribe(
+      data => console.log("utilisateur créé")
+  );
   }
 
   modifyUtilisateur(id : number,utilisateur : Utilisateur){
-    return this.http.put<Utilisateur>(ServicesConfigComponent.url+"utilisateur/"+id,utilisateur);
+    return this.http.put<Utilisateur>(ServicesConfigComponent.url+"utilisateur/"+id,utilisateur).subscribe(
+      data => console.log("utilisateur modifié")
+  );
   }
 
   deleteUtilisateur(id : number){
-    return this.http.delete<Utilisateur>(ServicesConfigComponent.url+"utilisateur/"+id);
+    return this.http.delete<Utilisateur>(ServicesConfigComponent.url+"utilisateur/"+id).subscribe(
+      data => console.log("utilisateur supprimé")
+  );
   }
 }

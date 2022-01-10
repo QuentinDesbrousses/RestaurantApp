@@ -28,15 +28,31 @@ export class RecetteService {
     return this.http.get<Recette>(ServicesConfigComponent.url+"recette/"+id);
   }
 
+  getEtapeByRecette(id:number){
+    var tab:any[]=[];
+    this.http.get<any>(ServicesConfigComponent.url+"recette/etapeRecette/"+id).subscribe(
+      data=>{ 
+        data.forEach((element: any) => { tab.push({id_etape:element.id_etape, place:element.place}) 
+      })}
+    );
+    return tab;
+  }
+
   createRecette(recette : any){
-    return this.http.post<any>(ServicesConfigComponent.url+"recette/",recette);
+    return this.http.post<any>(ServicesConfigComponent.url+"recette/",recette).subscribe(
+      data => console.log("recette crée")
+    );
   }
 
   modifyRecette(id : number,recette : any){
-    return this.http.put<any>(ServicesConfigComponent.url+"recette/"+id,recette);
+    return this.http.put<any>(ServicesConfigComponent.url+"recette/"+id,recette).subscribe(
+      data => console.log("recette modifiée")
+    );
   }
 
   deleteRecette(id : number){
-    return this.http.delete<Recette>(ServicesConfigComponent.url+"recette/"+id);
+    return this.http.delete<Recette>(ServicesConfigComponent.url+"recette/"+id).subscribe(
+      data => console.log("recette supprimée")
+    );
   }
 }

@@ -24,7 +24,9 @@ export class EtapeService {
     return res
   }
   getEtape(id : number){
-    return this.http.get<Etape>(ServicesConfigComponent.url+"etape/"+id);
+    return this.http.get<Etape>(ServicesConfigComponent.url+"etape/"+id).subscribe(
+      data => console.log(data)
+  );
   }
 
   createEtape(etape : Etape){
@@ -41,10 +43,14 @@ export class EtapeService {
   }
 
   modifyEtape(id : number,etape : Etape){
-    return this.http.put<Etape>(ServicesConfigComponent.url+"etape/"+id,etape);
+    return this.http.put<Etape>(ServicesConfigComponent.url+"etape/"+id,etape).subscribe(
+      data => console.log("Etape modifiée")
+  );
   }
 
   deleteEtape(id : number){
-    return this.http.delete<Etape>(ServicesConfigComponent.url+"etape/"+id);
+    return this.http.delete<Etape>(ServicesConfigComponent.url+"etape/"+id).subscribe(
+      data => console.log("Etape supprimée")
+  );
   }
 }
