@@ -53,7 +53,8 @@ create table avoir(
 create table etape(
     id_etape serial primary key,
     titre_etape varchar(100),
-    description_etape varchar(250)
+    description_etape varchar(250),
+    temps_etape float
 );
 
 create table utiliser(
@@ -137,6 +138,9 @@ create table recettecomposer(
     id_recetteincluse int,
     placer int
 );
+
+alter table etape
+add column temps_etape float;
 
 /*
 {

@@ -59,16 +59,13 @@ export class Ingredient {
         this.unite = unite;
     }
 
-    getQuantite(): number {
+
+    getQuantite() {
         return this.quantite_stock;
+
     }
-
-
     setQuantite(quantite_stock: number) {
         this.quantite_stock = quantite_stock;
-
-    setQuantite(quantite: number) {
-        this.quantite_stock = quantite;
 
     }
 
