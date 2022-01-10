@@ -11,5 +11,6 @@ router.post('/',etapeContr.createEtape);
 router.put('/:id',etapeContr.modifyEtape);
 router.delete('/:id',etapeContr.deleteById);
 router.delete('/',etapeContr.deleteEtape);
+router.get('/ingredientpretape/:id',etapeContr.getIngredientByEtape);
 
 module.exports = router;

@@ -32,7 +32,7 @@ export class IngredientFormComponent {
       categorie : new FormControl('',Validators.required),
       allergene : new FormControl(''),
       unite : new FormControl('',Validators.required),
-      quantite : new FormControl('',Validators.required),
+      quantite_stock : new FormControl('',Validators.required),
       coutU : new FormControl('',Validators.required)
     });
   }
@@ -54,7 +54,7 @@ export class IngredientFormComponent {
         this.IngredientForm.value.nom,
         id_cat_ingredient,
         this.IngredientForm.value.unite,
-        this.IngredientForm.value.quantite,
+        this.IngredientForm.value.quantite_stock,
         this.IngredientForm.value.coutU,
         id_al
         );
