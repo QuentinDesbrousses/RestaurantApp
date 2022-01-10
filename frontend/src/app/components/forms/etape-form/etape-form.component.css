@@ -7,7 +7,7 @@
     border: 3px solid rgba(124,153,255,1);
     min-height: 60px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background: white;
     overflow: auto;
 }
