@@ -8,6 +8,7 @@ import {FicheTechniqueComponent} from "../../../pages/fiche-technique/fiche-tech
 import {RecetteService} from "../../../services/recette/recette.service";
 import {CategorieRecette} from "../../../models/categorie-recette";
 import {CategorieRecetteService} from "../../../services/categorie-recette/categorie-recette.service";
+import { Etape } from 'src/app/models/etape';
 
 @Component({
   selector: 'app-recette-list',
@@ -30,6 +31,7 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
     "Laisser reposer 15 minutes",
     "Mettre au frais pendant 6 heures"
   ];
+  et: any;
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private dialog : MatDialog, private service : RecetteService, private catService : CategorieRecetteService) {}
 

@@ -19,9 +19,22 @@ exports.getAllRecette = (req, res, next) => {
 
 exports.getEtapeByRecette = (req, res, next) => {
     const etcomp = new EtapeComposer.EtapeComposer();
+    console.log(req.params.id)
     etcomp.selectById(req.params.id)
     .then((etapes) => {
           res.status(200).json(etapes)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'recettes non-envoyees'})}
+      ); 
+}
+
+exports.getRecetteComposeIdByRecette = (req, res, next) => {
+    const reccomp = new RecetteComposer.RecetteComposer();
+    reccomp.selectById(req.params.id)
+    .then((recettes) => {
+          res.status(200).json(recettes)})
     .catch((error) => {
           res.status(400).json({
             error: error,
@@ -49,11 +62,10 @@ exports.createRecette = (req, res, next) =>{
             "id_categorie":req.body.id_categorie,
             "titre_recette":req.body.titre_recette,
             "description_recette":req.body.description_recette,
-            "nb_couvert":req.body.nb_couvert,
-            "temps_recette":req.body.temps_recette
+            "nb_couvert":req.body.nb_couvert
         }
-        var rc=req.body.recettesincluses;
-        var ec=req.body.etapesincluses;
+        var rc=req.body.recettes_incluses;
+        var ec=req.body.etapes_incluses;
         var valuesToSave = [val];
         recette.addValue(valuesToSave)
         .then((recette)=> {
@@ -106,11 +118,10 @@ exports.modifyRecette = (req,res,next)=>{
             "id_categorie":req.body.id_categorie,
             "titre_recette":req.body.titre_recette,
             "description_recette":req.body.description_recette,
-            "nb_couvert":req.body.nb_couvert,
-            "temps_recette":req.body.temps_recette
+            "nb_couvert":req.body.nb_couvert
         }
-        var rc=req.body.recettesincluses;
-        var ec=req.body.etapesincluses;
+        var rc=req.body.recettes_incluses;
+        var ec=req.body.etapes_incluses;
         var valuesToSave = [val];
         recette.modify(req.params.id,valuesToSave)
         .then((recette)=> {

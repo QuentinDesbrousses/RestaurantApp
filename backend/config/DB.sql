@@ -19,7 +19,7 @@ create table ingredient(
     nom_ingredient varchar(50) not null,
     unite varchar(30) not null,
     cout_unitaire float,
-    quantite int,
+    quantite_stock float,
     id_cat_ingr int,
     constraint id_cat_ingr foreign key(id_cat_ingr) references categorie_ingredient(id_cat_ingr)
 );
@@ -53,9 +53,7 @@ create table avoir(
 create table etape(
     id_etape serial primary key,
     titre_etape varchar(100),
-    description_etape varchar(250),
-    temps_etape float,
-    cout_etape float
+    description_etape varchar(250)
 );
 
 create table utiliser(
@@ -70,7 +68,6 @@ create table recette(
     titre_recette varchar(100),
     description_recette text,
     nb_couvert int,
-    temps_recette float,
     constraint id_categorie foreign key(id_categorie) references categorie(id_categorie)
 );
 
@@ -111,10 +108,6 @@ create table composer(
     constraint id_recette foreign key(id_recette) references recette(id_recette),
     constraint id_etape foreign key(id_etape) references etape(id_etape)
 );
-insert into categorie_ingredient (nom_cat_ingr) values ('legume');
-
-insert into ingredient (nom_ingredient,unite, cout_unitaire, quantite, id_cat_ingr) 
-values ('tomate','kg',3.4,12,1);
 
 alter table utilisateur
 add constraint NomPrenom unique (nom,prenom);

@@ -1,7 +1,7 @@
 const Ingredient = require('../models/ingredient');
 const pool =require('../config/db')
 
-exports.getAllIngredient = async (req, res, next) => {
+exports.getAllIngredient = (req, res, next) => {
     const ingredient = new Ingredient.Ingredient();
     ingredient.selectAll()
     .then((ingredients) => {
@@ -13,7 +13,7 @@ exports.getAllIngredient = async (req, res, next) => {
       ); 
     }
 
-    exports.getIngredient = async (req, res, next) => {
+    exports.getIngredient = (req, res, next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.selectById(req.params.id)
         .then((ingr) => {
@@ -25,15 +25,25 @@ exports.getAllIngredient = async (req, res, next) => {
         ); 
     }
 
-    exports.createIngredient = async (req, res, next) =>{
+    exports.createIngredient = (req, res, next) =>{
       const ingredient = new Ingredient.Ingredient();
-      var val ={
-        nom_ingredient:req.body.nom_ingredient,
-        id_cat_ingr:req.body.id_cat_ingr,
-        unite:req.body.unite,
-        cout_unitaire:req.body.cout_unitaire,
-        quantite:req.body.quantite,
-        id_allergene:req.body.id_allergene
+      if (req.body.id_allergene==0){
+        var val ={
+          nom_ingredient:req.body.nom_ingredient,
+          id_cat_ingr:req.body.id_cat_ingr,
+          unite:req.body.unite,
+          cout_unitaire:req.body.cout_unitaire,
+          quantite_stock:req.body.quantite_stock,
+        }
+      }else{
+        var val ={
+          nom_ingredient:req.body.nom_ingredient,
+          id_cat_ingr:req.body.id_cat_ingr,
+          unite:req.body.unite,
+          cout_unitaire:req.body.cout_unitaire,
+          quantite_stock:req.body.quantite_stock,
+          id_allergene:req.body.id_allergene
+        }
       }
       var valuesToSave = [val];
         ingredient.addValue(valuesToSave)
@@ -41,7 +51,7 @@ exports.getAllIngredient = async (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteIngredient = async (req,res,next) =>{
+    exports.deleteIngredient = (req,res,next) =>{
       const ingredient = new Ingredient.Ingredient();
       var condition = [req.body];
         ingredient.delete(condition)
@@ -49,14 +59,14 @@ exports.getAllIngredient = async (req, res, next) => {
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.deleteById = async (req,res,next) => {
+    exports.deleteById = (req,res,next) => {
       const ingredient = new Ingredient.Ingredient();
       ingredient.deleteById(req.params.id)
         .then(()=> res.status(201).json({message:"ingredient supprimé"}))
         .catch((err) => res.status(400).json({error:err}));
     }
 
-    exports.modifyIngredient = async (req,res,next)=>{
+    exports.modifyIngredient = (req,res,next)=>{
       const ingredient = new Ingredient.Ingredient();
       var val;
       if (req.body.id_allergene==0){
@@ -65,14 +75,14 @@ exports.getAllIngredient = async (req, res, next) => {
           id_cat_ingr:req.body.id_cat_ingr,
           unite:req.body.unite,
           cout_unitaire:req.body.cout_unitaire,
-          quantite:req.body.quantite
+          quantite_stock:req.body.quantite_stock
       }} else {
         val ={
         nom_ingredient:req.body.nom_ingredient,
         id_cat_ingr:req.body.id_cat_ingr,
         unite:req.body.unite,
         cout_unitaire:req.body.cout_unitaire,
-        quantite:req.body.quantite,
+        quantite_stock:req.body.quantite_stock,
         id_allergene:req.body.id_allergene
       }
     }

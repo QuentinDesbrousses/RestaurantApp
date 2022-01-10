@@ -19,15 +19,21 @@ export class FicheTechniqueService {
   }
 
   createFiche(fiche : FicheTechnique){
-    return this.http.post<FicheTechnique>(ServicesConfigComponent.url+"fiche/",fiche);
+    return this.http.post<FicheTechnique>(ServicesConfigComponent.url+"fiche/",fiche).subscribe(
+      data => console.log("fiche créée")
+  );
   }
 
   modifyFiche(id : number,fiche : FicheTechnique){
-    return this.http.put<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id,fiche);
+    return this.http.put<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id,fiche).subscribe(
+      data => console.log("fiche modifiée")
+  );
   }
 
   deleteFiche(id : number){
-    return this.http.delete<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id);
+    return this.http.delete<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id).subscribe(
+      data => console.log("fiche supprimée")
+  );
   }
 
 }
