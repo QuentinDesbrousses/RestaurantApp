@@ -10,7 +10,7 @@
             </div>
 
             <div class="form-field">
-                <label for="description">Description*</label>
+                <label for="description">Description</label>
                 <input id="description" type="text" formControlName="description">
             </div>
 
@@ -23,8 +23,16 @@
                     </select>
                     <button class="form-btn" type="submit">+</button>
                 </form>
+                <form [formGroup]="EtapeRecetteForm" (ngSubmit)="selectRecette()">
+                    <label for="selectRecette">Recettes*</label>
+                    <select id="selectRecette" type="text" formControlName="selectRecette">
+                        <option>Sélection</option>
+                        <option *ngFor="let e of this.recettes">{{e.getTitre()}}</option>
+                    </select>
+                    <button class="form-btn" type="submit">+</button>
+                </form>
                 <form [formGroup]="EtapeSelectedForm" (ngSubmit)="unselectEtape()">
-                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div cdkDropList cdkDropListOrientation="vertical" class="example-list" (cdkDropListDropped)="drop($event)">
                         <div class="example-box" *ngFor="let eSelected of etapeSelected"  cdkDrag>{{eSelected}}</div>
                     </div>
                     <button class="form-btn button-cancel text-center" type="submit">Supprimer la dernière étape</button>
@@ -35,7 +43,7 @@
                 <label for="categorie">Catégorie*</label>
                 <select id="categorie" type="text" formControlName="categorie">
                     <option>Sélection</option>
-                    <option *ngFor="let cat of this.data.categories">{{cat}}</option>
+                    <option *ngFor="let cat of this.categories">{{cat.getNom()}}</option>
                 </select>
             </div>
 

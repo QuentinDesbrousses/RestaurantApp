@@ -28,12 +28,12 @@ export class RecetteService {
     return this.http.get<Recette>(ServicesConfigComponent.url+"recette/"+id);
   }
 
-  createRecette(recette : Recette){
-    return this.http.post<Recette>(ServicesConfigComponent.url+"recette/",recette);
+  createRecette(recette : any){
+    return this.http.post<any>(ServicesConfigComponent.url+"recette/",recette);
   }
 
-  modifyRecette(id : number,recette : Recette){
-    return this.http.put<Recette>(ServicesConfigComponent.url+"recette/"+id,recette);
+  modifyRecette(id : number,recette : any){
+    return this.http.put<any>(ServicesConfigComponent.url+"recette/"+id,recette);
   }
 
   deleteRecette(id : number){
