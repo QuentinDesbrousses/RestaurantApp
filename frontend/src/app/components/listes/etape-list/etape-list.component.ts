@@ -28,9 +28,10 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
   //CRUD Etape
   creerEtape(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
     dialogConfig.data = {type: "creation", ingredients : this.ingredients}
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("création étape");
@@ -38,9 +39,10 @@ export class EtapeListComponent implements OnInit, AfterViewInit {
 
   modifierEtape(id: number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "50%";
+    dialogConfig.height = "95%";
     dialogConfig.data = {type: "modification",id:id}
     this.dialog.open(EtapeFormComponent,dialogConfig);
     console.log("Etape n° "+id+" modifiée");

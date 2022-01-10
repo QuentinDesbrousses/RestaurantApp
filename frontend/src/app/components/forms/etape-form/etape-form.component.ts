@@ -39,16 +39,17 @@ export class EtapeFormComponent {
   }
 
   // Drag & Drop etapes
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<[{nom_ingredient:string,quantite:number}]>) {
     moveItemInArray(this.ingredientSelected, event.previousIndex, event.currentIndex);
   }
 
   selectIngredient(){
-    if(this.ingredientSelected !=  [{nom_ingredient:"Aucun",quantite:0}]){
+    if(this.ingredientSelected[0] !=  {nom_ingredient:"Aucun",quantite:0}){
       this.ingredientSelected.push({nom_ingredient:this.IngredientForm.value.selectIngredient,quantite:this.IngredientForm.value.quantite});
     }
     else {
-      this.ingredientSelected = [{nom_ingredient:this.IngredientForm.value.unselectIngredient,quantite:this.IngredientForm.value.quantite}]
+      this.unselectIngredient();
+      this.ingredientSelected = [{nom_ingredient:this.IngredientForm.value.selectIngredient,quantite:this.IngredientForm.value.quantite}]
     }
   }
 

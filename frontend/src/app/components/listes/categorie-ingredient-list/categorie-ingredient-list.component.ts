@@ -34,7 +34,7 @@ export class CategorieIngredientListComponent implements OnInit,AfterViewInit{
   creerCategorieIngredient(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "creation",element:"ingredient"}
     this.dialog.open(CategorieFormComponent,dialogConfig);
@@ -42,7 +42,7 @@ export class CategorieIngredientListComponent implements OnInit,AfterViewInit{
 
   modifierCategorieIngredient(id: number){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "30%";
     dialogConfig.data = {type: "modification",element:"ingredient",id:id}

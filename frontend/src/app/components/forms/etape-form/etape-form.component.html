@@ -27,7 +27,7 @@
                     <button class="form-btn" type="submit">Ajouter</button>
                 </form>
                 <form [formGroup]="IngredientSelectedForm" (ngSubmit)="unselectIngredient()">
-                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div cdkDropList cdkDropListOrientation="vertical" class="example-list" (cdkDropListDropped)="drop($event)">
                         <div class="example-box" *ngFor="let eSelected of ingredientSelected"  cdkDrag>{{eSelected.nom_ingredient}} : {{eSelected.quantite}}</div>
                     </div>
                     <button class="form-btn button-cancel text-center" type="submit">Supprimer le dernier ingrédient</button>
