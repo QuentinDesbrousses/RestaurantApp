@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Recette} from "../../models/recette";
 import {ServicesConfigComponent} from "../services-config";
-import {CategorieIngredient} from "../../models/categorie-ingredient";
 
 @Injectable({
   providedIn: 'root'

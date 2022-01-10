@@ -29,4 +29,5 @@ export class FicheTechniqueService {
   deleteFiche(id : number){
     return this.http.delete<FicheTechnique>(ServicesConfigComponent.url+"fiche/"+id);
   }
+
 }

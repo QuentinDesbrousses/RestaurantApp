@@ -48,7 +48,7 @@ export class RecetteListComponent implements OnInit, AfterViewInit {
   }
 
   ficheTechnique(id : number){
-    var recette : Recette | undefined;
+    var recette : Recette = new Recette(0,0,0,"","",0,0);
     this.recettes.forEach(r=>{
       if(id==r.getId()){
         recette = r;

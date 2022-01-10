@@ -29,22 +29,7 @@ export class CategorieFormComponent implements  OnInit{
   }
 
   ngOnInit() {
-    if(this.data.type == "modification"){
-      console.log("debut on init de catégorie form")
-      if(this.data.element == "ingredient"){
-        this.currentCategorie = this.catIngredientService.getCategorieIngredient(this.data.id);
-      }
-      else if(this.data.element == "allergene"){
-        this.currentCategorie = this.catAllergeneService.getCategorieAllergene(this.data.id);
-      }
-      else if (this.data.element == "recette"){
-        this.catRecetteService.getCategorieRecette(this.data.id).subscribe(
-            (data) => this.currentCategorie = new CategorieRecette(data.getId(),data.getNom()));
-      }
-      else{
-        console.log("data.element doit être égal à allergene, ingredient ou recette")
-      }
-    }
+
   }
 
   onSubmit(){
