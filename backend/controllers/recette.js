@@ -19,6 +19,7 @@ exports.getAllRecette = (req, res, next) => {
 
 exports.getEtapeByRecette = (req, res, next) => {
     const etcomp = new EtapeComposer.EtapeComposer();
+    console.log(req.params.id)
     etcomp.selectById(req.params.id)
     .then((etapes) => {
           res.status(200).json(etapes)})
@@ -55,7 +56,6 @@ exports.getRecette = (req, res, next) => {
 
 exports.createRecette = (req, res, next) =>{
     const recette = new Recette.Recette();
-    console.log(req.body)
         const recettecomposer = new RecetteComposer.RecetteComposer();
         const etapecomposer = new EtapeComposer.EtapeComposer();
         var val = {
