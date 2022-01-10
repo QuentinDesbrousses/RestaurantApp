@@ -11,5 +11,6 @@ router.post('/', recetteContr.createRecette);
 router.put('/:id', recetteContr.modifyRecette);
 router.delete('/:id',recetteContr.deleteById);
 router.delete('/', recetteContr.deleteRecette);
+router.get('/recetteByRecette/:id',recetteContr.getRecetteComposeIdByRecette);
 
 module.exports = router;

@@ -29,6 +29,17 @@ exports.getEtapeByRecette = (req, res, next) => {
       ); 
 }
 
+exports.getRecetteComposeIdByRecette = (req, res, next) => {
+    const reccomp = new RecetteComposer.RecetteComposer();
+    reccomp.selectById(req.params.id)
+    .then((recettes) => {
+          res.status(200).json(recettes)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'recettes non-envoyees'})}
+      ); 
+}
 
 exports.getRecette = (req, res, next) => {
     const recette = new Recette.Recette();
