@@ -24,9 +24,13 @@ export class EtapeService {
     return res
   }
   getEtape(id : number){
-    return this.http.get<Etape>(ServicesConfigComponent.url+"etape/"+id).subscribe(
-      data => console.log(data)
+    var res : any;
+    this.http.get<any>(ServicesConfigComponent.url+"etape/"+id).subscribe(
+      data => {
+        res = {id_etape:data.id_etape,titre_etape:data.titre_etape,description_etape:data.description_etape,temps_etape:data.temps_etape}
+      }
   );
+  return res;
   }
 
   createEtape(etape : Etape){

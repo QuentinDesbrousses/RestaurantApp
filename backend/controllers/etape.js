@@ -32,7 +32,6 @@ exports.getIngredientByEtape = (req, res, next) => {
         const etape = new Etape.Etape();
         etape.selectById(req.params.id)
         .then((etape) => {
-
             res.status(200).json(etape)})
         .catch((error) => {
             res.status(400).json({
