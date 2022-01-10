@@ -33,7 +33,7 @@ export class IngredientService {
     var tmp = {
       "nom_ingredient":ingredient.getNom(),
       "unite":ingredient.getUnite(),
-      "quantite":ingredient.getQuantite(),
+      "quantite_stock":ingredient.getQuantite(),
       "cout_unitaire":ingredient.getCoutU(),
       "id_cat_ingr":ingredient.getCategorie(),
       "id_allergene":ingredient.getAllergene()
@@ -48,7 +48,7 @@ export class IngredientService {
     var req = {
       "nom_ingredient":ingredient.getNom(),
       "unite":ingredient.getUnite(),
-      "quantite":ingredient.getQuantite(),
+      "quantite_stock":ingredient.getQuantite(),
       "cout_unitaire":ingredient.getCoutU(),
       "id_cat_ingr":ingredient.getCategorie(),
       "id_allergene":ingredient.getAllergene()

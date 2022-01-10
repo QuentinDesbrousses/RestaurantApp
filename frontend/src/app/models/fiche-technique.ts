@@ -1,26 +1,32 @@
+import {Recette} from "./recette";
+import {Etape} from "./etape";
+import {Ingredient} from "./ingredient";
 
 export class FicheTechnique {
 
     private id_fiche : number;
-    private id_recette : number;
+    private recette : Recette;
     private stock : number;
     private tva : number;
-    private coef_fluide : number;
-    private coef_pers : number;
-    private cout_production : number;
-    private cout_horaire : number;
-    private prix_vente : number;
+    private assaisonnement : number;
+    private type_assaisonnement : boolean; //true if %
+    private cout_horaire_personnel : number;
+    private cout_horaire_fluide : number;
+    private marge : number;
+    private multiple : number;
 
-    constructor(id_fiche: number, id_recette: number, stock: number, tva: number, coef_fluide: number, coef_pers: number, cout_production: number, cout_horaire: number, prix_vente: number) {
+
+    constructor(id_fiche: number, recette: Recette, stock: number, tva: number, assaisonnement: number, type_assaisonnement: boolean, cout_horaire_personnel: number, cout_horaire_fluide: number, marge: number, multiple: number) {
         this.id_fiche = id_fiche;
-        this.id_recette = id_recette;
+        this.recette = recette;
         this.stock = stock;
         this.tva = tva;
-        this.coef_fluide = coef_fluide;
-        this.coef_pers = coef_pers;
-        this.cout_production = cout_production;
-        this.cout_horaire = cout_horaire;
-        this.prix_vente = prix_vente;
+        this.assaisonnement = assaisonnement;
+        this.type_assaisonnement = type_assaisonnement;
+        this.cout_horaire_personnel = cout_horaire_personnel;
+        this.cout_horaire_fluide = cout_horaire_fluide;
+        this.marge = marge;
+        this.multiple = multiple;
     }
 
     getId() : number {
@@ -31,12 +37,12 @@ export class FicheTechnique {
         this.id_fiche = this.id_fiche;
     }
 
-    getRecette(): number {
-        return this.id_recette;
+    getRecette(): Recette {
+        return this.recette;
     }
 
-    setRecette(id_recette : number){
-        this.id_recette = id_recette;
+    setRecette(recette : Recette){
+        this.recette = recette;
     }
 
     getStock(): number {
@@ -55,20 +61,99 @@ export class FicheTechnique {
         this.tva = tva;
     }
 
-    getCoefFluide() : number {
-        return this.coef_fluide;
+    getAssaisonnement() : number {
+        return this.assaisonnement;
     }
 
-    setCoefFluide(corf_fluide : number){
-        this.coef_fluide = corf_fluide;
+    setAssaisonnement(assaisonnement : number){
+        this.tva = assaisonnement;
     }
 
-    getCoefPers() : number {
-        return this.coef_pers;
+    getTypeAssaisonnement() : boolean{
+        return this.type_assaisonnement;
     }
 
-    setCoefPers(coef_pers: number){
-        this.coef_pers = coef_pers;
+    setTypeAssaisonnement(typeAssaisonnement : boolean){
+        this.type_assaisonnement = typeAssaisonnement;
+    }
+
+    getCoutHPers() : number {
+        return this.cout_horaire_personnel;
+    }
+
+    setCoutHPers(cout_horaire_personnel : number){
+        this.cout_horaire_personnel = cout_horaire_personnel;
+    }
+
+    getCoutHFluide() : number {
+        return this.cout_horaire_fluide;
+    }
+
+    setCoutHFluide(cout_horaire_fluide : number){
+        this.cout_horaire_fluide = cout_horaire_fluide;
+    }
+
+    getMarge() : number {
+        return this.marge;
+    }
+
+    setMarge(marge : number){
+        this.marge = marge;
+    }
+
+    getMultiple() : number {
+        return this.multiple;
+    }
+
+    setMultiple(multiple : number){
+        this.multiple = multiple;
+    }
+
+
+    getCoutMatiere(ingredients : [{ ingredient : Ingredient, quantite : number }]){
+        var coutM = 0;
+        ingredients.forEach(i=>{
+            coutM += i.ingredient.getCoutU()*i.quantite;
+        })
+        if(this.type_assaisonnement){
+            coutM *= (1+this.assaisonnement);
+        }
+        else {
+            coutM += this.assaisonnement;
+        }
+        return coutM;
+    }
+
+    getCoutCharges(etapes : Etape[]){
+        var coutPers = 0;
+        var coutFluide = 0;
+        etapes.forEach(e=>{
+            coutPers += e.getTemps()*this.cout_horaire_personnel
+            coutFluide += e.getTemps()*this.cout_horaire_fluide
+        })
+        let coutCharges = coutFluide + coutPers;
+        return [coutPers,coutFluide,coutCharges]
+    }
+
+    getCoutProduction(ingredients : [{ingredient : Ingredient, quantite:number}], etapes :Etape[]){
+        return this.getCoutMatiere(ingredients) + this.getCoutCharges(etapes)[2];
+    }
+
+    getCoutProdByPortion(ingredients : [{ingredient : Ingredient, quantite:number}], etapes :Etape[]){
+        return this.getCoutProduction(ingredients,etapes)/this.recette.getNbCouvert();
+    }
+
+    getPrixVente(type:boolean,ingredients : [{ingredient : Ingredient, quantite:number}], etapes :Etape[]){
+        //avec charges
+        if(type){
+            return this.getCoutProduction(ingredients,etapes)*(1+this.tva)*(1+this.marge);
+        }
+        return this.getCoutProduction(ingredients,etapes)*(1+this.tva)*(1+this.marge);
+    }
+
+    getEtiquette(){
+        //decremente stock
+        this.setStock(this.getStock()-this.recette.getNbCouvert())
     }
 
 }

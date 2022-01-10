@@ -4,6 +4,7 @@ import {FicheTechniqueService} from "../../services/fiche-technique/fiche-techni
 import {Recette} from "../../models/recette";
 import {CategorieRecette} from "../../models/categorie-recette";
 import {CategorieRecetteService} from "../../services/categorie-recette/categorie-recette.service";
+import {FicheTechnique} from "../../models/fiche-technique";
 
 @Component({
   selector: 'app-fiche-technique',
@@ -18,4 +19,6 @@ export class FicheTechniqueComponent {
 
 
   }
+  fiche = new FicheTechnique(1,this.data.recette,0,0.1,0.05,true,10,5,0.2,1);
+
 }
