@@ -15,6 +15,19 @@ exports.getAllEtape = (req, res, next) => {
     ); 
 }
 
+exports.getIngredientByEtape = (req, res, next) => {
+    const utiliser = new Utiliser.Utiliser();
+    utiliser.selectByIdPrRecette(req.params.id)
+    .then((ingr) => {
+          res.status(200).json(ingr)})
+    .catch((error) => {
+          res.status(400).json({
+            error: error,
+            message:'recettes non-envoyees'})}
+      ); 
+}
+
+
     exports.getEtape = (req, res, next) => {
         const etape = new Etape.Etape();
         etape.selectById(req.params.id)
